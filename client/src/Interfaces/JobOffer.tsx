@@ -2,7 +2,8 @@ export interface JobOffer {
   _id: string;
   companyname: string;
   position: string;
-  skills: string;
+  role: string;
+  languages: string[];
   education: string;
   experience: string;
   location: string;

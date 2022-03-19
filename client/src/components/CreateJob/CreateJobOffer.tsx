@@ -7,7 +7,8 @@ const CreateJobOffer: React.FC = () => {
     defaultValues: {
       companyname: '',
       position: '',
-      skills: '',
+			role: '',
+      languages: [''],
       education: '',
       experience: '',
       location: '',
@@ -28,7 +29,7 @@ const CreateJobOffer: React.FC = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <input type="text" {...register('companyname')} />
 					<input type="text" {...register('position')} />
-					<input type="text" {...register('skills')} />
+					<input type="text" {...register('languages')} />
 					<input type="text" {...register('education')} />
 					<input type="text" {...register('experience')} />
 					<input type="text" {...register('location')} />

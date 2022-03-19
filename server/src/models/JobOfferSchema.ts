@@ -4,11 +4,12 @@ const Schema = mongoose.Schema;
 interface newJobOffer {
   companyname: string;
   position: string;
-  skills: string;
+  role: string;
+  languages: string[];
   education: string;
   experience: string;
   location: string;
-  hours: string;
+  contract: string;
   salary: string;
 }
 
@@ -21,8 +22,12 @@ const JobOfferSchema = new Schema<newJobOffer>({
     type: String,
     required: true,
   },
-  skills: {
+  role: {
     type: String,
+    required: true,
+  },
+  languages: {
+    type: [],
     required: true,
   },
   education: {
@@ -37,7 +42,7 @@ const JobOfferSchema = new Schema<newJobOffer>({
     type: String,
     required: true,
   },
-  hours: {
+  contract: {
     type: String,
     required: true,
   },
