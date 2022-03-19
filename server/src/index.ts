@@ -1,7 +1,7 @@
-const express = require('express');
-const cors = require('cors');
-const router = require('./router');
-const db = require('./models/db')
+import express from 'express';
+import cors from 'cors';
+import router from './router';
+import * as db from './models/db';
 const app = express();
 const PORT = 4000;
 
@@ -11,5 +11,5 @@ app.use(router);
 
 const server = app.listen(PORT, async () => {
   console.log(`Server listening on port ${PORT}`);
-	await db.connect()
+  await db.connect();
 });
