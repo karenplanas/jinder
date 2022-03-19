@@ -1,5 +1,4 @@
 import {
-  createUserWithEmailAndPassword,
   GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
@@ -9,31 +8,23 @@ import {
 } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../../service/firebase";
+import Registration from "../Registration/Registration";
 
 const Login = () => {
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<{
+    email: string | null;
+  } | null>(null);
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
+    console.log("auth state changed", currentUser);
   });
 
-  const register = async () => {
-    try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      );
-      console.log(user);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const login = async () => {
+  const login = async (e: any) => {
+    console.log("logged in!");
+    e.preventDefault();
     try {
       const user = await signInWithEmailAndPassword(
         auth,
@@ -47,51 +38,24 @@ const Login = () => {
   };
 
   const logout = async () => {
+    console.log("logged out");
     await signOut(auth);
+    console.log(user);
   };
 
   const signInwithGoogle = () => {
+    console.log("logged in google");
     const googleProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleProvider);
   };
 
   const signInwithGithub = () => {
+    console.log("logged in github");
     const githubProvider = new GithubAuthProvider();
     return signInWithPopup(auth, githubProvider);
   };
   return (
     <>
-      {/* Registration */}
-      <form>
-        <div>
-          <h3>Registuer user</h3>
-          <input
-            value={registerEmail}
-            name="registerEmail"
-            type="email"
-            autoComplete="email"
-            placeholder="Email..."
-            required
-            onChange={(e) => {
-              setRegisterEmail(e.target.value);
-            }}
-          />
-          <input
-            value={registerPassword}
-            name="registerPassword"
-            type="password"
-            autoComplete="password"
-            placeholder="Password..."
-            onChange={(e) => {
-              setRegisterPassword(e.target.value);
-            }}
-          />
-          <button onClick={register}>SIGN UP</button>
-        </div>
-      </form>
-
-      {/* Login */}
-
       <div>
         <h3>Login</h3>
         <form>
@@ -143,7 +107,11 @@ const Login = () => {
         </form>
       </div>
 
-      <h4>User Logged In: {user?.email}</h4>
+      <h4>{user?.email}</h4>
+      <div>
+        <Registration />
+      </div>
+
       <button onClick={logout}>Log out</button>
     </>
   );

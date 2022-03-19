@@ -4,11 +4,13 @@ import Login from "./components/Login/Login";
 
 function App() {
   return (
-    <div className="App">
-      {" "}
-      <h1> Jinder!! be a slut to get a job </h1>
-      <Login />
-    </div>
+    <>
+      <div className="App">
+        {" "}
+        <h1> Jinder!! be a slut to get a job </h1>
+        <Login />
+      </div>
+    </>
   );
 }
 
