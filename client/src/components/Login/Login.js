@@ -1,7 +1,10 @@
 import {
   createUserWithEmailAndPassword,
+  GithubAuthProvider,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import React, { useState } from "react";
@@ -46,44 +49,102 @@ const Login = () => {
   const logout = async () => {
     await signOut(auth);
   };
+
+  const signInwithGoogle = () => {
+    const googleProvider = new GoogleAuthProvider();
+    return signInWithPopup(auth, googleProvider);
+  };
+
+  const signInwithGithub = () => {
+    const githubProvider = new GithubAuthProvider();
+    return signInWithPopup(auth, githubProvider);
+  };
   return (
     <>
-      <div>
-        <h3>Registuer user</h3>
-        <input
-          placeholder="Email..."
-          onChange={(event) => {
-            setRegisterEmail(event.target.value);
-          }}
-        />
-        <input
-          placeholder="Password..."
-          onChange={(event) => {
-            setRegisterPassword(event.target.value);
-          }}
-        />
-        <button onClick={register}>SIGN UP</button>
-      </div>
+      {/* Registration */}
+      <form>
+        <div>
+          <h3>Registuer user</h3>
+          <input
+            value={registerEmail}
+            name="registerEmail"
+            type="email"
+            autoComplete="email"
+            placeholder="Email..."
+            required
+            onChange={(e) => {
+              setRegisterEmail(e.target.value);
+            }}
+          />
+          <input
+            value={registerPassword}
+            name="registerPassword"
+            type="password"
+            autoComplete="password"
+            placeholder="Password..."
+            onChange={(e) => {
+              setRegisterPassword(e.target.value);
+            }}
+          />
+          <button onClick={register}>SIGN UP</button>
+        </div>
+      </form>
+
+      {/* Login */}
 
       <div>
         <h3>Login</h3>
-        <input
-          placeholder="Email..."
-          onChange={(event) => {
-            setLoginEmail(event.target.value);
-          }}
-        />
-        <input
-          placeholder="Password..."
-          onChange={(event) => {
-            setLoginPassword(event.target.value);
-          }}
-        />
-        <button onClick={login}>SIGN IN</button>
+        <form>
+          <input
+            value={loginEmail}
+            name="loginEmail"
+            type="email"
+            autoComplete="email"
+            placeholder="Email..."
+            required
+            onChange={(e) => {
+              setLoginEmail(e.target.value);
+            }}
+          />
+          <input
+            value={loginPassword}
+            name="loginPassword"
+            type="password"
+            autoComplete="password"
+            placeholder="Password..."
+            required
+            onChange={(e) => {
+              setLoginPassword(e.target.value);
+            }}
+          />
+          <button onClick={login}>Log IN</button>
+          <div>
+            <button
+              onClick={() =>
+                signInwithGoogle()
+                  .then((user) => console.log(user))
+                  .catch((error) => console.log(error))
+              }
+            >
+              Login with Google
+            </button>
+          </div>
+          <div>
+            <button
+              onClick={() =>
+                signInwithGithub()
+                  .then((user) => console.log(user))
+                  .catch((error) => console.log(error))
+              }
+            >
+              Login with Github
+            </button>
+          </div>
+        </form>
       </div>
 
       <h4>User Logged In: {user?.email}</h4>
-      <button onClick={logout}>Sing out</button>
+      <button onClick={logout}>Log out</button>
     </>
   );
 };
