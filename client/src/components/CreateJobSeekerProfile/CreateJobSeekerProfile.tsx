@@ -1,4 +1,5 @@
 import React from 'react'
+import { InputTextField } from '../InputTextField/InputTextField'
 import { ProfileTabsNav } from '../ProfileTabsNav/ProfileTabsNav'
 import './CreateJobSeekerProfile.css'
 
@@ -10,12 +11,14 @@ const CreateJobSeekerProfile: React.FC = () => {
       <div>
         <div className='CreateJobSeekerProfile-Experience profile-sections'>
           <h3>Experience</h3>
-          <input placeholder='Title'/>
-          <input placeholder='Company Name'/>
-          <input placeholder='Location'/>
-          <input placeholder='Start Date'/>
-          <input placeholder='End Date'/>
-          <input placeholder='Job Description / Tasks performed'/>
+          <InputTextField placeholder='Title' name='title' label='Title'/>
+          <InputTextField placeholder='Company Name' name='company-name' label='Company Name'/>
+          <InputTextField placeholder='Location' name='location' label='Location'/>
+          <div className='dates'>
+            <InputTextField placeholder='YYYY-MM' name='start-date' label='Start Date' />
+            <InputTextField placeholder='YYYY-MM' name='end-date' label='End Date' />
+          </div>
+          <InputTextField placeholder='Description' name='description' label='Description' />
         </div>
         <div className='CreateJobSeekerProfile-Skills profile-sections'>
           <h3>Skills</h3>

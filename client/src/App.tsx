@@ -9,8 +9,8 @@ const App: React.FC = () => {
     <BrowserRouter>
       <h1> Jinder!! be a slut to get a job </h1>
       <Routes>
-          <Route path="/CreateJobPosition" element={<CreateJobOffer />} />
-          <Route path="/JobSeekerProfile" element={<CreateJobSeekerProfile />} />
+          <Route path="/job-position/edit" element={<CreateJobOffer />} />
+          <Route path="/job-seeker-profile/edit" element={<CreateJobSeekerProfile />} />
       </Routes>
     </BrowserRouter>
   );

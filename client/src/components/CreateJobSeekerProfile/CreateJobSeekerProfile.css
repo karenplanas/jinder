@@ -8,11 +8,15 @@
   gap: 16px;
 }
 
+.dates {
+  display: flex;
+  gap: 8px;
+}
+
 .Skills-checks .LookingFor-checks{
   display: flex;
   gap: 16px;
 }
-
 
 .CreateJobSeekerProfile-LookingFor {
   display: flex;
