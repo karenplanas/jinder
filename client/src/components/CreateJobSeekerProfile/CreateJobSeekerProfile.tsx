@@ -36,10 +36,7 @@ const CreateJobSeekerProfile: React.FC = () => {
               <label htmlFor='C++'>TS</label>
             </div>
           </div>
-          <div className='others'>
-            <label htmlFor='others'>Others</label>
-            <input name='others' placeholder='Type something here...'/>
-          </div>
+          <InputTextField name='others-skills' placeholder='Type something here...' label='Others' />
         </div>
         <div className='CreateJobSeekerProfile-LookingFor profile-sections'>
           <h3>Looking For</h3>
@@ -57,10 +54,7 @@ const CreateJobSeekerProfile: React.FC = () => {
               <label htmlFor='Full-stack'>Full-stack</label>
             </div>
           </div>
-          <div className='others'>
-            <label htmlFor='others'>Others</label>
-            <input name='others' placeholder='Type something here...'/>
-          </div>
+          <InputTextField name='others-looking-for' placeholder='Type something here...' label='Others' />
         </div>
         <button>Save</button>
       </div>
