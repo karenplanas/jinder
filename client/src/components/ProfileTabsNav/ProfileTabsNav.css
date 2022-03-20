@@ -1,0 +1,9 @@
+.ProfileTabsNav-container {
+  display: flex;
+  justify-content: center;
+  border: solid 1px  ;
+  gap: 24px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  max-width: 400px;
+}
