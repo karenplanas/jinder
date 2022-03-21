@@ -1,0 +1,200 @@
+ul {
+  list-style: none;
+}
+
+.job_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 327px;
+  height: 473px;
+  left: 18.5px;
+  top: 57.5px;
+
+  /* Off White */
+
+  background: #fafafc;
+  /* Off Black */
+
+  border: 2px solid #1d1d1f;
+  box-sizing: border-box;
+  /* Drop Shadow / Normal */
+
+  box-shadow: 0px 4px 0px #000000;
+  border-radius: 16px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 10px 0px;
+}
+
+.card_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 14px 24px;
+
+  position: static;
+  max-width: 327px;
+  max-height: 94px;
+  left: 0px;
+  top: 0px;
+
+  /* Off White */
+
+  background: #fafafc;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.company_logo {
+  background: #f3c522;
+  padding: 8px;
+  position: static;
+  min-width: 40px;
+  min-height: 40px;
+  left: 24px;
+  top: 14px;
+  border-radius: 80px;
+  margin: 0px 16px;
+}
+
+.header_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 223px;
+  height: 66px;
+  left: 80px;
+  top: 14px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+  margin: 0px 16px;
+}
+
+.company_name {
+  position: static;
+  width: 223px;
+  height: 32px;
+  left: 0px;
+  top: 0px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  color: #1d1d1f;
+  align-self: stretch;
+}
+.company_size_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0px 10px 10px 0px;
+
+  position: static;
+  width: 184px;
+  height: 34px;
+  left: 0px;
+  top: 32px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.company_size_logo {
+  position: static;
+  width: 24px;
+  height: 24px;
+  left: 0px;
+  top: 0px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.company_size {
+  position: static;
+  width: 140px;
+  height: 16px;
+  left: 34px;
+  top: 8px;
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  /* identical to box height, or 114% */
+
+  /* Medium Grey */
+
+  color: #7a7d84;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.detail_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  position: static;
+  width: 350px;
+  height: 75vh;
+  z-index: 999;
+  left: 18.5px;
+  top: 57.5px;
+  overflow-y: scroll;
+  /* Off White */
+
+  background: #fafafc;
+  /* Off Black */
+
+  border: 2px solid #1d1d1f;
+  box-sizing: border-box;
+  /* Drop Shadow / Normal */
+
+  box-shadow: 0px 4px 0px #000000;
+  border-radius: 16px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 10px 0px;
+}
