@@ -14,13 +14,20 @@
   gap: 16px;
 }
 
-.Skills-checks .LookingFor-checks{
-  display: flex;
-  gap: 16px;
-}
-
-.CreateJobSeekerProfile-LookingFor {
+.checks {
   display: flex;
   flex-direction: column;
+  gap: 16px;
+  background-color: aqua;
 }
 
+.checks-line {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.title-and-plus {
+  display: flex;
+  justify-content: space-between;
+}

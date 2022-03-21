@@ -9,3 +9,4 @@ export interface JobOffer {
   hours: string;
   salary: string;
 }
+

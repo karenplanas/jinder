@@ -6,11 +6,17 @@ interface Props {
   text: string;
   className: 'outlined' | 'contained';
   type?: 'button' | 'submit' | 'reset';
+  icon?: React.ReactNode
 }
 
-const Button: React.FC<Props> = ({text, className, ...props}) => {
+const Button: React.FC<Props> = ({text, className, icon, ...props}) => {
   return (
-    <button {...props} className={clsx(className)}>{text}</button>
+    <button 
+      {...props} 
+      className={clsx(className, {'with-icon' : !!icon})}
+    >
+      {icon}{text}
+    </button>
   )
 }
 
