@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import { auth } from "../../service/firebase";
 import Registration from "../Registration/Registration";
 
+//test
 const Login = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
