@@ -8,8 +8,11 @@ export const postJobOffer = async (
   try {
     const jobOffer = new JobOffer({
       companyname: req.body.companyname,
+      companysize: req.body.companysize,
       position: req.body.position,
+      bio: req.body.bio,
       role: req.body.role,
+      level: req.body.level,
       description: req.body.description,
       languages: req.body.languages,
       education: req.body.education,
