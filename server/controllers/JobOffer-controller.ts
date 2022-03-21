@@ -10,6 +10,7 @@ export const postJobOffer = async (
       companyname: req.body.companyname,
       position: req.body.position,
       role: req.body.role,
+      description: req.body.description,
       languages: req.body.languages,
       education: req.body.education,
       experience: req.body.experience,

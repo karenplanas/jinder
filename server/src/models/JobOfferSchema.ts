@@ -5,6 +5,7 @@ interface newJobOffer {
   companyname: string;
   position: string;
   role: string;
+  description: string;
   languages: string[];
   education: string;
   experience: string;
@@ -23,6 +24,10 @@ const JobOfferSchema = new Schema<newJobOffer>({
     required: true,
   },
   role: {
+    type: String,
+    required: true,
+  },
+  description: {
     type: String,
     required: true,
   },
