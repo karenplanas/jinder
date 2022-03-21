@@ -14,3 +14,4 @@ export interface JobOffer {
   contract: string;
   salary: string;
 }
+

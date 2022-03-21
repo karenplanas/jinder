@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { JobOffer } from '../../Interfaces/JobOffer';
@@ -5,22 +6,23 @@ import { postJobOffer } from '../../Services/PostJobOffer';
 import './CreateJobOffer.css';
 import { ProfileTabsNav } from '../ProfileTabsNav/ProfileTabsNav';
 
+
 const CreateJobOffer: React.FC = () => {
   const methods = useForm<JobOffer>({
     defaultValues: {
-      companyname: '',
-      companysize: '',
-      position: '',
-      bio: '',
-      role: '',
-      level: '',
-      description: '',
+      companyname: "",
+      companysize: "",
+      position: "",
+      bio: "",
+      role: "",
+      level: "",
+      description: "",
       languages: [],
-      education: '',
-      experience: '',
-      location: '',
-      contract: '',
-      salary: '',
+      education: "",
+      experience: "",
+      location: "",
+      contract: "",
+      salary: "",
     },
   });
 
