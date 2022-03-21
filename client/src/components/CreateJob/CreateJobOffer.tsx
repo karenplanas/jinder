@@ -4,7 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { JobOffer } from '../../Interfaces/JobOffer';
 import { postJobOffer } from '../../services/api-client';
 import './CreateJobOffer.css';
-import { ProfileTabsNav } from '../ProfileTabsNav/ProfileTabsNav';
+// import { ProfileTabsNav } from '../TabsNav/TabsNav';
 
 
 const CreateJobOffer: React.FC = () => {
@@ -36,7 +36,7 @@ const CreateJobOffer: React.FC = () => {
   return (
     <div className="createjoboffer">
       <div className="joboffercontent">
-        <ProfileTabsNav />
+        {/* <ProfileTabsNav /> */}
         <FormProvider {...methods}>
           <form onSubmit={onSubmit}>
             <h3>Company name</h3>
