@@ -62,4 +62,4 @@ const JobList = () => {
   );
 };
 
-export default JobList;
+export {JobList};

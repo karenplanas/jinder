@@ -9,7 +9,6 @@ import { JobSeekerProfileExperience } from './JobSeekerProfileExperience'
 import { JobSeekerProfileLookingFor } from './JobSeekerProfileLookingFor'
 import { JobSeekerProfileSkills } from './JobSeekerProfileSkills'
 import './CreateJobSeekerProfile.css'
-import { GoogleLogoColors } from '../icons/GoogleLogoColors'
 
 const CreateJobSeekerProfile: React.FC = () => {
   const methods = useForm<JobSeekerProfile>()

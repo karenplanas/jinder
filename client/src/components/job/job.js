@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Building from "../icons/Building";
-import People from "../icons/People";
+import { Building } from "../icons/Building";
+import { People } from "../icons/People";
 import "./job.css";
 
 const Job = (props) => {

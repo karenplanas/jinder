@@ -116,4 +116,4 @@ const CreateJobOffer: React.FC = () => {
   );
 };
 
-export default CreateJobOffer;
+export { CreateJobOffer };
