@@ -1,0 +1,28 @@
+button {
+  height: 48px;
+  border-radius: 16px;
+  padding-left: 32px;
+  padding-right: 32px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-style: none;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.contained {
+  background-color: var(--Black);
+  color: var(--White);
+}
+
+.contained:hover {
+  background-color: rgb(59, 59, 59);
+}
+
+.outlined {
+  background-color: var(--White);
+  border: solid 2px;
+  box-shadow: 0px 4px #000000;
+}
+
