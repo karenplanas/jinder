@@ -6,7 +6,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import React, { useState } from "react";
+import { useState } from "react";
 import { auth } from "../../service/firebase";
 import Registration from "../Registration/Registration";
 
@@ -21,21 +21,15 @@ const Login = () => {
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
-    console.log("auth state changed", currentUser);
   });
 
   const login = async (e: any) => {
-    console.log("logged in!");
-
     e.preventDefault();
     try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
+      await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
       setLoggedIn(true);
-      console.log(user);
+      setLoginEmail("");
+      setLoginPassword("");
     } catch (error) {
       console.log(error);
     }
@@ -45,17 +39,14 @@ const Login = () => {
     console.log("logged out");
     await signOut(auth);
     setLoggedIn(false);
-    console.log(user);
   };
 
   const signInwithGoogle = () => {
-    console.log("logged in google");
     const googleProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleProvider);
   };
 
   const signInwithGithub = () => {
-    console.log("logged in github");
     const githubProvider = new GithubAuthProvider();
     return signInWithPopup(auth, githubProvider);
   };
@@ -63,12 +54,11 @@ const Login = () => {
     <>
       <div>
         <h3>Login</h3>
-        <form>
+        <form onSubmit={login}>
           <input
             value={loginEmail}
             name="loginEmail"
             type="email"
-            autoComplete="email"
             placeholder="Email..."
             required
             onChange={(e) => {
@@ -79,14 +69,14 @@ const Login = () => {
             value={loginPassword}
             name="loginPassword"
             type="password"
-            autoComplete="password"
             placeholder="Password..."
             required
             onChange={(e) => {
               setLoginPassword(e.target.value);
             }}
           />
-          <button onClick={login}>Log IN</button>
+          <button>Log IN</button>
+          <form />
           <div>
             <button
               onClick={() =>
@@ -117,8 +107,9 @@ const Login = () => {
           </div>
         </form>
       </div>
-      <h4>{user?.email}</h4>
+      <h4>{user?.email} Logged in</h4>
       {loggedIn ? <button onClick={logout}>Log out</button> : "not logged in"}
+
       <div>
         <Registration />
       </div>
