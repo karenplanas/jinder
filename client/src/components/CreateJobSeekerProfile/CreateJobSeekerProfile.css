@@ -1,0 +1,26 @@
+.profile-sections {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  width: 100%;
+  border: solid 1px blue;
+  border-radius: 8px;
+  padding: 16px;
+  gap: 16px;
+}
+
+.dates {
+  display: flex;
+  gap: 16px;
+}
+
+.Skills-checks .LookingFor-checks{
+  display: flex;
+  gap: 16px;
+}
+
+.CreateJobSeekerProfile-LookingFor {
+  display: flex;
+  flex-direction: column;
+}
+
