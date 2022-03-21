@@ -9,6 +9,13 @@ import {
 import { useState } from "react";
 import { auth } from "../../service/firebase";
 import SignUp from "../SignUp/SignUp";
+import { Logo } from "../icons/Logo";
+import { GoogleLogo } from "../icons/GoogleLogo";
+import "./Login.css";
+import { InputTextField } from "../InputTextField/InputTextField";
+import { FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { Button } from "../Button/Button";
 
 const Login: React.FC = () => {
   const [loginEmail, setLoginEmail] = useState("");
@@ -52,31 +59,34 @@ const Login: React.FC = () => {
   };
   return (
     <>
-      <div>
-        <h3>Login</h3>
+      <div className="login--container">
+        <Logo />
+        <h3>Jinder</h3>
         <form onSubmit={login}>
-          <input
+          <InputTextField
+            placeholder={"Email"}
+            name={loginEmail}
             value={loginEmail}
-            name="loginEmail"
-            type="email"
-            placeholder="Email..."
             required
             onChange={(e) => {
               setLoginEmail(e.target.value);
             }}
           />
-          <input
+          <InputTextField
+            placeholder={"Password"}
+            type={"password"}
+            name={loginPassword}
             value={loginPassword}
-            name="loginPassword"
-            type="password"
-            placeholder="Password..."
             required
             onChange={(e) => {
               setLoginPassword(e.target.value);
             }}
           />
-          <button>Log IN</button>
+          <Button className="outlined" text="Sin In" />
           <form />
+          <div className="login--option">
+            <h3>Or</h3>
+          </div>
           <div>
             <button
               onClick={() =>
@@ -88,7 +98,10 @@ const Login: React.FC = () => {
                   .catch((error) => console.log(error))
               }
             >
-              Login with Google
+              <span className="icon">
+                <GoogleLogo />
+              </span>
+              Sign in with Google
             </button>
           </div>
           <div>
@@ -102,16 +115,23 @@ const Login: React.FC = () => {
                   .catch((error) => console.log(error))
               }
             >
-              Login with Github
+              <span className="icon">
+                <FaGithub />
+              </span>
+              Sign in with Github
             </button>
           </div>
         </form>
-      </div>
-      <h4>{user?.email} Logged in</h4>
-      {loggedIn ? <button onClick={logout}>Log out</button> : "not logged in"}
-
-      <div>
-        <SignUp />
+        <div className="sign-up">
+          Not registered yet?
+          <span className="join-link">
+            <Link to="/sign-up">Join Now!</Link>
+          </span>
+        </div>
+        <div>
+          <h4>{user?.email}</h4>
+          {loggedIn ? <button onClick={logout}>Log out</button> : ""}
+        </div>
       </div>
     </>
   );
