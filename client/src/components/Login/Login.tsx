@@ -8,9 +8,9 @@ import {
 } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../../service/firebase";
-import Registration from "../Registration/Registration";
+import SignUp from "../SignUp/SignUp";
 
-const Login = () => {
+const Login: React.FC = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
@@ -111,7 +111,7 @@ const Login = () => {
       {loggedIn ? <button onClick={logout}>Log out</button> : "not logged in"}
 
       <div>
-        <Registration />
+        <SignUp />
       </div>
     </>
   );
