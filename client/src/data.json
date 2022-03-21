@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "companyName": "Photoshop",
+      "contract": "full Time",
+      "_id": 1,
+      "education": "Bootcamp",
+      "languages": ["HTML", "Javascript", "CSS"],
+      "experience": "senior",
+      "Location": "Mordor",
+      "Position": "Senior FrontEnd Developer",
+      "role": "frontEnd",
+      "salary": "1 million dollars"
+    },
+    {
+      "companyName": "Slack",
+      "contract": "full Time",
+      "_id": 2,
+      "education": "Bootcamp",
+      "languages": ["HTML", "Javascript", "CSS", "react"],
+      "experience": "mid",
+      "Location": "deez nutz",
+      "Position": "Developer",
+      "role": "frontEnd",
+      "salary": "1 million dollars"
+    },
+    {
+      "companyName": "Tinder",
+      "contract": "full Time",
+      "_id": 3,
+      "education": "Bootcamp",
+      "languages": ["HTML", "Javascript", "CSS", "Python"],
+      "experience": "junior",
+      "Location": "Hemlsdeep",
+      "Position": "junior Developer",
+      "role": "backEnd",
+      "salary": "1 million dollars"
+    }
+  ]
+}

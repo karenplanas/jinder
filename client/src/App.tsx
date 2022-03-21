@@ -1,21 +1,26 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
 import Login from "./components/Login/Login";
-import CreateJobOffer from './components/CreateJob/CreateJobOffer';
-import { CreateJobSeekerProfile } from './components/CreateJobSeekerProfile/CreateJobSeekerProfile';
+import CreateJobOffer from "./components/CreateJob/CreateJobOffer";
+import { CreateJobSeekerProfile } from "./components/CreateJobSeekerProfile/CreateJobSeekerProfile";
+import JobList from "./components/jobList/joblist";
+import { getJobs } from "./services/PostJobOffer";
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <h1> Jinder!! be a slut to get a job </h1>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/job-position/edit" element={<CreateJobOffer />} />
-        <Route path="/job-seeker-profile/edit" element={<CreateJobSeekerProfile />} />
+        <Route
+          path="/job-seeker-profile/edit"
+          element={<CreateJobSeekerProfile />}
+        />
+        <Route path="/home" element={<JobList />} />
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
