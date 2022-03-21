@@ -2,7 +2,7 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { JobOffer } from '../../Interfaces/JobOffer';
-import { postJobOffer } from '../../Services/PostJobOffer';
+import { postJobOffer } from '../../services/api-client';
 import './CreateJobOffer.css';
 import { ProfileTabsNav } from '../ProfileTabsNav/ProfileTabsNav';
 

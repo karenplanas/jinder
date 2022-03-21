@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import Job from "../job/job";
-import { getJobs } from "../../services/PostJobOffer";
+import { getJobs } from "../../services/api-client";
 import "./joblist.css";
 
 const JobList = () => {
