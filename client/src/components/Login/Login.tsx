@@ -6,33 +6,30 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import React, { useState } from "react";
-import { auth } from "../../service/firebase";
-import Registration from "../Registration/Registration";
+import { useState } from "react";
+import { auth } from "../../services/firebase";
+import SignUp from "../SignUp/SignUp";
 
-//test
-const Login = () => {
+const Login: React.FC = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
+
   const [user, setUser] = useState<{
     email: string | null;
   } | null>(null);
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
-    console.log("auth state changed", currentUser);
   });
 
   const login = async (e: any) => {
-    console.log("logged in!");
     e.preventDefault();
     try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
-      console.log(user);
+      await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+      setLoggedIn(true);
+      setLoginEmail("");
+      setLoginPassword("");
     } catch (error) {
       console.log(error);
     }
@@ -41,17 +38,15 @@ const Login = () => {
   const logout = async () => {
     console.log("logged out");
     await signOut(auth);
-    console.log(user);
+    setLoggedIn(false);
   };
 
   const signInwithGoogle = () => {
-    console.log("logged in google");
     const googleProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleProvider);
   };
 
   const signInwithGithub = () => {
-    console.log("logged in github");
     const githubProvider = new GithubAuthProvider();
     return signInWithPopup(auth, githubProvider);
   };
@@ -59,12 +54,11 @@ const Login = () => {
     <>
       <div>
         <h3>Login</h3>
-        <form>
+        <form onSubmit={login}>
           <input
             value={loginEmail}
             name="loginEmail"
             type="email"
-            autoComplete="email"
             placeholder="Email..."
             required
             onChange={(e) => {
@@ -75,19 +69,22 @@ const Login = () => {
             value={loginPassword}
             name="loginPassword"
             type="password"
-            autoComplete="password"
             placeholder="Password..."
             required
             onChange={(e) => {
               setLoginPassword(e.target.value);
             }}
           />
-          <button onClick={login}>Log IN</button>
+          <button>Log IN</button>
+          <form />
           <div>
             <button
               onClick={() =>
                 signInwithGoogle()
-                  .then((user) => console.log(user))
+                  .then((user) => {
+                    console.log(user);
+                    setLoggedIn(true);
+                  })
                   .catch((error) => console.log(error))
               }
             >
@@ -98,7 +95,10 @@ const Login = () => {
             <button
               onClick={() =>
                 signInwithGithub()
-                  .then((user) => console.log(user))
+                  .then((user) => {
+                    console.log(user);
+                    setLoggedIn(true);
+                  })
                   .catch((error) => console.log(error))
               }
             >
@@ -107,13 +107,12 @@ const Login = () => {
           </div>
         </form>
       </div>
+      <h4>{user?.email} Logged in</h4>
+      {loggedIn ? <button onClick={logout}>Log out</button> : "not logged in"}
 
-      <h4>{user?.email}</h4>
       <div>
-        <Registration />
+        <SignUp />
       </div>
-
-      <button onClick={logout}>Log out</button>
     </>
   );
 };

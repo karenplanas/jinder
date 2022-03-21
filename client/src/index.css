@@ -1,5 +1,8 @@
 :root {
   --Black: #1D1D1F;
+  --White: #FAFAFC;
+  --Gray-dark: #575656;
+  --Gray-clair: #cac7c7;
   --CitrusWasp-color: #F3C522;
   --input-text-color: #7A7D84;
 }

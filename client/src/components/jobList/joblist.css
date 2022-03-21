@@ -1,0 +1,17 @@
+.jobList .swipe-container {
+}
+.swipe {
+  position: absolute;
+}
+
+.card {
+  position: relative;
+  left: 18.5px;
+}
+
+.swipe:last-of-type {
+}
+
+.jobList .swipe-info {
+  position: absolute;
+}

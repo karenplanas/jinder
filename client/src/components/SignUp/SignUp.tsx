@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../service/firebase";
+import { auth } from "../../services/firebase";
 
-const Registration = () => {
+const Registration: React.FC = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
 
-  const register = async () => {
+  const register = async (e: any) => {
+    e.preventDefault();
     try {
-      const user = await createUserWithEmailAndPassword(
+      await createUserWithEmailAndPassword(
         auth,
         registerEmail,
         registerPassword
       );
-      console.log(user);
+      setRegisterEmail("");
+      setRegisterPassword("");
     } catch (error) {
       console.log(error);
     }
@@ -22,14 +24,13 @@ const Registration = () => {
   return (
     <div>
       <h3>Registration</h3>
-      <form>
+      <form onSubmit={register}>
         <div>
           <h3>Registuer user</h3>
           <input
             value={registerEmail}
             name="registerEmail"
             type="email"
-            autoComplete="email"
             placeholder="Email..."
             required
             onChange={(e) => {
@@ -40,13 +41,12 @@ const Registration = () => {
             value={registerPassword}
             name="registerPassword"
             type="password"
-            autoComplete="password"
             placeholder="Password..."
             onChange={(e) => {
               setRegisterPassword(e.target.value);
             }}
           />
-          <button onClick={register}>SIGN UP</button>
+          <button>SIGN UP</button>
         </div>
       </form>
     </div>
