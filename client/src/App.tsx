@@ -10,7 +10,6 @@ import { getJobs } from "./services/PostJobOffer";
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <h1> Jinder!! be a slut to get a job </h1>
       <Routes>
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/job-position/edit" element={<CreateJobOffer />} />

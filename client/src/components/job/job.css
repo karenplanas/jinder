@@ -1,7 +1,3 @@
-ul {
-  list-style: none;
-}
-
 .job_container {
   display: flex;
   flex-direction: column;
@@ -9,7 +5,7 @@ ul {
   padding: 0px;
 
   position: static;
-  width: 327px;
+  width: 340px;
   height: 473px;
   left: 18.5px;
   top: 57.5px;
@@ -167,6 +163,60 @@ ul {
   margin: 0px 10px;
 }
 
+.jobPosition {
+  position: static;
+  max-width: 279px;
+  height: 64px;
+  left: 24px;
+  top: 16px;
+
+  /* H2 */
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  /* or 133% */
+
+  /* Off Black */
+
+  color: #1d1d1f;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 8px 0px;
+}
+
+.card_body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 24px;
+
+  position: static;
+  max-width: 327px;
+  max-height: 216px;
+  left: 0px;
+  top: 94px;
+
+  /* Off White */
+
+  background: #fafafc;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
 .detail_container {
   display: flex;
   flex-direction: column;
@@ -197,4 +247,184 @@ ul {
   order: 0;
   flex-grow: 0;
   margin: 10px 0px;
+}
+
+.jobBio {
+  position: static;
+  max-width: 279px;
+  max-height: 112px;
+  left: 24px;
+  top: 88px;
+
+  /* Body / Regular */
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  /* or 156% */
+
+  /* Dark Grey */
+
+  color: #51545b;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 8px 0px;
+}
+
+.jobSalary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 24px;
+
+  position: static;
+  max-width: 327px;
+  max-height: 48px;
+  left: 0px;
+  top: 310px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.salarySlogan {
+  position: static;
+  max-width: 198px;
+  max-height: 32px;
+  left: 24px;
+  top: 8px;
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  /* identical to box height, or 160% */
+
+  color: #000000;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.locationContainer {
+  /* Location */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 24px;
+
+  position: static;
+  max-width: 327px;
+  max-height: 48px;
+  left: 0px;
+  top: 398px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 4;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 5px;
+}
+
+.locationString {
+  position: static;
+  max-width: 250px;
+  max-height: 32px;
+  left: 24px;
+  top: 8px;
+
+  /* H3 */
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  /* identical to box height, or 160% */
+
+  color: #000000;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.remoteContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 24px;
+
+  position: static;
+  max-width: 327px;
+  max-height: 40px;
+  left: 0px;
+  top: 358px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.isRemote {
+  position: static;
+  max-width: 154px;
+  max-height: 24px;
+  left: 24px;
+  top: 8px;
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #000000;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.buildingLogo {
+  margin-top: 2px;
+  margin-left: 1px;
+  padding: 1px;
+}
+
+.sizeLogo {
+  margin-top: 5px;
 }
