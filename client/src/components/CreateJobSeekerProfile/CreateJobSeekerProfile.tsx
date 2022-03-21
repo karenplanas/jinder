@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { JobSeekerProfile } from '../../Interfaces/JobSeekerProfile'
@@ -19,7 +20,7 @@ const CreateJobSeekerProfile: React.FC = () => {
   
   return (
     <div>
-      <Logo />
+      <Logo height={70} width={70} />
       <ProfileTabsNav />
       <FormProvider {...methods}>
         <form onSubmit={onSubmit}>
@@ -32,8 +33,9 @@ const CreateJobSeekerProfile: React.FC = () => {
            </div>
         </form>
       </FormProvider>
-    </div>
-  )
-}
 
-export { CreateJobSeekerProfile }
+    </div>
+  );
+};
+
+export { CreateJobSeekerProfile };

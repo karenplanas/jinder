@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(router);
 
-const server = app.listen(PORT, async () => {
+app.listen(PORT, async () => {
   console.log(`Server listening on port ${PORT}`);
   await db.connect();
 });
