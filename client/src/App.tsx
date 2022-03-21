@@ -5,7 +5,7 @@ import Login from "./components/Login/Login";
 import CreateJobOffer from "./components/CreateJob/CreateJobOffer";
 import { CreateJobSeekerProfile } from "./components/CreateJobSeekerProfile/CreateJobSeekerProfile";
 import JobList from "./components/jobList/joblist";
-import { getJobs } from "./services/PostJobOffer";
+import { getJobs } from "./services/api-client";
 
 const App: React.FC = () => {
   return (

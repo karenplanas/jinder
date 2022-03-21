@@ -7,7 +7,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { useState } from "react";
-import { auth } from "../../service/firebase";
+import { auth } from "../../services/firebase";
 import SignUp from "../SignUp/SignUp";
 
 const Login: React.FC = () => {
