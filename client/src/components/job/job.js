@@ -13,12 +13,12 @@ const Job = (props) => {
 
   return (
     <>
-      {detail === false ? (
+      {!detail ? (
         <div className="job_container" onClick={handleCLick}>
           <div className="card_header">
             <div className="company_logo"></div>
             <div className="header_text">
-              <h3 className="company_name">{props.data.companyName}</h3>
+              <h3 className="company_name">{props.data.companyname}</h3>
               <div className="company_size_container">
                 <div className="company_size_logo"></div>
                 <h2 className="company_size">201 - 500 employees</h2>
@@ -42,7 +42,7 @@ const Job = (props) => {
           <div className="card_header">
             <div className="company_logo"></div>
             <div className="header_text">
-              <h3 className="company_name">{props.data.companyName}</h3>
+              <h3 className="company_name">{props.data.companyname}</h3>
               <div className="company_size_container">
                 <div className="company_size_logo"></div>
                 <h2 className="company_size">201 - 500 employees</h2>

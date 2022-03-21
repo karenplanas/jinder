@@ -1,11 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import Job from "../job/job";
+import { getJobs } from "../../services/PostJobOffer";
 import "./joblist.css";
 
-const JobList = ({ data }) => {
+const JobList = () => {
   const [lastDirection, setLastDirection] = useState();
   const [favourites, setFavourites] = useState([]);
+  const [data, setData] = useState([]);
+
+  const getJobs = () => {
+    fetch("http://localhost:4000/JobOffers", {
+      method: "GET",
+      header: { "Content-type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => setData(data.data));
+  };
+
+  useEffect(() => {
+    getJobs();
+    console.log(data);
+  }, []);
 
   const swiped = (direction, nameToDelete) => {
     console.log("removing: " + nameToDelete);
@@ -18,9 +34,11 @@ const JobList = ({ data }) => {
 
   return (
     <div className="jobList">
+      {console.log(data)}
+      {console.log(data.data)}
       <div className="swiper-Container">
         <div className="card-container">
-          {data.results.map((jobOffer) => {
+          {data.map((jobOffer) => {
             return (
               <TinderCard
                 className="swipe"

@@ -1,24 +1,24 @@
-import React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { JobOffer } from '../../Interfaces/JobOffer';
-import { postJobOffer } from '../../Services/PostJobOffer';
+import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { JobOffer } from "../../Interfaces/JobOffer";
+import { postJobOffer } from "../../services/PostJobOffer";
 
 const CreateJobOffer: React.FC = () => {
   const methods = useForm<JobOffer>({
     defaultValues: {
-      companyname: '',
-      companysize: '',
-      position: '',
-      bio: '',
-      role: '',
-      level: '',
-      description: '',
+      companyname: "",
+      companysize: "",
+      position: "",
+      bio: "",
+      role: "",
+      level: "",
+      description: "",
       languages: [],
-      education: '',
-      experience: '',
-      location: '',
-      contract: '',
-      salary: '',
+      education: "",
+      experience: "",
+      location: "",
+      contract: "",
+      salary: "",
     },
   });
 
@@ -34,65 +34,65 @@ const CreateJobOffer: React.FC = () => {
       <FormProvider {...methods}>
         <form onSubmit={onSubmit}>
           <h3>Company name</h3>
-          <input type="text" {...register('companyname')} />
+          <input type="text" {...register("companyname")} />
           <h3>Company size</h3>
-          <input type="text" {...register('companysize')} />
+          <input type="text" {...register("companysize")} />
           <h3>Position</h3>
-          <input type="text" {...register('position')} />
+          <input type="text" {...register("position")} />
           <h3>Bio</h3>
-          <input type="text" {...register('bio')} />
+          <input type="text" {...register("bio")} />
           <h3>Role</h3>
-          <input type="text" {...register('role')} />
+          <input type="text" {...register("role")} />
           <h3>Level</h3>
-          <input type="text" {...register('level')} />
+          <input type="text" {...register("level")} />
           <h3>Description</h3>
-          <input type="text" {...register('description')} />
+          <input type="text" {...register("description")} />
           <h3>Languages</h3>
           <label>
             <input
               type="checkbox"
               value="Javascript"
-              {...register('languages')}
-            />{' '}
+              {...register("languages")}
+            />{" "}
             Javascript
           </label>
           <label>
-            <input type="checkbox" value="HTML" {...register('languages')} />{' '}
+            <input type="checkbox" value="HTML" {...register("languages")} />{" "}
             HTML
           </label>
           <label>
-            <input type="checkbox" value="CSS" {...register('languages')} /> CSS
+            <input type="checkbox" value="CSS" {...register("languages")} /> CSS
           </label>
           <label>
-            <input type="checkbox" value="C#" {...register('languages')} /> C#
+            <input type="checkbox" value="C#" {...register("languages")} /> C#
           </label>
           <label>
-            <input type="checkbox" value="Java" {...register('languages')} />{' '}
+            <input type="checkbox" value="Java" {...register("languages")} />{" "}
             Java
           </label>
           <label>
-            <input type="checkbox" value="Python" {...register('languages')} />{' '}
+            <input type="checkbox" value="Python" {...register("languages")} />{" "}
             Python
           </label>
           <label>
-            <input type="checkbox" value="React" {...register('languages')} />{' '}
+            <input type="checkbox" value="React" {...register("languages")} />{" "}
             React
           </label>
           <label>
-            <input type="checkbox" value="Angular" {...register('languages')} />{' '}
+            <input type="checkbox" value="Angular" {...register("languages")} />{" "}
             Angular
           </label>
 
           <h3>Education</h3>
-          <input type="text" {...register('education')} />
+          <input type="text" {...register("education")} />
           <h3>Experience</h3>
-          <input type="text" {...register('experience')} />
+          <input type="text" {...register("experience")} />
           <h3>Location</h3>
-          <input type="text" {...register('location')} />
+          <input type="text" {...register("location")} />
           <h3>Contract</h3>
-          <input type="text" {...register('contract')} />
+          <input type="text" {...register("contract")} />
           <h3>Salary</h3>
-          <input type="text" {...register('salary')} />
+          <input type="text" {...register("salary")} />
           <input type="submit" />
         </form>
       </FormProvider>
