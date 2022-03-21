@@ -8,7 +8,6 @@ import {
 } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../../service/firebase";
-import SignUp from "../SignUp/SignUp";
 import { Logo } from "../icons/Logo";
 import { GoogleLogo } from "../icons/GoogleLogo";
 import "./Login.css";
@@ -61,7 +60,7 @@ const Login: React.FC = () => {
     <>
       <div className="login--container">
         <Logo />
-        <h3>Jinder</h3>
+        <div className="logo-title">Jinder</div>
         <form onSubmit={login}>
           <InputTextField
             placeholder={"Email"}
@@ -82,8 +81,7 @@ const Login: React.FC = () => {
               setLoginPassword(e.target.value);
             }}
           />
-          <Button className="outlined" text="Sin In" />
-          <form />
+          <Button className="contained" text="Sin In" />
           <div className="login--option">
             <h3>Or</h3>
           </div>

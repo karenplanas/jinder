@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../service/firebase";
+import { Button } from "../Button/Button";
+import { InputTextField } from "../InputTextField/InputTextField";
 
 const SignUp: React.FC = () => {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -27,7 +29,7 @@ const SignUp: React.FC = () => {
       <form onSubmit={register}>
         <div>
           <h3>Registuer user</h3>
-          <input
+          <InputTextField
             value={registerEmail}
             name="registerEmail"
             type="email"
@@ -37,7 +39,7 @@ const SignUp: React.FC = () => {
               setRegisterEmail(e.target.value);
             }}
           />
-          <input
+          <InputTextField
             value={registerPassword}
             name="registerPassword"
             type="password"
@@ -46,7 +48,7 @@ const SignUp: React.FC = () => {
               setRegisterPassword(e.target.value);
             }}
           />
-          <button>SIGN UP</button>
+          <Button className="contained" text="Sign Up" />
         </div>
       </form>
     </div>
