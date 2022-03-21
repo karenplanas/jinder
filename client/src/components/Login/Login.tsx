@@ -10,10 +10,11 @@ import React, { useState } from "react";
 import { auth } from "../../service/firebase";
 import Registration from "../Registration/Registration";
 
-//test
 const Login = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
+
   const [user, setUser] = useState<{
     email: string | null;
   } | null>(null);
@@ -25,6 +26,7 @@ const Login = () => {
 
   const login = async (e: any) => {
     console.log("logged in!");
+
     e.preventDefault();
     try {
       const user = await signInWithEmailAndPassword(
@@ -32,6 +34,7 @@ const Login = () => {
         loginEmail,
         loginPassword
       );
+      setLoggedIn(true);
       console.log(user);
     } catch (error) {
       console.log(error);
@@ -41,6 +44,7 @@ const Login = () => {
   const logout = async () => {
     console.log("logged out");
     await signOut(auth);
+    setLoggedIn(false);
     console.log(user);
   };
 
@@ -87,7 +91,10 @@ const Login = () => {
             <button
               onClick={() =>
                 signInwithGoogle()
-                  .then((user) => console.log(user))
+                  .then((user) => {
+                    console.log(user);
+                    setLoggedIn(true);
+                  })
                   .catch((error) => console.log(error))
               }
             >
@@ -98,7 +105,10 @@ const Login = () => {
             <button
               onClick={() =>
                 signInwithGithub()
-                  .then((user) => console.log(user))
+                  .then((user) => {
+                    console.log(user);
+                    setLoggedIn(true);
+                  })
                   .catch((error) => console.log(error))
               }
             >
@@ -107,13 +117,11 @@ const Login = () => {
           </div>
         </form>
       </div>
-
       <h4>{user?.email}</h4>
+      {loggedIn ? <button onClick={logout}>Log out</button> : "not logged in"}
       <div>
         <Registration />
       </div>
-
-      <button onClick={logout}>Log out</button>
     </>
   );
 };
