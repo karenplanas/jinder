@@ -1,4 +1,6 @@
 import React from 'react'
+import { Button } from '../Button/Button'
+import { Logo } from '../icons/Logo'
 import { InputTextField } from '../InputTextField/InputTextField'
 import { ProfileTabsNav } from '../ProfileTabsNav/ProfileTabsNav'
 import './CreateJobSeekerProfile.css'
@@ -7,6 +9,7 @@ const CreateJobSeekerProfile: React.FC = () => {
 
   return (
     <div>
+      <Logo />
       <ProfileTabsNav />
       <div>
         <div className='CreateJobSeekerProfile-Experience profile-sections'>
@@ -56,7 +59,8 @@ const CreateJobSeekerProfile: React.FC = () => {
           </div>
           <InputTextField name='others-looking-for' placeholder='Type something here...' label='Others' />
         </div>
-        <button>Save</button>
+        <Button className='outlined' text='Cancel' />
+        <Button className='contained' text='Save' />
       </div>
     </div>
   )
