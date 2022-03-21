@@ -82,43 +82,36 @@ const Login: React.FC = () => {
             }}
           />
           <Button className="contained" text="Sin In" />
+
           <div className="login--option">
             <h3>Or</h3>
           </div>
-          <div>
-            <button
-              onClick={() =>
-                signInwithGoogle()
-                  .then((user) => {
-                    console.log(user);
-                    setLoggedIn(true);
-                  })
-                  .catch((error) => console.log(error))
-              }
-            >
-              <span className="icon">
-                <GoogleLogo />
-              </span>
-              Sign in with Google
-            </button>
-          </div>
-          <div>
-            <button
-              onClick={() =>
-                signInwithGithub()
-                  .then((user) => {
-                    console.log(user);
-                    setLoggedIn(true);
-                  })
-                  .catch((error) => console.log(error))
-              }
-            >
-              <span className="icon">
-                <FaGithub />
-              </span>
-              Sign in with Github
-            </button>
-          </div>
+          <Button
+            className="outlined"
+            text="Log in with Google"
+            // icon={<GoogleLogo />}
+            onClick={() =>
+              signInwithGoogle()
+                .then((user) => {
+                  console.log(user);
+                  setLoggedIn(true);
+                })
+                .catch((error) => console.log(error))
+            }
+          />
+          <Button
+            className="outlined"
+            text="Log in with Github"
+            // icon={<FaGithub />}
+            onClick={() =>
+              signInwithGithub()
+                .then((user) => {
+                  console.log(user);
+                  setLoggedIn(true);
+                })
+                .catch((error) => console.log(error))
+            }
+          />
         </form>
         <div className="sign-up">
           Not registered yet?
@@ -128,7 +121,11 @@ const Login: React.FC = () => {
         </div>
         <div>
           <h4>{user?.email}</h4>
-          {loggedIn ? <button onClick={logout}>Log out</button> : ""}
+          {loggedIn ? (
+            <Button className="contained" text="Log Out" onClick={logout} />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>

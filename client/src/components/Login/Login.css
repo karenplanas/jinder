@@ -44,10 +44,6 @@ h3:after {
   margin-right: -50%;
 }
 
-.login--option {
-  margin-top: 1.2rem;
-}
-
 button {
   display: flex;
   justify-content: center;
@@ -56,15 +52,7 @@ button {
   width: 100%;
 }
 
-.icon {
-  padding-right: 0.6rem;
-}
-
 .sign-up {
   margin-top: 2rem;
   font-size: 1.1em;
-}
-
-.join-link {
-  margin-left: 0.8rem;
 }
