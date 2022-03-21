@@ -5,6 +5,9 @@ node_modules
 /.pnp
 .pnp.js
 
+# API KEYS
+.env
+
 # testing
 /coverage
 
