@@ -5,6 +5,7 @@ interface Props {
 }
 const Logo: React.FC<Props> = ({ width = 70, height = 70 }) => {
   return (
+
     <svg
       width={width}
       height={height}
