@@ -1,5 +1,5 @@
 import express from 'express';
-import { JobOffer } from '../src/models/JobOfferSchema';
+import { JobOffer } from '../models/JobOfferSchema';
 
 export const postJobOffer = async (
   req: express.Request,
