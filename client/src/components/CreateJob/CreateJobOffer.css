@@ -141,12 +141,62 @@
   margin: 0px 0px;
 }
 
-.createjoboffer input {
+.createjoboffer Logo {
   position: static;
-  max-width: 338px;
-  max-height: 60px;
+  max-width: 29px;
+  max-height: 29.75px;
+  left: 10px;
+  top: 15.63px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.createjoboffer .InputTextField input {
+  padding: 14px 16px;
+}
+
+.jobdescription .InputTextField input {
+  position: static;
+  width: 338px;
+  height: 161px;
   left: 0px;
-  top: 51px;
+  top: 375px;
+
+  /* Off White */
+
+  background: #fafafc;
+  /* Off Black */
+
+  border: 2px solid #1d1d1f;
+  box-sizing: border-box;
+  border-radius: 16px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 5;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 16px 0px;
+}
+
+#companyname {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+
+  position: static;
+  width: 164px;
+  height: 60px;
+  left: 0px;
+  top: 20px;
 
   /* Off White */
 
@@ -163,5 +213,180 @@
   order: 1;
   align-self: stretch;
   flex-grow: 0;
+  margin: 0px 0px;
+}
+
+#companysize {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+
+  position: static;
+  width: 164px;
+  height: 60px;
+  left: 0px;
+  top: 20px;
+
+  /* Off White */
+
+  background: #fafafc;
+  /* Off Black */
+
+  border: 2px solid #1d1d1f;
+  box-sizing: border-box;
+  border-radius: 16px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.firstInputRow label {
+  padding-left: 10px;
+}
+
+.firstInputRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 338px;
+  height: 80px;
+  left: 0px;
+  top: 279px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 4;
+  align-self: stretch;
+  flex-grow: 0;
   margin: 16px 0px;
+}
+
+#role {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+
+  position: static;
+  width: 164px;
+  height: 60px;
+  left: 0px;
+  top: 20px;
+
+  /* Off White */
+
+  background: #fafafc;
+  /* Off Black */
+
+  border: 2px solid #1d1d1f;
+  box-sizing: border-box;
+  border-radius: 16px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+#level {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+
+  position: static;
+  width: 164px;
+  height: 60px;
+  left: 0px;
+  top: 20px;
+
+  /* Off White */
+
+  background: #fafafc;
+  /* Off Black */
+
+  border: 2px solid #1d1d1f;
+  box-sizing: border-box;
+  border-radius: 16px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.secondInputRow label {
+  padding-left: 10px;
+}
+
+.secondInputRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 338px;
+  height: 80px;
+  left: 0px;
+  top: 279px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 4;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 16px 0px;
+}
+
+.createjoboffer textarea {
+  position: static;
+  width: 338px;
+  height: 161px;
+  left: 0px;
+  top: 375px;
+
+  /* Off White */
+
+  background: #fafafc;
+  /* Off Black */
+
+  border: 2px solid #1d1d1f;
+  box-sizing: border-box;
+  border-radius: 16px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 5;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 16px 0px;
+}
+
+#jobOfferDescription {
+  padding-top: 50px;
+}
+
+.createjoboffer button {
 }
