@@ -1,12 +1,10 @@
 .profile-sections {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
-  width: 100%;
-  border: solid 1px blue;
+  border: solid 1px var(--Gray-dark);
   border-radius: 8px;
-  padding: 16px;
   gap: 16px;
+  padding: 24px;
 }
 
 .dates {
@@ -17,17 +15,26 @@
 .checks {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  background-color: aqua;
 }
 
 .checks-line {
-  display: flex;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
   margin-bottom: 16px;
 }
 
 .title-and-plus {
   display: flex;
   justify-content: space-between;
+}
+
+.title-and-plus h3 {
+  margin-bottom: 16px;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 8px;
+  margin: auto;
 }

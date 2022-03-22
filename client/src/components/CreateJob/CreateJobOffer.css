@@ -1,10 +1,44 @@
 /* Phone */
+.createjoboffer form {
+  overflow-y: auto;
+}
 
+.languagesform {
+  display: flex;
+	margin-top: 5px;
+	gap: 50px;
+  align-items: flex-start;
+  padding: 0px 0px 16px;
+
+  position: static;
+  width: 338px;
+  max-height: 100px;
+  left: 0px;
+  top: 59px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 24px 0px;
+}
+.firstcolumn {
+	display: flex;
+	flex-direction: column;
+	margin-left: 20px;
+}
+
+.secondcolumn {
+	display: flex;
+	flex-direction: column;
+
+}
 /* Auto layout */
 .createjoboffer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items:stretch;
   padding: 10px;
 
   position: static;
@@ -31,6 +65,10 @@
   order: 0;
   flex-grow: 0;
   margin: 10px 0px;
+}
+
+.createjoboffer h5{
+	padding-top: 20px;
 }
 
 .createjoboffer .joboffercontent {
@@ -157,7 +195,8 @@
 }
 
 .createjoboffer .InputTextField input {
-  padding: 14px 16px;
+  padding: 10px;
+	margin-right: 5px;
 }
 
 .jobdescription .InputTextField input {
@@ -190,11 +229,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px;
-
+	padding: 10px;
+	margin-right: 5px;
   position: static;
   width: 164px;
-  height: 60px;
+  height: 50px;
   left: 0px;
   top: 20px;
 
@@ -217,18 +256,17 @@
 }
 
 #companysize {
-  display: flex;
+	display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px;
-
+	padding: 10px;
+	margin-right: 5px;
   position: static;
   width: 164px;
-  height: 60px;
+  height: 50px;
   left: 0px;
   top: 20px;
-
   /* Off White */
 
   background: #fafafc;
@@ -244,7 +282,8 @@
   order: 1;
   align-self: stretch;
   flex-grow: 0;
-  margin: 0px 10px;
+  margin: 0px 0px;
+	margin-left: 8px;
 }
 
 .firstInputRow label {
@@ -272,16 +311,18 @@
   margin: 16px 0px;
 }
 
+
+
 #role {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px;
-
+	padding: 10px;
+	margin-right: 5px;
   position: static;
   width: 164px;
-  height: 60px;
+  height: 50px;
   left: 0px;
   top: 20px;
 
@@ -304,18 +345,17 @@
 }
 
 #level {
-  display: flex;
+	display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px;
-
+	padding: 10px;
+	margin-right: 5px;
   position: static;
   width: 164px;
-  height: 60px;
+  height: 50px;
   left: 0px;
   top: 20px;
-
   /* Off White */
 
   background: #fafafc;
@@ -331,7 +371,8 @@
   order: 1;
   align-self: stretch;
   flex-grow: 0;
-  margin: 0px 10px;
+  margin: 0px 0px;
+	margin-left: 8px;
 }
 
 .secondInputRow label {
@@ -384,9 +425,6 @@
   margin: 16px 0px;
 }
 
-#jobOfferDescription {
-  padding-top: 50px;
-}
-
-.createjoboffer button {
+.secondpartform label {
+	padding-top: 15px;
 }
