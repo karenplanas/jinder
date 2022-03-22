@@ -6,6 +6,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
 import { auth } from "../../services/firebase";
 import { Logo } from "../icons/Logo";
@@ -15,6 +16,7 @@ import { Button } from "../Button/Button";
 import "./Login.css";
 
 const Login: React.FC = () => {
+  const methods = useForm()
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
@@ -55,14 +57,14 @@ const Login: React.FC = () => {
     return signInWithPopup(auth, githubProvider);
   };
   return (
-    <>
+    <FormProvider {...methods}>
       <div className="login--container">
         <Logo />
         <div className="logo-title">Jinder</div>
         <form onSubmit={login}>
           <InputTextField
             placeholder={'Email'}
-            name={loginEmail}
+            name='email'
             value={loginEmail}
             required
             onChange={(e) => {
@@ -72,7 +74,7 @@ const Login: React.FC = () => {
           <InputTextField
             placeholder={'Password'}
             type={'password'}
-            name={loginPassword}
+            name='password'
             value={loginPassword}
             required
             onChange={(e) => {
@@ -126,7 +128,7 @@ const Login: React.FC = () => {
           )}
         </div>
       </div>
-    </>
+    </FormProvider>
   );
 };
 
