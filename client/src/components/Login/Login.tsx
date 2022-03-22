@@ -5,21 +5,21 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-} from "firebase/auth";
-import { useState } from "react";
-import { auth } from "../../service/firebase";
-import { Logo } from "../icons/Logo";
-import { GoogleLogo } from "../icons/GoogleLogo";
-import "./Login.css";
-import { InputTextField } from "../InputTextField/InputTextField";
+} from 'firebase/auth';
+import { useState } from 'react';
+import { auth } from '../../services/firebase';
+import { Logo } from '../icons/Logo';
+import { GoogleLogo } from '../icons/GoogleLogo';
+import './Login.css';
+import { InputTextField } from '../InputTextField/InputTextField';
 // import { FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { Button } from "../Button/Button";
-import SignUp from "../SignUp/SignUp";
+import { Link } from 'react-router-dom';
+import { Button } from '../Button/Button';
+import SignUp from '../SignUp/SignUp';
 
 const Login: React.FC = () => {
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
 
   const [user, setUser] = useState<{
@@ -35,15 +35,15 @@ const Login: React.FC = () => {
     try {
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
       setLoggedIn(true);
-      setLoginEmail("");
-      setLoginPassword("");
+      setLoginEmail('');
+      setLoginPassword('');
     } catch (error) {
       console.log(error);
     }
   };
 
   const logout = async () => {
-    console.log("logged out");
+    console.log('logged out');
     await signOut(auth);
     setLoggedIn(false);
   };
@@ -64,7 +64,7 @@ const Login: React.FC = () => {
         <div className="logo-title">Jinder</div>
         <form onSubmit={login}>
           <InputTextField
-            placeholder={"Email"}
+            placeholder={'Email'}
             name={loginEmail}
             value={loginEmail}
             required
@@ -73,8 +73,8 @@ const Login: React.FC = () => {
             }}
           />
           <InputTextField
-            placeholder={"Password"}
-            type={"password"}
+            placeholder={'Password'}
+            type={'password'}
             name={loginPassword}
             value={loginPassword}
             required
@@ -125,7 +125,7 @@ const Login: React.FC = () => {
           {loggedIn ? (
             <Button className="contained" text="Log Out" onClick={logout} />
           ) : (
-            ""
+            ''
           )}
         </div>
       </div>
