@@ -23,7 +23,7 @@ const JobSeekerProfileExperience: React.FC = () => {
   const { handleSubmit } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data); //TODO here will go the createJobSeekerProfile(data) call
+    console.log(data); //TODO here will go the createJobSeekerProfileExperience(data) call
   });
 
   return (

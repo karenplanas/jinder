@@ -4,16 +4,21 @@ import { Checkbox } from '../Checkbox/Checkbox'
 import { PlusInCircle } from '../icons/PlusInCircle'
 import { InputTextField } from '../InputTextField/InputTextField'
 import { CreateJobSeekerProfileLayout } from './CreateJobSeekerProfileLayout'
-import './CreateJobSeekerProfile.css'
 import { JobSeekerProfileButtons } from './JobSeekerProfileButtons'
+import './CreateJobSeekerProfile.css'
 
 const JobSeekerProfileSkills: React.FC = () => {
   const methods = useForm()
+  const { handleSubmit } = methods;
+
+  const onSubmit = handleSubmit(async (data) => {
+    console.log(data); //TODO here will go the createJobSeekerProfileSkills(data) call
+  });
 
   return (
     <CreateJobSeekerProfileLayout>
       <FormProvider {...methods}>
-        <form>
+        <form onSubmit={onSubmit}>
           <div className='CreateJobSeekerProfile-Skills profile-sections'>
             <div className='title-and-plus'>
               <h3>Skills</h3>
