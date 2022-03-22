@@ -22,4 +22,4 @@ const Favourite: React.FC = () => {
   );
 };
 
-export default Favourite;
+export {Favourite};

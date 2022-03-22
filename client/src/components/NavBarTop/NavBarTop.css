@@ -1,7 +1,13 @@
 .NavBarTop {
   display: flex;
-  max-width: 400px;
   justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+
+.NavBarTop h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .picture-name {
