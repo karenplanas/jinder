@@ -12,7 +12,7 @@ import { Logo } from "../icons/Logo";
 import { GoogleLogo } from "../icons/GoogleLogo";
 import "./Login.css";
 import { InputTextField } from "../InputTextField/InputTextField";
-import { FaGithub } from "react-icons/fa";
+// import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Button } from "../Button/Button";
 
