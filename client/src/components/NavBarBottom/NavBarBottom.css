@@ -11,14 +11,15 @@ nav {
 }
 
 nav a {
-  margin-top: 1rem;
   margin: 1rem;
+  margin-bottom: 0px;
   background: transparent;
   padding: 1rem;
   border-radius: 50%;
   display: flex;
   color: black;
   font-size: 0.9rem;
+  text-decoration: none;
 }
 
 nav a:hover {

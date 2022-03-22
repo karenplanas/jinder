@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { JobOffer } from "../../Interfaces/JobOffer";
+import { postJobOffer } from "../../services/api-client";
+import "./CreateJobOffer.css";
+// import { ProfileTabsNav } from '../ProfileTabsNav/ProfileTabsNav';
+// import { JobOfferMainInfo } from './JobOfferMainInfo';
+import { Button } from "../Button/Button";
+import { Logo } from "../icons/Logo";
+import { InputTextField } from "../InputTextField/InputTextField";
+=======
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { JobOffer } from '../../Interfaces/JobOffer';
@@ -7,23 +19,24 @@ import { Button } from '../Button/Button';
 import { Logo } from '../icons/Logo';
 import { InputTextField } from '../InputTextField/InputTextField';
 import { NavBarTop } from '../NavBarTop/NavBarTop';
+>>>>>>> 259a73076850ad1daab3ad87b81d04ac9b2de6f8
 
 const CreateJobOffer: React.FC = () => {
   const methods = useForm<JobOffer>({
     defaultValues: {
-      companyname: '',
-      companysize: '',
-      position: '',
-      bio: '',
-      role: '',
-      level: '',
-      description: '',
+      companyname: "",
+      companysize: "",
+      position: "",
+      bio: "",
+      role: "",
+      level: "",
+      description: "",
       languages: [],
-      education: '',
-      experience: '',
-      location: '',
-      contract: '',
-      salary: '',
+      education: "",
+      experience: "",
+      location: "",
+      contract: "",
+      salary: "",
     },
   });
 
@@ -47,34 +60,40 @@ const CreateJobOffer: React.FC = () => {
                   id="companyname"
                   type="text"
                   label="Company name"
-                  {...register('companyname')}
+                  {...register("companyname")}
                 />
                 <InputTextField
                   id="companysize"
                   type="text"
                   label="Company size"
-                  {...register('companysize')}
+                  {...register("companysize")}
                 />
               </div>
               <InputTextField
                 type="text"
                 label="Position"
-                {...register('position')}
+                {...register("position")}
               />
               <div className="secondInputRow">
                 <InputTextField
                   id="role"
                   type="text"
                   label="Role"
-                  {...register('role')}
+                  {...register("role")}
                 />
                 <InputTextField
                   id="level"
                   type="text"
                   label="Level"
-                  {...register('level')}
+                  {...register("level")}
                 />
               </div>
+<<<<<<< HEAD
+              <InputTextField type="text" label="Bio" {...register("bio")} />
+              <label id="jobOfferDescription">
+                Description
+                <textarea {...register("description")} />
+=======
               <InputTextField type="text" label="Bio" {...register('bio')} />
               <h5>Languages</h5>
               <div className="languagesform">
@@ -176,6 +195,7 @@ const CreateJobOffer: React.FC = () => {
               <label id="jobOfferDescription">
                 <h5>Description</h5>
                 <textarea {...register('description')} />
+>>>>>>> 259a73076850ad1daab3ad87b81d04ac9b2de6f8
               </label>
 							</div>
               <Button className="contained" text="Submit" type="submit" />

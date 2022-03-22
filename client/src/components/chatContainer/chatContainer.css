@@ -1,0 +1,15 @@
+.chat_container {
+  border: solid 1px black;
+}
+
+.chat_container .options {
+  border: none;
+  border-bottom: solid 4px #f3c522;
+  font-size: 20px;
+  padding: 10px;
+  margin: 2px;
+}
+
+.chat_container .options .disabled {
+  border-bottom: solid 4px rgb(187, 187, 187);
+}

@@ -7,6 +7,7 @@ import { JobSeekerProfileLookingFor } from "./components/CreateJobSeekerProfile/
 import { JobSeekerProfileExperience } from "./components/CreateJobSeekerProfile/JobSeekerProfileExperience";
 import { Login } from "./components/Login/Login";
 import { SignUp } from "./components/SignUp/SignUp";
+import ChatContainer from "./components/chatContainer/chatContainer";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -15,11 +16,23 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/favourites" element={<ChatContainer />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} />
         <Route path="/home" element={<JobList />} />
         <Route path="/job-position/edit" element={<CreateJobOffer />} />
-        <Route path="/job-seeker-profile/edit/experience" element={<JobSeekerProfileExperience />} />
-        <Route path="/job-seeker-profile/edit/skills" element={<JobSeekerProfileSkills />} />
-        <Route path="/job-seeker-profile/edit/looking-for" element={<JobSeekerProfileLookingFor />} />
+        <Route
+          path="/job-seeker-profile/edit/experience"
+          element={<JobSeekerProfileExperience />}
+        />
+        <Route
+          path="/job-seeker-profile/edit/skills"
+          element={<JobSeekerProfileSkills />}
+        />
+        <Route
+          path="/job-seeker-profile/edit/looking-for"
+          element={<JobSeekerProfileLookingFor />}
+        />
       </Routes>
     </BrowserRouter>
   );
