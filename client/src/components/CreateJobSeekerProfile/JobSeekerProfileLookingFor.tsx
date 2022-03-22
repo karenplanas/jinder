@@ -4,17 +4,22 @@ import { Checkbox } from '../Checkbox/Checkbox'
 import { PlusInCircle } from '../icons/PlusInCircle'
 import { InputTextField } from '../InputTextField/InputTextField'
 import { CreateJobSeekerProfileLayout } from './CreateJobSeekerProfileLayout'
-import './CreateJobSeekerProfile.css'
 import { JobSeekerProfileButtons } from './JobSeekerProfileButtons'
+import './CreateJobSeekerProfile.css'
 
 const JobSeekerProfileLookingFor: React.FC = () => {
 
   const methods = useForm();
+  const { handleSubmit } = methods;
+
+  const onSubmit = handleSubmit(async (data) => {
+    console.log(data); //TODO here will go the createJobSeekerProfileLookingFor(data) call
+  });
 
   return (
     <CreateJobSeekerProfileLayout>
       <FormProvider {...methods}>
-        <form>
+        <form onSubmit={onSubmit}>
           <div className='CreateJobSeekerProfile-LookingFor profile-sections'>
             <div className='title-and-plus'>
               <h3>Looking For</h3>
@@ -41,7 +46,7 @@ const JobSeekerProfileLookingFor: React.FC = () => {
               </div>
 
             </div>
-            <InputTextField name='others-looking-for' placeholder='Type something here...' label='Other' />
+            <InputTextField name='othersLookingFor' placeholder='Type something here...' label='Others' />
             <JobSeekerProfileButtons />
           </div>
         </form>

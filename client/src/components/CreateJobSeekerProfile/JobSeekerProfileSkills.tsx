@@ -43,7 +43,7 @@ const JobSeekerProfileSkills: React.FC = () => {
                 <Checkbox name='skills' value='postgres' label='Postgres'/>
               </div>
             </div>
-            <InputTextField name='others-skills' placeholder='Type something here...' label='Other' />
+            <InputTextField name='others-skills' placeholder='Type something here...' label='Others' />
             <JobSeekerProfileButtons />
           </div>
         </form>
