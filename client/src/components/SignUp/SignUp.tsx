@@ -7,8 +7,8 @@ import "./SignUp.css";
 
 
 const SignUp: React.FC = () => {
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerEmail, setRegisterEmail] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
 
   const register = async (e: any) => {
     e.preventDefault();
@@ -18,8 +18,8 @@ const SignUp: React.FC = () => {
         registerEmail,
         registerPassword
       );
-      setRegisterEmail("");
-      setRegisterPassword("");
+      setRegisterEmail('');
+      setRegisterPassword('');
     } catch (error) {
       console.log(error);
     }
