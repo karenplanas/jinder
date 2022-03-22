@@ -1,0 +1,12 @@
+.NavBarTop {
+  display: flex;
+  max-width: 400px;
+  justify-content: space-between;
+}
+
+.picture-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
