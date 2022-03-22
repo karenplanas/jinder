@@ -4,6 +4,7 @@ import Job from "../job/job";
 import { getJobs } from "../../services/api-client";
 import "./joblist.css";
 import Navbar from "../navbar/nabar";
+import { NavBarTop } from "../NavBarTop/NavBarTop";
 
 const JobList = () => {
   const [lastDirection, setLastDirection] = useState();
@@ -35,6 +36,8 @@ const JobList = () => {
 
   return (
     <div className="jobList">
+      <NavBarTop />
+
       <div className="swiper-Container">
         <div className="card-container">
           {data.map((jobOffer) => {
