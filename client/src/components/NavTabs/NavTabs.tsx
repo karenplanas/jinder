@@ -12,12 +12,12 @@ interface Props {
 
 const NavTabs: React.FC<Props> = ({ tabs }) => {
   const { pathname } = useLocation()
-  console.log('pathname', pathname)
+
   return (
     <div className='TabsNav-container'>
       {
-        tabs.map((tab) => (
-          <Link to={tab.endpoint} className={clsx({ selected: pathname.startsWith(tab.endpoint) })}>
+        tabs.map((tab, i) => (
+          <Link to={tab.endpoint} className={clsx({ selected: pathname.startsWith(tab.endpoint) })} key={i}>
             <div className='tabs tabs-separator'>
               <h3>{tab.name}</h3>
             </div>

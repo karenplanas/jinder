@@ -5,25 +5,42 @@ import { InputTextField } from '../InputTextField/InputTextField'
 import { CreateJobSeekerProfileLayout } from './CreateJobSeekerProfileLayout'
 import { JobSeekerProfileButtons } from './JobSeekerProfileButtons'
 import './CreateJobSeekerProfile.css'
+import { Experience } from '../../Interfaces/JobSeekerProfile'
 
 const JobSeekerProfileExperience: React.FC = () => {
-  const methods = useForm();
+
+  const methods = useForm<Experience>({
+    defaultValues: {
+      title: '',
+      companyName: '',
+      location: '',
+      startDate: '',
+      endDate: '',
+      description: ''
+    },
+  });
+
+  const { handleSubmit } = methods;
+
+  const onSubmit = handleSubmit(async (data) => {
+    console.log(data); //TODO here will go the createJobSeekerProfile(data) call
+  });
 
   return (
     <CreateJobSeekerProfileLayout>
       <FormProvider {...methods} >
-        <form>
+        <form onSubmit={onSubmit}>
           <div className='CreateJobSeekerProfile-Experience profile-sections'>
             <div className='title-and-plus'>
               <h3>Experience</h3>
               <PlusInCircle />
             </div>
             <InputTextField placeholder='Title' name='title' label='Title'/>
-            <InputTextField placeholder='Company Name' name='company-name' label='Company Name'/>
+            <InputTextField placeholder='Company Name' name='companyName' label='Company Name'/>
             <InputTextField placeholder='Location' name='location' label='Location'/>
             <div className='dates'>
-              <InputTextField placeholder='YYYY-MM' name='start-date' label='Start Date' />
-              <InputTextField placeholder='YYYY-MM' name='end-date' label='End Date' />
+              <InputTextField placeholder='YYYY-MM' name='startDate' label='Start Date' />
+              <InputTextField placeholder='YYYY-MM' name='endDate' label='End Date' />
             </div>
             <InputTextField placeholder='Description' name='description' label='Description' />
             <JobSeekerProfileButtons />
