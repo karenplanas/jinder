@@ -1,4 +1,5 @@
 import React from "react";
+
 interface Props {
   width?: number;
   height?: number;
@@ -86,5 +87,6 @@ const Logo: React.FC<Props> = ({ width = 70, height = 70 }) => {
     </svg>
   );
 };
+
 
 export { Logo };
