@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../service/firebase";
-import { Button } from "../Button/Button";
-import { InputTextField } from "../InputTextField/InputTextField";
-import "./SignUp.css";
-
+import React, { useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../services/firebase';
+import { Button } from '../Button/Button';
+import { InputTextField } from '../InputTextField/InputTextField';
+import './SignUp.css';
 
 const SignUp: React.FC = () => {
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerEmail, setRegisterEmail] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
 
   const register = async (e: any) => {
     e.preventDefault();
@@ -18,8 +17,8 @@ const SignUp: React.FC = () => {
         registerEmail,
         registerPassword
       );
-      setRegisterEmail("");
-      setRegisterPassword("");
+      setRegisterEmail('');
+      setRegisterPassword('');
     } catch (error) {
       console.log(error);
     }

@@ -1,22 +1,19 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-
-import Login from "./components/Login/Login";
-import CreateJobOffer from "./components/CreateJob/CreateJobOffer";
-import { CreateJobSeekerProfile } from "./components/CreateJobSeekerProfile/CreateJobSeekerProfile";
-import SignUp from "./components/SignUp/SignUp";
-
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import JobList from './components/jobList/joblist';
+import Login from './components/Login/Login';
+import CreateJobOffer from './components/CreateJob/CreateJobOffer';
+import { CreateJobSeekerProfile } from './components/CreateJobSeekerProfile/CreateJobSeekerProfile';
+import SignUp from './components/SignUp/SignUp';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
 
-       
         <Route path="/home" element={<JobList />} />
 
         <Route path="/job-position/edit" element={<CreateJobOffer />} />
