@@ -9,6 +9,7 @@ import { Button } from '../Button/Button';
 import { Logo } from '../icons/Logo';
 import { InputTextField } from '../InputTextField/InputTextField';
 
+
 const CreateJobOffer: React.FC = () => {
   const methods = useForm<JobOffer>({
     defaultValues: {
@@ -39,7 +40,7 @@ const CreateJobOffer: React.FC = () => {
     <div className="createjoboffer">
       <Logo />
       <div className="joboffercontent">
-        <ProfileTabsNav />
+        {/* <ProfileTabsNav /> */}
         <FormProvider {...methods}>
           <form onSubmit={onSubmit}>
             <div className="mainInfoContainer">
