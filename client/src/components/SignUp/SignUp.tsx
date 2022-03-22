@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/firebase";
+import { Button } from "../Button/Button";
+import { InputTextField } from "../InputTextField/InputTextField";
+import "./SignUp.css";
 
-const Registration: React.FC = () => {
+
+const SignUp: React.FC = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
 
@@ -22,35 +26,33 @@ const Registration: React.FC = () => {
   };
 
   return (
-    <div>
-      <h3>Registration</h3>
+    <div className="signup--container">
       <form onSubmit={register}>
         <div>
-          <h3>Registuer user</h3>
-          <input
+          <InputTextField
             value={registerEmail}
             name="registerEmail"
             type="email"
-            placeholder="Email..."
+            placeholder="Email"
             required
             onChange={(e) => {
               setRegisterEmail(e.target.value);
             }}
           />
-          <input
+          <InputTextField
             value={registerPassword}
             name="registerPassword"
             type="password"
-            placeholder="Password..."
+            placeholder="Password"
             onChange={(e) => {
               setRegisterPassword(e.target.value);
             }}
           />
-          <button>SIGN UP</button>
+          <Button className="contained" text="Sign Up" />
         </div>
       </form>
     </div>
   );
 };
 
-export default Registration;
+export default SignUp;

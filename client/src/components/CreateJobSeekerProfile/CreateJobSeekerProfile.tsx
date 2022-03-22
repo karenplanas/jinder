@@ -2,12 +2,12 @@ import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { JobSeekerProfile } from '../../Interfaces/JobSeekerProfile'
 import { Button } from '../Button/Button'
-import { Logo } from '../icons/Logo'
 import { ProfileTabsNav } from '../TabsNav/TabsNav'
 import { JobSeekerProfileExperience } from './JobSeekerProfileExperience'
 import { JobSeekerProfileLookingFor } from './JobSeekerProfileLookingFor'
 import { JobSeekerProfileSkills } from './JobSeekerProfileSkills'
 import './CreateJobSeekerProfile.css'
+import { NavBarTop } from '../NavBarTop/NavBarTop'
 
 const CreateJobSeekerProfile: React.FC = () => {
   const methods = useForm<JobSeekerProfile>()
@@ -24,7 +24,7 @@ const CreateJobSeekerProfile: React.FC = () => {
   
   return (
     <div>
-      <Logo />
+      <NavBarTop />
       <ProfileTabsNav tabs={tabs}/>
       <FormProvider {...methods}>
         <form onSubmit={onSubmit}>

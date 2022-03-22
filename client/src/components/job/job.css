@@ -35,7 +35,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  padding: 14px 24px;
+  padding: 8px 24px;
 
   position: static;
   max-width: 327px;
@@ -86,7 +86,7 @@
   flex: none;
   order: 1;
   flex-grow: 1;
-  margin: 0px 16px;
+  margin: 0px 10px;
 }
 
 .company_name {
@@ -139,8 +139,8 @@
 
 .company_size {
   position: static;
-  width: 140px;
-  height: 16px;
+  max-width: 140px;
+  max-height: 16px;
   left: 34px;
   top: 8px;
 
@@ -166,7 +166,7 @@
 .jobPosition {
   position: static;
   max-width: 279px;
-  height: 64px;
+  max-height: 64px;
   left: 24px;
   top: 16px;
 
@@ -189,7 +189,7 @@
   order: 0;
   align-self: stretch;
   flex-grow: 0;
-  margin: 8px 0px;
+  margin: 0px 10px;
 }
 
 .card_body {
@@ -214,7 +214,7 @@
   order: 1;
   align-self: stretch;
   flex-grow: 0;
-  margin: 0px 0px;
+  margin: 8px 0px;
 }
 
 .detail_container {
@@ -247,6 +247,7 @@
   order: 0;
   flex-grow: 0;
   margin: 10px 0px;
+  overflow-x: hidden;
 }
 
 .jobBio {
@@ -275,7 +276,7 @@
   order: 1;
   align-self: stretch;
   flex-grow: 0;
-  margin: 8px 0px;
+  margin: 8px 10px;
 }
 
 .jobSalary {
@@ -427,4 +428,98 @@
 
 .sizeLogo {
   margin-top: 5px;
+}
+
+.equityContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 24px;
+
+  position: static;
+  max-width: 327px;
+  max-height: 48px;
+  left: 0px;
+  top: 310px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.equityString {
+  position: static;
+  max-width: 198px;
+  max-height: 32px;
+  left: 24px;
+  top: 8px;
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  /* identical to box height, or 160% */
+
+  color: #000000;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.further_details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 24px;
+  position: static;
+  max-width: 350px;
+  max-height: 952px;
+  left: 0px;
+  top: 549px;
+  background: #fafafc;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 7;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 5px 0px;
+}
+
+.detail_text {
+  position: static;
+  max-width: 290px;
+  max-height: 936px;
+  left: 24px;
+  top: 8px;
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #000000;
+  background: #fafafc;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+  margin: 0px 10px;
+}
+
+.high-z {
+  z-index: 999;
 }

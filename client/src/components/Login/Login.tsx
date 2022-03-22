@@ -8,6 +8,13 @@ import {
 } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../../services/firebase";
+import { Logo } from "../icons/Logo";
+import { GoogleLogo } from "../icons/GoogleLogo";
+import "./Login.css";
+import { InputTextField } from "../InputTextField/InputTextField";
+// import { FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { Button } from "../Button/Button";
 import SignUp from "../SignUp/SignUp";
 
 const Login: React.FC = () => {
@@ -52,66 +59,75 @@ const Login: React.FC = () => {
   };
   return (
     <>
-      <div>
-        <h3>Login</h3>
+      <div className="login--container">
+        <Logo />
+        <div className="logo-title">Jinder</div>
         <form onSubmit={login}>
-          <input
+          <InputTextField
+            placeholder={"Email"}
+            name={loginEmail}
             value={loginEmail}
-            name="loginEmail"
-            type="email"
-            placeholder="Email..."
             required
             onChange={(e) => {
               setLoginEmail(e.target.value);
             }}
           />
-          <input
+          <InputTextField
+            placeholder={"Password"}
+            type={"password"}
+            name={loginPassword}
             value={loginPassword}
-            name="loginPassword"
-            type="password"
-            placeholder="Password..."
             required
             onChange={(e) => {
               setLoginPassword(e.target.value);
             }}
           />
-          <button>Log IN</button>
-          <form />
-          <div>
-            <button
-              onClick={() =>
-                signInwithGoogle()
-                  .then((user) => {
-                    console.log(user);
-                    setLoggedIn(true);
-                  })
-                  .catch((error) => console.log(error))
-              }
-            >
-              Login with Google
-            </button>
-          </div>
-          <div>
-            <button
-              onClick={() =>
-                signInwithGithub()
-                  .then((user) => {
-                    console.log(user);
-                    setLoggedIn(true);
-                  })
-                  .catch((error) => console.log(error))
-              }
-            >
-              Login with Github
-            </button>
-          </div>
-        </form>
-      </div>
-      <h4>{user?.email} Logged in</h4>
-      {loggedIn ? <button onClick={logout}>Log out</button> : "not logged in"}
+          <Button className="contained" text="Sin In" />
 
-      <div>
-        <SignUp />
+          <div className="login--option">
+            <h3>Or</h3>
+          </div>
+          <Button
+            className="outlined"
+            text="Log in with Google"
+            // icon={<GoogleLogo />}
+            onClick={() =>
+              signInwithGoogle()
+                .then((user) => {
+                  console.log(user);
+                  setLoggedIn(true);
+                })
+                .catch((error) => console.log(error))
+            }
+          />
+          <Button
+            className="outlined"
+            text="Log in with Github"
+            // icon={<FaGithub />}
+            onClick={() =>
+              signInwithGithub()
+                .then((user) => {
+                  console.log(user);
+                  setLoggedIn(true);
+                })
+                .catch((error) => console.log(error))
+            }
+          />
+        </form>
+        <div className="sign-up">
+          Not registered yet?
+          <span className="join-link">
+            <Link to="/sign-up">Join Now!</Link>
+          </span>
+        </div>
+        <div>
+          <h4>{user?.email}</h4>
+          {loggedIn ? (
+            <Button className="contained" text="Log Out" onClick={logout} />
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </>
   );
