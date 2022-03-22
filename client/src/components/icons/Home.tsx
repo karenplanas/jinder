@@ -18,7 +18,7 @@ const Home: React.FC = () => {
           rx="7"
           fill="#00BEA7"
           stroke="#1D1D1F"
-          stroke-width="2"
+          strokeWidth="2"
         />
       </svg>
       <h3 className="iconTag">Home</h3>
@@ -26,4 +26,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export {Home};

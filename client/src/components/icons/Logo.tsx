@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from "react";
 interface Props {
   width?: number;
   height?: number;

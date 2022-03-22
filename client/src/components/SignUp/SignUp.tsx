@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../services/firebase';
-import { Button } from '../Button/Button';
-import { InputTextField } from '../InputTextField/InputTextField';
-import './SignUp.css';
+import React, { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../services/firebase";
+import { Button } from "../Button/Button";
+import { InputTextField } from "../InputTextField/InputTextField";
+import "./SignUp.css";
+
 
 const SignUp: React.FC = () => {
   const [registerEmail, setRegisterEmail] = useState('');
@@ -54,4 +55,4 @@ const SignUp: React.FC = () => {
   );
 };
 
-export default SignUp;
+export { SignUp };

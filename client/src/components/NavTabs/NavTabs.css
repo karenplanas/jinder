@@ -1,0 +1,31 @@
+.TabsNav-container {
+  display: flex;
+  justify-content: space-evenly;
+  border: solid 2px;
+  border-radius: 8px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+
+.TabsNav-container a {
+  flex-grow: 1;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 12px 8px;
+  text-decoration: none;
+  color: var(--Black);
+}
+
+.TabsNav-container a:hover {
+  background-color: var(--CitrusWasp-color-lighter);
+}
+
+.TabsNav-container .selected {
+  background-color: var(--CitrusWasp-color);
+}
+
+.tabs h3 {
+  font-size: 1.2rem;
+  text-align: center;
+}
+

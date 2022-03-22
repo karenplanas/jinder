@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router";
-import Home from "../icons/Home";
-import Chat from "../icons/Chat";
-import Search from "../icons/Search";
-import Favourite from "../icons/Favourites";
-import "./navbar.css";
+import {Home} from "../icons/Home";
+import {Chat} from "../icons/Chat";
+import {Search} from "../icons/Search";
+import {Favourite} from "../icons/Favourites";
+import "./NavBarBottom.css";
 
-const Navbar: React.FC = () => {
+const NavBarBottom: React.FC = () => {
   const [activeNav, setActiveNav] = useState("");
   const { pathname } = useLocation();
   return (
@@ -49,4 +49,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export {NavBarBottom};

@@ -5,17 +5,14 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-} from 'firebase/auth';
-import { useState } from 'react';
-import { auth } from '../../services/firebase';
-import { Logo } from '../icons/Logo';
-import { GoogleLogo } from '../icons/GoogleLogo';
-import './Login.css';
-import { InputTextField } from '../InputTextField/InputTextField';
-// import { FaGithub } from "react-icons/fa";
-import { Link } from 'react-router-dom';
-import { Button } from '../Button/Button';
-import SignUp from '../SignUp/SignUp';
+} from "firebase/auth";
+import { useState } from "react";
+import { auth } from "../../services/firebase";
+import { Logo } from "../icons/Logo";
+import { InputTextField } from "../InputTextField/InputTextField";
+import { Link } from "react-router-dom";
+import { Button } from "../Button/Button";
+import "./Login.css";
 
 const Login: React.FC = () => {
   const [loginEmail, setLoginEmail] = useState('');
@@ -133,4 +130,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export { Login };

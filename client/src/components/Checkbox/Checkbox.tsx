@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
-import './Checkbox.css'
 import { RegisterOptions, useFormContext } from 'react-hook-form';
+import './Checkbox.css'
 
 interface Props extends RegisterOptions {
   label?: string;  

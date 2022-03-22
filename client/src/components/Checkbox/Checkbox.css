@@ -1,3 +1,11 @@
-.Checkbox label{
+.Checkbox {
+  font-size: 1.1rem;
+}
+
+.Checkbox label {
   margin-left: 5px;
+}
+
+.Checkbox input[type=checkbox] {
+  accent-color: var(--CitrusWasp-color);
 }

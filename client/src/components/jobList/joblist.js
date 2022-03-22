@@ -3,7 +3,7 @@ import TinderCard from "react-tinder-card";
 import Job from "../job/job";
 import { getJobs } from "../../services/api-client";
 import "./joblist.css";
-import Navbar from "../navbar/nabar";
+import { NavBarBottom } from "../NavBarBottom/NavBarBottom";
 
 const JobList = () => {
   const [lastDirection, setLastDirection] = useState();
@@ -57,9 +57,9 @@ const JobList = () => {
           </div>
         </div>
       </div>
-      <Navbar />
+      <NavBarBottom />
     </div>
   );
 };
 
-export default JobList;
+export {JobList};
