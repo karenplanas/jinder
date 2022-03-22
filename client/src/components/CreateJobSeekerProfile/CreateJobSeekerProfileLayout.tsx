@@ -10,7 +10,7 @@ const CreateJobSeekerProfileLayout: React.FC = ({ children }) => {
   ]
 
   return (
-    <AppLayout displayNavBarBottom={false} title="My Profile">
+    <AppLayout displayNavBarBottom={true} title="My Profile">
       <div className='CreateJobSeekerProfileLayout'>
         <NavTabs tabs={tabs}/>
         {children}

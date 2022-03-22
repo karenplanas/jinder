@@ -15,7 +15,7 @@ const InputTextField: React.FC<Props> = ({label, placeholder, name, className, t
   const { register } = useFormContext();
   return (
     <div className={clsx(className, 'InputTextField')}>
-      <label htmlFor={name}>{label}</label>
+      {label && <label htmlFor={name}>{label}</label>}
       <input 
         {...props} 
         placeholder={placeholder}

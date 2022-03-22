@@ -4,7 +4,7 @@ import "./Button.css";
 
 interface Props {
   text: string;
-  className: "outlined" | "contained";
+  className: "outlined" | "contained" ;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   icon?: React.ReactNode
