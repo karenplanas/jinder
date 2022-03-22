@@ -1,4 +1,6 @@
-.jobList .swipe-container {
+.card-container {
+  margin-left: 3.5rem;
+  margin-top: 8rem;
 }
 .swipe {
   position: absolute;

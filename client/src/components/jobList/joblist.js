@@ -3,6 +3,7 @@ import TinderCard from "react-tinder-card";
 import Job from "../job/job";
 import { getJobs } from "../../services/api-client";
 import "./joblist.css";
+import Navbar from "../navbar/nabar";
 
 const JobList = () => {
   const [lastDirection, setLastDirection] = useState();
@@ -34,8 +35,6 @@ const JobList = () => {
 
   return (
     <div className="jobList">
-      {console.log(data)}
-      {console.log(data.data)}
       <div className="swiper-Container">
         <div className="card-container">
           {data.map((jobOffer) => {
@@ -58,6 +57,7 @@ const JobList = () => {
           </div>
         </div>
       </div>
+      <Navbar />
     </div>
   );
 };
