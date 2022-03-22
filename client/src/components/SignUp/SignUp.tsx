@@ -5,6 +5,7 @@ import { Button } from "../Button/Button";
 import { InputTextField } from "../InputTextField/InputTextField";
 import "./SignUp.css";
 
+
 const SignUp: React.FC = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");

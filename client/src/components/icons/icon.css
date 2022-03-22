@@ -1,0 +1,12 @@
+.navIcon {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconTag {
+  text-decoration: none;
+  font-size: 15px;
+}

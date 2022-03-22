@@ -15,6 +15,7 @@ import { InputTextField } from "../InputTextField/InputTextField";
 // import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Button } from "../Button/Button";
+import SignUp from "../SignUp/SignUp";
 
 const Login: React.FC = () => {
   const [loginEmail, setLoginEmail] = useState("");
