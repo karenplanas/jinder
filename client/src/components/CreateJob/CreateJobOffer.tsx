@@ -1,25 +1,12 @@
-<<<<<<< HEAD
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { JobOffer } from "../../Interfaces/JobOffer";
 import { postJobOffer } from "../../services/api-client";
 import "./CreateJobOffer.css";
-// import { ProfileTabsNav } from '../ProfileTabsNav/ProfileTabsNav';
-// import { JobOfferMainInfo } from './JobOfferMainInfo';
 import { Button } from "../Button/Button";
 import { Logo } from "../icons/Logo";
 import { InputTextField } from "../InputTextField/InputTextField";
-=======
-import React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { JobOffer } from '../../Interfaces/JobOffer';
-import { postJobOffer } from '../../services/api-client';
-import './CreateJobOffer.css';
-import { Button } from '../Button/Button';
-import { Logo } from '../icons/Logo';
-import { InputTextField } from '../InputTextField/InputTextField';
-import { NavBarTop } from '../NavBarTop/NavBarTop';
->>>>>>> 259a73076850ad1daab3ad87b81d04ac9b2de6f8
+import { NavBarTop } from "../NavBarTop/NavBarTop";
 
 const CreateJobOffer: React.FC = () => {
   const methods = useForm<JobOffer>({
@@ -49,11 +36,11 @@ const CreateJobOffer: React.FC = () => {
 
   return (
     <div className="createjoboffer">
-			<NavBarTop></NavBarTop>
+      <NavBarTop></NavBarTop>
       <div className="joboffercontent">
         <FormProvider {...methods}>
           <form onSubmit={onSubmit}>
-						<h2>Create new offer</h2>
+            <h2>Create new offer</h2>
             <div className="mainInfoContainer">
               <div className="firstInputRow">
                 <InputTextField
@@ -88,13 +75,7 @@ const CreateJobOffer: React.FC = () => {
                   {...register("level")}
                 />
               </div>
-<<<<<<< HEAD
               <InputTextField type="text" label="Bio" {...register("bio")} />
-              <label id="jobOfferDescription">
-                Description
-                <textarea {...register("description")} />
-=======
-              <InputTextField type="text" label="Bio" {...register('bio')} />
               <h5>Languages</h5>
               <div className="languagesform">
                 <div className="firstcolumn">
@@ -102,32 +83,32 @@ const CreateJobOffer: React.FC = () => {
                     <input
                       type="checkbox"
                       value="Javascript"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     Javascript
                   </label>
                   <label>
                     <input
                       type="checkbox"
                       value="HTML"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     HTML
                   </label>
                   <label>
                     <input
                       type="checkbox"
                       value="CSS"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     CSS
                   </label>
                   <label>
                     <input
                       type="checkbox"
                       value="C#"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     C#
                   </label>
                 </div>
@@ -136,68 +117,67 @@ const CreateJobOffer: React.FC = () => {
                     <input
                       type="checkbox"
                       value="Java"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     Java
                   </label>
                   <label>
                     <input
                       type="checkbox"
                       value="Python"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     Python
                   </label>
                   <label>
                     <input
                       type="checkbox"
                       value="React"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     React
                   </label>
                   <label>
                     <input
                       type="checkbox"
                       value="Angular"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     Angular
                   </label>
                 </div>
               </div>
-							<div className='secondpartform'>
-              <InputTextField
-                type="text"
-                label="Education"
-                {...register('education')}
-              />
-              <InputTextField
-                type="text"
-                label="Experience"
-                {...register('experience')}
-              />
-              <InputTextField
-                type="text"
-                label="Location"
-                {...register('location')}
-              />
-              <InputTextField
-                type="text"
-                label="Contract"
-                {...register('contract')}
-              />
-              <InputTextField
-                type="text"
-                label="Salary"
-                {...register('salary')}
-              />
-              <label id="jobOfferDescription">
-                <h5>Description</h5>
-                <textarea {...register('description')} />
->>>>>>> 259a73076850ad1daab3ad87b81d04ac9b2de6f8
-              </label>
-							</div>
+              <div className="secondpartform">
+                <InputTextField
+                  type="text"
+                  label="Education"
+                  {...register("education")}
+                />
+                <InputTextField
+                  type="text"
+                  label="Experience"
+                  {...register("experience")}
+                />
+                <InputTextField
+                  type="text"
+                  label="Location"
+                  {...register("location")}
+                />
+                <InputTextField
+                  type="text"
+                  label="Contract"
+                  {...register("contract")}
+                />
+                <InputTextField
+                  type="text"
+                  label="Salary"
+                  {...register("salary")}
+                />
+                <label id="jobOfferDescription">
+                  <h5>Description</h5>
+                  <textarea {...register("description")} />
+                </label>
+              </div>
               <Button className="contained" text="Submit" type="submit" />
             </div>
           </form>
