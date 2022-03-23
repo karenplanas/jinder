@@ -1,6 +1,5 @@
 import "./Toggle.css";
-
-const Toggle = ({ onChange }) => {
+const Toggle = ({ onChange }: { onChange: (event: any) => void }) => {
   return (
     <div className="switch-toggle">
       <div className="button-check" id="button-check">
