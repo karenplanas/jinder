@@ -5,3 +5,7 @@
   flex-direction: column;
   align-items: center;
 }
+
+.signup--text {
+  margin-bottom: 1rem;
+}

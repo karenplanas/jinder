@@ -23,8 +23,8 @@ const EmployerForm: React.FC = () => {
           id: cred.user.uid,
         };
         const res = setDoc(doc(db, "companies", company.id), company);
-        console.log("res", res);
-        console.log("cred", cred);
+        // console.log("res", res);
+        // console.log("cred", cred);
       });
       setRegisterCompanyName("");
       setRegisterCompanyEmail("");

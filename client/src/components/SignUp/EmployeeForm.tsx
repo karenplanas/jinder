@@ -28,8 +28,8 @@ const EmployeeForm: React.FC = () => {
           id: cred.user.uid,
         };
         const res = setDoc(doc(db, "users", user.id), user);
-        console.log("res", res);
-        console.log("cred", cred);
+        // console.log("res", res);
+        // console.log("cred", cred);
       });
       setRegisterFirstName("");
       setRegisterLastName("");

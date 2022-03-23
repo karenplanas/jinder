@@ -1,13 +1,5 @@
-import React from "react";
 import "./Toggle.css";
 
-// const Toggle: React.FC = ({ onChange }: { onChange: any }) => {
-//   return (
-//     <div>
-//       <input type="checkbox" onChange={onChange} />
-//     </div>
-//   );
-// };
 const Toggle = ({ onChange }) => {
   return (
     <div className="switch-toggle">
