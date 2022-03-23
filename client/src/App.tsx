@@ -1,14 +1,15 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { CreateJobOffer } from "./components/CreateJob/CreateJobOffer";
-import { JobList } from "./components/jobList/joblist";
-import { JobSeekerProfileSkills } from "./components/CreateJobSeekerProfile/JobSeekerProfileSkills";
-import { JobSeekerProfileLookingFor } from "./components/CreateJobSeekerProfile/JobSeekerProfileLookingFor";
-import { JobSeekerProfileExperience } from "./components/CreateJobSeekerProfile/JobSeekerProfileExperience";
-import { Login } from "./components/Login/Login";
-import { SignUp } from "./components/SignUp/SignUp";
-import ChatContainer from "./components/chatContainer/chatContainer";
-import "./App.css";
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { CreateJobOffer } from './components/CreateJob/CreateJobOffer';
+import { JobList } from './components/jobList/joblist';
+import { JobSeekerProfileSkills } from './components/CreateJobSeekerProfile/JobSeekerProfileSkills';
+import { JobSeekerProfileLookingFor } from './components/CreateJobSeekerProfile/JobSeekerProfileLookingFor';
+import { JobSeekerProfileExperience } from './components/CreateJobSeekerProfile/JobSeekerProfileExperience';
+import { Login } from './components/Login/Login';
+import { SignUp } from './components/SignUp/SignUp';
+import ChatContainer from './components/chatContainer/chatContainer';
+import './App.css';
+import TempSendEmail from './components/TempSendEmail/TempSendEmail';
 
 const App: React.FC = () => {
   return (
@@ -33,6 +34,7 @@ const App: React.FC = () => {
           path="/job-seeker-profile/edit/looking-for"
           element={<JobSeekerProfileLookingFor />}
         />
+        <Route path="/jobapplication" element={<TempSendEmail />} />
       </Routes>
     </BrowserRouter>
   );
