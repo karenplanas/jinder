@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../../service/firebase";
+import { setDoc, doc } from "firebase/firestore";
+import { Button } from "../Button/Button";
 import { InputTextField } from "../InputTextField/InputTextField";
 
 const EmployeeForm = () => {
@@ -7,8 +11,33 @@ const EmployeeForm = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
 
+  const registerUser = async (e: any) => {
+    e.preventDefault();
+    try {
+      await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      ).then((cred) => {
+        const user = {
+          firstName: registerFirstName,
+          lastName: registerLastName,
+          initials: registerFirstName[0] + registerLastName[0],
+          id: cred.user.uid,
+        };
+        const res = setDoc(doc(db, "users", user.id), user);
+        console.log("res", res);
+        console.log("cred", cred);
+      });
+      setRegisterEmail("");
+      setRegisterPassword("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div>
+    <form onSubmit={registerUser}>
       <InputTextField
         value={registerFirstName}
         name="registerEmail"
@@ -48,7 +77,8 @@ const EmployeeForm = () => {
           setRegisterPassword(e.target.value);
         }}
       />
-    </div>
+      <Button className="contained" text="Sign Up" />
+    </form>
   );
 };
 
