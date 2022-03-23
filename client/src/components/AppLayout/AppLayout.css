@@ -4,3 +4,11 @@
   padding: 16px 32px;
   margin: auto;
 }
+
+.AppLayout.with-top-nav {
+  margin-top: 80px;
+}
+
+.AppLayout.with-bottom-nav {
+  margin-bottom: 96px;
+}

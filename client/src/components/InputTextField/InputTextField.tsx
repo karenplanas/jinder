@@ -2,37 +2,37 @@ import React from 'react'
 import clsx from 'clsx'
 import { useFormContext } from 'react-hook-form';
 import './InputTextField.css'
-
-interface Props
-  extends React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  > {
-  label?: string;
+interface Props {
+  label?: string;  
   placeholder?: string;
   name: string;
   className?: string;
   type?: string;
+  rows?: number
+  required?: boolean
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  value?: string | number
 }
 
-const InputTextField: React.FC<Props> = ({
-  label,
-  placeholder,
-  name,
-  className,
-  type,
-  ...props
-}) => {
-  // const { register } = useFormContext();
+const InputTextField: React.FC<Props> = ({label, placeholder, name, className, rows, type='text', ...props}) => {
+  const { register } = useFormContext();
   return (
-    <div className={clsx(className, "InputTextField")}>
-      <label htmlFor={name}>{label}</label>
-      <input 
-        {...props} 
-        placeholder={placeholder}
-        type={type}
-        {...register(name)}
-      />
+    <div className={clsx(className, 'InputTextField')}>
+      {label && <label htmlFor={name}>{label}</label>}
+      { type === 'textarea' ? 
+        <textarea 
+          {...props} 
+          rows={rows}
+          placeholder={placeholder}
+          {...register(name)}
+        /> :
+        <input 
+          {...props} 
+          placeholder={placeholder}
+          type={type}
+          {...register(name)}
+        />
+      }
     </div>
   );
 };

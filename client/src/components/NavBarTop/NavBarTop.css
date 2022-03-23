@@ -1,20 +1,19 @@
 .NavBarTop {
   display: flex;
   justify-content: space-between;
-  margin: 20px;
-  margin-bottom: 0px;
-  align-items: center;
-  padding: 8px;
+  align-items: flex-end;
+  padding-top: 24px;
+  background-color: #ffffff;
+}
+
+.NavBarTop-fixed {
+  max-width: 400px;
+  width: 100%;
+  position: fixed;
+  top: 0;
 }
 
 .NavBarTop h2 {
   font-size: 1.5rem;
   font-weight: 500;
-}
-
-.picture-name {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
 }

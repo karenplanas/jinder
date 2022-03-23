@@ -82,4 +82,4 @@ const TempSendEmail: React.FC = () => {
   );
 };
 
-export default TempSendEmail;
+export { TempSendEmail };

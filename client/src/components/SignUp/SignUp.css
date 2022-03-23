@@ -1,11 +1,24 @@
+<<<<<<< HEAD
+.sign-up{
+=======
 .signup--container {
   padding-top: 2rem;
   width: 100%;
+>>>>>>> master
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 24px;
+  gap: 24px;
 }
 
+.sign-up form {
+  width: 100%;
+}
+
+<<<<<<< HEAD
+=======
 .signup--text {
   margin-bottom: 1rem;
 }
+>>>>>>> master

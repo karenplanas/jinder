@@ -3,7 +3,6 @@ import "./chatContainer.css";
 import FavouritesDisplay from "../FavouritesDisplay/FavouritesDisplay";
 import ChatDisplay from "../ChatDisplay/ChatDisplay";
 import { NavBarTop } from "../NavBarTop/NavBarTop";
-import { Button } from "../Button/Button";
 import { NavTabs } from "../NavTabs/NavTabs";
 
 const ChatContainer: React.FC = () => {
@@ -27,4 +26,4 @@ const ChatContainer: React.FC = () => {
   );
 };
 
-export default ChatContainer;
+export {ChatContainer};
