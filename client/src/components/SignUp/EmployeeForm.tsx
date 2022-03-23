@@ -1,88 +1,66 @@
-import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../../service/firebase";
-import { setDoc, doc } from "firebase/firestore";
-import { Button } from "../Button/Button";
-import { InputTextField } from "../InputTextField/InputTextField";
+import React, { useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth, db } from '../../service/firebase';
+import { setDoc, doc } from 'firebase/firestore';
+import { Button } from '../Button/Button';
+import { InputTextField } from '../InputTextField/InputTextField';
+import { FormProvider, useForm } from 'react-hook-form';
+import { User } from '../../Interfaces/User';
+import { useNavigate } from 'react-router-dom';
 
 const EmployeeForm: React.FC = () => {
-  const [registerFirstName, setRegisterFirstName] = useState("");
-  const [registerLastName, setRegisterLastName] = useState("");
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
+  const methods = useForm<User>({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+    },
+  });
+  const navigate = useNavigate();
+  const { handleSubmit } = methods;
 
-  const registerUser = async (e: any) => {
-    e.preventDefault();
+  const onSubmit = handleSubmit(async (data) => {
     try {
       await createUserWithEmailAndPassword(
         auth,
-        registerEmail,
-        registerPassword
+        data.email,
+        data.password
       ).then((cred) => {
         const user = {
-          firstName: registerFirstName,
-          lastName: registerLastName,
+          firstName: data.firstName,
+          lastName: data.lastName,
           initials:
-            registerFirstName[0].toUpperCase() +
-            registerLastName[0].toUpperCase(),
+            data.firstName[0].toUpperCase() + data.lastName[0].toUpperCase(),
           id: cred.user.uid,
         };
-        const res = setDoc(doc(db, "users", user.id), user);
-        // console.log("res", res);
-        // console.log("cred", cred);
+        setDoc(doc(db, 'users', user.id), user);
+        navigate('/home');
       });
-      setRegisterFirstName("");
-      setRegisterLastName("");
-      setRegisterEmail("");
-      setRegisterPassword("");
     } catch (error) {
       console.log(error);
     }
-  };
+  });
 
   return (
-    <form onSubmit={registerUser}>
-      <InputTextField
-        value={registerFirstName}
-        name="registerEmail"
-        type="text"
-        placeholder="First name"
-        onChange={(e) => {
-          setRegisterFirstName(e.target.value);
-        }}
-        required
-      />
-      <InputTextField
-        value={registerLastName}
-        name="registerLastName"
-        type="text"
-        placeholder="Last name"
-        onChange={(e) => {
-          setRegisterLastName(e.target.value);
-        }}
-        required
-      />
-      <InputTextField
-        value={registerEmail}
-        name="registerEmail"
-        type="email"
-        placeholder="Email"
-        required
-        onChange={(e) => {
-          setRegisterEmail(e.target.value);
-        }}
-      />
-      <InputTextField
-        value={registerPassword}
-        name="registerPassword"
-        type="password"
-        placeholder="Password"
-        onChange={(e) => {
-          setRegisterPassword(e.target.value);
-        }}
-      />
-      <Button className="contained" text="Sign Up" />
-    </form>
+    <FormProvider {...methods}>
+      <form onSubmit={onSubmit}>
+        <InputTextField name="firstName" placeholder="First name" required />
+        <InputTextField name="lastName" placeholder="Last name" required />
+        <InputTextField
+          name="email"
+          type="email"
+          placeholder="Email"
+          required
+        />
+        <InputTextField
+          name="password"
+          type="password"
+          placeholder="Password"
+        />
+        <Button className="contained" text="Sign Up" />
+      </form>
+    </FormProvider>
   );
 };
 

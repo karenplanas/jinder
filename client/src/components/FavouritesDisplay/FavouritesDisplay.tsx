@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
-import "./FavouritesDisplay.css";
-import { getFavourites } from "../../services/api-client";
-import { Favourite } from "../../Interfaces/favourite";
-import { Building } from "../icons/Building";
-import { Button } from "../Button/Button";
-import { People } from "../icons/People";
+import React, { useEffect, useState } from 'react';
+import './FavouritesDisplay.css';
+import { getFavourites } from '../../services/api-client';
+import { Favourite } from '../../Interfaces/favourite';
+import { Building } from '../icons/Building';
+import { People } from '../icons/People';
+import { TempSendEmail } from '../TempSendEmail/TempSendEmail';
+import { Button } from '../Button/Button';
 
 const FavouritesDisplay: React.FC = () => {
   const [favourites, setFavourites] = useState<Favourite[]>([]);
   const [cardActive, setCardActive] = useState(false);
+  const [popupActive, setPopupActive] = useState(false);
   useEffect(() => {
     getFavourites(setFavourites);
   }, []);
@@ -18,24 +20,37 @@ const FavouritesDisplay: React.FC = () => {
     else setCardActive(false);
   };
 
+  const toggleFunction = () => {
+    if (popupActive === true) {
+      setPopupActive(false);
+    } else {
+      setPopupActive(true);
+    }
+  };
+
   return (
     <div className="favourites_container">
-      {console.log(favourites)}
       {favourites.map((favourite) => {
         return (
-          <div className="favourite_container" onClick={showCard}>
+          <div className="favourite_container" key={favourite._id}>
             <div className="company_logo_favourites">
-              <Building />{" "}
+              <Building />{' '}
             </div>
-            <p>{favourite.companyname}</p>{" "}
-            <Button text="apply" className="outlined" />
+            <p>{favourite.companyname}</p>{' '}
+            <Button
+              className="outlined"
+              text="Apply now"
+              onClick={toggleFunction}
+            ></Button>
+            <div className="formComponent"> </div>
+            {popupActive ? <TempSendEmail /> : ''}
             {cardActive ? (
               // will become seperate component to fix state issues and make code tidier
-              <div className="detail_container" onClick={showCard}>
+              <div className="detail_container">
                 <div className="card_header">
                   <div className="company_logo">
                     <div className="buildingLogo">
-                      {" "}
+                      {' '}
                       <Building />
                     </div>
                   </div>
@@ -43,7 +58,7 @@ const FavouritesDisplay: React.FC = () => {
                     <h3 className="company_name">{favourite.companyname}</h3>
                     <div className="company_size_container">
                       <div className="company_size_logo">
-                        {" "}
+                        {' '}
                         <div className="sizeLogo">
                           <People />
                         </div>
@@ -76,7 +91,7 @@ const FavouritesDisplay: React.FC = () => {
                 </div>
               </div>
             ) : (
-              ""
+              ''
             )}
           </div>
         );
