@@ -1,10 +1,13 @@
 import React from "react";
-
-const Logo: React.FC = () => {
+interface Props {
+  width?: number;
+  height?: number;
+}
+const Logo: React.FC<Props> = ({ width = 70, height = 70 }) => {
   return (
     <svg
-      width="70"
-      height="70"
+      width={width}
+      height={height}
       viewBox="0 0 73 91"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

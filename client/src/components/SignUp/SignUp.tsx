@@ -6,6 +6,7 @@ import EmployeeForm from "./EmployeeForm";
 import EmployerForm from "./EmployerForm";
 
 const SignUp: React.FC = () => {
+
   const [toggled, setToggled] = useState(false);
 
   return (
@@ -22,4 +23,4 @@ const SignUp: React.FC = () => {
   );
 };
 
-export default SignUp;
+export { SignUp };

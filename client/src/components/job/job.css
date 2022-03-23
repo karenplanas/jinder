@@ -1,0 +1,525 @@
+.job_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 340px;
+  height: 473px;
+  left: 18.5px;
+  top: 57.5px;
+
+  /* Off White */
+
+  background: #fafafc;
+  /* Off Black */
+
+  border: 2px solid #1d1d1f;
+  box-sizing: border-box;
+  /* Drop Shadow / Normal */
+
+  box-shadow: 0px 4px 0px #000000;
+  border-radius: 16px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 10px 0px;
+}
+
+.card_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8px 24px;
+
+  position: static;
+  max-width: 327px;
+  max-height: 94px;
+  left: 0px;
+  top: 0px;
+
+  /* Off White */
+
+  background: #fafafc;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.company_logo {
+  background: #f3c522;
+  padding: 8px;
+  position: static;
+  min-width: 40px;
+  min-height: 40px;
+  left: 24px;
+  top: 14px;
+  border-radius: 80px;
+  margin: 0px 16px;
+}
+
+.header_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 223px;
+  height: 66px;
+  left: 80px;
+  top: 14px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+  margin: 0px 10px;
+}
+
+.company_name {
+  position: static;
+  width: 223px;
+  height: 32px;
+  left: 0px;
+  top: 0px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  color: #1d1d1f;
+  align-self: stretch;
+}
+.company_size_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0px 10px 10px 0px;
+
+  position: static;
+  width: 184px;
+  height: 34px;
+  left: 0px;
+  top: 32px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.company_size_logo {
+  position: static;
+  width: 24px;
+  height: 24px;
+  left: 0px;
+  top: 0px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.company_size {
+  position: static;
+  max-width: 140px;
+  max-height: 16px;
+  left: 34px;
+  top: 8px;
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  /* identical to box height, or 114% */
+
+  /* Medium Grey */
+
+  color: #7a7d84;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.jobPosition {
+  position: static;
+  max-width: 279px;
+  max-height: 64px;
+  left: 24px;
+  top: 16px;
+
+  /* H2 */
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  /* or 133% */
+
+  /* Off Black */
+
+  color: #1d1d1f;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.card_body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 24px;
+
+  position: static;
+  max-width: 327px;
+  max-height: 216px;
+  left: 0px;
+  top: 94px;
+
+  /* Off White */
+
+  background: #fafafc;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 8px 0px;
+}
+
+.detail_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  position: static;
+  width: 350px;
+  max-height: 60vh;
+  z-index: 999;
+  left: 18.5px;
+  top: 57.5px;
+  overflow-y: scroll;
+  /* Off White */
+
+  background: #fafafc;
+  /* Off Black */
+
+  border: 2px solid #1d1d1f;
+  box-sizing: border-box;
+  /* Drop Shadow / Normal */
+
+  box-shadow: 0px 4px 0px #000000;
+  border-radius: 16px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 10px 0px;
+  overflow-x: hidden;
+}
+
+.jobBio {
+  position: static;
+  max-width: 279px;
+  max-height: 112px;
+  left: 24px;
+  top: 88px;
+
+  /* Body / Regular */
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  /* or 156% */
+
+  /* Dark Grey */
+
+  color: #51545b;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 8px 10px;
+}
+
+.jobSalary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 24px;
+
+  position: static;
+  max-width: 327px;
+  max-height: 48px;
+  left: 0px;
+  top: 310px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.salarySlogan {
+  position: static;
+  max-width: 198px;
+  max-height: 32px;
+  left: 24px;
+  top: 8px;
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  /* identical to box height, or 160% */
+
+  color: #000000;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.locationContainer {
+  /* Location */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 24px;
+
+  position: static;
+  max-width: 327px;
+  max-height: 48px;
+  left: 0px;
+  top: 398px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 4;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 5px;
+}
+
+.locationString {
+  position: static;
+  max-width: 250px;
+  max-height: 32px;
+  left: 24px;
+  top: 8px;
+
+  /* H3 */
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  /* identical to box height, or 160% */
+
+  color: #000000;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.remoteContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 24px;
+
+  position: static;
+  max-width: 327px;
+  max-height: 40px;
+  left: 0px;
+  top: 358px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.isRemote {
+  position: static;
+  max-width: 154px;
+  max-height: 24px;
+  left: 24px;
+  top: 8px;
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #000000;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.buildingLogo {
+  margin-top: 2px;
+  margin-left: 1px;
+  padding: 1px;
+}
+
+.sizeLogo {
+  margin-top: 5px;
+}
+
+.equityContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 24px;
+
+  position: static;
+  max-width: 327px;
+  max-height: 48px;
+  left: 0px;
+  top: 310px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.equityString {
+  position: static;
+  max-width: 198px;
+  max-height: 32px;
+  left: 24px;
+  top: 8px;
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  /* identical to box height, or 160% */
+
+  color: #000000;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+}
+
+.further_details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 24px;
+  position: static;
+  max-width: 350px;
+  max-height: 952px;
+  left: 0px;
+  top: 549px;
+  background: #fafafc;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 7;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 5px 0px;
+}
+
+.detail_text {
+  position: static;
+  max-width: 290px;
+  max-height: 936px;
+  left: 24px;
+  top: 8px;
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #000000;
+  background: #fafafc;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+  margin: 0px 10px;
+}
+
+.high-z {
+  z-index: 999;
+}

@@ -1,0 +1,8 @@
+.chat_input_container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.chat_input_container textarea {
+  border: 1px solid black;
+}

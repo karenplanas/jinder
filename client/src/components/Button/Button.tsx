@@ -7,14 +7,16 @@ interface Props {
   className: "outlined" | "contained";
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
+  icon?: React.ReactNode
 }
 
-const Button: React.FC<Props> = ({ text, className, onClick, ...props }) => {
+const Button: React.FC<Props> = ({ text, className, onClick,icon, ...props }) => {
   return (
-    <button {...props} className={clsx(className)} onClick={onClick}>
-      {text}
+    <button {...props} className={clsx(className, {'with-icon' : !!icon})} onClick={onClick}>
+       {icon}{text} 
     </button>
   );
 };
+
 
 export { Button };

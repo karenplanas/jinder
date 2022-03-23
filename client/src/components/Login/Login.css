@@ -20,13 +20,13 @@
   margin-top: 1.5rem;
 }
 
-h3 {
+.login--container h3 {
   overflow: hidden;
   text-align: center;
 }
 
-h3:before,
-h3:after {
+.login--container h3:before,
+.login--container h3:after {
   background-color: #000;
   content: "";
   display: inline-block;
@@ -35,16 +35,16 @@ h3:after {
   vertical-align: middle;
   width: 50%;
 }
-h3:before {
+.login--container h3:before {
   right: 0.5em;
   margin-left: -50%;
 }
-h3:after {
+.login--container h3:after {
   left: 0.5em;
   margin-right: -50%;
 }
 
-button {
+.login--container button {
   display: flex;
   justify-content: center;
   align-items: center;

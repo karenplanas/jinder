@@ -1,7 +1,7 @@
-import React from "react";
-import clsx from "clsx";
-import "./InputTextField.css";
-// import { useFormContext } from 'react-hook-form';
+import React from 'react'
+import clsx from 'clsx'
+import { useFormContext } from 'react-hook-form';
+import './InputTextField.css'
 
 interface Props
   extends React.DetailedHTMLProps<
@@ -10,7 +10,7 @@ interface Props
   > {
   label?: string;
   placeholder?: string;
-  name?: string;
+  name: string;
   className?: string;
   type?: string;
 }
@@ -27,7 +27,12 @@ const InputTextField: React.FC<Props> = ({
   return (
     <div className={clsx(className, "InputTextField")}>
       <label htmlFor={name}>{label}</label>
-      <input {...props} placeholder={placeholder} name={name} type={type} />
+      <input 
+        {...props} 
+        placeholder={placeholder}
+        type={type}
+        {...register(name)}
+      />
     </div>
   );
 };

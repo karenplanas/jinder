@@ -1,0 +1,22 @@
+.favourite_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  height: 70px;
+  border-bottom: 1px solid black;
+}
+
+.company_logo_favourites {
+  background: #f3c522;
+  display: flex;
+  padding: 5px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 80px;
+  justify-content: center;
+  align-items: center;
+}
+
+.favourite_logo {
+}

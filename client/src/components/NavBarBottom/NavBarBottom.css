@@ -1,0 +1,32 @@
+nav {
+  width: 100%;
+  display: block;
+  padding: 0.7rem 1.7rem;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 2rem;
+  display: flex;
+  border-top: 2px solid black;
+}
+
+nav a {
+  margin: 1rem;
+  margin-bottom: 0px;
+  background: transparent;
+  padding: 1rem;
+  border-radius: 50%;
+  display: flex;
+  color: black;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #f3c522;
+}
+
+nav a:active {
+  background: #00bea7;
+  color: white;
+}

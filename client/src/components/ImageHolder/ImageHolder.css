@@ -1,0 +1,11 @@
+.ImageHolder {
+  width: 60px;
+  height: 60px;
+  border: solid 2px;
+  box-shadow: 0px 2px;
+  border-radius: 160px;
+  background-color: var(--CitrusWasp-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
