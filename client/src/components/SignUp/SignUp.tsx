@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/firebase";
 import { Button } from "../Button/Button";
@@ -12,23 +13,20 @@ const SignUp: React.FC = () => {
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const methods = useForm();
+=======
+import "./SignUp.css";
+import Toggle from "../Toggle/Toggle";
+import { Logo } from "../icons/Logo";
+import EmployeeForm from "./EmployeeForm";
+import EmployerForm from "./EmployerForm";
 
-  const register = async (e: any) => {
-    e.preventDefault();
-    try {
-      await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      );
-      setRegisterEmail('');
-      setRegisterPassword('');
-    } catch (error) {
-      console.log(error);
-    }
-  };
+const SignUp: React.FC = () => {
+>>>>>>> master
+
+  const [toggled, setToggled] = useState(false);
 
   return (
+<<<<<<< HEAD
     <AppLayout displayNavBarTop={false} displayNavBarBottom={false}>
       <FormProvider {...methods}>
         <div className="sign-up">
@@ -64,6 +62,18 @@ const SignUp: React.FC = () => {
         </div>
       </FormProvider>
     </AppLayout>
+=======
+    <div className="signup--container">
+      <Logo />
+      <div className="logo-title">Jinder</div>
+      <p className="signup--text">
+        Looking for {toggled ? "a job" : "a developer"}? SIGN UP!
+      </p>
+      <Toggle onChange={(event: any) => setToggled(event.target.checked)} />
+
+      <div>{toggled ? <EmployeeForm /> : <EmployerForm />}</div>
+    </div>
+>>>>>>> master
   );
 };
 

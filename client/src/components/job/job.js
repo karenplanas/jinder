@@ -3,6 +3,7 @@ import { Building } from "../icons/Building";
 import { People } from "../icons/People";
 import "./job.css";
 
+// Will be Typeescript very soon
 const Job = (props) => {
   const [detail, setDetail] = useState(false);
 

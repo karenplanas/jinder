@@ -1,8 +1,7 @@
-import React, { ChangeEvent } from 'react'
+import React from 'react'
 import clsx from 'clsx'
 import { useFormContext } from 'react-hook-form';
 import './InputTextField.css'
-
 interface Props {
   label?: string;  
   placeholder?: string;
@@ -35,7 +34,7 @@ const InputTextField: React.FC<Props> = ({label, placeholder, name, className, r
         />
       }
     </div>
-  )
-}
+  );
+};
 
-export { InputTextField }
+export { InputTextField };
