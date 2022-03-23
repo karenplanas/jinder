@@ -14,7 +14,7 @@ interface Props {
 const AppLayout: React.FC<Props> = ({children, displayNavBarTop = true, displayNavBarBottom = true, title}) => {
   return (
     <div className={clsx('AppLayout', { 'with-bottom-nav': displayNavBarBottom, 'with-top-nav': displayNavBarTop })}>
-      { displayNavBarTop && <NavBarTop className={clsx({ 'NavBarTop-with-top-nav': displayNavBarTop })} title={title}/> }
+      { displayNavBarTop && <NavBarTop position='fixed' title={title}/> }
       {children}
       { displayNavBarBottom && <NavBarBottom /> }
     </div>

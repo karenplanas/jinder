@@ -7,12 +7,13 @@ import './NavBarTop.css'
 
 interface Props {
   className?: string
+  position?: string
   title?: string
 }
 
-const NavBarTop: React.FC<Props> = ({ className, title}) => {
+const NavBarTop: React.FC<Props> = ({ className, position, title}) => {
   return (
-    <div className={clsx('NavBarTop', className)}>
+    <div className={clsx('NavBarTop', className, { 'NavBarTop-fixed': position === 'fixed'})}>
       <Logo width={60} height={60}/>
       { title && <h2>{title}</h2>}
       <div className='NavBarTop-picture'>

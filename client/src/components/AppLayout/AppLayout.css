@@ -5,16 +5,8 @@
   margin: auto;
 }
 
-.NavBarTop-with-top-nav {
-  max-width: 400px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  background-color: #ffffff;
-}
-
 .AppLayout.with-top-nav {
-  margin-top: 96px;
+  margin-top: 80px;
 }
 
 .AppLayout.with-bottom-nav {

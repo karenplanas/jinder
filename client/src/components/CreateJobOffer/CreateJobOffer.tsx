@@ -34,14 +34,13 @@ const CreateJobOffer: React.FC = () => {
   });
 
   return (
-    <AppLayout title='New Position'>
-      {/* <div className='title'>
-        <h3>Create new position</h3>
-      </div> */}
+    <AppLayout title='Jobs'>
         <FormProvider {...methods}>
           <form onSubmit={onSubmit}>
-            <div className="Inputs">
-              
+            <div className="Inputs-Card">
+              <div className='title'>
+                <h3>New position</h3>
+              </div>
               <div className="inputRow">
                 <InputTextField name="companyname" label="Company name" />
                 <InputTextField name="companysize" label="Company size" />
