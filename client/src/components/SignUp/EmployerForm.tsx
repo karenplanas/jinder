@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth, db } from '../../service/firebase';
+import { auth, db } from '../../services/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 import { InputTextField } from '../InputTextField/InputTextField';
 import { Button } from '../Button/Button';
