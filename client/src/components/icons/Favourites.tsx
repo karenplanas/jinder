@@ -11,4 +11,4 @@ const Favourite: React.FC = () => {
   );
 };
 
-export {Favourite};
+export { Favourite };

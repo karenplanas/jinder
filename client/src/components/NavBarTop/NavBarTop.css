@@ -1,8 +1,8 @@
 .NavBarTop {
   display: flex;
   justify-content: space-between;
-  margin-left: 38px;
-  margin-top: 15px;
+  margin: 20px;
+  margin-bottom: 0px;
   align-items: center;
   padding: 8px;
 }

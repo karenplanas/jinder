@@ -1,0 +1,84 @@
+.switch-toggle {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.switch-btn,
+.layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.button-check {
+  position: relative;
+  width: 90px;
+  height: 46px;
+  overflow: hidden;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+.checkbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+.switch-btn {
+  z-index: 2;
+}
+.layer {
+  width: 100%;
+  background-color: #8cf7a0;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+#button-check .switch-btn:before,
+#button-check .switch-btn:after {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 30px;
+  height: 20px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  padding: 9px 4px;
+  background-color: #00921c;
+  border-radius: 50%;
+  transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#button-check .switch-btn:before {
+  content: "ON";
+}
+#button-check .switch-btn:after {
+  content: "OFF";
+}
+#button-check .switch-btn:after {
+  right: -50px;
+  left: auto;
+  background-color: #f44336;
+}
+#button-check .checkbox:checked + .switch-btn:before {
+  left: -50px;
+}
+#button-check .checkbox:checked + .switch-btn:after {
+  right: 4px;
+}
+#button-check .checkbox:checked ~ .layer {
+  background-color: #fdd1d1;
+}
