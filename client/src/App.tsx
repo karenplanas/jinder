@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { CreateJobOffer } from "./components/CreateJob/CreateJobOffer";
+import { CreateJobOffer } from "./components/CreateJobOffer/CreateJobOffer";
 import { JobList } from "./components/jobList/joblist";
 import { JobSeekerProfileSkills } from "./components/CreateJobSeekerProfile/JobSeekerProfileSkills";
 import { JobSeekerProfileLookingFor } from "./components/CreateJobSeekerProfile/JobSeekerProfileLookingFor";
