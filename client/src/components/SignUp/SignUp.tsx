@@ -1,56 +1,24 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../services/firebase";
-import { Button } from "../Button/Button";
-import { InputTextField } from "../InputTextField/InputTextField";
 import "./SignUp.css";
-
+import Toggle from "../Toggle/Toggle";
+import { Logo } from "../icons/Logo";
+import EmployeeForm from "./EmployeeForm";
+import EmployerForm from "./EmployerForm";
 
 const SignUp: React.FC = () => {
-  const [registerEmail, setRegisterEmail] = useState('');
-  const [registerPassword, setRegisterPassword] = useState('');
 
-  const register = async (e: any) => {
-    e.preventDefault();
-    try {
-      await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      );
-      setRegisterEmail('');
-      setRegisterPassword('');
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [toggled, setToggled] = useState(false);
 
   return (
     <div className="signup--container">
-      <form onSubmit={register}>
-        <div>
-          <InputTextField
-            value={registerEmail}
-            name="registerEmail"
-            type="email"
-            placeholder="Email"
-            required
-            onChange={(e) => {
-              setRegisterEmail(e.target.value);
-            }}
-          />
-          <InputTextField
-            value={registerPassword}
-            name="registerPassword"
-            type="password"
-            placeholder="Password"
-            onChange={(e) => {
-              setRegisterPassword(e.target.value);
-            }}
-          />
-          <Button className="contained" text="Sign Up" />
-        </div>
-      </form>
+      <Logo />
+      <div className="logo-title">Jinder</div>
+      <p className="signup--text">
+        Looking for {toggled ? "a job" : "a developer"}? SIGN UP!
+      </p>
+      <Toggle onChange={(event: any) => setToggled(event.target.checked)} />
+
+      <div>{toggled ? <EmployeeForm /> : <EmployerForm />}</div>
     </div>
   );
 };

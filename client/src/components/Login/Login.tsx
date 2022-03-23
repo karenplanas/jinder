@@ -59,7 +59,7 @@ const Login: React.FC = () => {
       <div className="login--container">
         <Logo />
         <div className="logo-title">Jinder</div>
-        <form onSubmit={login}>
+        <form onSubmit={login} autoComplete="off">
           <InputTextField
             placeholder={'Email'}
             name={loginEmail}
