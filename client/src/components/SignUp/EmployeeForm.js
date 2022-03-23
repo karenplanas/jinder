@@ -5,7 +5,7 @@ import { setDoc, doc } from "firebase/firestore";
 import { Button } from "../Button/Button";
 import { InputTextField } from "../InputTextField/InputTextField";
 
-const EmployeeForm = () => {
+const EmployeeForm: React.FC = () => {
   const [registerFirstName, setRegisterFirstName] = useState("");
   const [registerLastName, setRegisterLastName] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
@@ -22,13 +22,17 @@ const EmployeeForm = () => {
         const user = {
           firstName: registerFirstName,
           lastName: registerLastName,
-          initials: registerFirstName[0] + registerLastName[0],
+          initials:
+            registerFirstName[0].toUpperCase() +
+            registerLastName[0].toUpperCase(),
           id: cred.user.uid,
         };
         const res = setDoc(doc(db, "users", user.id), user);
         console.log("res", res);
         console.log("cred", cred);
       });
+      setRegisterFirstName("");
+      setRegisterLastName("");
       setRegisterEmail("");
       setRegisterPassword("");
     } catch (error) {
