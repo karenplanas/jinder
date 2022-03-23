@@ -66,7 +66,6 @@ const Login: React.FC = () => {
     <AppLayout displayNavBarTop={false} displayNavBarBottom={false} >
       <FormProvider {...methods}>
         <div className="login--container">
-
           <div className="logo-title">
             <Logo />
             <h2>Jinder</h2>
@@ -130,21 +129,21 @@ const Login: React.FC = () => {
                   }
                 />
               </div>
-              <div className="sign-up">
+              <div className="not-registered">
                 <span>Not registered yet?</span>
                 <Link to="/sign-up" className="join-now">Join Now!</Link>
               </div>
             </div>
           </form>
 
-          <div>
+          {/* <div>
             <h4>{user?.email}</h4>
             {loggedIn ? (
               <Button className="contained" text="Log Out" onClick={logout} />
             ) : (
               ''
             )}
-          </div>
+          </div> */}
 
         </div>
       </FormProvider>
