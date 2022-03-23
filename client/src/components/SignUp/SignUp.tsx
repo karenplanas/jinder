@@ -15,7 +15,7 @@ const SignUp: React.FC = () => {
       <p className="signup--text">
         Looking for {toggled ? "a job" : "a developer"}? SIGN UP!
       </p>
-      <Toggle onChange={(event) => setToggled(event.target.checked)} />
+      <Toggle onChange={(event: any) => setToggled(event.target.checked)} />
 
       <div>{toggled ? <EmployeeForm /> : <EmployerForm />}</div>
     </div>
