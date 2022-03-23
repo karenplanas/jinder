@@ -4,9 +4,10 @@ import { JobApplication } from '../../Interfaces/JobApplication';
 import { Button } from '../Button/Button';
 import { InputTextField } from '../InputTextField/InputTextField';
 import emailjs from '@emailjs/browser';
+import './TempSendEmail.css';
 
 const TempSendEmail: React.FC = () => {
-  const [popupActive, setPopupActive] = useState(false);
+
 
   const methods = useForm<JobApplication>({
     defaultValues: {
@@ -37,48 +38,33 @@ const TempSendEmail: React.FC = () => {
       );
   });
 
-  const toggleFunction = () => {
-    if (popupActive === true) {
-      setPopupActive(false);
-    } else {
-      setPopupActive(true);
-    }
-  };
+
 
   return (
-    <div className="applyToJob">
-      <Button
-        className="outlined"
-        text="Apply now"
-        onClick={toggleFunction}
-      ></Button>
-      {popupActive ? (
         <div className="popupForm">
           <div className="formDiv">
             <FormProvider {...methods}>
               <h2 className="formTitle">Fill your application</h2>
               <form ref={form} onSubmit={onSubmit}>
-                <label>Enter your full name</label>
                 <InputTextField
-                  type="text"
-                  {...register('fullName')}
+                  label="Enter your full name"
+                  name="fullName"
                 ></InputTextField>
-                <label>Enter your email here</label>
                 <InputTextField
-                  type="text"
-                  {...register('email')}
+                  label="Enter your email here"
+                  name="email"
                 ></InputTextField>
-                <label>Tell us a bit more about yourself</label>
-                <textarea {...register('presentation')}></textarea>
-                <input type="submit" value="Send"></input>
+
+                <InputTextField
+                  name="presentation"
+                  label="Tell us a bit more about yourself"
+                  type="textarea"
+                ></InputTextField>
+                <Button type="submit" className="outlined" text="Submit" />
               </form>
             </FormProvider>
           </div>
         </div>
-      ) : (
-        ''
-      )}
-    </div>
   );
 };
 
