@@ -7,7 +7,6 @@ import { Button } from '../Button/Button';
 import { InputTextField } from '../InputTextField/InputTextField';
 import { NavBarTop } from '../NavBarTop/NavBarTop';
 
-
 const CreateJobOffer: React.FC = () => {
   const methods = useForm<JobOffer>({
     defaultValues: {
@@ -36,11 +35,11 @@ const CreateJobOffer: React.FC = () => {
 
   return (
     <div className="createjoboffer">
-			<NavBarTop></NavBarTop>
+      <NavBarTop></NavBarTop>
       <div className="joboffercontent">
         <FormProvider {...methods}>
           <form onSubmit={onSubmit}>
-						<h2>Create new offer</h2>
+            <h2>Create new offer</h2>
             <div className="mainInfoContainer">
               <div className="firstInputRow">
                 <InputTextField
@@ -83,32 +82,32 @@ const CreateJobOffer: React.FC = () => {
                     <input
                       type="checkbox"
                       value="Javascript"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     Javascript
                   </label>
                   <label>
                     <input
                       type="checkbox"
                       value="HTML"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     HTML
                   </label>
                   <label>
                     <input
                       type="checkbox"
                       value="CSS"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     CSS
                   </label>
                   <label>
                     <input
                       type="checkbox"
                       value="C#"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     C#
                   </label>
                 </div>
@@ -117,32 +116,32 @@ const CreateJobOffer: React.FC = () => {
                     <input
                       type="checkbox"
                       value="Java"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     Java
                   </label>
                   <label>
                     <input
                       type="checkbox"
                       value="Python"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     Python
                   </label>
                   <label>
                     <input
                       type="checkbox"
                       value="React"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     React
                   </label>
                   <label>
                     <input
                       type="checkbox"
                       value="Angular"
-                      {...register('languages')}
-                    />{' '}
+                      {...register("languages")}
+                    />{" "}
                     Angular
                   </label>
                 </div>

@@ -1,25 +1,20 @@
 import { setConstantValue } from "typescript";
 import { JobOffer } from "../Interfaces/JobOffer";
+import { Favourite } from "../Interfaces/favourite";
 
-const myHeaders = new Headers();
+const postFavourite = (favourite: Favourite) => {
+  return fetch("http://localhost:4000/newFavourite", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(favourite),
+  });
+};
 
-myHeaders.append(
-  "Authorization",
-  "Basic MTc2NzVkZDUtNzFiNS00YmJkLTg5YWQtOTU4OGY5YzZkOGZhIDo="
-);
-
-const fetchJobs = () => {
-  return fetch(
-    "https://www.reed.co.uk/api/1.0/search?keywords=accountant&location=london",
-    {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    }
-  ).then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log("error", error));
-}
+const getFavourites = (setState: any) => {
+  return fetch("http://localhost:4000/getFavourites")
+    .then((res) => res.json())
+    .then((data) => setState(data.data));
+};
 
 const postJobOffer = (jobOffer: JobOffer) => {
   return fetch("http://localhost:4000/newJobOffer", {
@@ -32,7 +27,7 @@ const postJobOffer = (jobOffer: JobOffer) => {
 const getJobs = (setState: any) => {
   return fetch("http://localhost:4000/JobOffers")
     .then((res) => res.json())
-    .then((data) => setState(data));
+    .then((data) => setState(data.data));
 };
 
-export { postJobOffer, getJobs, fetchJobs };
+export { postJobOffer, getJobs, getFavourites, postFavourite };

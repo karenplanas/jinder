@@ -15,11 +15,11 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        {/* <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} /> */}
         <Route path="/favourites" element={<ChatContainer />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        {/* <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} /> */}
         <Route path="/home" element={<JobList />} />
         <Route path="/job-position/edit" element={<CreateJobOffer />} />
         <Route

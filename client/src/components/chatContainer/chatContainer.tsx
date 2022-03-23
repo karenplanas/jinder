@@ -3,6 +3,8 @@ import "./chatContainer.css";
 import FavouritesDisplay from "../FavouritesDisplay/FavouritesDisplay";
 import ChatDisplay from "../ChatDisplay/ChatDisplay";
 import { NavBarTop } from "../NavBarTop/NavBarTop";
+import { Button } from "../Button/Button";
+import { NavTabs } from "../NavTabs/NavTabs";
 
 const ChatContainer: React.FC = () => {
   return (
@@ -10,8 +12,13 @@ const ChatContainer: React.FC = () => {
       <NavBarTop />
       <div className="chat_container">
         <div>
-          <button className="options">Favourites </button>
-          <button className="options">Chat </button>
+          {" "}
+          <NavTabs
+            tabs={[
+              { name: "Favourites", endpoint: "/favouriteList" },
+              { name: "Chat", endpoint: "/chatlist" },
+            ]}
+          />{" "}
         </div>
         <FavouritesDisplay />
         <ChatDisplay />
