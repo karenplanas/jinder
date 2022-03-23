@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, database } from "../../service/firebase";
+import { auth, database, db } from "../../service/firebase";
 import { Button } from "../Button/Button";
 import { InputTextField } from "../InputTextField/InputTextField";
 import { ref, push, child, update } from "firebase/database";
 import "./SignUp.css";
 import Toggle from "../Toggle/Toggle";
 import { Logo } from "../icons/Logo";
+import EmployeeForm from "./EmployeeForm";
+import EmployerForm from "./EmployerForm";
 
 const SignUp: React.FC = () => {
   const [registerFirstName, setRegisterFirstName] = useState("");
@@ -17,35 +19,47 @@ const SignUp: React.FC = () => {
   const [toggled, setToggled] = useState(false);
 
   const handleSubmit = () => {
-    let obj = {
-      firstName: registerFirstName,
-      lastName: registerLastName,
-      email: registerEmail,
-      password: registerPassword,
-      confirmPassword: confirmPassword,
-    };
-    const newPostKey = push(child(ref(database), "posts")).key;
-    const updates = {};
-    updates["/" + newPostKey] = obj;
-    return update(ref(database), updates);
+    console.log(registerLastName, registerFirstName);
+
+    // let obj = {
+    //   firstName: registerFirstName,
+    //   lastName: registerLastName,
+    //   email: registerEmail,
+    //   password: registerPassword,
+    //   confirmPassword: confirmPassword,
+    // };
+    // const newPostKey = push(child(ref(database), "posts")).key;
+    // const updates = {};
+    // updates["/" + newPostKey] = obj;
+    // return update(ref(database), updates);
   };
 
-  // const register = async (e: any) => {
-  //   e.preventDefault();
-  //   try {
-  //     await createUserWithEmailAndPassword(
-  //       auth,
-  //       registerFirstName,
-  //       registerEmail,
-  //       registerPassword
-  //     );
-  //     setRegisterFirstName("");
-  //     setRegisterEmail("");
-  //     setRegisterPassword("");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const register = async (e: any) => {
+    e.preventDefault();
+    try {
+      await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      ).then((cred) => {
+        return db
+          .collection("users")
+          .doc(cred.user.uid)
+          .set({
+            firstName: registerFirstName,
+            lastName: registerLastName,
+            initials: registerFirstName[0] + registerLastName[0],
+          })
+          .then(() => {
+            console.log("suceesful");
+          });
+      });
+      setRegisterEmail("");
+      setRegisterPassword("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="signup--container">
@@ -53,9 +67,10 @@ const SignUp: React.FC = () => {
       <div className="logo-title">Jinder</div>
       <Toggle onChange={(event) => setToggled(event.target.checked)} />
       <p>Sign-Up for {toggled ? "Job-seeker" : "Company"}</p>
-      <form>
+      <form onSubmit={register}>
         <div>
-          <InputTextField
+          {toggled ? <EmployeeForm /> : <EmployerForm />}
+          {/* <InputTextField
             value={registerFirstName}
             name="registerEmail"
             type="text"
@@ -102,8 +117,8 @@ const SignUp: React.FC = () => {
             onChange={(e) => {
               setConfirmPassword(e.target.value);
             }}
-          />
-          <Button className="contained" text="Sign Up" onClick={handleSubmit} />
+          /> */}
+          <Button className="contained" text="Sign Up" />
         </div>
       </form>
     </div>
