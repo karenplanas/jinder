@@ -6,6 +6,7 @@ import { InputTextField } from '../InputTextField/InputTextField'
 import { CreateJobSeekerProfileLayout } from './CreateJobSeekerProfileLayout'
 import { JobSeekerProfileButtons } from './JobSeekerProfileButtons'
 import './CreateJobSeekerProfile.css'
+import { Button } from '../Button/Button'
 
 const JobSeekerProfileLookingFor: React.FC = () => {
 
@@ -47,6 +48,7 @@ const JobSeekerProfileLookingFor: React.FC = () => {
 
             </div>
             <InputTextField name='othersLookingFor' placeholder='Type something here...' label='Others' />
+            <Button className='outlined' text='Upload CV'/>
             <JobSeekerProfileButtons />
           </div>
         </form>

@@ -1,0 +1,29 @@
+.Inputs {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px var(--Gray-dark);
+  border-radius: 8px;
+  gap: 16px;
+  padding: 24px;
+}
+
+.title h3 {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.skills-required {
+  display: flex;
+	gap: 50px;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+	margin-left: 20px;
+}
+
+.inputRow {
+  display: flex;
+  gap: 16px;
+}

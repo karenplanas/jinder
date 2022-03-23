@@ -4,8 +4,8 @@ import { PlusInCircle } from '../icons/PlusInCircle'
 import { InputTextField } from '../InputTextField/InputTextField'
 import { CreateJobSeekerProfileLayout } from './CreateJobSeekerProfileLayout'
 import { JobSeekerProfileButtons } from './JobSeekerProfileButtons'
-import './CreateJobSeekerProfile.css'
 import { Experience } from '../../Interfaces/JobSeekerProfile'
+import './CreateJobSeekerProfile.css'
 
 const JobSeekerProfileExperience: React.FC = () => {
 

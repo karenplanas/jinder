@@ -3,6 +3,9 @@ import * as jobOfferController from './controllers/JobOffer-controller';
 
 const router = express.Router();
 
+// https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/
+// POST /job-offers
+// GET /job-offers
 router.post('/newJobOffer', jobOfferController.postJobOffer);
 router.get('/JobOffers', jobOfferController.getJobOffers);
 

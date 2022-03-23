@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
@@ -7,19 +8,23 @@ import {
   signOut,
 } from "firebase/auth";
 import { FormProvider, useForm } from "react-hook-form";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../services/firebase";
 import { Logo } from "../icons/Logo";
 import { InputTextField } from "../InputTextField/InputTextField";
-import { Link } from "react-router-dom";
 import { Button } from "../Button/Button";
+import { AppLayout } from "../AppLayout/AppLayout";
+import { GoogleLogoColors } from "../icons/GoogleLogoColors";
+import { GitHub } from "../icons/GitHub";
 import "./Login.css";
 
 const Login: React.FC = () => {
-  const methods = useForm()
+
+  const methods = useForm();
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const [user, setUser] = useState<{
     email: string | null;
@@ -36,6 +41,7 @@ const Login: React.FC = () => {
       setLoggedIn(true);
       setLoginEmail('');
       setLoginPassword('');
+      navigate('/home');
     } catch (error) {
       console.log(error);
     }
@@ -57,78 +63,91 @@ const Login: React.FC = () => {
     return signInWithPopup(auth, githubProvider);
   };
   return (
-    <FormProvider {...methods}>
-      <div className="login--container">
-        <Logo />
-        <div className="logo-title">Jinder</div>
-        <form onSubmit={login}>
-          <InputTextField
-            placeholder={'Email'}
-            name='email'
-            value={loginEmail}
-            required
-            onChange={(e) => {
-              setLoginEmail(e.target.value);
-            }}
-          />
-          <InputTextField
-            placeholder={'Password'}
-            type={'password'}
-            name='password'
-            value={loginPassword}
-            required
-            onChange={(e) => {
-              setLoginPassword(e.target.value);
-            }}
-          />
-          <Button className="contained" text="Sin In" />
-
-          <div className="login--option">
-            <h3>Or</h3>
+    <AppLayout displayNavBarTop={false} displayNavBarBottom={false} >
+      <FormProvider {...methods}>
+        <div className="login--container">
+          <div className="logo-title">
+            <Logo />
+            <h2>Jinder</h2>
           </div>
-          <Button
-            className="outlined"
-            text="Log in with Google"
-            // icon={<GoogleLogo />}
-            onClick={() =>
-              signInwithGoogle()
-                .then((user) => {
-                  console.log(user);
-                  setLoggedIn(true);
-                })
-                .catch((error) => console.log(error))
-            }
-          />
-          <Button
-            className="outlined"
-            text="Log in with Github"
-            // icon={<FaGithub />}
-            onClick={() =>
-              signInwithGithub()
-                .then((user) => {
-                  console.log(user);
-                  setLoggedIn(true);
-                })
-                .catch((error) => console.log(error))
-            }
-          />
-        </form>
-        <div className="sign-up">
-          Not registered yet?
-          <span className="join-link">
-            <Link to="/sign-up">Join Now!</Link>
-          </span>
+
+          <form onSubmit={login}>
+            <div className="inputs-buttons">
+              <div className="login-inputs-signin">
+                <div className="login-inputs">
+                  <InputTextField
+                    placeholder={'Email'}
+                    name='email'
+                    label='Email*'
+                    value={loginEmail}
+                    required
+                    onChange={(e) => {
+                      setLoginEmail(e.target.value);
+                    }}
+                  />
+                  <InputTextField
+                    placeholder={'Password'}
+                    type={'password'}
+                    name='password'
+                    label='Password*'
+                    value={loginPassword}
+                    required
+                    onChange={(e) => {
+                      setLoginPassword(e.target.value);
+                    }}
+                  />
+                </div>
+                <Button className="contained" text="Sign In" />
+              </div>
+
+              <h3>Or</h3>
+              <div className="providers-buttons">          
+                <Button
+                  className="outlined"
+                  text="Sign in with Google"
+                  icon={<GoogleLogoColors />}
+                  onClick={() =>
+                    signInwithGoogle()
+                      .then((user) => {
+                        console.log(user);
+                        setLoggedIn(true);
+                      })
+                      .catch((error) => console.log(error))
+                  }
+                />
+                <Button
+                  className="outlined"
+                  text="Sign in with Github"
+                  icon={<GitHub />}
+                  onClick={() =>
+                    signInwithGithub()
+                      .then((user) => {
+                        console.log(user);
+                        setLoggedIn(true);
+                      })
+                      .catch((error) => console.log(error))
+                  }
+                />
+              </div>
+              <div className="not-registered">
+                <span>Not registered yet?</span>
+                <Link to="/sign-up" className="join-now">Join Now!</Link>
+              </div>
+            </div>
+          </form>
+
+          {/* <div>
+            <h4>{user?.email}</h4>
+            {loggedIn ? (
+              <Button className="contained" text="Log Out" onClick={logout} />
+            ) : (
+              ''
+            )}
+          </div> */}
+
         </div>
-        <div>
-          <h4>{user?.email}</h4>
-          {loggedIn ? (
-            <Button className="contained" text="Log Out" onClick={logout} />
-          ) : (
-            ''
-          )}
-        </div>
-      </div>
-    </FormProvider>
+      </FormProvider>
+    </AppLayout>
   );
 };
 

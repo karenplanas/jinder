@@ -224,7 +224,7 @@
   padding: 0px;
   position: static;
   width: 350px;
-  height: 75vh;
+  max-height: 60vh;
   z-index: 999;
   left: 18.5px;
   top: 57.5px;
