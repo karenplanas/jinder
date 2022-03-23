@@ -10,7 +10,7 @@ interface Props {
   icon?: React.ReactNode
 }
 
-const Button: React.FC<Props> = ({ text, className, onClick,icon, ...props }) => {
+const Button: React.FC<Props> = ({ text, className, onClick, icon, ...props }) => {
   return (
     <button {...props} className={clsx(className, {'with-icon' : !!icon})} onClick={onClick}>
        {icon}{text} 

@@ -13,10 +13,10 @@ import { auth } from "../../services/firebase";
 import { Logo } from "../icons/Logo";
 import { InputTextField } from "../InputTextField/InputTextField";
 import { Button } from "../Button/Button";
-import "./Login.css";
 import { AppLayout } from "../AppLayout/AppLayout";
 import { GoogleLogoColors } from "../icons/GoogleLogoColors";
 import { GitHub } from "../icons/GitHub";
+import "./Login.css";
 
 const Login: React.FC = () => {
 
@@ -63,7 +63,7 @@ const Login: React.FC = () => {
     return signInWithPopup(auth, githubProvider);
   };
   return (
-    <AppLayout displayNavBarTop={false} displayNavBarBottom={false}>
+    <AppLayout displayNavBarTop={false} displayNavBarBottom={false} >
       <FormProvider {...methods}>
         <div className="login--container">
 

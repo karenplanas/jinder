@@ -6,7 +6,6 @@ import { AppLayout } from '../AppLayout/AppLayout';
 import { Button } from '../Button/Button';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { InputTextField } from '../InputTextField/InputTextField';
-// import { NavBarTop } from '../NavBarTop/NavBarTop';
 import './CreateJobOffer.css';
 
 const CreateJobOffer: React.FC = () => {
@@ -28,10 +27,9 @@ const CreateJobOffer: React.FC = () => {
     },
   });
 
-  const { handleSubmit, register } = methods;
+  const { handleSubmit } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
-    // JSON.stringify(data.languages);
     await postJobOffer(data);
   });
 
@@ -45,37 +43,18 @@ const CreateJobOffer: React.FC = () => {
             <div className="Inputs">
               
               <div className="inputRow">
-                <InputTextField
-                  name="companyname"
-                  label="Company name"
-                />
-                <InputTextField
-                  name="companysize"
-                  label="Company size"
-                />
+                <InputTextField name="companyname" label="Company name" />
+                <InputTextField name="companysize" label="Company size" />
               </div>
 
-              <InputTextField
-                name="position"
-                label="Position"
-              />
+              <InputTextField name="position" label="Position"/>
 
               <div className="inputRow">
-                <InputTextField
-                  name="role"
-                  label="Role"
-                />
-                <InputTextField
-                  name="level"
-                  label="Level"
-                />
+                <InputTextField name="role" label="Role" />
+                <InputTextField name="level" label="Level"/>
               </div>
 
-              <InputTextField 
-                name="bio" 
-                label="Bio" 
-              />
-
+              <InputTextField name="bio" label="Bio" />
               <h5>Skills required</h5>
               <div className="skills-required">
 
@@ -91,45 +70,20 @@ const CreateJobOffer: React.FC = () => {
                   <Checkbox name='skills' value='python' label='Python'/>
                   <Checkbox name='skills' value='react' label='React'/>
                   <Checkbox name='skills' value='angular' label='Angular'/>
-                  {/* <label>
-                    <input
-                      type="checkbox"
-                      value="Java"
-                      {...register('languages')}
-                    />{' '}
-                    Java
-                  </label> */}
                 </div>
               </div>
 
-              <InputTextField
-                name="education"
-                label="Education"
-              />
-              <InputTextField
-                name="experience"
-                label="Experience"
-              />
-              <InputTextField
-                name="location"
-                label="Location"
-              />
-              <InputTextField
-                name="contract"
-                label="Contract"
-              />
-              <InputTextField
-                name="salary"
-                label="Salary"
-              />
-              <InputTextField
-                type='textarea'
-                name="description"
-                label="Description"
-              />
+              <InputTextField name="education" label="Education" />
+              <InputTextField name="experience" label="Experience" />
+              <InputTextField name="location" label="Location" />
+              <InputTextField name="contract" label="Contract" />
+              <InputTextField name="salary" label="Salary" />
+              <InputTextField type='textarea' name="description" label="Description" />
+              
               <div>
                 <Button className="contained" text="Submit" type="submit" />
               </div>
+
             </div>
           </form>
         </FormProvider>
