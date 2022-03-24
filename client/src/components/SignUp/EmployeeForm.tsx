@@ -58,7 +58,7 @@ const EmployeeForm: React.FC = () => {
           type="password"
           placeholder="Password"
         />
-        <Button className="contained" text="Sign Up" />
+        <Button variant="contained" text="Sign Up" />
       </form>
     </FormProvider>
   );

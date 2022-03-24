@@ -80,7 +80,7 @@ const CreateJobOffer: React.FC = () => {
               <InputTextField type='textarea' name="description" label="Description" />
               
               <div>
-                <Button className="contained" text="Submit" type="submit" />
+                <Button variant="contained" text="Submit" type="submit" />
               </div>
 
             </div>

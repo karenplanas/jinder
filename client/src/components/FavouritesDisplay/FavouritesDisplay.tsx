@@ -38,7 +38,7 @@ const FavouritesDisplay: React.FC = () => {
             </div>
             <p>{favourite.companyname}</p>{' '}
             <Button
-              className="outlined"
+              variant="outlined"
               text="Apply now"
               onClick={toggleFunction}
             ></Button>

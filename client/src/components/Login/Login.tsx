@@ -90,13 +90,13 @@ const Login: React.FC = () => {
                     required
                   />
                 </div>
-                <Button className="contained" text="Sign In" />
+                <Button variant="contained" text="Sign In" />
               </div>
 
               <h3>Or</h3>
               <div className="providers-buttons">
                 <Button
-                  className="outlined"
+                  variant="outlined"
                   text="Sign in with Google"
                   icon={<GoogleLogoColors />}
                   onClick={() =>
@@ -109,7 +109,7 @@ const Login: React.FC = () => {
                   }
                 />
                 <Button
-                  className="outlined"
+                  variant="outlined"
                   text="Sign in with Github"
                   icon={<GitHub />}
                   onClick={() =>
@@ -134,7 +134,7 @@ const Login: React.FC = () => {
           {/* <div>
             <h4>{user?.email}</h4>
             {loggedIn ? (
-              <Button className="contained" text="Log Out" onClick={logout} />
+              <Button variant="contained" text="Log Out" onClick={logout} />
             ) : (
               ''
             )}
