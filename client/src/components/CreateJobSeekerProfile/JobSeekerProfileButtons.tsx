@@ -5,7 +5,7 @@ const JobSeekerProfileButtons: React.FC = () => {
   return (
     <div className='buttons-container'>
       <Button variant='outlined' text='Cancel' />
-      <Button variant='contained' text='Save' type='submit' />
+      <Button text='Save' type='submit' />
     </div>
   )
 }

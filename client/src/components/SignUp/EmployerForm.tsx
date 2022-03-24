@@ -1,12 +1,13 @@
 import React from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth, db } from '../../service/firebase';
+import { auth, db } from '../../services/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 import { InputTextField } from '../InputTextField/InputTextField';
 import { Button } from '../Button/Button';
 import { FormProvider, useForm } from 'react-hook-form';
 import { EmployerUser } from '../../Interfaces/EmployerUser';
 import { useNavigate } from 'react-router-dom';
+import './SignUp.css'
 
 const EmployerForm: React.FC = () => {
   const methods = useForm<EmployerUser>({
@@ -33,6 +34,7 @@ const EmployerForm: React.FC = () => {
           id: cred.user.uid,
         };
         setDoc(doc(db, 'companuies', company.id), company);
+        navigate('/home');
       });
     } catch (error) {
       console.log(error);
@@ -41,23 +43,29 @@ const EmployerForm: React.FC = () => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={onSubmit}>
-        <InputTextField
-          name="companyName"
-          placeholder="Company name"
-          required
-        />
-        <InputTextField
-          name="email"
-          type="email"
-          placeholder="Email"
-          required
-        />
-        <InputTextField
-          name="password"
-          type="password"
-          placeholder="Password"
-        />
-        <Button variant="contained" text="Sign Up" />
+        <div className="SignUp-inputs">
+          <InputTextField
+            name="companyName"
+            label= "Company Name"
+            placeholder="Company name"
+            required
+          />
+          <InputTextField
+            name="email"
+            type="email"
+            label="Email"
+            placeholder="Email"
+            required
+          />
+          <InputTextField
+            name="password"
+            type="password"
+            label="Password"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <Button text="Sign Up" />
       </form>
     </FormProvider>
   );

@@ -1,9 +1,9 @@
-.switch-toggle {
+/* .switch-toggle {
   display: flex;
   height: 100%;
   align-items: center;
   margin-bottom: 1rem;
-}
+} */
 .switch-btn,
 .layer {
   position: absolute;
@@ -14,8 +14,8 @@
 }
 .button-check {
   position: relative;
-  width: 90px;
-  height: 46px;
+  width: 110px;
+  height: 56px;
   overflow: hidden;
   border-radius: 50px;
   -webkit-border-radius: 50px;
@@ -38,7 +38,8 @@
 }
 .layer {
   width: 100%;
-  background-color: #8cf7a0;
+  /* background-color: #8cf7a0; */
+  background-color: var(--CitrusWasp-color-light);
   transition: 0.3s ease all;
   z-index: 1;
 }
@@ -47,15 +48,16 @@
   position: absolute;
   top: 4px;
   left: 4px;
-  width: 30px;
-  height: 20px;
+  width: 40px;
+  height: 30px;
   color: #fff;
-  font-size: 10px;
+  font-size: 1.3rem;
   font-weight: bold;
   text-align: center;
   line-height: 1;
   padding: 9px 4px;
-  background-color: #00921c;
+  /* background-color: #00921c; */
+  background-color: var(--CitrusWasp-color-dark);
   border-radius: 50%;
   transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
   display: flex;
@@ -63,15 +65,18 @@
   justify-content: center;
 }
 #button-check .switch-btn:before {
-  content: "ON";
+  content: "Usr";
 }
 #button-check .switch-btn:after {
-  content: "OFF";
+  content: "Emp";
 }
 #button-check .switch-btn:after {
   right: -50px;
   left: auto;
-  background-color: #f44336;
+  /* width: 100px;
+  height: 40px; */
+  /* background-color: #f44336; */
+  background-color: var(--CitrusWasp-color-dark);
 }
 #button-check .checkbox:checked + .switch-btn:before {
   left: -50px;
@@ -80,5 +85,6 @@
   right: 4px;
 }
 #button-check .checkbox:checked ~ .layer {
-  background-color: #fdd1d1;
+  /* background-color: #fdd1d1; */
+  background-color: var(--CitrusWasp-color-light);
 }

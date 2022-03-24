@@ -1,9 +1,14 @@
+import clsx from 'clsx'
 import React from 'react'
 import './ImageHolder.css'
 
-const ImageHolder : React.FC = ({ children }) => {
+interface Props {
+  size?: 'big' | 'medium'
+}
+
+const ImageHolder : React.FC<Props> = ({ children, size = 'medium' }) => {
   return (
-    <div className='ImageHolder'>
+    <div className={clsx('ImageHolder', `ImageHolder-${size}`)}>
       {children}
     </div>
   )

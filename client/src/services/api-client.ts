@@ -1,4 +1,3 @@
-import { setConstantValue } from 'typescript';
 import { JobOffer } from '../Interfaces/JobOffer';
 import { Favourite } from '../Interfaces/favourite';
 

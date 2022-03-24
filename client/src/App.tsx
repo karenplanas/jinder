@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CreateJobOffer } from './components/CreateJobOffer/CreateJobOffer';
-import { JobList } from './components/jobList/joblist';
+import { JobList } from './components/JobList/JobList';
 import { JobSeekerProfileSkills } from './components/CreateJobSeekerProfile/JobSeekerProfileSkills';
 import { JobSeekerProfileLookingFor } from './components/CreateJobSeekerProfile/JobSeekerProfileLookingFor';
 import { JobSeekerProfileExperience } from './components/CreateJobSeekerProfile/JobSeekerProfileExperience';
@@ -10,6 +10,7 @@ import { SignUp } from './components/SignUp/SignUp';
 import { ChatContainer } from './components/chatContainer/chatContainer';
 import { TempSendEmail } from './components/TempSendEmail/TempSendEmail';
 import './App.css';
+
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,10 @@ const App: React.FC = () => {
         <Route path="/favourites" element={<ChatContainer />} />
         <Route path="/home" element={<JobList />} />
         <Route path="/job-position/edit" element={<CreateJobOffer />} />
+        <Route
+          path="/job-seeker-profile/edit"
+          element={<JobSeekerProfileExperience />}
+        />
         <Route
           path="/job-seeker-profile/edit/experience"
           element={<JobSeekerProfileExperience />}

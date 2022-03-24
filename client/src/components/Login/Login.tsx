@@ -10,7 +10,6 @@ import {
 import { FormProvider, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../../services/firebase';
-import { Logo } from '../icons/Logo';
 import { InputTextField } from '../InputTextField/InputTextField';
 import { Button } from '../Button/Button';
 import { AppLayout } from '../AppLayout/AppLayout';
@@ -18,6 +17,7 @@ import { GoogleLogoColors } from '../icons/GoogleLogoColors';
 import { GitHub } from '../icons/GitHub';
 import './Login.css';
 import { User } from '../../Interfaces/User';
+import { LogoTitleVertical } from '../LogoTitleVertical/LogoTitleVertical';
 
 const Login: React.FC = () => {
   const methods = useForm<User>({
@@ -67,10 +67,7 @@ const Login: React.FC = () => {
     <AppLayout displayNavBarTop={false} displayNavBarBottom={false}>
       <FormProvider {...methods}>
         <div className="login--container">
-          <div className="logo-title">
-            <Logo />
-            <h2>Jinder</h2>
-          </div>
+          <LogoTitleVertical />
 
           <form onSubmit={onSubmit}>
             <div className="inputs-buttons">
@@ -79,18 +76,18 @@ const Login: React.FC = () => {
                   <InputTextField
                     placeholder={'Email'}
                     name="email"
-                    label="Email*"
+                    label="Email"
                     required
                   />
                   <InputTextField
                     placeholder={'Password'}
                     type="password"
                     name="password"
-                    label="Password*"
+                    label="Password"
                     required
                   />
                 </div>
-                <Button variant="contained" text="Sign In" />
+                <Button text="Sign In" />
               </div>
 
               <h3>Or</h3>
