@@ -1,73 +1,61 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../../services/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 import { InputTextField } from '../InputTextField/InputTextField';
 import { Button } from '../Button/Button';
 import { FormProvider, useForm } from 'react-hook-form';
+import { EmployerUser } from '../../Interfaces/EmployerUser';
+import { useNavigate } from 'react-router-dom';
 
 const EmployerForm: React.FC = () => {
-  const [registerCompanyName, setRegisterCompanyName] = useState('');
-  const [registerCompanyEmail, setRegisterCompanyEmail] = useState('');
-  const [registerCompanyPassword, setRegisterCompanyPassword] = useState('');
+  const methods = useForm<EmployerUser>({
+    defaultValues: {
+      companyName: '',
+      email: '',
+      password: '',
+    },
+  });
 
-  const registerCompany = async (e: any) => {
-    e.preventDefault();
+  const navigate = useNavigate();
+
+  const { handleSubmit } = methods;
+
+  const onSubmit = handleSubmit(async (data) => {
     try {
       await createUserWithEmailAndPassword(
         auth,
-        registerCompanyEmail,
-        registerCompanyPassword
+        data.email,
+        data.password
       ).then((cred) => {
         const company = {
-          companyName: registerCompanyName,
+          companyName: data.companyName,
           id: cred.user.uid,
         };
-        const res = setDoc(doc(db, 'companies', company.id), company);
-        // console.log("res", res);
-        // console.log("cred", cred);
+        setDoc(doc(db, 'companuies', company.id), company);
       });
-      setRegisterCompanyName('');
-      setRegisterCompanyEmail('');
-      setRegisterCompanyPassword('');
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const methods = useForm();
-
+  });
   return (
     <FormProvider {...methods}>
-      <form onSubmit={registerCompany}>
+      <form onSubmit={onSubmit}>
         <InputTextField
-          value={registerCompanyName}
-          name="registerCompanyName"
-          type="text"
+          name="companyName"
           placeholder="Company name"
-          onChange={(e) => {
-            setRegisterCompanyName(e.target.value);
-          }}
           required
         />
         <InputTextField
-          value={registerCompanyEmail}
-          name="registerCompanyEmail"
+          name="email"
           type="email"
           placeholder="Email"
           required
-          onChange={(e) => {
-            setRegisterCompanyEmail(e.target.value);
-          }}
         />
         <InputTextField
-          value={registerCompanyPassword}
-          name="registerCompanyPassword"
+          name="password"
           type="password"
           placeholder="Password"
-          onChange={(e) => {
-            setRegisterCompanyPassword(e.target.value);
-          }}
         />
         <Button className="contained" text="Sign Up" />
       </form>
