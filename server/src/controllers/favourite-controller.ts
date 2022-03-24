@@ -29,3 +29,19 @@ export const getFavourites = async (
     res.json({ error: "Internal server error" });
   }
 };
+
+export const editApplied = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const modifyFavourite = await Favourite.findByIdAndUpdate(req.params.id, {
+      applied: req.body.applied,
+    });
+    res.send(modifyFavourite).status(200);
+    console.log(req.body);
+  } catch (e) {
+    res.status(500);
+    res.json({ error: "Internal server error" });
+  }
+};

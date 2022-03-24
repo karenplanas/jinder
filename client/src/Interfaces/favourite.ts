@@ -14,4 +14,5 @@ export interface Favourite {
   contract: string;
   salary: string;
   messages: [];
+  applied: boolean;
 }

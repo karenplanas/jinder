@@ -13,7 +13,6 @@ router.get("/job-postings", jobOfferController.getJobOffers);
 
 router.post("/favourites", favouritesController.postFavourite);
 router.get("/favourites", favouritesController.getFavourites);
-
-
+router.put("/favourites/:id", favouritesController.editApplied);
 
 export default router;

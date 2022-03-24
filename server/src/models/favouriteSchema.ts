@@ -16,6 +16,7 @@ interface favourite {
   contract: string;
   salary: string;
   messages: string[];
+  applied: boolean;
 }
 
 const FavouriteSchema = new Schema<favourite>({
@@ -73,6 +74,10 @@ const FavouriteSchema = new Schema<favourite>({
   },
   messages: {
     type: [],
+  },
+  applied: {
+    type: Boolean,
+    default: false,
   },
 });
 

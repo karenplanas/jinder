@@ -1,6 +1,6 @@
 import React from "react";
 import "./chatContainer.css";
-import FavouritesDisplay from "../FavouritesDisplay/FavouritesDisplay";
+import FavouritesList from "../FavouritesList/FavouritesList";
 import ChatDisplay from "../ChatDisplay/ChatDisplay";
 import { NavBarTop } from "../NavBarTop/NavBarTop";
 import { NavTabs } from "../NavTabs/NavTabs";
@@ -19,11 +19,10 @@ const ChatContainer: React.FC = () => {
             ]}
           />{" "}
         </div>
-        <FavouritesDisplay />
-        <ChatDisplay />
+        <FavouritesList />
       </div>
     </>
   );
 };
 
-export {ChatContainer};
+export { ChatContainer };
