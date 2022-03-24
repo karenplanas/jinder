@@ -60,7 +60,7 @@ const TempSendEmail: React.FC = () => {
                   label="Tell us a bit more about yourself"
                   type="textarea"
                 ></InputTextField>
-                <Button type="submit" className="outlined" text="Submit" />
+                <Button type="submit" variant="outlined" text="Submit" />
               </form>
             </FormProvider>
           </div>
