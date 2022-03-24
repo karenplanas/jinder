@@ -1,13 +1,24 @@
 button {
-  height: 48px;
   border-radius: 16px;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding: 16px 32px;
   font-size: 1.3rem;
   font-weight: 600;
   border-style: none;
   cursor: pointer;
   box-shadow: 0px 4px #000000;
+  margin-bottom: 4px;
+}
+
+button:active {
+  margin-top: 4px;
+  box-shadow: none;
+  margin-bottom: 0px;
+}
+
+.small {
+  font-size: 1.1rem;
+  line-height: 1.3rem;
+  padding: 10px 18px;
 }
 
 .contained {

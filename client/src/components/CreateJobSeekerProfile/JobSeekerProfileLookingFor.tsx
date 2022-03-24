@@ -48,7 +48,7 @@ const JobSeekerProfileLookingFor: React.FC = () => {
 
             </div>
             <InputTextField name='othersLookingFor' placeholder='Type something here...' label='Others' />
-            <Button className='outlined' text='Upload CV'/>
+            <Button variant='outlined' text='Upload CV'/>
             <JobSeekerProfileButtons />
           </div>
         </form>
