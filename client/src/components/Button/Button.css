@@ -35,6 +35,23 @@ button:active {
   border: solid 2px;
 }
 
+.list {
+  font-size: 1rem;
+  padding-left: 16px;
+  padding-right: 16px;
+  height: 32px;
+  background-color: green;
+  color: var(--White);
+}
+
+.list:disabled {
+  background-color: var(--Black);
+}
+
+.list:hover {
+  background-color: var(--Gray-dark);
+}
+
 .outlined:hover {
   background-color: var(--Gray-clair);
 }
@@ -45,4 +62,3 @@ button:active {
   justify-content: center;
   gap: 24px;
 }
-
