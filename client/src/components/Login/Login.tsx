@@ -87,7 +87,7 @@ const Login: React.FC = () => {
                     required
                   />
                 </div>
-                <Button variant="contained" text="Sign In" />
+                <Button text="Sign In" />
               </div>
 
               <h3>Or</h3>

@@ -65,7 +65,7 @@ const EmployerForm: React.FC = () => {
             required
           />
         </div>
-        <Button variant="contained" text="Sign Up" />
+        <Button text="Sign Up" />
       </form>
     </FormProvider>
   );
