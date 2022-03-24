@@ -1,6 +1,8 @@
 .ImageHolder {
-  width: 60px;
-  height: 60px;
+  min-width: 40px;
+  max-width: 40px;
+  min-height: 40px;
+  max-height: 40px;
   border: solid 2px;
   box-shadow: 0px 2px;
   border-radius: 160px;
@@ -8,4 +10,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.ImageHolder-big {
+  min-width: 60px;
+  max-width: 60px;
+  min-height: 60px;
+  max-height: 60px;
 }

@@ -1,17 +1,33 @@
 .signup--container {
-  padding-top: 2rem;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 24px;
-  gap: 24px;
+  gap: 16px;
 }
 
-.sign-up form {
+.signup--container form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   width: 100%;
 }
 
-.signup--text {
-  margin-bottom: 1rem;
+.SignUp-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
+
+.SignUp-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.SignUp-toggle {
+  display: flex;
+  justify-content: center;
+}
+

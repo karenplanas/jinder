@@ -1,20 +1,7 @@
-.card-container {
-  margin-left: 3.8rem;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
-.swipe {
-  position: absolute;
-}
-
 .card {
-  position: relative;
-  left: 18.5px;
-}
-
-.swipe:last-of-type {
-}
-
-.jobList .swipe-info {
   position: absolute;
+  left: 0;
+  right: 0;
+  top: 150px;
+  padding-bottom: 120px;
 }

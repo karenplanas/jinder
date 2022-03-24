@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
@@ -6,24 +6,28 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-} from "firebase/auth";
-import { FormProvider, useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../../services/firebase";
-import { Logo } from "../icons/Logo";
-import { InputTextField } from "../InputTextField/InputTextField";
-import { Button } from "../Button/Button";
-import { AppLayout } from "../AppLayout/AppLayout";
-import { GoogleLogoColors } from "../icons/GoogleLogoColors";
-import { GitHub } from "../icons/GitHub";
-import "./Login.css";
+} from 'firebase/auth';
+import { FormProvider, useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../../services/firebase';
+import { InputTextField } from '../InputTextField/InputTextField';
+import { Button } from '../Button/Button';
+import { AppLayout } from '../AppLayout/AppLayout';
+import { GoogleLogoColors } from '../icons/GoogleLogoColors';
+import { GitHub } from '../icons/GitHub';
+import './Login.css';
+import { User } from '../../Interfaces/User';
+import { LogoTitleVertical } from '../LogoTitleVertical/LogoTitleVertical';
 
 const Login: React.FC = () => {
-
-  const methods = useForm();
-  const [loginEmail, setLoginEmail] = useState('');
-  const [loginPassword, setLoginPassword] = useState('');
+  const methods = useForm<User>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
   const [loggedIn, setLoggedIn] = useState(false);
+  const { handleSubmit } = methods;
   const navigate = useNavigate();
 
   const [user, setUser] = useState<{
@@ -34,18 +38,15 @@ const Login: React.FC = () => {
     setUser(currentUser);
   });
 
-  const login = async (e: any) => {
-    e.preventDefault();
+  const onSubmit = handleSubmit(async (data) => {
     try {
-      await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+      await signInWithEmailAndPassword(auth, data.email, data.password);
       setLoggedIn(true);
-      setLoginEmail('');
-      setLoginPassword('');
       navigate('/home');
     } catch (error) {
       console.log(error);
     }
-  };
+  });
 
   const logout = async () => {
     console.log('logged out');
@@ -63,47 +64,36 @@ const Login: React.FC = () => {
     return signInWithPopup(auth, githubProvider);
   };
   return (
-    <AppLayout displayNavBarTop={false} displayNavBarBottom={false} >
+    <AppLayout displayNavBarTop={false} displayNavBarBottom={false}>
       <FormProvider {...methods}>
         <div className="login--container">
-          <div className="logo-title">
-            <Logo />
-            <h2>Jinder</h2>
-          </div>
+          <LogoTitleVertical />
 
-          <form onSubmit={login}>
+          <form onSubmit={onSubmit}>
             <div className="inputs-buttons">
               <div className="login-inputs-signin">
                 <div className="login-inputs">
                   <InputTextField
                     placeholder={'Email'}
-                    name='email'
-                    label='Email*'
-                    value={loginEmail}
+                    name="email"
+                    label="Email"
                     required
-                    onChange={(e) => {
-                      setLoginEmail(e.target.value);
-                    }}
                   />
                   <InputTextField
                     placeholder={'Password'}
-                    type={'password'}
-                    name='password'
-                    label='Password*'
-                    value={loginPassword}
+                    type="password"
+                    name="password"
+                    label="Password"
                     required
-                    onChange={(e) => {
-                      setLoginPassword(e.target.value);
-                    }}
                   />
                 </div>
-                <Button className="contained" text="Sign In" />
+                <Button text="Sign In" />
               </div>
 
               <h3>Or</h3>
-              <div className="providers-buttons">          
+              <div className="providers-buttons">
                 <Button
-                  className="outlined"
+                  variant="outlined"
                   text="Sign in with Google"
                   icon={<GoogleLogoColors />}
                   onClick={() =>
@@ -116,7 +106,7 @@ const Login: React.FC = () => {
                   }
                 />
                 <Button
-                  className="outlined"
+                  variant="outlined"
                   text="Sign in with Github"
                   icon={<GitHub />}
                   onClick={() =>
@@ -131,7 +121,9 @@ const Login: React.FC = () => {
               </div>
               <div className="not-registered">
                 <span>Not registered yet?</span>
-                <Link to="/sign-up" className="join-now">Join Now!</Link>
+                <Link to="/sign-up" className="join-now">
+                  Join Now!
+                </Link>
               </div>
             </div>
           </form>
@@ -139,12 +131,11 @@ const Login: React.FC = () => {
           {/* <div>
             <h4>{user?.email}</h4>
             {loggedIn ? (
-              <Button className="contained" text="Log Out" onClick={logout} />
+              <Button variant="contained" text="Log Out" onClick={logout} />
             ) : (
               ''
             )}
           </div> */}
-
         </div>
       </FormProvider>
     </AppLayout>

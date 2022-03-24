@@ -13,6 +13,6 @@ export interface Favourite {
   location: string;
   contract: string;
   salary: string;
-  messages: [];
-  applied: boolean;
+  messages?: [];
+  applied?: boolean;
 }

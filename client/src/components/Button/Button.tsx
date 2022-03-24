@@ -4,7 +4,9 @@ import "./Button.css";
 
 interface Props {
   text: string;
-  className: "outlined" | "contained" | "list";
+  className?: string;
+  variant?: "outlined" | "contained";
+  size?: "small" | "medium";
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   icon?: React.ReactNode;
@@ -14,6 +16,8 @@ interface Props {
 const Button: React.FC<Props> = ({
   text,
   className,
+  variant = "contained",
+  size = "medium",
   onClick,
   icon,
   disabled = false,
@@ -22,7 +26,7 @@ const Button: React.FC<Props> = ({
   return (
     <button
       {...props}
-      className={clsx(className, { "with-icon": !!icon })}
+      className={clsx(className, variant, size, { "with-icon": !!icon })}
       onClick={onClick}
       disabled={disabled}
     >

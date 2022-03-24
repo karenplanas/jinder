@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth, db } from '../../service/firebase';
+import { auth, db } from '../../services/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 import { Button } from '../Button/Button';
 import { InputTextField } from '../InputTextField/InputTextField';
@@ -45,20 +45,35 @@ const EmployeeForm: React.FC = () => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={onSubmit}>
-        <InputTextField name="firstName" placeholder="First name" required />
-        <InputTextField name="lastName" placeholder="Last name" required />
-        <InputTextField
-          name="email"
-          type="email"
-          placeholder="Email"
-          required
-        />
-        <InputTextField
-          name="password"
-          type="password"
-          placeholder="Password"
-        />
-        <Button className="contained" text="Sign Up" />
+        <div className="SignUp-inputs Employee">
+          <InputTextField 
+            name="firstName"
+            label="First Name" 
+            placeholder="First name" 
+            required
+          />
+          <InputTextField 
+            name="lastName"
+            label="Last Name" 
+            placeholder="Last name" 
+            required 
+          />
+          <InputTextField
+            name="email"
+            type="email"
+            label="Email"
+            placeholder="Email"
+            required
+          />
+          <InputTextField
+            name="password"
+            type="password"
+            label="Password"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <Button text="Sign Up" />
       </form>
     </FormProvider>
   );
