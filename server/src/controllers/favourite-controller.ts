@@ -11,6 +11,7 @@ export const postFavourite = async (
     res.status(201);
     res.json({ data: favourite });
   } catch (e) {
+    console.log(e);
     res.status(500);
     res.json({ error: "Internal server error" });
   }

@@ -3,6 +3,7 @@ import { Building } from "../icons/Building";
 import { Button } from "../Button/Button";
 import { TempSendEmail } from "../TempSendEmail/TempSendEmail";
 import { People } from "../icons/People";
+import { RubbishBin } from "../icons/rubbishBin";
 import "./favouriteContainer.css";
 import { Favourite } from "../../Interfaces/favourite";
 
@@ -29,6 +30,8 @@ const FavouriteContainer: React.FC<Props> = ({ data }) => {
     else setCardActive(false);
   };
 
+  const removeFavourite = () => {};
+
   return (
     <div className="favourite_container">
       <div onClick={showCard} className="showCard_div">
@@ -44,6 +47,9 @@ const FavouriteContainer: React.FC<Props> = ({ data }) => {
           text="Apply now"
           onClick={toggleFunction}
         ></Button>
+        <div onClick={removeFavourite}>
+          <RubbishBin />
+        </div>
       </div>
 
       {popupActive ? (

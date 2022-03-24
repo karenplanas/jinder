@@ -1,5 +1,6 @@
 import { JobOffer } from "../Interfaces/JobOffer";
 import { Favourite } from "../Interfaces/favourite";
+import { json } from "stream/consumers";
 
 const postFavourite = (favourite: Favourite) => {
   return fetch("http://localhost:4000/favourites", {
@@ -23,6 +24,14 @@ const addApplied = (favourite: Favourite) => {
   });
 };
 
+const removeJobOffer = (jobOffer: JobOffer) => {
+  return fetch(`http://localhost:4000/job-postings/${jobOffer._id}`, {
+    method: "DELETE",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(jobOffer),
+  });
+};
+
 const postJobOffer = (jobOffer: JobOffer) => {
   return fetch("http://localhost:4000/job-postings", {
     method: "POST",
@@ -37,4 +46,11 @@ const getJobs = (setState: any) => {
     .then((data) => setState(data.data));
 };
 
-export { postJobOffer, getJobs, getFavourites, postFavourite, addApplied };
+export {
+  postJobOffer,
+  getJobs,
+  getFavourites,
+  postFavourite,
+  addApplied,
+  removeJobOffer,
+};

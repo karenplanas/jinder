@@ -10,6 +10,7 @@ const router = express.Router();
 
 router.post("/job-postings", jobOfferController.postJobOffer);
 router.get("/job-postings", jobOfferController.getJobOffers);
+router.delete("/job-postings/:id", jobOfferController.deleteJobOffer);
 
 router.post("/favourites", favouritesController.postFavourite);
 router.get("/favourites", favouritesController.getFavourites);
