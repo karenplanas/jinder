@@ -28,7 +28,7 @@ const InputTextField: React.FC<Props> = ({
   const { register } = useFormContext();
   return (
     <div className={clsx(className, 'InputTextField')}>
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && <label htmlFor={name}>{ required? `${label} *`: label }</label>}
       {type === 'textarea' ? (
         <textarea
           {...props}

@@ -45,19 +45,34 @@ const EmployeeForm: React.FC = () => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={onSubmit}>
-        <InputTextField name="firstName" placeholder="First name" required />
-        <InputTextField name="lastName" placeholder="Last name" required />
-        <InputTextField
-          name="email"
-          type="email"
-          placeholder="Email"
-          required
-        />
-        <InputTextField
-          name="password"
-          type="password"
-          placeholder="Password"
-        />
+        <div className="SignUp-inputs Employee">
+          <InputTextField 
+            name="firstName"
+            label="First Name" 
+            placeholder="First name" 
+            required
+          />
+          <InputTextField 
+            name="lastName"
+            label="Last Name" 
+            placeholder="Last name" 
+            required 
+          />
+          <InputTextField
+            name="email"
+            type="email"
+            label="Email"
+            placeholder="Email"
+            required
+          />
+          <InputTextField
+            name="password"
+            type="password"
+            label="Password"
+            placeholder="Password"
+            required
+          />
+        </div>
         <Button variant="contained" text="Sign Up" />
       </form>
     </FormProvider>

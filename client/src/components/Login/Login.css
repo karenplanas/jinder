@@ -10,19 +10,6 @@
   width: 100%;
 }
 
-.logo-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding-top: 24px;
-  padding-bottom: 10px;
-}
-
-.logo-title h2 {
-  font-weight: 600;
-}
-
 .login-inputs {
   display: flex;
   flex-direction: column;

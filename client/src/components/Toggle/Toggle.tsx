@@ -1,4 +1,5 @@
 import "./Toggle.css";
+
 const Toggle = ({ onChange }: { onChange: (event: any) => void }) => {
   return (
     <div className="switch-toggle">
