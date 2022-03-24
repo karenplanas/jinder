@@ -1,23 +1,17 @@
-import { useState } from 'react';
-import {
-  GithubAuthProvider,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-} from 'firebase/auth';
+import { useEffect } from 'react';
+// import { onAuthStateChanged } from 'firebase/auth';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../../services/firebase';
 import { InputTextField } from '../InputTextField/InputTextField';
 import { Button } from '../Button/Button';
 import { AppLayout } from '../AppLayout/AppLayout';
 import { GoogleLogoColors } from '../icons/GoogleLogoColors';
 import { GitHub } from '../icons/GitHub';
-import './Login.css';
 import { User } from '../../Interfaces/User';
 import { LogoTitleVertical } from '../LogoTitleVertical/LogoTitleVertical';
+import { useUserContext } from '../../contexts/UserContext';
+import * as ApiClient from '../../services/api-client';
+import './Login.css';
 
 const Login: React.FC = () => {
   const methods = useForm<User>({
@@ -26,43 +20,23 @@ const Login: React.FC = () => {
       password: '',
     },
   });
-  const [loggedIn, setLoggedIn] = useState(false);
+
+  const { user, login } = useUserContext(); 
   const { handleSubmit } = methods;
   const navigate = useNavigate();
 
-  const [user, setUser] = useState<{
-    email: string | null;
-  } | null>(null);
+  useEffect(()=> {
+    user && navigate('/home')
+  }, [user, navigate])
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  // onAuthStateChanged(auth, (currentUser) => {
+  //   setUser(currentUser);
+  // });
 
   const onSubmit = handleSubmit(async (data) => {
-    try {
-      await signInWithEmailAndPassword(auth, data.email, data.password);
-      setLoggedIn(true);
-      navigate('/home');
-    } catch (error) {
-      console.log(error);
-    }
+    login(data)
   });
 
-  const logout = async () => {
-    console.log('logged out');
-    await signOut(auth);
-    setLoggedIn(false);
-  };
-
-  const signInwithGoogle = () => {
-    const googleProvider = new GoogleAuthProvider();
-    return signInWithPopup(auth, googleProvider);
-  };
-
-  const signInwithGithub = () => {
-    const githubProvider = new GithubAuthProvider();
-    return signInWithPopup(auth, githubProvider);
-  };
   return (
     <AppLayout displayNavBarTop={false} displayNavBarBottom={false}>
       <FormProvider {...methods}>
@@ -97,12 +71,12 @@ const Login: React.FC = () => {
                   text="Sign in with Google"
                   icon={<GoogleLogoColors />}
                   onClick={() =>
-                    signInwithGoogle()
-                      .then((user) => {
-                        console.log(user);
-                        setLoggedIn(true);
-                      })
-                      .catch((error) => console.log(error))
+                    ApiClient.signInwithGoogle()
+                      // .then((user: User) => {
+                      //   console.log(user);
+                      //   setLoggedIn(true);
+                      // })
+                      // .catch((error: any) => console.log(error))
                   }
                 />
                 <Button
@@ -110,12 +84,12 @@ const Login: React.FC = () => {
                   text="Sign in with Github"
                   icon={<GitHub />}
                   onClick={() =>
-                    signInwithGithub()
-                      .then((user) => {
-                        console.log(user);
-                        setLoggedIn(true);
-                      })
-                      .catch((error) => console.log(error))
+                    ApiClient.signInwithGithub()
+                      // .then((user: User) => {
+                      //   console.log(user);
+                      //   setLoggedIn(true);
+                      // })
+                      // .catch((error) => console.log(error))
                   }
                 />
               </div>

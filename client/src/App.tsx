@@ -8,36 +8,38 @@ import { JobSeekerProfileExperience } from "./components/CreateJobSeekerProfile/
 import { Login } from "./components/Login/Login";
 import { SignUp } from "./components/SignUp/SignUp";
 import { ChatContainer } from "./components/chatContainer/chatContainer";
-
 import "./App.css";
+import { UserContextProvider } from "./contexts/UserContext";
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/favourites" element={<ChatContainer />} />
-        <Route path="/home" element={<JobList />} />
-        <Route path="/job-position/edit" element={<CreateJobOffer />} />
-        <Route
-          path="/job-seeker-profile/edit"
-          element={<JobSeekerProfileExperience />}
-        />
-        <Route
-          path="/job-seeker-profile/edit/experience"
-          element={<JobSeekerProfileExperience />}
-        />
-        <Route
-          path="/job-seeker-profile/edit/skills"
-          element={<JobSeekerProfileSkills />}
-        />
-        <Route
-          path="/job-seeker-profile/edit/looking-for"
-          element={<JobSeekerProfileLookingFor />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <UserContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/favourites" element={<ChatContainer />} />
+          <Route path="/home" element={<JobList />} />
+          <Route path="/job-position/edit" element={<CreateJobOffer />} />
+          <Route
+            path="/job-seeker-profile/edit"
+            element={<JobSeekerProfileExperience />}
+          />
+          <Route
+            path="/job-seeker-profile/edit/experience"
+            element={<JobSeekerProfileExperience />}
+          />
+          <Route
+            path="/job-seeker-profile/edit/skills"
+            element={<JobSeekerProfileSkills />}
+          />
+          <Route
+            path="/job-seeker-profile/edit/looking-for"
+            element={<JobSeekerProfileLookingFor />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </UserContextProvider>
   );
 };
 
