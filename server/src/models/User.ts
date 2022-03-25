@@ -1,5 +1,5 @@
 import { model, Schema, Types } from 'mongoose'
-import { EmployerProfile } from './EmployerProfileSchema';
+import { EmployerProfile } from './EmployerProfile';
 import { JobSeekerProfile } from './JobSeekerProfile';
 
 interface User {
@@ -22,10 +22,11 @@ interface JobSeeker extends User {
   jobSeekerProfile: JobSeekerProfile
 }
 
-const UserSchema = new Schema({
+const UserSchema = new Schema<User>({
   firstName: { type: String },
   lastName: { type: String },
-  email: { type: String },
+  email: { type: String, required: true },
+  type: { type: String, required: true },
   externalId: { type: String, required: true },
 })
 
@@ -38,7 +39,7 @@ const findOne = (externalId: string) => {
     },
     {
       $lookup: {
-        from: 'employerProfiles',
+        from: 'employerprofiles',
         localField: '_id',
         foreignField: 'userId',
         as: 'employerProfile'
@@ -49,16 +50,15 @@ const findOne = (externalId: string) => {
         path: '$employerProfile',
         preserveNullAndEmptyArrays: true
       }
-    } ,
+    },
     {
       $lookup: {
-        from: 'jobSeekerProfiles',
+        from: 'jobSeekerprofiles',
         localField: '_id',
         foreignField: 'userId',
         as: 'jobSeekerProfile'
       }
     },
-    
     {
       $unwind: {
         path: '$jobSeekerProfile',
@@ -78,8 +78,8 @@ const create = async (payload: Partial<User> & { companyName?: string }) => {
     })
 
     return {
-      ...user,
-      employerProfile 
+      ...user.toObject(),
+      employerProfile: { ...employerProfile.toObject() } 
     }
   }
 

@@ -4,6 +4,7 @@ import * as jobOfferController from "./controllers/JobOffer-controller";
 import * as userController from "./controllers/user-controller";
 
 const router = express.Router();
+
 router.post("/users", userController.postUser);
 router.get("/users/:id", userController.getUser);
 
