@@ -1,10 +1,8 @@
 import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import { auth, getDoc, setDoc } from '../services/firebase';
+import { auth } from '../services/firebase';
 import { ICredentials } from "../Interfaces/ICredentials";
 import { User } from "../Interfaces/User";
 import { performRequest } from './helpers';
-
-type UserCredential = any;
 
 
 const postUser = (user: unknown /*Partial<User>*/) => {
@@ -40,26 +38,27 @@ const signInwithGithub = (): Promise<any> => {
   return signInWithPopup(auth, githubProvider);
 };
 
-const createEmployerAccount = async (user: User): Promise<User> => {
-  const response = await createUserWithEmailAndPassword(auth, user.email, user.password)
+const createEmployerAccount = async (payload: ICredentials & { companyName: string }): Promise<User> => {
+  const response = await createUserWithEmailAndPassword(auth, payload.email, payload.password)
 
   return postUser({
     type: 'employer',
+    companyName: payload.companyName,
     externalId: response.user.uid,
     email: response.user.email as string,
     accessToken: (response.user as any).accessToken,
   })
 }
 
-const creatJobSeekerAccount = async (user: User): Promise<User> => {
-  const response = await createUserWithEmailAndPassword(auth, user.email, user.password )
+const creatJobSeekerAccount = async (payload: ICredentials & { firstName: string, lastName: string }): Promise<User> => {
+  const response = await createUserWithEmailAndPassword(auth, payload.email, payload.password )
 
   return postUser({
     type: 'job-seeker',
     externalId: response.user.uid,
     email: response.user.email as string,
-    firstName: user.firstName,
-    lastName: user.lastName,
+    firstName: payload.firstName,
+    lastName: payload.lastName,
     accessToken: (response.user as any).accessToken,
   })
 }

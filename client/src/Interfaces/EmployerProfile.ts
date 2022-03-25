@@ -1,4 +1,4 @@
-export interface Employer {
+export interface EmployerProfile {
   userId: string
   name: string
   address: {

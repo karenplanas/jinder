@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React /*{ useEffect }*/ from 'react';
 import { InputTextField } from '../InputTextField/InputTextField';
 import { Button } from '../Button/Button';
 import { FormProvider, useForm } from 'react-hook-form';
 import { User } from '../../Interfaces/User';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../contexts/UserContext';
 import './SignUp.css'
 
@@ -17,16 +17,14 @@ const EmployerForm: React.FC = () => {
   });
 
   const { user, createEmployer } = useUserContext();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { handleSubmit } = methods;
 
-  useEffect(()=>{
-    user && navigate('/home')
-  }, [user, navigate])
+  // useEffect(()=>{
+  //   user && navigate('/home')
+  // }, [user, navigate])
 
-  const onSubmit = handleSubmit(async (data) => {
-    createEmployer(data);
-  });
+  const onSubmit = handleSubmit(createEmployer);
 
   return (
     <FormProvider {...methods}>
@@ -59,4 +57,4 @@ const EmployerForm: React.FC = () => {
   );
 };
 
-export default EmployerForm;
+export { EmployerForm };

@@ -7,7 +7,7 @@ import { JobSeekerProfileLookingFor } from "./components/CreateJobSeekerProfile/
 import { JobSeekerProfileExperience } from "./components/CreateJobSeekerProfile/JobSeekerProfileExperience";
 import { Login } from "./components/Login/Login";
 import { SignUp } from "./components/SignUp/SignUp";
-import { ChatContainer } from "./components/chatContainer/chatContainer";
+import { ChatContainer } from "./components/MatchesContainer/MatchesContainer";
 import { UserContextProvider, useUserContext } from "./contexts/UserContext";
 import { ChatList } from "./components/ChatList/ChatList";
 import "./App.css";

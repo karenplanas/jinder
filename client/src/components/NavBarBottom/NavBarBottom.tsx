@@ -52,29 +52,4 @@ const NavBarBottom: React.FC = () => {
   );
 };
 
-/* <Link
-  to="/home"
-  className={clsx({ selected: pathname.startsWith('/home') })}
->
-  <IconWithLabel icon={<Square/>} label='Home' />
-</Link>
-<Link
-  to="/search"
-  className={clsx({ selected: pathname.startsWith('/search') })}
->
-  <Search />
-</Link>
-<Link
-  to="/favourites"
-  className={clsx({ selected: pathname.startsWith('/favourites') })}
->
-  <Favourite />
-</Link>
-<Link
-  to="/chat"
-  className={clsx({ selected: pathname.startsWith('/chat') })}
->
-  <Chat />
-</Link> */
-
 export { NavBarBottom };

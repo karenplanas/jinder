@@ -6,7 +6,7 @@ import { User } from '../../Interfaces/User';
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../contexts/UserContext';
 
-const EmployeeForm: React.FC = () => {
+const JobSeekerForm: React.FC = () => {
   const methods = useForm<User>({
     defaultValues: {
       firstName: '',
@@ -16,7 +16,7 @@ const EmployeeForm: React.FC = () => {
     },
   });
 
-  const { user, createUser } = useUserContext();
+  const { user, createJobSeeker } = useUserContext();
   const navigate = useNavigate();
   const { handleSubmit } = methods;
 
@@ -24,9 +24,7 @@ const EmployeeForm: React.FC = () => {
     user && navigate('/home');
   }, [user, navigate])
 
-  const onSubmit = handleSubmit(async (data: User) => {
-    createUser(data);
-  });
+  const onSubmit = handleSubmit(createJobSeeker);
 
   return (
     <FormProvider {...methods}>
@@ -65,4 +63,4 @@ const EmployeeForm: React.FC = () => {
   );
 };
 
-export default EmployeeForm;
+export { JobSeekerForm };

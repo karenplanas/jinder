@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { ICredentials } from '../Interfaces/ICredentials';
-import { Employer } from '../Interfaces/Employer';
+import { EmployerCreationPayload, ICredentials, JobSeekerCreationPayload } from '../Interfaces/ICredentials';
 import { User } from '../Interfaces/User';
 import * as ApiClient from '../services/user-api-client';
 
@@ -8,8 +7,8 @@ const STORAGE_KEY = 'user';
 
 interface IUserContext {
   user?: User;
-  createEmployer: (user: User) => void;
-  createUser: (user: User) => void
+  createEmployer: (userPayload: EmployerCreationPayload) => void;
+  createJobSeeker: (userPayload: JobSeekerCreationPayload) => void
   login: (credentials: ICredentials) => void;
   logout: () => void;
   loginWithGoogle: () => void;
@@ -28,12 +27,13 @@ const UserContextProvider: React.FC = ({ children }) => {
     user && window.localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
   }, [user]);
 
-  const createEmployer = async (userPayload: User) => {
+  const createEmployer = async (userPayload: EmployerCreationPayload) => {
+    console.log('userPayload', userPayload)
     const user = await ApiClient.createEmployerAccount(userPayload);
     setUser(user);
   }
 
-  const createUser = async (userPayload: User) => {
+  const createJobSeeker = async (userPayload: JobSeekerCreationPayload) => {
     const user = await ApiClient.creatJobSeekerAccount(userPayload);
     setUser(user);
   }
@@ -61,7 +61,7 @@ const UserContextProvider: React.FC = ({ children }) => {
   const value = {
     user, 
     createEmployer,
-    createUser,
+    createJobSeeker,
     login, 
     loginWithGoogle,
     loginWithGithub,
