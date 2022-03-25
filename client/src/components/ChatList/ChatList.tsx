@@ -25,7 +25,12 @@ const ChatList: React.FC = () => {
       />{" "}
       {chatting.map((chat) => {
         return (
-          <Link to={"/chatRoom"} className="chatLinks">
+          <Link
+            to={`/chatRoom/${chat._id}`}
+            className="chatLinks"
+            state={{ chat: chat }}
+          >
+            {" "}
             <ChatContainer data={chat} />
           </Link>
         );
