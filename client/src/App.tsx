@@ -7,11 +7,12 @@ import { JobSeekerProfileLookingFor } from "./components/CreateJobSeekerProfile/
 import { JobSeekerProfileExperience } from "./components/CreateJobSeekerProfile/JobSeekerProfileExperience";
 import { Login } from "./components/Login/Login";
 import { SignUp } from "./components/SignUp/SignUp";
-import { ChatContainer } from "./components/MatchesContainer/MatchesContainer";
+
 import { ChatList } from "./components/ChatList/ChatList";
 
 import "./App.css";
 import ChatRoom from "./components/ChatRoom/ChatRoom";
+import FavouritesList from "./components/FavouritesList/FavouritesList";
 
 const App: React.FC = () => {
   return (
@@ -19,11 +20,11 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/favourites" element={<ChatContainer />} />
+        <Route path="/favourites" element={<FavouritesList />} />
         <Route path="/home" element={<JobList />} />
         <Route path="/chatList" element={<ChatList />} />
         <Route path="/job-position/edit" element={<CreateJobOffer />} />
-        <Route path="/chatRoom" element={<ChatRoom />} />
+        <Route path="/chatRoom/:id" element={<ChatRoom />} />
         <Route
           path="/job-seeker-profile/edit"
           element={<JobSeekerProfileExperience />}
