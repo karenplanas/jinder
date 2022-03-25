@@ -10,11 +10,13 @@ import { Job } from "../Job/Job";
 import { AppLayout } from "../AppLayout/AppLayout";
 import { JobOffer } from "../../Interfaces/JobOffer";
 import "./JobList.css";
+import { useUserContext } from '../../contexts/UserContext';
 
 type Direction = "left" | "right" | "up" | "down";
 
 const JobList: React.FC = () => {
   const [jobOffers, setJobOffers] = useState<JobOffer[]>([]);
+  const { user } = useUserContext();
 
   useEffect(() => {
     getJobs(setJobOffers);

@@ -1,33 +1,33 @@
-import React from 'react';
-import clsx from 'clsx';
-import { useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
-import { Square } from '../icons/Square';
-import { Chat } from '../icons/Chat';
-import { Pentagon } from '../icons/Pentagon';
-import { Star } from '../icons/Star';
-import './NavBarBottom.css';
-import { IconWithLabel } from '../IconWithLabel/IconWithLabel';
+import React from "react";
+import clsx from "clsx";
+import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
+import { Square } from "../icons/Square";
+import { Chat } from "../icons/Chat";
+import { Pentagon } from "../icons/Pentagon";
+import { Star } from "../icons/Star";
+import "./NavBarBottom.css";
+import { IconWithLabel } from "../IconWithLabel/IconWithLabel";
 
 const items = [
   {
-    path: '/home',
-    label: 'Home',
+    path: "/home",
+    label: "Home",
     icon: <Square />,
   },
   {
-    path: '/job-position/edit',
-    label: 'Jobs',
+    path: "/job-position/edit",
+    label: "Jobs",
     icon: <Pentagon />,
   },
   {
-    path: '/favourites',
-    label: 'Favourites',
+    path: "/favourites",
+    label: "Favourites",
     icon: <Star />,
   },
   {
-    path: '/chat',
-    label: 'Chat',
+    path: "/chatList",
+    label: "Chat",
     icon: <Chat />,
   },
 ];
@@ -51,30 +51,5 @@ const NavBarBottom: React.FC = () => {
     </nav>
   );
 };
-
-/* <Link
-  to="/home"
-  className={clsx({ selected: pathname.startsWith('/home') })}
->
-  <IconWithLabel icon={<Square/>} label='Home' />
-</Link>
-<Link
-  to="/search"
-  className={clsx({ selected: pathname.startsWith('/search') })}
->
-  <Search />
-</Link>
-<Link
-  to="/favourites"
-  className={clsx({ selected: pathname.startsWith('/favourites') })}
->
-  <Favourite />
-</Link>
-<Link
-  to="/chat"
-  className={clsx({ selected: pathname.startsWith('/chat') })}
->
-  <Chat />
-</Link> */
 
 export { NavBarBottom };

@@ -10,16 +10,20 @@ interface Props {
   className?: string
   position?: string
   title?: string
+  userName?: string | null
 }
 
-const NavBarTop: React.FC<Props> = ({ className, position, title}) => {
+const NavBarTop: React.FC<Props> = ({ className, position, title, userName}) => {
   return (
     <div className={clsx('NavBarTop', className, { 'NavBarTop-fixed': position === 'fixed'})}>
       <div className='NavBarTop-content'>
         <Link to='/home'>
           <Logo width={60} height={60}/>
         </Link>
-        { title && <h2>{title}</h2>}
+        <div className='NavBarTop-Salut-title'>
+          { userName && <h2>Hello {userName}!</h2>}
+          { title && <h2>{title}</h2>}
+        </div>
         <div className='NavBarTop-picture'>
           <Link to='/job-seeker-profile/edit'>
             <ImageHolder size='big'>

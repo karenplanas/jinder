@@ -1,0 +1,14 @@
+.chat_container_chat {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  height: 70px;
+  border-bottom: 1px solid black;
+  gap: 5rem;
+}
+
+.chat_container_chat:hover {
+  background: #f3c522;
+  color: black;
+  font-size: 1.5rem;
+}

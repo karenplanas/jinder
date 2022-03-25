@@ -1,9 +1,9 @@
 export interface JobOffer {
   _id: string;
   companyname: string;
-	companysize: string;
+  companysize: string;
   position: string;
-	bio: string;
+  bio: string;
   role: string;
   level: string;
   description: string;
@@ -13,5 +13,6 @@ export interface JobOffer {
   location: string;
   contract: string;
   salary: string;
+  messages?: [];
+  applied?: boolean;
 }
-

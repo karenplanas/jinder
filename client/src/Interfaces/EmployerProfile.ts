@@ -1,9 +1,16 @@
 export interface EmployerProfile {
-  _id: string;
-  companyname: string;
-  companysize: string;
+  userId: string;
+  name: string;
   domain: string;
   description: string;
-  logo: string;
-  rating: string;
+  address: {
+    city: string;
+    state: string;
+    country: string;
+  };
+  size: {
+    min: number;
+    max: number;
+  };
+  imageUrl: string;
 }

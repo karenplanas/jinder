@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./FavouritesList.css";
 import { getFavourites } from "../../services/api-client";
 import { Favourite } from "../../Interfaces/favourite";
-import { Building } from "../icons/Building";
-import { People } from "../icons/People";
-import { TempSendEmail } from "../TempSendEmail/TempSendEmail";
-import { Button } from "../Button/Button";
+import { NavBarTop } from "../NavBarTop/NavBarTop";
+import { NavTabs } from "../NavTabs/NavTabs";
+
 import { FavouriteContainer } from "../favouriteContainer/favouriteContainer";
 
 const FavouritesList: React.FC = () => {
@@ -13,15 +12,28 @@ const FavouritesList: React.FC = () => {
 
   useEffect(() => {
     getFavourites(setFavourites);
-  }, []);
+  }, [favourites]);
 
   return (
     <div>
+      <NavBarTop />
+      <NavTabs
+        tabs={[
+          { name: "Favourites", endpoint: "/favourites" },
+          { name: "Chat", endpoint: "/chatlist" },
+        ]}
+      />{" "}
       {favourites.map((favourite) => {
-        return <FavouriteContainer data={favourite} key={favourite._id} />;
+        return (
+          <FavouriteContainer
+            data={favourite}
+            key={favourite._id}
+            refresh={() => getFavourites(setFavourites)}
+          />
+        );
       })}
     </div>
   );
 };
 
-export default FavouritesList;
+export { FavouritesList };
