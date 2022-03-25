@@ -28,3 +28,9 @@
   font-weight: 500;
 }
 
+.NavBarTop-Salut-title {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}

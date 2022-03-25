@@ -1,23 +1,15 @@
-import { useState } from 'react';
-import {
-  GithubAuthProvider,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-} from 'firebase/auth';
+import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../../services/firebase';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { InputTextField } from '../InputTextField/InputTextField';
 import { Button } from '../Button/Button';
 import { AppLayout } from '../AppLayout/AppLayout';
 import { GoogleLogoColors } from '../icons/GoogleLogoColors';
 import { GitHub } from '../icons/GitHub';
-import './Login.css';
 import { User } from '../../Interfaces/User';
 import { LogoTitleVertical } from '../LogoTitleVertical/LogoTitleVertical';
+import { useUserContext } from '../../contexts/UserContext';
+import './Login.css';
 
 const Login: React.FC = () => {
   const methods = useForm<User>({
@@ -26,43 +18,20 @@ const Login: React.FC = () => {
       password: '',
     },
   });
-  const [loggedIn, setLoggedIn] = useState(false);
+
+  const { user, login, loginWithGoogle, loginWithGithub } = useUserContext(); 
   const { handleSubmit } = methods;
   const navigate = useNavigate();
+  const { state } = useLocation();
 
-  const [user, setUser] = useState<{
-    email: string | null;
-  } | null>(null);
-
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  useEffect(()=> {
+    user && navigate((state as any)?.from || '/home')
+  }, [user, navigate, state])
 
   const onSubmit = handleSubmit(async (data) => {
-    try {
-      await signInWithEmailAndPassword(auth, data.email, data.password);
-      setLoggedIn(true);
-      navigate('/home');
-    } catch (error) {
-      console.log(error);
-    }
+    login(data)
   });
 
-  const logout = async () => {
-    console.log('logged out');
-    await signOut(auth);
-    setLoggedIn(false);
-  };
-
-  const signInwithGoogle = () => {
-    const googleProvider = new GoogleAuthProvider();
-    return signInWithPopup(auth, googleProvider);
-  };
-
-  const signInwithGithub = () => {
-    const githubProvider = new GithubAuthProvider();
-    return signInWithPopup(auth, githubProvider);
-  };
   return (
     <AppLayout displayNavBarTop={false} displayNavBarBottom={false}>
       <FormProvider {...methods}>
@@ -96,27 +65,13 @@ const Login: React.FC = () => {
                   variant="outlined"
                   text="Sign in with Google"
                   icon={<GoogleLogoColors />}
-                  onClick={() =>
-                    signInwithGoogle()
-                      .then((user) => {
-                        console.log(user);
-                        setLoggedIn(true);
-                      })
-                      .catch((error) => console.log(error))
-                  }
+                  onClick={loginWithGoogle}
                 />
                 <Button
                   variant="outlined"
                   text="Sign in with Github"
                   icon={<GitHub />}
-                  onClick={() =>
-                    signInwithGithub()
-                      .then((user) => {
-                        console.log(user);
-                        setLoggedIn(true);
-                      })
-                      .catch((error) => console.log(error))
-                  }
+                  onClick={loginWithGithub}
                 />
               </div>
               <div className="not-registered">
@@ -127,15 +82,6 @@ const Login: React.FC = () => {
               </div>
             </div>
           </form>
-
-          {/* <div>
-            <h4>{user?.email}</h4>
-            {loggedIn ? (
-              <Button variant="contained" text="Log Out" onClick={logout} />
-            ) : (
-              ''
-            )}
-          </div> */}
         </div>
       </FormProvider>
     </AppLayout>
