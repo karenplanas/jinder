@@ -1,6 +1,5 @@
 import { JobOffer } from "../Interfaces/JobOffer";
 import { Favourite } from "../Interfaces/favourite";
-import { json } from "stream/consumers";
 
 const postFavourite = (favourite: Favourite) => {
   return fetch("http://localhost:4000/favourites", {
