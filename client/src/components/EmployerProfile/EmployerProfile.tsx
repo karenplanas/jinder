@@ -30,12 +30,17 @@ const EmployerProfile: React.FC = () => {
               <h3>Company Profile</h3>
             </div>
             <div className="inputRow">
-              <InputTextField name="companyname" label="Company name" />
-              <InputTextField name="companysize" label="Company size" />
+              <InputTextField name="companyname" label="Name*" />
+              <InputTextField type="number" name="companysize" label="Size*" />
             </div>
-            <InputTextField name="domain" label="Domain" />
+            <InputTextField name="domain" label="Domain*" />
+            <div className="inputRow">
+              <InputTextField name="city" label="City" />
+              <InputTextField name="state" label="State" />
+              <InputTextField name="country" label="Country" />
+            </div>
             <InputTextField name="description" label="Description" />
-            <InputTextField type="file" name="logo" label="Logo" />
+            <InputTextField name="logo" label="Logo" />
             {/* <div className="inputRow">
               <InputTextField name="rating" label="Rating" />
             </div> */}
