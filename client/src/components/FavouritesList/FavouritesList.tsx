@@ -36,4 +36,4 @@ const FavouritesList: React.FC = () => {
   );
 };
 
-export default FavouritesList;
+export { FavouritesList };

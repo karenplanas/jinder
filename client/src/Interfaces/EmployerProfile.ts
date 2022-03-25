@@ -1,14 +1,16 @@
 export interface EmployerProfile {
-  userId: string
-  name: string
+  userId: string;
+  name: string;
+  domain: string;
+  description: string;
   address: {
-    city: string
-    state: string
-    country: string
-  },
+    city: string;
+    state: string;
+    country: string;
+  };
   size: {
-    min: number,
-    max: number,
+    min: number;
+    max: number;
   };
   imageUrl: string;
 }
