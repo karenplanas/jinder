@@ -1,14 +1,18 @@
-import React from 'react'
+import React from "react";
 import { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
-import { getJobs, postFavourite } from "../../services/api-client";
+import {
+  getJobs,
+  postFavourite,
+  removeJobOffer,
+} from "../../services/api-client";
 import { Job } from "../Job/Job";
-import { AppLayout } from '../AppLayout/AppLayout';
-import { JobOffer } from '../../Interfaces/JobOffer';
+import { AppLayout } from "../AppLayout/AppLayout";
+import { JobOffer } from "../../Interfaces/JobOffer";
 import "./JobList.css";
 import { useUserContext } from '../../contexts/UserContext';
 
-type Direction = 'left' | 'right' | 'up' | 'down'
+type Direction = "left" | "right" | "up" | "down";
 
 const JobList: React.FC = () => {
   const [jobOffers, setJobOffers] = useState<JobOffer[]>([]);
@@ -21,13 +25,16 @@ const JobList: React.FC = () => {
   const swiped = (direction: Direction, jobObject: JobOffer) => {
     if (direction === "right") {
       postFavourite(jobObject);
-    } if (direction === "left") {
+      removeJobOffer(jobObject);
+    }
+    if (direction === "left") {
+      removeJobOffer(jobObject);
       console.log(`${jobObject._id} got rejected by user`);
     }
   };
 
   return (
-    <AppLayout title='Find your dream job'>
+    <AppLayout title="Find your dream job">
       <div className="JobList">
         {jobOffers.map((jobOffer) => {
           return (

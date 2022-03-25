@@ -9,7 +9,9 @@ import { Login } from "./components/Login/Login";
 import { SignUp } from "./components/SignUp/SignUp";
 import { ChatContainer } from "./components/chatContainer/chatContainer";
 import { UserContextProvider, useUserContext } from "./contexts/UserContext";
+import { ChatList } from "./components/ChatList/ChatList";
 import "./App.css";
+import ChatRoom from "./components/ChatRoom/ChatRoom";
 
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
 const RequireAuth: React.FC = ({ children }) => {
@@ -32,7 +34,9 @@ const App: React.FC = () => {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/favourites" element={<RequireAuth><ChatContainer /></RequireAuth>} />
           <Route path="/home" element={<JobList />} />
+          <Route path="/chatList" element={<RequireAuth><ChatList /></RequireAuth>} />
           <Route path="/job-position/edit" element={<RequireAuth><CreateJobOffer /></RequireAuth>} />
+          <Route path="/chatRoom" element={<ChatRoom />} />
           <Route
             path="/job-seeker-profile/edit"
             element={<RequireAuth><JobSeekerProfileExperience /></RequireAuth>}

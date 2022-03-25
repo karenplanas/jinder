@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 interface newJobOffer {
@@ -15,6 +15,8 @@ interface newJobOffer {
   location: string;
   contract: string;
   salary: string;
+  messages?: [];
+  applied?: boolean;
 }
 
 const JobOfferSchema = new Schema<newJobOffer>({
@@ -70,8 +72,14 @@ const JobOfferSchema = new Schema<newJobOffer>({
     type: String,
     required: true,
   },
+  messages: {
+    type: [],
+  },
+  applied: {
+    type: Boolean,
+  },
 });
 
-const JobOffer = mongoose.model<newJobOffer>('JobOffer', JobOfferSchema);
+const JobOffer = mongoose.model<newJobOffer>("JobOffer", JobOfferSchema);
 
 export { JobOffer };

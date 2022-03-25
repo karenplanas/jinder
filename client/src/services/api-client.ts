@@ -23,6 +23,22 @@ const addApplied = (favourite: Favourite) => {
   });
 };
 
+const deleteFavourite = (favourite: Favourite) => {
+  return fetch(`http://localhost:4000/favourites/${favourite._id}`, {
+    method: "DELETE",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(favourite),
+  });
+};
+
+const removeJobOffer = (jobOffer: JobOffer) => {
+  return fetch(`http://localhost:4000/job-postings/${jobOffer._id}`, {
+    method: "DELETE",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(jobOffer),
+  });
+};
+
 const postJobOffer = (jobOffer: JobOffer) => {
   return fetch("http://localhost:4000/job-postings", {
     method: "POST",
@@ -37,10 +53,12 @@ const getJobs = (setState: any) => {
     .then((data) => setState(data.data));
 };
 
-export { 
-  postJobOffer, 
-  getJobs, 
-  getFavourites, 
-  postFavourite, 
-  addApplied, 
- };
+export {
+  postJobOffer,
+  getJobs,
+  getFavourites,
+  postFavourite,
+  addApplied,
+  removeJobOffer,
+  deleteFavourite,
+};

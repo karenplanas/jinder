@@ -11,6 +11,7 @@ export const postFavourite = async (
     res.status(201);
     res.json({ data: favourite });
   } catch (e) {
+    console.log(e);
     res.status(500);
     res.json({ error: "Internal server error" });
   }
@@ -40,6 +41,20 @@ export const editApplied = async (
     });
     res.send(modifyFavourite).status(200);
     console.log(req.body);
+  } catch (e) {
+    res.status(500);
+    res.json({ error: "Internal server error" });
+  }
+};
+
+export const deleteFavourite = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    console.log(req.params.id);
+    const deleteFavourite = await Favourite.findByIdAndDelete(req.params.id);
+    res.send(deleteFavourite).status(200);
   } catch (e) {
     res.status(500);
     res.json({ error: "Internal server error" });

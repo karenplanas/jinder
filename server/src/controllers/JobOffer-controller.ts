@@ -1,5 +1,5 @@
-import express from 'express';
-import { JobOffer } from '../models/JobOfferSchema';
+import express from "express";
+import { JobOffer } from "../models/JobOfferSchema";
 
 export const postJobOffer = async (
   req: express.Request,
@@ -13,7 +13,7 @@ export const postJobOffer = async (
   } catch (e) {
     console.error(e);
     res.status(500);
-    res.json({ error: 'Internal server error' });
+    res.json({ error: "Internal server error" });
   }
 };
 
@@ -28,6 +28,20 @@ export const getJobOffers = async (
   } catch (e) {
     console.error(e);
     res.status(500);
-    res.json({ error: 'Internal server error' });
+    res.json({ error: "Internal server error" });
+  }
+};
+
+export const deleteJobOffer = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    console.log(req.params.id);
+    const deleteJob = await JobOffer.findByIdAndDelete(req.params.id);
+    res.send(deleteJob).status(200);
+  } catch (e) {
+    res.status(500);
+    res.json({ error: "Internal server error" });
   }
 };
