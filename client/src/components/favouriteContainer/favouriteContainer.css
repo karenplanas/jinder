@@ -84,3 +84,8 @@
 .rubbishBin:hover {
   background: red;
 }
+
+.job_card_container {
+  z-index: 10;
+  position: fixed;
+}

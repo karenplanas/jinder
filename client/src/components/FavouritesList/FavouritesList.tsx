@@ -10,12 +10,18 @@ const FavouritesList: React.FC = () => {
 
   useEffect(() => {
     getFavourites(setFavourites);
-  }, []);
+  }, [favourites]);
 
   return (
     <div>
       {favourites.map((favourite) => {
-        return <FavouriteContainer data={favourite} key={favourite._id} />;
+        return (
+          <FavouriteContainer
+            data={favourite}
+            key={favourite._id}
+            refresh={() => getFavourites(setFavourites)}
+          />
+        );
       })}
     </div>
   );

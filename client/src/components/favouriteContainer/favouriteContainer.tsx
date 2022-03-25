@@ -7,13 +7,14 @@ import { RubbishBin } from "../icons/rubbishBin";
 import "./favouriteContainer.css";
 import { Favourite } from "../../Interfaces/favourite";
 import { deleteFavourite, postJobOffer } from "../../services/api-client";
+import { Job } from "../Job/Job";
 
 interface Props {
   data: Favourite;
-  // refresh: () => Promise<void>;
+  refresh: () => Promise<void>;
 }
 
-const FavouriteContainer: React.FC<Props> = ({ data }) => {
+const FavouriteContainer: React.FC<Props> = ({ data, refresh }) => {
   const [cardActive, setCardActive] = useState(false);
   const [popupActive, setPopupActive] = useState(false);
   const [applied, setApplied] = useState(false);
@@ -35,7 +36,7 @@ const FavouriteContainer: React.FC<Props> = ({ data }) => {
   const removeFavourite = () => {
     postJobOffer(data);
     deleteFavourite(data);
-    // refresh();
+    refresh();
   };
 
   return (
@@ -71,55 +72,16 @@ const FavouriteContainer: React.FC<Props> = ({ data }) => {
       )}
 
       {cardActive ? (
-        <div className="detail_container showCard" onClick={showCard}>
-          <div className="card_header">
-            <div className="company_logo">
-              <div className="buildingLogo">
-                {" "}
-                <Building />
-              </div>
-            </div>
-            <div className="header_text">
-              <h3 className="company_name">{data.companyname}</h3>
-              <div className="company_size_container">
-                <div className="company_size_logo">
-                  {" "}
-                  <div className="sizeLogo">
-                    <People />
-                  </div>
-                </div>
-                <h2 className="company_size">201 - 500 employees</h2>
-              </div>
-            </div>
-          </div>
-          <div className="card_body high-z">
-            <h2 className="jobPosition">{data.position}</h2>
-            <p className="jobBio"> {data.bio} </p>
-          </div>
-          <div className="jobSalary high-z">
-            <h3 className="salarySlogan">Salary</h3> {data.salary}
-          </div>
-          <div className="equityContainer high-z">
-            <h3 className="equityString"> Equity</h3> 0-5%
-          </div>
-          <div className="remoteContainer high-z">
-            <p className="isRemote"> Remote possible</p>
-          </div>
-          <div className="locationContainer high-z">
-            <h3 className="locationString">{data.location}</h3>
-          </div>
-          <div className="locationContainer high-z">
-            <h3 className="locationString">{data.contract}</h3>
-          </div>
-          <div className="further_details high-z">
-            <p className="detail_text high-z">{data.description}</p>
-          </div>
-          <Button
-            disabled={applied}
-            className="list"
-            text="Apply now"
-            onClick={toggleFunction}
-          ></Button>
+        <div className="job_card_container" onClick={showCard}>
+          <Job jobOffer={data}>
+            {" "}
+            <Button
+              disabled={applied}
+              className="list"
+              text="Apply now"
+              onClick={toggleFunction}
+            ></Button>
+          </Job>
         </div>
       ) : (
         ""
