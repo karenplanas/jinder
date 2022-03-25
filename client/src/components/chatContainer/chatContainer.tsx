@@ -9,12 +9,12 @@ interface Props {
 
 const ChatContainer: React.FC<Props> = ({ data }) => {
   return (
-    <div className=" chat_container">
+    <div className=" chat_container_chat">
       {" "}
       <div className="company_logo_favourites">
         <Building />{" "}
       </div>
-      <p>{data.companyname}</p>{" "}
+      <h6>{data.companyname}</h6>{" "}
     </div>
   );
 };
