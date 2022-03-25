@@ -27,7 +27,7 @@ const JobList: React.FC = () => {
   };
 
   return (
-    <AppLayout title='Find your dream job' userName={user?.displayName}>
+    <AppLayout title='Find your dream job'>
       <div className="JobList">
         {jobOffers.map((jobOffer) => {
           return (

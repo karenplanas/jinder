@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
-// import { onAuthStateChanged } from 'firebase/auth';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { InputTextField } from '../InputTextField/InputTextField';
 import { Button } from '../Button/Button';
 import { AppLayout } from '../AppLayout/AppLayout';
@@ -10,7 +9,6 @@ import { GitHub } from '../icons/GitHub';
 import { User } from '../../Interfaces/User';
 import { LogoTitleVertical } from '../LogoTitleVertical/LogoTitleVertical';
 import { useUserContext } from '../../contexts/UserContext';
-import * as ApiClient from '../../services/api-client';
 import './Login.css';
 
 const Login: React.FC = () => {
@@ -21,17 +19,14 @@ const Login: React.FC = () => {
     },
   });
 
-  const { user, login } = useUserContext(); 
+  const { user, login, loginWithGoogle, loginWithGithub } = useUserContext(); 
   const { handleSubmit } = methods;
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   useEffect(()=> {
-    user && navigate('/home')
-  }, [user, navigate])
-
-  // onAuthStateChanged(auth, (currentUser) => {
-  //   setUser(currentUser);
-  // });
+    user && navigate((state as any)?.from || '/home')
+  }, [user, navigate, state])
 
   const onSubmit = handleSubmit(async (data) => {
     login(data)
@@ -70,27 +65,13 @@ const Login: React.FC = () => {
                   variant="outlined"
                   text="Sign in with Google"
                   icon={<GoogleLogoColors />}
-                  onClick={() =>
-                    ApiClient.signInwithGoogle()
-                      // .then((user: User) => {
-                      //   console.log(user);
-                      //   setLoggedIn(true);
-                      // })
-                      // .catch((error: any) => console.log(error))
-                  }
+                  onClick={loginWithGoogle}
                 />
                 <Button
                   variant="outlined"
                   text="Sign in with Github"
                   icon={<GitHub />}
-                  onClick={() =>
-                    ApiClient.signInwithGithub()
-                      // .then((user: User) => {
-                      //   console.log(user);
-                      //   setLoggedIn(true);
-                      // })
-                      // .catch((error) => console.log(error))
-                  }
+                  onClick={loginWithGithub}
                 />
               </div>
               <div className="not-registered">
@@ -101,15 +82,6 @@ const Login: React.FC = () => {
               </div>
             </div>
           </form>
-
-          {/* <div>
-            <h4>{user?.email}</h4>
-            {loggedIn ? (
-              <Button variant="contained" text="Log Out" onClick={logout} />
-            ) : (
-              ''
-            )}
-          </div> */}
         </div>
       </FormProvider>
     </AppLayout>

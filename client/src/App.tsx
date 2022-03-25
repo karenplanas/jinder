@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { CreateJobOffer } from "./components/CreateJobOffer/CreateJobOffer";
 import { JobList } from "./components/JobList/JobList";
 import { JobSeekerProfileSkills } from "./components/CreateJobSeekerProfile/JobSeekerProfileSkills";
@@ -8,8 +8,20 @@ import { JobSeekerProfileExperience } from "./components/CreateJobSeekerProfile/
 import { Login } from "./components/Login/Login";
 import { SignUp } from "./components/SignUp/SignUp";
 import { ChatContainer } from "./components/chatContainer/chatContainer";
+import { UserContextProvider, useUserContext } from "./contexts/UserContext";
 import "./App.css";
-import { UserContextProvider } from "./contexts/UserContext";
+
+// https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
+const RequireAuth: React.FC = ({ children }) => {
+  const { user } = useUserContext()
+  const location = useLocation();
+
+  if (!user && process.env.REACT_APP_AUTH_ENABLED) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  return <>{children}</>;
+}
 
 const App: React.FC = () => {
   return (
@@ -18,24 +30,24 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/favourites" element={<ChatContainer />} />
+          <Route path="/favourites" element={<RequireAuth><ChatContainer /></RequireAuth>} />
           <Route path="/home" element={<JobList />} />
-          <Route path="/job-position/edit" element={<CreateJobOffer />} />
+          <Route path="/job-position/edit" element={<RequireAuth><CreateJobOffer /></RequireAuth>} />
           <Route
             path="/job-seeker-profile/edit"
-            element={<JobSeekerProfileExperience />}
+            element={<RequireAuth><JobSeekerProfileExperience /></RequireAuth>}
           />
           <Route
             path="/job-seeker-profile/edit/experience"
-            element={<JobSeekerProfileExperience />}
+            element={<RequireAuth><JobSeekerProfileExperience /></RequireAuth>}
           />
           <Route
             path="/job-seeker-profile/edit/skills"
-            element={<JobSeekerProfileSkills />}
+            element={<RequireAuth><JobSeekerProfileSkills /></RequireAuth>}
           />
           <Route
             path="/job-seeker-profile/edit/looking-for"
-            element={<JobSeekerProfileLookingFor />}
+            element={<RequireAuth><JobSeekerProfileLookingFor /></RequireAuth>}
           />
         </Routes>
       </BrowserRouter>

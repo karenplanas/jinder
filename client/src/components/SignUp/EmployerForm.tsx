@@ -1,16 +1,14 @@
-import React from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth, db } from '../../services/firebase';
-import { setDoc, doc } from 'firebase/firestore';
+import React, { useEffect } from 'react';
 import { InputTextField } from '../InputTextField/InputTextField';
 import { Button } from '../Button/Button';
 import { FormProvider, useForm } from 'react-hook-form';
-import { EmployerUser } from '../../Interfaces/EmployerUser';
+import { User } from '../../Interfaces/User';
 import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../../contexts/UserContext';
 import './SignUp.css'
 
 const EmployerForm: React.FC = () => {
-  const methods = useForm<EmployerUser>({
+  const methods = useForm<User & { companyName: string }>({
     defaultValues: {
       companyName: '',
       email: '',
@@ -18,28 +16,18 @@ const EmployerForm: React.FC = () => {
     },
   });
 
+  const { user, createEmployer } = useUserContext();
   const navigate = useNavigate();
-
   const { handleSubmit } = methods;
 
+  useEffect(()=>{
+    user && navigate('/home')
+  }, [user, navigate])
+
   const onSubmit = handleSubmit(async (data) => {
-    try {
-      await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      ).then((cred) => {
-        const company = {
-          companyName: data.companyName,
-          id: cred.user.uid,
-        };
-        setDoc(doc(db, 'companuies', company.id), company);
-        navigate('/home');
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    createEmployer(data);
   });
+
   return (
     <FormProvider {...methods}>
       <form onSubmit={onSubmit}>
