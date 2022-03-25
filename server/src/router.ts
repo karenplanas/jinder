@@ -2,6 +2,7 @@ import express from "express";
 import * as favouritesController from "./controllers/favourite-controller";
 import * as jobOfferController from "./controllers/JobOffer-controller";
 import * as userController from "./controllers/user-controller";
+import * as messageController from "./controllers/message-controller";
 
 const router = express.Router();
 
@@ -16,5 +17,7 @@ router.post("/favourites", favouritesController.postFavourite);
 router.get("/favourites", favouritesController.getFavourites);
 router.put("/favourites/:id", favouritesController.editApplied);
 router.delete("/favourites/:id", favouritesController.deleteFavourite);
+
+router.put("/messages", messageController.addMessages);
 
 export default router;
