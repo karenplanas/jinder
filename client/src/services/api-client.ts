@@ -24,6 +24,14 @@ const addApplied = (favourite: Favourite) => {
   });
 };
 
+const deleteFavourite = (favourite: Favourite) => {
+  return fetch(`http://localhost:4000/favourites/${favourite._id}`, {
+    method: "DELETE",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(favourite),
+  });
+};
+
 const removeJobOffer = (jobOffer: JobOffer) => {
   return fetch(`http://localhost:4000/job-postings/${jobOffer._id}`, {
     method: "DELETE",
@@ -53,4 +61,5 @@ export {
   postFavourite,
   addApplied,
   removeJobOffer,
+  deleteFavourite,
 };

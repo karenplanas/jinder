@@ -6,9 +6,11 @@ import { People } from "../icons/People";
 import { RubbishBin } from "../icons/rubbishBin";
 import "./favouriteContainer.css";
 import { Favourite } from "../../Interfaces/favourite";
+import { deleteFavourite, postJobOffer } from "../../services/api-client";
 
 interface Props {
   data: Favourite;
+  // refresh: () => Promise<void>;
 }
 
 const FavouriteContainer: React.FC<Props> = ({ data }) => {
@@ -30,7 +32,11 @@ const FavouriteContainer: React.FC<Props> = ({ data }) => {
     else setCardActive(false);
   };
 
-  const removeFavourite = () => {};
+  const removeFavourite = () => {
+    postJobOffer(data);
+    deleteFavourite(data);
+    // refresh();
+  };
 
   return (
     <div className="favourite_container">
@@ -47,7 +53,7 @@ const FavouriteContainer: React.FC<Props> = ({ data }) => {
           text="Apply now"
           onClick={toggleFunction}
         ></Button>
-        <div onClick={removeFavourite}>
+        <div onClick={removeFavourite} className="rubbishBin">
           <RubbishBin />
         </div>
       </div>
@@ -65,7 +71,6 @@ const FavouriteContainer: React.FC<Props> = ({ data }) => {
       )}
 
       {cardActive ? (
-        // will become seperate component to fix state issues and make code tidier
         <div className="detail_container showCard" onClick={showCard}>
           <div className="card_header">
             <div className="company_logo">
@@ -109,6 +114,12 @@ const FavouriteContainer: React.FC<Props> = ({ data }) => {
           <div className="further_details high-z">
             <p className="detail_text high-z">{data.description}</p>
           </div>
+          <Button
+            disabled={applied}
+            className="list"
+            text="Apply now"
+            onClick={toggleFunction}
+          ></Button>
         </div>
       ) : (
         ""

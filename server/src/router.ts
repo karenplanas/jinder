@@ -15,5 +15,6 @@ router.delete("/job-postings/:id", jobOfferController.deleteJobOffer);
 router.post("/favourites", favouritesController.postFavourite);
 router.get("/favourites", favouritesController.getFavourites);
 router.put("/favourites/:id", favouritesController.editApplied);
+router.delete("/favourites/:id", favouritesController.deleteFavourite);
 
 export default router;
