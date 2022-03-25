@@ -22,7 +22,7 @@ const EmployerProfile: React.FC = () => {
   });
 
   return (
-    <AppLayout title="Jobs">
+    <AppLayout title="Employer Profile">
       <FormProvider {...methods}>
         <form onSubmit={onSubmit}>
           <div className="Inputs-Card">

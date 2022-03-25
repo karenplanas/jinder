@@ -20,6 +20,7 @@ import { UserContextProvider, useUserContext } from "./contexts/UserContext";
 import { ChatList } from "./components/ChatList/ChatList";
 import "./App.css";
 import ChatRoom from "./components/ChatRoom/ChatRoom";
+import EmployerProfile from "./components/EmployerProfile/EmployerProfile";
 
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
 const RequireAuth: React.FC = ({ children }) => {
@@ -95,6 +96,14 @@ const App: React.FC = () => {
             element={
               <RequireAuth>
                 <JobSeekerProfileLookingFor />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/employer-profile/edit"
+            element={
+              <RequireAuth>
+                <EmployerProfile />
               </RequireAuth>
             }
           />
