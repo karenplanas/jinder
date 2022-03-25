@@ -14,7 +14,7 @@ const ChatContainer: React.FC = () => {
           {" "}
           <NavTabs
             tabs={[
-              { name: "Favourites", endpoint: "/favouriteList" },
+              { name: "Favourites", endpoint: "/favourites" },
               { name: "Chat", endpoint: "/chatlist" },
             ]}
           />{" "}

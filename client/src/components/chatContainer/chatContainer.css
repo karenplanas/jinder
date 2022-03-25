@@ -1,4 +1,4 @@
-.chat_container {
+.chat_container_chat {
   display: flex;
   align-items: center;
   padding: 20px;
@@ -7,6 +7,8 @@
   gap: 5rem;
 }
 
-.chat_container:hover {
+.chat_container_chat:hover {
   background: #f3c522;
+  color: black;
+  font-size: 1.5rem;
 }

@@ -11,6 +11,7 @@ import { ChatContainer } from "./components/MatchesContainer/MatchesContainer";
 import { ChatList } from "./components/ChatList/ChatList";
 
 import "./App.css";
+import ChatRoom from "./components/ChatRoom/ChatRoom";
 
 const App: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         <Route path="/home" element={<JobList />} />
         <Route path="/chatList" element={<ChatList />} />
         <Route path="/job-position/edit" element={<CreateJobOffer />} />
+        <Route path="/chatRoom" element={<ChatRoom />} />
         <Route
           path="/job-seeker-profile/edit"
           element={<JobSeekerProfileExperience />}

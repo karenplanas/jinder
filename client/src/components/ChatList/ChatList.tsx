@@ -5,6 +5,7 @@ import { Favourite } from "../../Interfaces/favourite";
 import { ChatContainer } from "../ChatContainer/ChatContainer";
 import { NavBarTop } from "../NavBarTop/NavBarTop";
 import { NavTabs } from "../NavTabs/NavTabs";
+import { Link } from "react-router-dom";
 
 const ChatList: React.FC = () => {
   const [chatting, setChatting] = useState<Favourite[]>([]);
@@ -18,12 +19,16 @@ const ChatList: React.FC = () => {
       <NavBarTop />{" "}
       <NavTabs
         tabs={[
-          { name: "Favourites", endpoint: "/favouriteList" },
+          { name: "Favourites", endpoint: "/favourites" },
           { name: "Chat", endpoint: "/chatlist" },
         ]}
       />{" "}
       {chatting.map((chat) => {
-        return <ChatContainer data={chat} />;
+        return (
+          <Link to={"/chatRoom"} className="chatLinks">
+            <ChatContainer data={chat} />
+          </Link>
+        );
       })}
     </>
   );
