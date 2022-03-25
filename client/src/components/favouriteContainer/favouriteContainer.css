@@ -66,4 +66,26 @@
   display: flex;
   gap: 1rem;
   align-items: center;
+  justify-content: center;
+}
+
+.rubbishBin {
+  display: flex;
+  padding: 5px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 80px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.rubbishBin:hover {
+  background: red;
+}
+
+.job_card_container {
+  z-index: 10;
+  position: fixed;
 }

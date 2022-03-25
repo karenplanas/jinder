@@ -7,22 +7,28 @@ import "./Job.css";
 //import { Button } from "../Button/Button";
 
 interface Props {
-  jobOffer: JobOffer
+  jobOffer: JobOffer;
 }
 
 const Job: React.FC<Props> = ({ jobOffer }) => {
   const [showDetail, setShowDetail] = useState<boolean>(false);
 
   const toggleDetails = () => {
-    setShowDetail((previousState) => !previousState)
+    setShowDetail((previousState) => !previousState);
   };
 
   return (
-    <Card className={clsx('Job', { fullSize: showDetail })} onClick={toggleDetails}>
+    <Card
+      className={clsx("Job", { fullSize: showDetail })}
+      onClick={toggleDetails}
+    >
       <JobHeader name={jobOffer.companyname} size={jobOffer.companysize} />
-      <div className='Job-content'>
+      <div className="Job-content">
         <h3>{jobOffer.position}</h3>
-        <p> {showDetail ? jobOffer.bio : `${jobOffer.bio?.substring(0, 220)}...`}</p>
+        <p>
+          {" "}
+          {showDetail ? jobOffer.bio : `${jobOffer.bio?.substring(0, 220)}...`}
+        </p>
         <div className="Job-text-with-label">
           <h4>Salary</h4> {jobOffer.salary}
         </div>
@@ -42,4 +48,4 @@ const Job: React.FC<Props> = ({ jobOffer }) => {
   );
 };
 
-export {Job};
+export { Job };
