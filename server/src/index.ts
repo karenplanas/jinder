@@ -4,9 +4,11 @@ import dotenv from 'dotenv'
 dotenv.config();
 import router from './router';
 import * as db from './models/db';
+import { errorHandler } from './middlewares/error-handler';
 const app = express();
 const PORT = 4000;
 
+app.use(errorHandler);
 app.use(cors());
 app.use(express.json());
 app.use(router);

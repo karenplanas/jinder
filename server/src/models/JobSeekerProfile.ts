@@ -1,6 +1,7 @@
-import { model, Schema } from "mongoose"
+import { model, Schema, Types } from "mongoose"
 
 interface JobSeekerProfile {
+  userId: Types.ObjectId,
   skills: string[];
   experience: Experience[];
   lookingFor: string[]
@@ -25,6 +26,7 @@ const ExperienceSchema = new Schema<Experience>({
 })
 
 const JobSeekerProfileSchema = new Schema<JobSeekerProfile>({
+  userId: { type: Schema.Types.ObjectId, required: true },
   skills: { type: [String] },
   experience: { type: [ExperienceSchema] },
   lookingFor: { type: [String] }
