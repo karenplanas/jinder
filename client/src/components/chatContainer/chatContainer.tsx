@@ -1,27 +1,21 @@
 import React from "react";
-import "./chatContainer.css";
-import FavouritesList from "../FavouritesList/FavouritesList";
-import ChatDisplay from "../ChatDisplay/ChatDisplay";
-import { NavBarTop } from "../NavBarTop/NavBarTop";
-import { NavTabs } from "../NavTabs/NavTabs";
+import { Favourite } from "../../Interfaces/favourite";
+import { Building } from "../icons/Building";
+import "./ChatContainer.css";
 
-const ChatContainer: React.FC = () => {
+interface Props {
+  data: Favourite;
+}
+
+const ChatContainer: React.FC<Props> = ({ data }) => {
   return (
-    <>
-      <NavBarTop />
-      <div className="chat_container">
-        <div>
-          {" "}
-          <NavTabs
-            tabs={[
-              { name: "Favourites", endpoint: "/favouriteList" },
-              { name: "Chat", endpoint: "/chatlist" },
-            ]}
-          />{" "}
-        </div>
-        <FavouritesList />
+    <div className=" chat_container">
+      {" "}
+      <div className="company_logo_favourites">
+        <Building />{" "}
       </div>
-    </>
+      <p>{data.companyname}</p>{" "}
+    </div>
   );
 };
 
