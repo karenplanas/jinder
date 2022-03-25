@@ -10,6 +10,7 @@ import { SignUp } from "./components/SignUp/SignUp";
 import { ChatContainer } from "./components/chatContainer/chatContainer";
 
 import "./App.css";
+import EmployerProfile from "./components/EmployerProfile/EmployerProfile";
 
 const App: React.FC = () => {
   return (
@@ -36,6 +37,7 @@ const App: React.FC = () => {
           path="/job-seeker-profile/edit/looking-for"
           element={<JobSeekerProfileLookingFor />}
         />
+        <Route path="/employer-profile/edit" element={<EmployerProfile />} />
       </Routes>
     </BrowserRouter>
   );
