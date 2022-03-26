@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Building } from "../icons/Building";
 import { Button } from "../Button/Button";
 import { TempSendEmail } from "../TempSendEmail/TempSendEmail";
-import { People } from "../icons/People";
+import { useUserContext } from "../../contexts/UserContext";
 import { RubbishBin } from "../icons/rubbishBin";
 import "./favouriteContainer.css";
 import { Favourite } from "../../Interfaces/favourite";
@@ -18,6 +18,7 @@ const FavouriteContainer: React.FC<Props> = ({ data, refresh }) => {
   const [cardActive, setCardActive] = useState(false);
   const [popupActive, setPopupActive] = useState(false);
   const [applied, setApplied] = useState(false);
+  const { user } = useUserContext();
 
   if (data.applied === true && applied === false) setApplied(true);
 
@@ -35,7 +36,7 @@ const FavouriteContainer: React.FC<Props> = ({ data, refresh }) => {
 
   const removeFavourite = () => {
     postJobOffer(data);
-    deleteFavourite(data);
+    deleteFavourite(data, user);
     refresh();
   };
 

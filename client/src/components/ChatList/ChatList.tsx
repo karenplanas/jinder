@@ -6,12 +6,17 @@ import { ChatContainer } from "../ChatContainer/ChatContainer";
 import { NavBarTop } from "../NavBarTop/NavBarTop";
 import { NavTabs } from "../NavTabs/NavTabs";
 import { Link } from "react-router-dom";
+import {
+  UserContextProvider,
+  useUserContext,
+} from "../../contexts/UserContext";
 
 const ChatList: React.FC = () => {
   const [chatting, setChatting] = useState<Favourite[]>([]);
+  const { user } = useUserContext();
 
   useEffect(() => {
-    getFavourites(setChatting);
+    getFavourites(setChatting, user);
   }, []);
 
   return (

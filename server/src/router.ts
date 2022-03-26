@@ -13,10 +13,13 @@ router.post("/job-postings", jobOfferController.postJobOffer);
 router.get("/job-postings", jobOfferController.getJobOffers);
 router.delete("/job-postings/:id", jobOfferController.deleteJobOffer);
 
-router.post("/favourites", favouritesController.postFavourite);
-router.get("/favourites", favouritesController.getFavourites);
-router.put("/favourites/:id", favouritesController.editApplied);
-router.delete("/favourites/:id", favouritesController.deleteFavourite);
+router.post("/users/:id/favourites", favouritesController.postFavourite);
+router.get("/users/:id/favourites", favouritesController.getFavourites);
+router.put("/users/:id/favourites/:id", favouritesController.editApplied);
+router.delete(
+  "/users/:id/favourites/:id",
+  favouritesController.deleteFavourite
+);
 
 router.put("/messages", messageController.addMessages);
 

@@ -1,34 +1,41 @@
 import { JobOffer } from "../Interfaces/JobOffer";
 import { Favourite } from "../Interfaces/favourite";
+import { User } from "../Interfaces/User";
 
-const postFavourite = (favourite: Favourite) => {
-  return fetch("http://localhost:4000/favourites", {
+const postFavourite = (favourite: Favourite, user: any) => {
+  return fetch(`http://localhost:4000/users/${user._id}/favourites`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(favourite),
   });
 };
 
-const getFavourites = (setState: any) => {
-  return fetch("http://localhost:4000/favourites")
+const getFavourites = (setState: any, user: any) => {
+  return fetch(`http://localhost:4000/users/${user._id}/favourites`)
     .then((res) => res.json())
     .then((data) => setState(data.data));
 };
 
-const addApplied = (favourite: Favourite) => {
-  return fetch(`http://localhost:4000/favourites/${favourite._id}`, {
-    method: "PUT",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ applied: true }),
-  });
+const addApplied = (favourite: Favourite, user: any) => {
+  return fetch(
+    `http://localhost:4000/users/${user._id}/favourites/${favourite._id}`,
+    {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ applied: true }),
+    }
+  );
 };
 
-const deleteFavourite = (favourite: Favourite) => {
-  return fetch(`http://localhost:4000/favourites/${favourite._id}`, {
-    method: "DELETE",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(favourite),
-  });
+const deleteFavourite = (favourite: Favourite, user: any) => {
+  return fetch(
+    `http://localhost:4000/users/${user._id}/favourites/${favourite._id}`,
+    {
+      method: "DELETE",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(favourite),
+    }
+  );
 };
 
 const removeJobOffer = (jobOffer: JobOffer) => {
@@ -50,7 +57,11 @@ const postJobOffer = (jobOffer: JobOffer) => {
 const getJobs = (setState: any) => {
   return fetch("http://localhost:4000/job-postings")
     .then((res) => res.json())
-    .then((data) => setState(data.data));
+
+    .then((data) => {
+      console.log(data);
+      return setState(data.data);
+    });
 };
 
 export {
