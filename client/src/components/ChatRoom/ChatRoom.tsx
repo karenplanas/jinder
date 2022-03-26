@@ -6,12 +6,17 @@ import { BackButton } from "../icons/BackButton";
 import { VideoIcon } from "../icons/VideoIcon";
 import { Building } from "../icons/Building";
 import { Link } from "react-router-dom";
+import {
+  UserContextProvider,
+  useUserContext,
+} from "../../contexts/UserContext";
 
 const ChatRoom: React.FC = () => {
   const [formValue, setFormValue] = useState("");
   const [messages, setMessages] = useState([]);
   const propsy: any = useLocation();
   const chat: any = propsy.state.chat;
+  const { user } = useUserContext();
 
   useEffect(() => {
     setMessages(chat.messages);

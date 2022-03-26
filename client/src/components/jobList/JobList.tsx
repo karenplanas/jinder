@@ -10,13 +10,14 @@ import { Job } from "../Job/Job";
 import { AppLayout } from "../AppLayout/AppLayout";
 import { JobOffer } from "../../Interfaces/JobOffer";
 import "./JobList.css";
-import { useUserContext } from '../../contexts/UserContext';
+import { useUserContext } from "../../contexts/UserContext";
 
 type Direction = "left" | "right" | "up" | "down";
 
 const JobList: React.FC = () => {
   const [jobOffers, setJobOffers] = useState<JobOffer[]>([]);
   const { user } = useUserContext();
+  console.log(user?._id);
 
   useEffect(() => {
     getJobs(setJobOffers);
@@ -24,7 +25,7 @@ const JobList: React.FC = () => {
 
   const swiped = (direction: Direction, jobObject: JobOffer) => {
     if (direction === "right") {
-      postFavourite(jobObject);
+      postFavourite(jobObject, user);
       removeJobOffer(jobObject);
     }
     if (direction === "left") {
