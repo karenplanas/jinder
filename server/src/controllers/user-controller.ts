@@ -7,8 +7,8 @@ export const postUser = async (req: express.Request, res: express.Response) => {
   res.json(user)
 }
 
-export const getUser = async (req: express.Request, res: express.Response) => {
-  const user = await User.findOne(req.params.id)
+export const login = async (req: express.Request, res: express.Response) => {
+  const user = await User.findOrCreateByExternalId(req.body.externalId)
   res.status(200)
   res.json(user)
 }

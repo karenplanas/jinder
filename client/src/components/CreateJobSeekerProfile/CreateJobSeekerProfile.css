@@ -39,3 +39,22 @@
   margin: auto;
   margin-top: 16px;
 }
+
+.field-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px
+}
+
+.field-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field-list-item:not(:last-child) {
+  padding-bottom: 32px;
+  border-color: var(--Gray-dark);
+  border-bottom: 1px;
+  border-style: solid;
+}

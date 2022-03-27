@@ -1,7 +1,7 @@
 export interface JobSeekerProfile {
   _id: string;
   skills: string[];
-  experience: Experience[];
+  experiences: Experience[];
   lookingFor: string[]
 }
 export interface Experience {

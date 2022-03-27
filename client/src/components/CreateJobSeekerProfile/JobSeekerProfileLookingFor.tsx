@@ -7,15 +7,15 @@ import { CreateJobSeekerProfileLayout } from './CreateJobSeekerProfileLayout'
 import { JobSeekerProfileButtons } from './JobSeekerProfileButtons'
 import './CreateJobSeekerProfile.css'
 import { Button } from '../Button/Button'
+import { useAuthenticatedApiClient } from '../../services/authenticated-api-client'
 
 const JobSeekerProfileLookingFor: React.FC = () => {
 
   const methods = useForm();
+  const apiClient = useAuthenticatedApiClient()
   const { handleSubmit } = methods;
 
-  const onSubmit = handleSubmit(async (data) => {
-    console.log(data); //TODO here will go the createJobSeekerProfileLookingFor(data) call
-  });
+  const onSubmit = handleSubmit(apiClient.updateJobSeekerProfile);
 
   return (
     <CreateJobSeekerProfileLayout>
