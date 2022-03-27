@@ -4,6 +4,7 @@ import * as jobOfferController from "./controllers/JobOffer-controller";
 import * as userController from "./controllers/user-controller";
 import * as jobSeekerProfileController from "./controllers/JobSeekerProfile-controller";
 import * as messageController from "./controllers/message-controller";
+import * as userJobOfferController from "./controllers/UserJobOffer-controller"
 import { authMiddleware } from './middlewares/auth-middlware';
 
 const router = express.Router();
@@ -26,5 +27,8 @@ router.delete(
 );
 
 router.put("/messages", messageController.addMessages);
+
+router.post("/job-offers/:id/like", authMiddleware, userJobOfferController.postUserJobOfferLike)
+router.post("/job-offers/:id/dislike", authMiddleware, userJobOfferController.postUserJobOfferDislike)
 
 export default router;
