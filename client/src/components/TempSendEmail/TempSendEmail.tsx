@@ -7,6 +7,7 @@ import emailjs from "@emailjs/browser";
 import "./TempSendEmail.css";
 import { Favourite } from "../../Interfaces/favourite";
 import { addApplied } from "../../services/api-client";
+import { useUserContext } from "../../contexts/UserContext";
 
 interface Props {
   setState: (state: boolean) => void;
@@ -22,6 +23,7 @@ const TempSendEmail: React.FC<Props> = ({ setState, setApply, data }) => {
       presentation: "",
     },
   });
+  const { user } = useUserContext();
 
   const { handleSubmit, register } = methods;
   const form: any = useRef();
@@ -38,7 +40,7 @@ const TempSendEmail: React.FC<Props> = ({ setState, setApply, data }) => {
         (result) => {
           setState(false);
           setApply(true);
-          addApplied(data);
+          addApplied(data, user);
 
           console.log(result.text);
         },
