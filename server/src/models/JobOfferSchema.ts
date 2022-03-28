@@ -11,7 +11,7 @@ interface newJobOffer {
   role: string;
   level: string;
   description: string;
-  languages: string[];
+  skills: string[];
   education: string;
   experience: string;
   location: string;
@@ -50,7 +50,7 @@ const JobOfferSchema = new Schema<newJobOffer>({
     type: String,
     required: true,
   },
-  languages: {
+  skills: {
     type: [],
     required: true,
   },
@@ -82,7 +82,7 @@ const JobOfferSchema = new Schema<newJobOffer>({
   },
 });
 
-const JobOffer = mongoose.model<newJobOffer>("JobOffer", JobOfferSchema);
+const JobOffer = mongoose.model<newJobOffer>('JobOffer', JobOfferSchema);
 
 const getNewJobOffers = async (userId: string) => {
   const userJobOffers = await getUserJobOffers(userId)

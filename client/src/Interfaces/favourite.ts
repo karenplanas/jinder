@@ -7,7 +7,7 @@ export interface Favourite {
   role: string;
   level: string;
   description: string;
-  languages: string[];
+  skills: string[];
   education: string;
   experience: string;
   location: string;

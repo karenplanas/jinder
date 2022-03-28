@@ -34,3 +34,7 @@
   gap: 16px;
   align-items: center;
 }
+
+.NavBarTop-Logout {
+  cursor: pointer;
+}
