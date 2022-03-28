@@ -57,6 +57,6 @@ router.delete(
 
 router.put("/messages", messageController.addMessages);
 
-router.get("/job-seekers", authMiddleware, jobSeekerController.getJobSeeker);
+router.get("/jobseekers", authMiddleware, jobSeekerController.getJobSeeker);
 
 export default router;

@@ -1,53 +1,60 @@
-import { useUserContext } from "../contexts/UserContext"
-import { JobOffer } from "../Interfaces/JobOffer"
-import { JobSeekerProfile } from "../Interfaces/JobSeekerProfile"
-import { UserJobOffer } from "../Interfaces/UserJobOffer"
-import { performRequest } from "./helpers"
+import { useUserContext } from "../contexts/UserContext";
+import { JobOffer } from "../Interfaces/JobOffer";
+import { JobSeekerProfile } from "../Interfaces/JobSeekerProfile";
+import { UserJobOffer } from "../Interfaces/UserJobOffer";
+import { performRequest } from "./helpers";
 
 export const useAuthenticatedApiClient = () => {
-  const { user } = useUserContext()
+  const { user } = useUserContext();
 
   const updateJobSeekerProfile = (payload: Partial<JobSeekerProfile>) => {
     return performRequest({
-      method: 'POST',
-      path: '/job-seeker-profile',
+      method: "POST",
+      path: "/job-seeker-profile",
       body: payload,
-      token: user?.accessToken
-    })
-  }
+      token: user?.accessToken,
+    });
+  };
 
   const getJobOffers = (): Promise<{ data: JobOffer[] }> => {
     return performRequest({
-      method: 'GET',
-      path: '/job-postings',
-      token: user?.accessToken
-    })
-  }
+      method: "GET",
+      path: "/job-postings",
+      token: user?.accessToken,
+    });
+  };
 
   const likeJobOffer = (id: string): Promise<JobOffer> => {
     return performRequest({
-      method: 'POST',
+      method: "POST",
       path: `/job-postings/${id}/like`,
-      token: user?.accessToken
-    })
-  }
-
+      token: user?.accessToken,
+    });
+  };
 
   const getLikedJobOffers = (): Promise<{ data: UserJobOffer[] }> => {
     return performRequest({
-      method: 'GET',
+      method: "GET",
       path: `/job-postings/liked`,
-      token: user?.accessToken
-    })
-  }
+      token: user?.accessToken,
+    });
+  };
 
   const dislikeJobOffer = (id: string): Promise<JobOffer> => {
     return performRequest({
-      method: 'POST',
+      method: "POST",
       path: `/job-postings/${id}/dislike`,
-      token: user?.accessToken
-    })
-  }
+      token: user?.accessToken,
+    });
+  };
+
+  const getAllJobSeekers = (): Promise<{ data: JobSeekerProfile[] }> => {
+    return performRequest({
+      method: "GET",
+      path: "/jobseekers",
+      token: user?.accessToken,
+    });
+  };
 
   return {
     dislikeJobOffer,
@@ -55,5 +62,6 @@ export const useAuthenticatedApiClient = () => {
     getLikedJobOffers,
     likeJobOffer,
     updateJobSeekerProfile,
-  }
-}
+    getAllJobSeekers,
+  };
+};

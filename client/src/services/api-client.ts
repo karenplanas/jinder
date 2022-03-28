@@ -64,6 +64,14 @@ const getJobs = (setState: any) => {
     });
 };
 
+// const getAllJobSeekers = async () => {
+//   const response = await fetch("http://localhost:4000/jobseekers", {
+//     method: "GET",
+//     headers: { "Content-type": "application/json" },
+//   });
+//   return response.json();
+// };
+
 export {
   postJobOffer,
   getJobs,
