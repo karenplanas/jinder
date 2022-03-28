@@ -38,7 +38,6 @@ const ChatSchema = new Schema<Chat>({
 // https://mongoosejs.com/docs/guide.html#indexes
 ChatSchema.index({ jobSeekerUserId: 1, employerUserId: 1 }, { unique: true });
 
-
 const Chat = model('chat', ChatSchema);
 const Message = model('message', MessageSchema);
 
