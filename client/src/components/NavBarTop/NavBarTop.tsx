@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useUserContext } from '../../contexts/UserContext';
-import { ImagePlaceHolder } from '../icons/ImagePlaceHolder';
 import { Logo } from '../icons/Logo';
-import { ImageHolder } from '../ImageHolder/ImageHolder';
+import { MenuEmployer } from '../Menu/MenuEmployer';
+import { MenuJobSeeker } from '../Menu/MenuJobSeeker';
 import './NavBarTop.css';
 
 interface Props {
@@ -20,7 +20,7 @@ const NavBarTop: React.FC<Props> = ({
   title,
   userName,
 }) => {
-  const { logout } = useUserContext();
+  const { user } = useUserContext();
   return (
     <div
       className={clsx('NavBarTop', className, {
@@ -32,19 +32,16 @@ const NavBarTop: React.FC<Props> = ({
           <Logo width={60} height={60} />
         </Link>
         <div className="NavBarTop-Salut-title">
-          <div className='NavBarTop-Logout' onClick={logout}>
-            <p>Logout</p>
-          </div>
-
           {userName && <h2>Hello {userName}!</h2>}
           {title && <h2>{title}</h2>}
         </div>
         <div className="NavBarTop-picture">
-          <Link to="/job-seeker-profile/edit">
-            <ImageHolder size="big">
-              <ImagePlaceHolder />
-            </ImageHolder>
-          </Link>
+          {
+            user?.type === 'jobseeker' ?
+            <MenuJobSeeker /> :
+            <MenuEmployer />
+          }
+          
         </div>
       </div>
     </div>
