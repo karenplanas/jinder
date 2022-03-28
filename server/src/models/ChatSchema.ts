@@ -5,7 +5,7 @@ import { Schema, model } from "mongoose";
 interface Chat {
   jobSeekerUserId : mongoose.Types.ObjectId
   employerUserId: mongoose.Types.ObjectId
-  messages : Message[] 
+  messages : Message[]
 }
 
 interface Message {
@@ -18,7 +18,7 @@ const MessageSchema = new Schema<Message>({
   senderId: { type: mongoose.SchemaTypes.ObjectId},
   content: { type: String },
   sentAt: { type: mongoose.SchemaTypes.Date}
-  }, 
+  },
   { timestamps: true }
 )
 
@@ -36,16 +36,13 @@ const getChats = () => {
 }
 
 const createChat = (
-  jobSeekerUserId: string, 
-  employerUserId: string,
-  payload: Message[]
+  payload: Chat
   ) => {
     return Chat.findOneAndUpdate(
-      { jobSeekerUserId, employerUserId }, 
-      { $set: payload }, 
+      { jobSeekerUserId : payload.jobSeekerUserId,  employerUserId : payload.employerUserId },
+      { $set: payload },
       { upsert: true }
     )
 }
 
 export { Chat, Message, getChats, createChat }
-
