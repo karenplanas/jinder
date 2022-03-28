@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ChatList.css";
 import { getFavourites } from "../../services/api-client";
 import { Favourite } from "../../Interfaces/favourite";
-import { ChatContainer } from "../ChatContainer/ChatContainer";
+import { ChatContainer } from "../chatContainer/chatContainer";
 import { NavBarTop } from "../NavBarTop/NavBarTop";
 import { NavTabs } from "../NavTabs/NavTabs";
 import { Link } from "react-router-dom";
