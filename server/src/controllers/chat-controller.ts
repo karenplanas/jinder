@@ -15,9 +15,8 @@ const postChat = async (req: express.Request, res: express.Response) => {
 
 const postMessage = async (req: express.Request, res: express.Response) => {
   console.log(req.body);
-  const response = await Chat.addMessage(req.user._id, req.params.id, {
-    content: req.body,
-  });
+  const response = await Chat.addMessage(req.params.id, req.user._id, req.body);
+  console.log('response', response);
   res.status(200);
   res.json({ data: response });
 };

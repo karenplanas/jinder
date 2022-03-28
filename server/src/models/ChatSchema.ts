@@ -16,18 +16,28 @@ interface Message {
 
 const MessageSchema = new Schema<Message>(
   {
-    senderId: { type: mongoose.SchemaTypes.ObjectId },
-    content: { type: String },
-    sentAt: { type: mongoose.SchemaTypes.Date },
+    senderId: { type: mongoose.SchemaTypes.ObjectId, required: true },
+    content: { type: String, required: true },
+  },
+  { 
+    timestamps: {
+      createdAt: 'sentAt',
+    }
+  }
+);
+
+const ChatSchema = new Schema<Chat>({
+    jobSeekerUserId: { type: mongoose.SchemaTypes.ObjectId, required: true },
+    employerUserId: { type: mongoose.SchemaTypes.ObjectId, required: true },
+    messages: { type: [MessageSchema] },
   },
   { timestamps: true }
 );
 
-const ChatSchema = new Schema<Chat>({
-  jobSeekerUserId: { type: mongoose.SchemaTypes.ObjectId },
-  employerUserId: { type: mongoose.SchemaTypes.ObjectId },
-  messages: { type: [MessageSchema] },
-});
+// https://www.mongodb.com/docs/manual/core/index-unique/
+// https://mongoosejs.com/docs/guide.html#indexes
+ChatSchema.index({ jobSeekerUserId: 1, employerUserId: 1 }, { unique: true });
+
 
 const Chat = model('chat', ChatSchema);
 const Message = model('message', MessageSchema);
@@ -47,12 +57,12 @@ const createChat = (payload: Chat) => {
   );
 };
 
-const addMessage = (
-  userId: string,
-  chatId: string,
-  payload: Partial<Message>
-) => {
-  return Message.create({ userId, chatId }, { $set: payload });
+const addMessage = (chatId: string, senderId: string, payload: Partial<Message> ) => {
+  return Chat.findOneAndUpdate(
+    { _id: new mongoose.Types.ObjectId(chatId) },
+    { $push: { messages: { ...payload, senderId } } },
+    { upsert: true, new: true }
+  );
 };
 
 export { Chat, Message, getChats, createChat, addMessage };
