@@ -38,13 +38,13 @@ const deleteFavourite = (favourite: Favourite, user: any) => {
   );
 };
 
-const removeJobOffer = (jobOffer: JobOffer) => {
-  return fetch(`http://localhost:4000/job-postings/${jobOffer._id}`, {
-    method: "DELETE",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(jobOffer),
-  });
-};
+// const removeJobOffer = (jobOffer: JobOffer) => {
+//   return fetch(`http://localhost:4000/job-postings/${jobOffer._id}`, {
+//     method: "DELETE",
+//     headers: { "content-type": "application/json" },
+//     body: JSON.stringify(jobOffer),
+//   });
+// };
 
 const postJobOffer = (jobOffer: JobOffer) => {
   return fetch("http://localhost:4000/job-postings", {
@@ -70,6 +70,6 @@ export {
   getFavourites,
   postFavourite,
   addApplied,
-  removeJobOffer,
+  // removeJobOffer,
   deleteFavourite,
 };

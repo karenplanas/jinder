@@ -1,6 +1,7 @@
-import { model, Schema, Types } from 'mongoose'
+import { model, Schema } from 'mongoose'
 import { EmployerProfile } from './EmployerProfile';
 import { JobSeekerProfile } from './JobSeekerProfile';
+import { generateJwt } from '../utils/jwt-utils'
 
 interface User {
   _id: string
@@ -77,14 +78,34 @@ const create = async (payload: Partial<User> & { companyName?: string }) => {
       name: payload.companyName,
     })
 
-    return {
+    return generateJwt({
       ...user.toObject(),
-      employerProfile: { ...employerProfile.toObject() } 
-    }
+      employerProfile: employerProfile.toObject()
+    })
   }
 
-  return user
+  return generateJwt(user.toObject())
 }
 
-export { Employer, JobSeeker, findOne, create }
+const findOrCreateByExternalId = async (externalId: string, payload: object = {}) => {
+  const user = await findOne(externalId)
+
+  if(!user) {
+    return create({
+      ...payload,
+      externalId,
+    })
+  }
+
+  return generateJwt(await findOne(externalId))
+}
+
+export { 
+  create,
+  Employer, 
+  findOne,
+  findOrCreateByExternalId,
+  JobSeeker, 
+  User
+}
 

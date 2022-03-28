@@ -6,14 +6,14 @@ import { InputTextField } from '../InputTextField/InputTextField'
 import { CreateJobSeekerProfileLayout } from './CreateJobSeekerProfileLayout'
 import { JobSeekerProfileButtons } from './JobSeekerProfileButtons'
 import './CreateJobSeekerProfile.css'
+import { useAuthenticatedApiClient } from '../../services/authenticated-api-client'
 
 const JobSeekerProfileSkills: React.FC = () => {
+  const apiClient = useAuthenticatedApiClient()
   const methods = useForm()
   const { handleSubmit } = methods;
 
-  const onSubmit = handleSubmit(async (data) => {
-    console.log(data); //TODO here will go the createJobSeekerProfileSkills(data) call
-  });
+  const onSubmit = handleSubmit(apiClient.updateJobSeekerProfile);
 
   return (
     <CreateJobSeekerProfileLayout>

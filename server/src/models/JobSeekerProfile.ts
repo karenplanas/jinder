@@ -3,7 +3,7 @@ import { model, Schema, Types } from "mongoose"
 interface JobSeekerProfile {
   userId: Types.ObjectId,
   skills: string[];
-  experience: Experience[];
+  experiences: Experience[];
   lookingFor: string[]
 }
 
@@ -28,12 +28,24 @@ const ExperienceSchema = new Schema<Experience>({
 const JobSeekerProfileSchema = new Schema<JobSeekerProfile>({
   userId: { type: Schema.Types.ObjectId, required: true },
   skills: { type: [String] },
-  experience: { type: [ExperienceSchema] },
+  experiences: { type: [ExperienceSchema] },
   lookingFor: { type: [String] }
 });
 
 const JobSeekerProfile = model('jobSeekerProfile', JobSeekerProfileSchema);
 
-export { JobSeekerProfile }
+const createOrUpdate = (userId: string, payload: Partial<JobSeekerProfile>) => {
+  return JobSeekerProfile.findOneAndUpdate(
+    { userId }, 
+    { $set: payload }, 
+    { upsert: true }
+  ) 
+}
+
+const findOne = (userId: string) => {
+  return JobSeekerProfile.findOne({ userId });
+}
+
+export { JobSeekerProfile, createOrUpdate, findOne }
 
 
