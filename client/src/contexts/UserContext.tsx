@@ -28,7 +28,6 @@ const UserContextProvider: React.FC = ({ children }) => {
   }, [user]);
 
   const createEmployer = async (userPayload: EmployerCreationPayload) => {
-    console.log('userPayload', userPayload)
     const user = await ApiClient.createEmployerAccount(userPayload);
     setUser(user);
   }
@@ -49,13 +48,13 @@ const UserContextProvider: React.FC = ({ children }) => {
   }
 
   const loginWithGoogle = async () => {
-    const response = await ApiClient.signInwithGithub()
-    setUser(response.user);
+    const response = await ApiClient.signInwithGoogle()
+    setUser(response);
   };
 
   const loginWithGithub = async () => {
     const response = await ApiClient.signInwithGithub()
-    setUser(response.user);
+    setUser(response);
   };
   
   const value = {

@@ -58,16 +58,17 @@ const Login: React.FC = () => {
                 </div>
                 <Button text="Sign In" />
               </div>
-
               <h3>Or</h3>
               <div className="providers-buttons">
                 <Button
+                  type="button"
                   variant="outlined"
                   text="Sign in with Google"
                   icon={<GoogleLogoColors />}
                   onClick={loginWithGoogle}
                 />
                 <Button
+                  type="button"
                   variant="outlined"
                   text="Sign in with Github"
                   icon={<GitHub />}
