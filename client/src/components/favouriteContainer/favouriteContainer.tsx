@@ -8,6 +8,7 @@ import "./favouriteContainer.css";
 import { Favourite } from "../../Interfaces/favourite";
 import { deleteFavourite, postJobOffer } from "../../services/api-client";
 import { Job } from "../Job/Job";
+import { useAuthenticatedApiClient } from "../../services/authenticated-api-client";
 
 interface Props {
   data: Favourite;
@@ -18,8 +19,8 @@ const FavouriteContainer: React.FC<Props> = ({ data, refresh }) => {
   const [cardActive, setCardActive] = useState(false);
   const [popupActive, setPopupActive] = useState(false);
   const [applied, setApplied] = useState(false);
-  const { user } = useUserContext();
-
+  const apiClient = useAuthenticatedApiClient()
+  
   if (data.applied === true && applied === false) setApplied(true);
 
   const toggleFunction = () => {
@@ -35,8 +36,7 @@ const FavouriteContainer: React.FC<Props> = ({ data, refresh }) => {
   };
 
   const removeFavourite = () => {
-    postJobOffer(data);
-    deleteFavourite(data, user);
+    apiClient.dislikeJobOffer(data._id)
     refresh();
   };
 

@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "./FavouritesList.css";
-import { getFavourites } from "../../services/api-client";
 import { Favourite } from "../../Interfaces/favourite";
 import { NavBarTop } from "../NavBarTop/NavBarTop";
 import { NavTabs } from "../NavTabs/NavTabs";
-import { useUserContext } from "../../contexts/UserContext";
 
 import { FavouriteContainer } from "../favouriteContainer/favouriteContainer";
+import { useAuthenticatedApiClient } from "../../services/authenticated-api-client";
+import { UserJobOffer } from "../../Interfaces/UserJobOffer";
 
 const FavouritesList: React.FC = () => {
-  const [favourites, setFavourites] = useState<Favourite[]>([]);
-  const { user } = useUserContext();
+  const apiClient = useAuthenticatedApiClient()
+  const [favourites, setFavourites] = useState<UserJobOffer[]>([]);
+
+  const getLikedJobOffers = () => apiClient.getLikedJobOffers().then(({ data }) => setFavourites(data))
+
   useEffect(() => {
-    getFavourites(setFavourites, user);
-  }, [favourites]);
+    getLikedJobOffers()
+  }, []);
+  
 
   return (
     <div>
@@ -27,9 +31,9 @@ const FavouritesList: React.FC = () => {
       {favourites.map((favourite) => {
         return (
           <FavouriteContainer
-            data={favourite}
+            data={favourite.jobOffer}
             key={favourite._id}
-            refresh={() => getFavourites(setFavourites, user)}
+            refresh={getLikedJobOffers}
           />
         );
       })}

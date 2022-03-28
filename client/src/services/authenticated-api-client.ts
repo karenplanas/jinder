@@ -1,5 +1,7 @@
 import { useUserContext } from "../contexts/UserContext"
+import { JobOffer } from "../Interfaces/JobOffer"
 import { JobSeekerProfile } from "../Interfaces/JobSeekerProfile"
+import { UserJobOffer } from "../Interfaces/UserJobOffer"
 import { performRequest } from "./helpers"
 
 export const useAuthenticatedApiClient = () => {
@@ -14,7 +16,44 @@ export const useAuthenticatedApiClient = () => {
     })
   }
 
+  const getJobOffers = (): Promise<{ data: JobOffer[] }> => {
+    return performRequest({
+      method: 'GET',
+      path: '/job-postings',
+      token: user?.accessToken
+    })
+  }
+
+  const likeJobOffer = (id: string): Promise<JobOffer> => {
+    return performRequest({
+      method: 'POST',
+      path: `/job-postings/${id}/like`,
+      token: user?.accessToken
+    })
+  }
+
+
+  const getLikedJobOffers = (): Promise<{ data: UserJobOffer[] }> => {
+    return performRequest({
+      method: 'GET',
+      path: `/job-postings/liked`,
+      token: user?.accessToken
+    })
+  }
+
+  const dislikeJobOffer = (id: string): Promise<JobOffer> => {
+    return performRequest({
+      method: 'POST',
+      path: `/job-postings/${id}/dislike`,
+      token: user?.accessToken
+    })
+  }
+
   return {
-    updateJobSeekerProfile
+    dislikeJobOffer,
+    getJobOffers,
+    getLikedJobOffers,
+    likeJobOffer,
+    updateJobSeekerProfile,
   }
 }
