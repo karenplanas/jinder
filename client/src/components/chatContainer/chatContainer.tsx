@@ -1,7 +1,7 @@
 import React from 'react';
 import { Favourite } from '../../Interfaces/favourite';
 import { Building } from '../icons/Building';
-import './chatContainer.css';
+import './ChatContainer.css';
 
 interface Props {
   data: Favourite;
