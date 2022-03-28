@@ -46,7 +46,9 @@ const MenuEmployer: React.FC = () => {
       >
         <ul>
           <Link to='/job-seeker-profile/edit'><li>My profile</li></Link>
-          <Link to='/settings'><li>Jobs</li></Link>
+          <Link to='/jobs'><li>Jobs</li></Link>
+          <Link to='/settings'><li>Settings</li></Link>
+          
           {
             user && 
               <li 
