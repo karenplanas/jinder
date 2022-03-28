@@ -1,5 +1,5 @@
 import express from "express";
-import { JobOffer } from "../models/JobOfferSchema";
+import { getNewJobOffers, JobOffer } from "../models/JobOfferSchema";
 
 export const postJobOffer = async (
   req: express.Request,
@@ -22,7 +22,7 @@ export const getJobOffers = async (
   res: express.Response
 ) => {
   try {
-    const jobs = await JobOffer.find();
+    const jobs = await getNewJobOffers(req.user._id);
     res.status(200);
     res.json({ data: jobs });
   } catch (e) {

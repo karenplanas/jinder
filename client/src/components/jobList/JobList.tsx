@@ -1,36 +1,28 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
-import {
-  getJobs,
-  postFavourite,
-  removeJobOffer,
-} from "../../services/api-client";
 import { Job } from "../Job/Job";
 import { AppLayout } from "../AppLayout/AppLayout";
 import { JobOffer } from "../../Interfaces/JobOffer";
 import "./JobList.css";
-import { useUserContext } from "../../contexts/UserContext";
+import { useAuthenticatedApiClient } from "../../services/authenticated-api-client";
 
 type Direction = "left" | "right" | "up" | "down";
 
 const JobList: React.FC = () => {
+  const apiClient = useAuthenticatedApiClient()
   const [jobOffers, setJobOffers] = useState<JobOffer[]>([]);
-  const { user } = useUserContext();
-  console.log(user?._id);
 
   useEffect(() => {
-    getJobs(setJobOffers);
+    apiClient.getJobOffers().then(({ data }) => setJobOffers(data))
   }, []);
 
-  const swiped = (direction: Direction, jobObject: JobOffer) => {
+  const swiped = async (direction: Direction, jobOffer: JobOffer) => {
     if (direction === "right") {
-      postFavourite(jobObject, user);
-      removeJobOffer(jobObject);
+      await apiClient.likeJobOffer(jobOffer._id)
     }
     if (direction === "left") {
-      removeJobOffer(jobObject);
-      console.log(`${jobObject._id} got rejected by user`);
+      await apiClient.dislikeJobOffer(jobOffer._id)
     }
   };
 

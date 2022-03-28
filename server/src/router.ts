@@ -15,8 +15,13 @@ router.post("/job-seeker-profile", authMiddleware, jobSeekerProfileController.po
 router.get("/job-seeker-profile", authMiddleware, jobSeekerProfileController.getJobSeekerProfile);
 
 router.post("/job-postings", jobOfferController.postJobOffer);
-router.get("/job-postings", jobOfferController.getJobOffers);
+router.get("/job-postings", authMiddleware, jobOfferController.getJobOffers);
+router.get("/job-postings/liked", authMiddleware, userJobOfferController.getLikedJobOffer)
+router.post("/job-postings/:id/like", authMiddleware, userJobOfferController.postUserJobOfferLike)
+router.post("/job-postings/:id/dislike", authMiddleware, userJobOfferController.postUserJobOfferDislike)
+router.post("/job-postings/:id/application", authMiddleware, userJobOfferController.postUserJobOfferApplication)
 router.delete("/job-postings/:id", jobOfferController.deleteJobOffer);
+
 
 router.post("/users/:id/favourites", favouritesController.postFavourite);
 router.get("/users/:id/favourites", favouritesController.getFavourites);
@@ -27,8 +32,5 @@ router.delete(
 );
 
 router.put("/messages", messageController.addMessages);
-
-router.post("/job-offers/:id/like", authMiddleware, userJobOfferController.postUserJobOfferLike)
-router.post("/job-offers/:id/dislike", authMiddleware, userJobOfferController.postUserJobOfferDislike)
 
 export default router;
