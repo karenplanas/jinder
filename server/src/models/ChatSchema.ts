@@ -1,4 +1,3 @@
-import { timeStamp } from 'console';
 import mongoose from 'mongoose';
 import { Schema, model } from 'mongoose';
 
