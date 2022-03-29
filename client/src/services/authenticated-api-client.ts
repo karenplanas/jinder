@@ -50,40 +50,51 @@ export const useAuthenticatedApiClient = () => {
     });
   };
 
-  const getChats = (): Promise<{ data: Chat[] }> => {
-    return performRequest({
+  const getChats = (): Promise<Chat[]> => {
+    return performRequest<{ data: Chat[]}>({
       method: 'GET',
       path: '/chats',
       token: user?.accessToken,
-    });
+    }).then((value) => value.data)
+  };
+
+  const getChat = (id: string): Promise<Chat> => {
+    return performRequest<{ data: Chat}>({
+      method: 'GET',
+      path: `/chats/${id}`,
+      token: user?.accessToken,
+    }).then((value) => value.data)
   };
 
   const postChat = (payload: Partial<Chat>): Promise<Chat> => {
-    return performRequest({
+    return performRequest<{ data: Chat}>({
       method: 'POST',
       path: '/chats',
       token: user?.accessToken,
-    });
+      body: payload,
+    }).then((value) => value.data)
   };
 
   const postMessage = (
     chatId: string,
     payload: Partial<Message>
   ): Promise<Chat> => {
-    return performRequest({
+    return performRequest<{ data: Chat}>({
       method: 'POST',
       path: `/chats/${chatId}/messages`,
       token: user?.accessToken,
-    });
+      body: payload,
+    }).then((value) => value.data)
   };
 
   return {
     dislikeJobOffer,
+    getChat,
     getChats,
-    postChat,
-    postMessage,
     getJobOffers,
     getLikedJobOffers,
+    postChat,
+    postMessage,
     likeJobOffer,
     updateJobSeekerProfile,
   };

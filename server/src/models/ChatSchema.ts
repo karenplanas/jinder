@@ -42,37 +42,11 @@ ChatSchema.index({ jobSeekerUserId: 1, employerUserId: 1 }, { unique: true });
 const Chat = model('chat', ChatSchema);
 const Message = model('message', MessageSchema);
 
-// const lookUpUser = (key: string) => [{
-//   $lookup: {
-//     from: 'users',
-//     localField: `${key}Id`,
-//     foreignField: '_id',
-//     as: key
-//   }
-// },
-// {
-//   $unwind: {
-//     path: `$${key}`,
-//     preserveNullAndEmptyArrays: true
-//   }
-// }]
-
-const getChats = (userId: string) => {
+const aggregateChat = (match: object) => {
   return Chat.aggregate([
     {
-      $match: {
-        $or: [
-          {
-            jobSeekerUserId: new mongoose.Types.ObjectId(userId),
-          },
-          {
-            employerUserId: new mongoose.Types.ObjectId(userId),
-          },
-        ],
-      },
+      $match: match
     },
-    // ...lookUpUser('jobSeekerUser'),
-    // ...lookUpUser('employerUser'),
     {
       $lookup: {
         from: 'users',
@@ -117,7 +91,6 @@ const getChats = (userId: string) => {
     },
     {
       $addFields: {
-        tmp: '$employerUser.employerProfile',
         'employerUser.employerProfile': '$employerProfile',
       },
     },
@@ -125,10 +98,29 @@ const getChats = (userId: string) => {
       $unset: 'employerProfile',
     },
   ]);
+}
+
+const getChats = (userId: string) => {
+  return aggregateChat({
+      $or: [
+        { jobSeekerUserId: new mongoose.Types.ObjectId(userId) },
+        { employerUserId: new mongoose.Types.ObjectId(userId) },
+      ]
+    },
+  );
 };
 
+const getChat = (userId: string, id: string) => {
+  return aggregateChat({
+    _id: new mongoose.Types.ObjectId(id),
+    $or: [
+      { jobSeekerUserId: new mongoose.Types.ObjectId(userId) },
+      { employerUserId: new mongoose.Types.ObjectId(userId) },
+    ]
+  }).then((res) => res[0])
+}
+
 const createChat = (payload: Chat) => {
-  console.log(payload);
   return Chat.findOneAndUpdate(
     {
       jobSeekerUserId: payload.jobSeekerUserId,
@@ -151,4 +143,4 @@ const addMessage = (
   );
 };
 
-export { Chat, Message, getChats, createChat, addMessage };
+export { Chat, Message, getChats, getChat, createChat, addMessage };
