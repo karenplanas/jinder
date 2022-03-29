@@ -22,7 +22,7 @@ const EmployerProfile: React.FC = () => {
   });
 
   return (
-    <AppLayout title="Employer Profile">
+    <AppLayout title="My Profile">
       <FormProvider {...methods}>
         <form onSubmit={onSubmit}>
           <div className="Inputs-Card">
@@ -30,7 +30,7 @@ const EmployerProfile: React.FC = () => {
               <h3>Company Profile</h3>
             </div>
             <div className="inputRow">
-              <InputTextField name="companyname" label="Name*" />
+              <InputTextField name="companyname" label="Company Name*" />
               <InputTextField type="number" name="companysize" label="Size*" />
             </div>
             <InputTextField name="domain" label="Domain*" />

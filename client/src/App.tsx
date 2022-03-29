@@ -22,6 +22,7 @@ import { ChatList } from './components/ChatList/ChatList';
 import './App.css';
 import ChatRoom from './components/ChatRoom/ChatRoom';
 import EmployerProfile from './components/EmployerProfile/EmployerProfile';
+import { UserAccountSettings } from './components/UserAccountSettings/UserAccountSettings';
 
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
 const RequireAuth: React.FC = ({ children }) => {
@@ -105,6 +106,14 @@ const App: React.FC = () => {
             element={
               <RequireAuth>
                 <EmployerProfile />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <RequireAuth>
+                <UserAccountSettings />
               </RequireAuth>
             }
           />

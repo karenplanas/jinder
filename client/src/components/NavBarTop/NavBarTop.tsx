@@ -21,6 +21,7 @@ const NavBarTop: React.FC<Props> = ({
   userName,
 }) => {
   const { user } = useUserContext();
+  console.log('user type', user?.type)
   return (
     <div
       className={clsx('NavBarTop', className, {
