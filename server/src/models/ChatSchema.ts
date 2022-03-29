@@ -41,18 +41,97 @@ ChatSchema.index({ jobSeekerUserId: 1, employerUserId: 1 }, { unique: true });
 const Chat = model('chat', ChatSchema);
 const Message = model('message', MessageSchema);
 
-const getChats = () => {
-  return Chat.find();
+// const lookUpUser = (key: string) => [{
+//   $lookup: {
+//     from: 'users',
+//     localField: `${key}Id`,
+//     foreignField: '_id',
+//     as: key
+//   }
+// },
+// {
+//   $unwind: {
+//     path: `$${key}`,
+//     preserveNullAndEmptyArrays: true
+//   }
+// }]
+
+const getChats = (userId: string) => {
+  return Chat.aggregate([
+    {
+      $match: { 
+        $or: [{ 
+          jobSeekerUserId: new mongoose.Types.ObjectId(userId) 
+        }, { 
+          employerUserId: new mongoose.Types.ObjectId(userId) 
+        }] 
+      }
+    },
+    // ...lookUpUser('jobSeekerUser'),
+    // ...lookUpUser('employerUser'),
+    {
+      $lookup: {
+        from: 'users',
+        localField: 'jobSeekerUserId',
+        foreignField: '_id',
+        as: 'jobSeekerUser'
+      }
+    },
+    {
+      $unwind: {
+        path: '$jobSeekerUser',
+        preserveNullAndEmptyArrays: true
+      }
+    },
+    {
+      $lookup: {
+        from: 'users',
+        localField: 'employerUserId',
+        foreignField: '_id',
+        as: 'employerUser'
+      }
+    },
+    {
+      $unwind: {
+        path: '$employerUser',
+        preserveNullAndEmptyArrays: true
+      }
+    },
+    {
+      $lookup: {
+        from: 'employerprofiles',
+        localField: 'employerUserId',
+        foreignField: 'userId',
+        as: 'employerProfile'
+      }
+    },
+    {
+      $unwind: {
+        path: '$employerProfile',
+        preserveNullAndEmptyArrays: true
+      }
+    },
+    {
+      $addFields: {
+        _id: '$employerUser.employerProfile',
+        'employerUser.employerProfile': '$employerProfile',
+      }
+    }, 
+    {
+      $unset: 'employerProfile'
+    }
+  ]);
 };
 
 const createChat = (payload: Chat) => {
+  console.log(payload)
   return Chat.findOneAndUpdate(
     {
       jobSeekerUserId: payload.jobSeekerUserId,
       employerUserId: payload.employerUserId,
     },
     { $set: payload },
-    { upsert: true }
+    { upsert: true, new: true }
   );
 };
 
