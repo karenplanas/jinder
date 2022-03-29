@@ -6,6 +6,12 @@ import { NavTabs } from '../NavTabs/NavTabs';
 import { FavouriteContainer } from '../favouriteContainer/favouriteContainer';
 import { useAuthenticatedApiClient } from '../../services/authenticated-api-client';
 import { UserJobOffer } from '../../Interfaces/UserJobOffer';
+import { AppLayout } from '../AppLayout/AppLayout';
+
+const tabs = [
+  { name: 'Favourites', endpoint: '/favourites' },
+  { name: 'Chat', endpoint: '/chatlist' },
+]
 
 const FavouritesList: React.FC = () => {
   const apiClient = useAuthenticatedApiClient();
@@ -19,14 +25,8 @@ const FavouritesList: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <NavBarTop />
-      <NavTabs
-        tabs={[
-          { name: 'Favourites', endpoint: '/favourites' },
-          { name: 'Chat', endpoint: '/chatlist' },
-        ]}
-      />{' '}
+    <AppLayout>
+      <NavTabs tabs={tabs} />
       {favourites.map((favourite) => {
         return (
           <FavouriteContainer
@@ -36,7 +36,7 @@ const FavouritesList: React.FC = () => {
           />
         );
       })}
-    </div>
+    </AppLayout>
   );
 };
 

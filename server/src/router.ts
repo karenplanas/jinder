@@ -55,6 +55,7 @@ router.delete(
 );
 
 router.get('/chats', authMiddleware, chatController.getChats);
+router.get('/chats/:id', authMiddleware, chatController.getChat);
 router.post('/chats', authMiddleware, chatController.postChat);
 router.post('/chats/:id/messages', authMiddleware, chatController.postMessage);
 

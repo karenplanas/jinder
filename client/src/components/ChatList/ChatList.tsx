@@ -1,54 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import './ChatList.css';
-import { getFavourites } from '../../services/api-client';
-import { Favourite } from '../../Interfaces/favourite';
-import { ChatContainer } from '../ChatContainer/ChatContainer';
+import { ChatItem } from '../ChatItem/ChatItem';
 import { NavBarTop } from '../NavBarTop/NavBarTop';
 import { NavTabs } from '../NavTabs/NavTabs';
 import { Link } from 'react-router-dom';
-import {
-  UserContextProvider,
-  useUserContext,
-} from '../../contexts/UserContext';
 import { useAuthenticatedApiClient } from '../../services/authenticated-api-client';
 import { Chat } from '../../Interfaces/Chat';
+import { AppLayout } from '../AppLayout/AppLayout';
+
+const tabs = [
+  { name: 'Favourites', endpoint: '/favourites' },
+  { name: 'Chat', endpoint: '/chatlist' },
+]
 
 const ChatList: React.FC = () => {
-  const [chatting, setChatting] = useState<Chat[]>();
-  const { user } = useUserContext();
+  const [chats, setChats] = useState<Chat[]>();
   const apiClient = useAuthenticatedApiClient();
-  const getChats = () =>
-    apiClient.getChats().then(({ data }) => setChatting(data));
+  const getChats = () => apiClient.getChats().then(setChats);
 
   useEffect(() => {
     getChats();
   }, []);
 
   return (
-    <>
-      <NavBarTop />{' '}
-      <NavTabs
-        tabs={[
-          { name: 'Favourites', endpoint: '/favourites' },
-          { name: 'Chat', endpoint: '/chatlist' },
-        ]}
-      />{' '}
-      {chatting?.map((chat) => {
-        {
-          console.log('this one', chatting);
-        }
+    <AppLayout>
+      <NavTabs tabs={tabs} />
+      {chats?.map((chat) => {
         return (
-          <Link
-            to={`/chatRoom/${chat._id}`}
-            className="chatLinks"
-            state={{ chat: chat, refresh: getChats() }}
-          >
-            {' '}
-            <ChatContainer data={chat} refresh={getChats} />
+          <Link to={`/chatRoom/${chat._id}`} className="chatLinks">
+            <ChatItem chat={chat} />
           </Link>
         );
       })}
-    </>
+    </AppLayout>
   );
 };
 

@@ -40,8 +40,7 @@ const NavBarTop: React.FC<Props> = ({
             user?.type === 'jobseeker' ?
             <MenuJobSeeker /> :
             <MenuEmployer />
-          }
-          
+          }          
         </div>
       </div>
     </div>
