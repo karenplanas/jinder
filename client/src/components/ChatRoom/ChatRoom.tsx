@@ -8,28 +8,48 @@ import { Chat } from '../../Interfaces/Chat';
 import { useAuthenticatedApiClient } from '../../services/authenticated-api-client';
 import { useUserContext } from '../../contexts/UserContext';
 import clsx from 'clsx';
+import { FormProvider, useForm } from 'react-hook-form';
+import { Message } from '../../Interfaces/Message';
+import { InputTextField } from '../InputTextField/InputTextField';
+import { Button } from '../Button/Button';
 // import { Chat } from '../icons/Chat';
 
 const ChatRoom: React.FC = () => {
-  const [formValue, setFormValue] = useState('');
   const [chat, setChat] = useState<Chat>();
   const { id } = useParams();
-  const { user } = useUserContext()
+  const { user } = useUserContext();
   const apiClient = useAuthenticatedApiClient();
-  const getChat = () => apiClient.getChat(id!).then(setChat)
+  const getChat = () => apiClient.getChat(id!).then(setChat);
 
   useEffect(() => {
-    getChat()
+    console.log(id);
+    getChat();
 
     // https://stackoverflow.com/questions/53090432/react-hooks-right-way-to-clear-timeouts-and-intervals
-    const timer = setInterval(getChat, 5000)
+    // const timer = setInterval(getChat, 5000);
 
-    return () => clearTimeout(timer)
+    // return () => clearTimeout(timer);
   }, []);
 
-  const handleSubmit = (data: any) => {
-    apiClient.postMessage(id!, data).then(setChat)
-  };
+  const methods = useForm<Message>({
+    defaultValues: {
+      senderId: '',
+      content: '',
+      sentAt: '',
+    },
+  });
+
+  const { handleSubmit, reset } = methods;
+
+  const onSubmit = handleSubmit((data: any) => {
+    apiClient.postMessage(id!, data).then((res) => {
+      setChat((prevState) => {
+        if (!prevState) return undefined;
+        reset();
+        return { ...prevState, messages: res.messages };
+      });
+    });
+  });
 
   return (
     <div className="chat_room_container">
@@ -52,25 +72,28 @@ const ChatRoom: React.FC = () => {
         </div>
       </div>
       <div className="chatLog">
-        { chat?.messages.map((message) => {
-          const isCurrentUser = message.senderId === user!._id
+        {chat?.messages.map((message) => {
+          const isCurrentUser = message.senderId === user!._id;
 
           return (
-            <div key={message._id} className={clsx('ChatMessage', { 'current-user': isCurrentUser })}>
+            <div
+              key={message._id}
+              className={clsx('ChatMessage', { 'current-user': isCurrentUser })}
+            >
               {message.content}
             </div>
-          )
+          );
         })}
       </div>
       <div className="input_area">
-        <form className="message_form" onSubmit={handleSubmit}>
-          <input
-            value={formValue}
-            onChange={(e) => setFormValue(e.target.value)}
-            placeholder="enter message here..."
-          />
-          <input type="submit" className="submit_button" />
-        </form>
+        <FormProvider {...methods}>
+          <form onSubmit={onSubmit}>
+            <InputTextField name="content"></InputTextField>
+            <div>
+              <Button text="Send message" type="submit"></Button>
+            </div>
+          </form>
+        </FormProvider>
       </div>
     </div>
   );

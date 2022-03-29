@@ -7,8 +7,9 @@ import './favouriteContainer.css';
 import { Favourite } from '../../Interfaces/favourite';
 import { Job } from '../Job/Job';
 import { useAuthenticatedApiClient } from '../../services/authenticated-api-client';
-import { Chat } from '../icons/Chat';
-import { Link } from 'react-router-dom';
+import { ChatIcon } from '../icons/ChatIcon';
+import { useUserContext } from '../../contexts/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   data: Favourite;
@@ -16,13 +17,21 @@ interface Props {
 }
 
 const FavouriteContainer: React.FC<Props> = ({ data, refresh }) => {
-  console.log('FavouriteContainer');
+  const navigate = useNavigate();
+  console.log(data);
   const [cardActive, setCardActive] = useState(false);
   const [popupActive, setPopupActive] = useState(false);
   const [applied, setApplied] = useState(false);
+  const { user } = useUserContext();
   const apiClient = useAuthenticatedApiClient();
+  const employerUserId = data.employerUserId;
+  const jobSeekerUserId = user?._id;
+  const createChat = async () => {
+    const chat = await apiClient.postChat({ jobSeekerUserId, employerUserId });
+    navigate(`/chatRoom/${chat._id}`);
+  };
 
-  // if (data.applied === true && applied === false) setApplied(true);
+  if (data.applied === true && applied === false) setApplied(true);
 
   const toggleFunction = () => {
     if (popupActive === true) {
@@ -45,7 +54,6 @@ const FavouriteContainer: React.FC<Props> = ({ data, refresh }) => {
   }
   return (
     <div className="favourite_container">
-      {console.log('hello', data)}
       <div onClick={showCard} className="showCard_div">
         <div className="company_logo_favourites">
           <Building />{' '}
@@ -59,11 +67,10 @@ const FavouriteContainer: React.FC<Props> = ({ data, refresh }) => {
           text="Apply now"
           onClick={toggleFunction}
         ></Button>
-        <Link to={`/chatRoom/${data._id}`} state={{ chat: data }}>
-          <div className="chatIcon">
-            <Chat />
-          </div>
-        </Link>
+
+        <div className="chatIcon" onClick={createChat}>
+          <ChatIcon />
+        </div>
 
         <div onClick={removeFavourite} className="rubbishBin">
           <RubbishBin />
