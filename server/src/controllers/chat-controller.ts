@@ -9,7 +9,6 @@ const getChats = async (req: express.Request, res: express.Response) => {
 
 const postChat = async (req: express.Request, res: express.Response) => {
   const response = await Chat.createChat(req.body);
-  console.log('response', response)
   res.status(200);
   res.json({ data: response });
 };
