@@ -57,6 +57,12 @@ router.delete(
 
 router.put("/messages", messageController.addMessages);
 
+// router.get(
+//   "/jobseekers",
+//   authMiddleware,
+//   jobSeekerController.getJobSeekerProfile
+// );
+
 router.get("/jobseekers", authMiddleware, jobSeekerController.getJobSeeker);
 
 export default router;

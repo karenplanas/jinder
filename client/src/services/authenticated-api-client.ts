@@ -48,7 +48,7 @@ export const useAuthenticatedApiClient = () => {
     });
   };
 
-  const getAllJobSeekers = (): Promise<JobSeekerProfile[]> => {
+  const getAllJobSeekers = () => {
     return performRequest({
       method: "GET",
       path: "/jobseekers",
