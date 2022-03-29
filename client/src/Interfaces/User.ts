@@ -4,5 +4,6 @@ export interface User {
   lastName: string;
   email: string;
   password: string;
-  accessToken: string
+  accessToken: string;
+  type: 'employer' | 'jobseeker'
 }
