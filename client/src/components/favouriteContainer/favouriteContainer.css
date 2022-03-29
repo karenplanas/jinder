@@ -89,3 +89,19 @@
   z-index: 10;
   position: fixed;
 }
+
+.chatIcon {
+  display: flex;
+  padding: 5px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 80px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.chatIcon:hover {
+  background: #f3c522;
+}

@@ -19,14 +19,15 @@ const MessageSchema = new Schema<Message>(
     senderId: { type: mongoose.SchemaTypes.ObjectId, required: true },
     content: { type: String, required: true },
   },
-  { 
+  {
     timestamps: {
       createdAt: 'sentAt',
-    }
+    },
   }
 );
 
-const ChatSchema = new Schema<Chat>({
+const ChatSchema = new Schema<Chat>(
+  {
     jobSeekerUserId: { type: mongoose.SchemaTypes.ObjectId, required: true },
     employerUserId: { type: mongoose.SchemaTypes.ObjectId, required: true },
     messages: { type: [MessageSchema] },
@@ -59,13 +60,16 @@ const Message = model('message', MessageSchema);
 const getChats = (userId: string) => {
   return Chat.aggregate([
     {
-      $match: { 
-        $or: [{ 
-          jobSeekerUserId: new mongoose.Types.ObjectId(userId) 
-        }, { 
-          employerUserId: new mongoose.Types.ObjectId(userId) 
-        }] 
-      }
+      $match: {
+        $or: [
+          {
+            jobSeekerUserId: new mongoose.Types.ObjectId(userId),
+          },
+          {
+            employerUserId: new mongoose.Types.ObjectId(userId),
+          },
+        ],
+      },
     },
     // ...lookUpUser('jobSeekerUser'),
     // ...lookUpUser('employerUser'),
@@ -74,57 +78,57 @@ const getChats = (userId: string) => {
         from: 'users',
         localField: 'jobSeekerUserId',
         foreignField: '_id',
-        as: 'jobSeekerUser'
-      }
+        as: 'jobSeekerUser',
+      },
     },
     {
       $unwind: {
         path: '$jobSeekerUser',
-        preserveNullAndEmptyArrays: true
-      }
+        preserveNullAndEmptyArrays: true,
+      },
     },
     {
       $lookup: {
         from: 'users',
         localField: 'employerUserId',
         foreignField: '_id',
-        as: 'employerUser'
-      }
+        as: 'employerUser',
+      },
     },
     {
       $unwind: {
         path: '$employerUser',
-        preserveNullAndEmptyArrays: true
-      }
+        preserveNullAndEmptyArrays: true,
+      },
     },
     {
       $lookup: {
         from: 'employerprofiles',
         localField: 'employerUserId',
         foreignField: 'userId',
-        as: 'employerProfile'
-      }
+        as: 'employerProfile',
+      },
     },
     {
       $unwind: {
         path: '$employerProfile',
-        preserveNullAndEmptyArrays: true
-      }
+        preserveNullAndEmptyArrays: true,
+      },
     },
     {
       $addFields: {
-        _id: '$employerUser.employerProfile',
+        tmp: '$employerUser.employerProfile',
         'employerUser.employerProfile': '$employerProfile',
-      }
-    }, 
+      },
+    },
     {
-      $unset: 'employerProfile'
-    }
+      $unset: 'employerProfile',
+    },
   ]);
 };
 
 const createChat = (payload: Chat) => {
-  console.log(payload)
+  console.log(payload);
   return Chat.findOneAndUpdate(
     {
       jobSeekerUserId: payload.jobSeekerUserId,
@@ -135,7 +139,11 @@ const createChat = (payload: Chat) => {
   );
 };
 
-const addMessage = (chatId: string, senderId: string, payload: Partial<Message> ) => {
+const addMessage = (
+  chatId: string,
+  senderId: string,
+  payload: Partial<Message>
+) => {
   return Chat.findOneAndUpdate(
     { _id: new mongoose.Types.ObjectId(chatId) },
     { $push: { messages: { ...payload, senderId } } },
