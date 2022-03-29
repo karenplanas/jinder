@@ -2,7 +2,7 @@ import React from 'react'
 import { AppLayout } from '../AppLayout/AppLayout'
 import { NavTabs } from '../NavTabs/NavTabs'
 
-const CreateJobSeekerProfileLayout: React.FC = ({ children }) => {
+const JobSeekerProfileLayout: React.FC = ({ children }) => {
   const tabs = [
     {name: 'Experience', endpoint:'/job-seeker-profile/edit/experience'},
     {name: 'Skills', endpoint:'/job-seeker-profile/edit/skills'},
@@ -10,7 +10,7 @@ const CreateJobSeekerProfileLayout: React.FC = ({ children }) => {
   ]
 
   return (
-    <AppLayout displayNavBarBottom={false} title="My Profile">
+    <AppLayout title="My Profile">
       <div className='CreateJobSeekerProfileLayout'>
         <NavTabs tabs={tabs}/>
         {children}
@@ -19,4 +19,4 @@ const CreateJobSeekerProfileLayout: React.FC = ({ children }) => {
   )
 }
 
-export { CreateJobSeekerProfileLayout }
+export { JobSeekerProfileLayout }

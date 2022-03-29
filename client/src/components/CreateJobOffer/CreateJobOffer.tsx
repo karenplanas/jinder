@@ -83,7 +83,7 @@ const CreateJobOffer: React.FC = () => {
               label="Description"
             />
 
-            <div>
+            <div className='CreateJobOffer-button'>
               <Button text="Submit" type="submit" />
             </div>
           </div>

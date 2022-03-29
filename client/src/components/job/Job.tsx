@@ -26,7 +26,6 @@ const Job: React.FC<Props> = ({ jobOffer }) => {
       <div className="Job-content">
         <h3>{jobOffer.position}</h3>
         <p>
-          {" "}
           {showDetail ? jobOffer.bio : `${jobOffer.bio?.substring(0, 220)}...`}
         </p>
         <div className="Job-text-with-label">
@@ -38,10 +37,7 @@ const Job: React.FC<Props> = ({ jobOffer }) => {
       {showDetail && (
         <>
           <p>{jobOffer.description}</p>
-          {/* <div className='Job-button-container'>
-            <Button className='outlined' text="Pass" />
-            <Button className='contained' text="Apply" />
-          </div> */}
+          <p>{jobOffer.skills}</p>
         </>
       )}
     </Card>

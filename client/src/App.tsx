@@ -8,9 +8,9 @@ import {
 } from 'react-router-dom';
 import { CreateJobOffer } from './components/CreateJobOffer/CreateJobOffer';
 import { JobList } from './components/JobList/JobList';
-import { JobSeekerProfileSkills } from './components/CreateJobSeekerProfile/JobSeekerProfileSkills';
-import { JobSeekerProfileLookingFor } from './components/CreateJobSeekerProfile/JobSeekerProfileLookingFor';
-import { JobSeekerProfileExperience } from './components/CreateJobSeekerProfile/JobSeekerProfileExperience';
+import { JobSeekerProfileSkills } from './components/JobSeekerProfile/JobSeekerProfileSkills';
+import { JobSeekerProfileLookingFor } from './components/JobSeekerProfile/JobSeekerProfileLookingFor';
+import { JobSeekerProfileExperience } from './components/JobSeekerProfile/JobSeekerProfileExperience';
 import { Login } from './components/Login/Login';
 import { SignUp } from './components/SignUp/SignUp';
 

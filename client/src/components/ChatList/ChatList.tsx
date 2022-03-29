@@ -23,7 +23,7 @@ const ChatList: React.FC = () => {
   }, []);
 
   return (
-    <AppLayout>
+    <AppLayout title='Messages'>
       <NavTabs tabs={tabs} />
       {chats?.map((chat) => {
         return (

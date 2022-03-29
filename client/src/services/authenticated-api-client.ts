@@ -87,6 +87,14 @@ export const useAuthenticatedApiClient = () => {
     }).then((value) => value.data)
   };
 
+  const getJobSeekerProfile = (): Promise<JobSeekerProfile> => {
+    return performRequest<{ data: JobSeekerProfile}>({
+      method: 'GET',
+      path: '/job-seeker-profile',
+      token: user?.accessToken,
+    }).then((value) => value.data)
+  };
+
   return {
     dislikeJobOffer,
     getChat,
@@ -97,5 +105,6 @@ export const useAuthenticatedApiClient = () => {
     postMessage,
     likeJobOffer,
     updateJobSeekerProfile,
+    getJobSeekerProfile
   };
 };

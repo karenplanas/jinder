@@ -12,7 +12,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { Message } from '../../Interfaces/Message';
 import { InputTextField } from '../InputTextField/InputTextField';
 import { Button } from '../Button/Button';
-// import { Chat } from '../icons/Chat';
+import { ImageHolder } from '../ImageHolder/ImageHolder';
 
 const ChatRoom: React.FC = () => {
   const [chat, setChat] = useState<Chat>();
@@ -22,13 +22,12 @@ const ChatRoom: React.FC = () => {
   const getChat = () => apiClient.getChat(id!).then(setChat);
 
   useEffect(() => {
-    console.log(id);
     getChat();
 
     // https://stackoverflow.com/questions/53090432/react-hooks-right-way-to-clear-timeouts-and-intervals
     // const timer = setInterval(getChat, 5000);
-
     // return () => clearTimeout(timer);
+
   }, []);
 
   const methods = useForm<Message>({
@@ -55,17 +54,16 @@ const ChatRoom: React.FC = () => {
     <div className="chat_room_container">
       <div className="chat_room_nav">
         <div className="back_button">
-          <Link to={'/chatList'}>
-            <BackButton />
+          <Link to={'/chatlist'}>
+            <ImageHolder>
+              <BackButton />
+            </ImageHolder>
           </Link>
         </div>
 
         <div className="chat_company_container">
-          <div className="company_logo_favourites">
+            <h3>{chat?.employerUser.employerProfile.name}</h3>
             <Building />
-          </div>
-
-          {chat?.employerUser.employerProfile.name}
         </div>
         <div className="video_icon">
           <VideoIcon />
@@ -74,7 +72,6 @@ const ChatRoom: React.FC = () => {
       <div className="chatLog">
         {chat?.messages.map((message) => {
           const isCurrentUser = message.senderId === user!._id;
-
           return (
             <div
               key={message._id}
@@ -88,9 +85,13 @@ const ChatRoom: React.FC = () => {
       <div className="input_area">
         <FormProvider {...methods}>
           <form onSubmit={onSubmit}>
-            <InputTextField name="content"></InputTextField>
-            <div>
-              <Button text="Send message" type="submit"></Button>
+            <div className='ChatRoom-Input-Send'>
+              <div className='ChatRoom-Input'>
+                <InputTextField name="content"></InputTextField>
+              </div>
+              <div>
+                <Button text="Send" type="submit" variant='outlined'></Button>
+              </div>
             </div>
           </form>
         </FormProvider>

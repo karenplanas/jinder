@@ -1,22 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Checkbox } from '../Checkbox/Checkbox'
 import { PlusInCircle } from '../icons/PlusInCircle'
 import { InputTextField } from '../InputTextField/InputTextField'
-import { CreateJobSeekerProfileLayout } from './CreateJobSeekerProfileLayout'
+import { JobSeekerProfileLayout } from './JobSeekerProfileLayout'
 import { JobSeekerProfileButtons } from './JobSeekerProfileButtons'
-import './CreateJobSeekerProfile.css'
 import { useAuthenticatedApiClient } from '../../services/authenticated-api-client'
+import './JobSeekerProfile.css'
 
 const JobSeekerProfileSkills: React.FC = () => {
   const apiClient = useAuthenticatedApiClient()
   const methods = useForm()
   const { handleSubmit } = methods;
 
+  const fetchJobseekerProfile = async () => {
+    const jobSeekerProfile = await apiClient.getJobSeekerProfile();
+    methods.reset(jobSeekerProfile)
+  }
+
+  useEffect(() => {
+    fetchJobseekerProfile()
+  }, [])
+
   const onSubmit = handleSubmit(apiClient.updateJobSeekerProfile);
 
   return (
-    <CreateJobSeekerProfileLayout>
+    <JobSeekerProfileLayout>
       <FormProvider {...methods}>
         <form onSubmit={onSubmit}>
           <div className='CreateJobSeekerProfile-Skills profile-sections'>
@@ -48,7 +57,7 @@ const JobSeekerProfileSkills: React.FC = () => {
           </div>
         </form>
       </FormProvider>
-    </CreateJobSeekerProfileLayout>
+    </JobSeekerProfileLayout>
   )
 }
 

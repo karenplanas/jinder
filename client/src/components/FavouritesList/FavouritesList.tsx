@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './FavouritesList.css';
-import { NavBarTop } from '../NavBarTop/NavBarTop';
 import { NavTabs } from '../NavTabs/NavTabs';
-
-import { FavouriteContainer } from '../favouriteContainer/favouriteContainer';
+import { FavouriteItem } from '../FavouriteItem/FavouriteItem';
 import { useAuthenticatedApiClient } from '../../services/authenticated-api-client';
 import { UserJobOffer } from '../../Interfaces/UserJobOffer';
 import { AppLayout } from '../AppLayout/AppLayout';
+import './FavouritesList.css';
 
 const tabs = [
   { name: 'Favourites', endpoint: '/favourites' },
@@ -25,17 +23,19 @@ const FavouritesList: React.FC = () => {
   }, []);
 
   return (
-    <AppLayout>
+    <AppLayout title='Jobs'>
       <NavTabs tabs={tabs} />
-      {favourites.map((favourite) => {
-        return (
-          <FavouriteContainer
-            data={favourite.jobOffer}
-            key={favourite._id}
-            refresh={getLikedJobOffers}
-          />
-        );
-      })}
+      <div className='FavouritesList-container'>
+        {favourites.map((favourite) => {
+          return (
+            <FavouriteItem
+              data={favourite.jobOffer}
+              key={favourite._id}
+              refresh={getLikedJobOffers}
+            />
+          );
+        })}
+      </div>
     </AppLayout>
   );
 };
