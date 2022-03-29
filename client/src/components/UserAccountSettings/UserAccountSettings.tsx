@@ -24,24 +24,26 @@ const UserAccountSettings: React. FC = () => {
 
   return(
     <AppLayout title='Account Settings'>
-      <div className='UserAccountSettings-container profile-sections'>
         <FormProvider {...methods}>
           <form onSubmit={onSubmit}>
-            <InputTextField name='firstName' label='First Name' placeholder='First Name' />
-            <InputTextField name='lastName' label='Last Name' placeholder='Last Name' />
-            <Button icon={Camera} text='Upload' variant='outlined'/>
-            <InputTextField name='email' label='Email' placeholder='Email' />
-            <div className='UserAccountSettings-password-reset'>
-              <InputTextField name='password' label='Password' placeholder='**********' />
-              <Button text='Reset' variant='outlined' onClick={resetPassword}/>
-            </div>
-            <div className='UserAccountSettings-buttons'>
-              <Button text='Save' variant='outlined' />
-              <Button text='Cancel' variant='contained' />
+            <div className='UserAccountSettings-container'>
+              <InputTextField name='firstName' label='First Name' placeholder='First Name' />
+              <InputTextField name='lastName' label='Last Name' placeholder='Last Name' />
+              <Button icon={<Camera />} text='Upload' variant='outlined'/>
+              <InputTextField name='email' label='Email' placeholder='Email' />
+              <div className='UserAccountSettings-password-reset'>
+                <InputTextField name='password' label='Password' placeholder='**********' />
+                <div>
+                  <Button text='Reset' variant='outlined' onClick={resetPassword} />
+                </div>
+              </div>
+              <div className='UserAccountSettings-buttons'>
+                <Button text='Cancel' variant='contained' />
+                <Button text='Save' variant='outlined' />
+              </div>
             </div>
           </form>
         </FormProvider>
-      </div>
     </AppLayout>
   )
 }
