@@ -51,7 +51,7 @@ const App: React.FC = () => {
               </RequireAuth>
             }
           />
-          <Route path="/home" element={<JobList />} />
+          {/* <Route path="/home" element={<JobList />} /> */}
           <Route path="/home" element={<JobSeekerList />} />
           <Route
             path="/chatList"

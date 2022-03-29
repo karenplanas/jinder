@@ -2,13 +2,13 @@ export interface JobSeekerProfile {
   _id: string;
   skills: string[];
   experiences: Experience[];
-  lookingFor: string[]
+  lookingFor: string[];
 }
 export interface Experience {
-  title: string,
-  companyName: string,
-  location: string,
-  startDate: string,
-  endDate: string,
-  description: string
+  title: string;
+  companyName: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  description: string;
 }

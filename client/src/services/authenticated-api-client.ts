@@ -48,10 +48,26 @@ export const useAuthenticatedApiClient = () => {
     });
   };
 
-  const getAllJobSeekers = (): Promise<{ data: JobSeekerProfile[] }> => {
+  const getAllJobSeekers = (): Promise<JobSeekerProfile[]> => {
     return performRequest({
       method: "GET",
       path: "/jobseekers",
+      token: user?.accessToken,
+    });
+  };
+
+  const likeJobSeeker = (id: string): Promise<JobSeekerProfile> => {
+    return performRequest({
+      method: "POST",
+      path: `/jobseekers/${id}/like`,
+      token: user?.accessToken,
+    });
+  };
+
+  const dislikeJobSeeker = (id: string): Promise<JobSeekerProfile> => {
+    return performRequest({
+      method: "POST",
+      path: `/jobseekers/${id}/dislike`,
       token: user?.accessToken,
     });
   };
@@ -63,5 +79,7 @@ export const useAuthenticatedApiClient = () => {
     likeJobOffer,
     updateJobSeekerProfile,
     getAllJobSeekers,
+    likeJobSeeker,
+    dislikeJobSeeker,
   };
 };
