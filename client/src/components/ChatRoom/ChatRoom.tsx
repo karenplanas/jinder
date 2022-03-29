@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { Favourite } from "../../Interfaces/favourite";
-import "./ChatRoom.css";
-import { useLocation } from "react-router-dom";
-import { BackButton } from "../icons/BackButton";
-import { VideoIcon } from "../icons/VideoIcon";
-import { Building } from "../icons/Building";
-import { Link } from "react-router-dom";
-import {
-  UserContextProvider,
-  useUserContext,
-} from "../../contexts/UserContext";
+import React, { useEffect, useState } from 'react';
+import './ChatRoom.css';
+import { useLocation } from 'react-router-dom';
+import { BackButton } from '../icons/BackButton';
+import { VideoIcon } from '../icons/VideoIcon';
+import { Building } from '../icons/Building';
+import { Link } from 'react-router-dom';
+import { Message } from '../../Interfaces/Message';
+import { useAuthenticatedApiClient } from '../../services/authenticated-api-client';
 
 const ChatRoom: React.FC = () => {
-  const [formValue, setFormValue] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [formValue, setFormValue] = useState('');
+  const [messages, setMessages] = useState<Message[]>([]);
   const propsy: any = useLocation();
   const chat: any = propsy.state.chat;
-  const { user } = useUserContext();
+  const apiClient = useAuthenticatedApiClient();
+  const getChats = () =>
+    apiClient.getChats().then(({ data }) => setMessages(data[0].messages));
 
   useEffect(() => {
-    setMessages(chat.messages);
+		getChats()
   }, []);
 
   const handleSubmit = () => {};
@@ -28,19 +27,19 @@ const ChatRoom: React.FC = () => {
     <div className="chat_room_container">
       <div className="chat_room_nav">
         <div className="back_button">
-          <Link to={"/chatList"}>
-            {" "}
+          <Link to={'/chatList'}>
+            {' '}
             <BackButton />
           </Link>
         </div>
 
         <div className="chat_company_container">
           <div className="company_logo_favourites">
-            {" "}
+            {' '}
             <Building />
           </div>
 
-          {chat.companyname}
+          {chat.employerUser.employerProfile.name}
         </div>
         <div className="video_icon">
           <VideoIcon />
@@ -48,7 +47,10 @@ const ChatRoom: React.FC = () => {
       </div>
       <div className="chatLog">
         {messages.map((message) => {
-          <p>{message}</p>;
+          {
+            console.log(messages);
+          }
+          return <div key={message._id}>{message.content}</div>;
         })}
       </div>
       <div className="input_area">
