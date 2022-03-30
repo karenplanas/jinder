@@ -1,0 +1,5 @@
+.binDelete {
+	display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}

@@ -22,6 +22,7 @@ router.get('/job-seekers', userController.getJobSeekers)
 
 router.post('/job-postings', jobOfferController.postJobOffer);
 router.get('/job-postings', authMiddleware, jobOfferController.getJobOffers);
+router.get('/job-postings/:id', authMiddleware, jobOfferController.getJobOffersById);
 router.get('/job-postings/liked', authMiddleware, userJobOfferController.getLikedJobOffer);
 router.post('/job-postings/:id/like', authMiddleware, userJobOfferController.postUserJobOfferLike);
 router.post('/job-postings/:id/dislike', authMiddleware, userJobOfferController.postUserJobOfferDislike);

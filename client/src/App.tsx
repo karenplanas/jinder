@@ -20,6 +20,7 @@ import { EmployerProfile } from './components/EmployerProfile/EmployerProfile';
 import { UserAccountSettings } from './components/UserAccountSettings/UserAccountSettings';
 import { Home } from './components/Home/Home';
 import './App.css';
+import { JobOffersList } from "./components/JobOffersList/JobOffersList";
 
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
 const RequireAuth: React.FC = ({ children }) => {
@@ -65,6 +66,15 @@ const App: React.FC = () => {
               </RequireAuth>
             }
           />
+					<Route
+            path="/job-position/list"
+            element={
+              <RequireAuth>
+                <JobOffersList />
+              </RequireAuth>
+            }
+          />
+
           <Route path="/chatRoom/:id" element={<ChatRoom />} />
           <Route
             path="/job-seeker-profile/edit"

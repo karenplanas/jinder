@@ -1,11 +1,11 @@
-import { JobOffer } from "../Interfaces/JobOffer";
-import { Favourite } from "../Interfaces/favourite";
-import { User } from "../Interfaces/User";
+import { JobOffer } from '../Interfaces/JobOffer';
+import { Favourite } from '../Interfaces/favourite';
+import { User } from '../Interfaces/User';
 
 const postFavourite = (favourite: Favourite, user: any) => {
   return fetch(`http://localhost:4000/users/${user._id}/favourites`, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
     body: JSON.stringify(favourite),
   });
 };
@@ -20,8 +20,8 @@ const addApplied = (favourite: Favourite, user: any) => {
   return fetch(
     `http://localhost:4000/users/${user._id}/favourites/${favourite._id}`,
     {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
+      method: 'PUT',
+      headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ applied: true }),
     }
   );
@@ -31,36 +31,36 @@ const deleteFavourite = (favourite: Favourite, user: any) => {
   return fetch(
     `http://localhost:4000/users/${user._id}/favourites/${favourite._id}`,
     {
-      method: "DELETE",
-      headers: { "content-type": "application/json" },
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json' },
       body: JSON.stringify(favourite),
     }
   );
 };
 
-// const removeJobOffer = (jobOffer: JobOffer) => {
-//   return fetch(`http://localhost:4000/job-postings/${jobOffer._id}`, {
-//     method: "DELETE",
-//     headers: { "content-type": "application/json" },
-//     body: JSON.stringify(jobOffer),
-//   });
-// };
+const removeJobOffer = (id : string) => {
+  return fetch(`http://localhost:4000/job-postings/${id}`, {
+    method: "DELETE",
+    headers: { "content-type": "application/json" },
+  });
+};
 
 const postJobOffer = (jobOffer: JobOffer) => {
-  return fetch("http://localhost:4000/job-postings", {
-    method: "POST",
-    headers: { "Content-type": " application/json " },
+  return fetch('http://localhost:4000/job-postings', {
+    method: 'POST',
+    headers: { 'Content-type': ' application/json ' },
     body: JSON.stringify(jobOffer),
   });
 };
 
 const getJobs = (setState: any) => {
-  return fetch("http://localhost:4000/job-postings")
+  return fetch('http://localhost:4000/job-postings')
     .then((res) => res.json())
     .then((data) => {
       return setState(data.data);
     });
 };
+
 
 // const getAllJobSeekers = async () => {
 //   const response = await fetch("http://localhost:4000/jobseekers", {
@@ -76,6 +76,6 @@ export {
   getFavourites,
   postFavourite,
   addApplied,
-  // removeJobOffer,
+   removeJobOffer,
   deleteFavourite,
 };

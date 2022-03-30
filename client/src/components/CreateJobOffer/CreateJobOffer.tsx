@@ -7,10 +7,14 @@ import { Button } from '../Button/Button';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { InputTextField } from '../InputTextField/InputTextField';
 import './CreateJobOffer.css';
+import { NavTabs } from '../NavTabs/NavTabs';
+import { useUserContext } from '../../contexts/UserContext';
 
 const CreateJobOffer: React.FC = () => {
+	const {user} = useUserContext()
   const methods = useForm<JobOffer>({
     defaultValues: {
+			employerUserId : user?._id,
       companyname: '',
       companysize: '',
       position: '',
@@ -34,8 +38,14 @@ const CreateJobOffer: React.FC = () => {
     await postJobOffer(data);
   });
 
+	const tabs = [
+		{ name: 'My job offers', endpoint: '/job-position/list' },
+		{ name: 'Create new job offer', endpoint: '/job-position/edit' },
+	]
+
   return (
     <AppLayout title="Jobs">
+			<NavTabs tabs={tabs}></NavTabs>
       <FormProvider {...methods}>
         <form onSubmit={onSubmit}>
           <div className="Inputs-Card">
