@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+import React, { useEffect, useState } from "react";
+import "./ChatList.css";
+import { getFavourites } from "../../services/api-client";
+import { Favourite } from "../../Interfaces/favourite";
+import { ChatContainer } from "../ChatContainer/chatContainer";
+import { NavBarTop } from "../NavBarTop/NavBarTop";
+import { NavTabs } from "../NavTabs/NavTabs";
+import { Link } from "react-router-dom";
+import {
+  UserContextProvider,
+  useUserContext,
+} from "../../contexts/UserContext";
+=======
 import React, { useEffect, useState } from 'react';
 import './ChatList.css';
 import { ChatItem } from '../ChatItem/ChatItem';
@@ -12,6 +26,7 @@ const tabs = [
   { name: 'Favourites', endpoint: '/favourites' },
   { name: 'Chat', endpoint: '/chatlist' },
 ]
+>>>>>>> master
 
 const ChatList: React.FC = () => {
   const [chats, setChats] = useState<Chat[]>();

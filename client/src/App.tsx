@@ -1,28 +1,29 @@
-import React from 'react';
+import React from "react";
 import {
   BrowserRouter,
   Navigate,
   Route,
   Routes,
   useLocation,
-} from 'react-router-dom';
-import { CreateJobOffer } from './components/CreateJobOffer/CreateJobOffer';
-import { JobList } from './components/JobList/JobList';
-import { JobSeekerProfileSkills } from './components/CreateJobSeekerProfile/JobSeekerProfileSkills';
-import { JobSeekerProfileLookingFor } from './components/CreateJobSeekerProfile/JobSeekerProfileLookingFor';
-import { JobSeekerProfileExperience } from './components/CreateJobSeekerProfile/JobSeekerProfileExperience';
-import { Login } from './components/Login/Login';
-import { SignUp } from './components/SignUp/SignUp';
+} from "react-router-dom";
+import { CreateJobOffer } from "./components/CreateJobOffer/CreateJobOffer";
+// import { JobList } from "./components/JobList/JobList";
+import { JobSeekerProfileSkills } from "./components/CreateJobSeekerProfile/JobSeekerProfileSkills";
+import { JobSeekerProfileLookingFor } from "./components/CreateJobSeekerProfile/JobSeekerProfileLookingFor";
+import { JobSeekerProfileExperience } from "./components/CreateJobSeekerProfile/JobSeekerProfileExperience";
+import { Login } from "./components/Login/Login";
+import { SignUp } from "./components/SignUp/SignUp";
 
-import { FavouritesList } from './components/FavouritesList/FavouritesList';
+import { FavouritesList } from "./components/FavouritesList/FavouritesList";
 
-import { UserContextProvider, useUserContext } from './contexts/UserContext';
+import { UserContextProvider, useUserContext } from "./contexts/UserContext";
 
-import { ChatList } from './components/ChatList/ChatList';
-import './App.css';
-import ChatRoom from './components/ChatRoom/ChatRoom';
-import EmployerProfile from './components/EmployerProfile/EmployerProfile';
-import { UserAccountSettings } from './components/UserAccountSettings/UserAccountSettings';
+import { ChatList } from "./components/ChatList/ChatList";
+import "./App.css";
+import ChatRoom from "./components/ChatRoom/ChatRoom";
+import EmployerProfile from "./components/EmployerProfile/EmployerProfile";
+import JobSeekerList from "./components/JobSeekerList/JobSeekerList";
+import { UserAccountSettings } from "./components/UserAccountSettings/UserAccountSettings";
 
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
 const RequireAuth: React.FC = ({ children }) => {
@@ -51,7 +52,8 @@ const App: React.FC = () => {
               </RequireAuth>
             }
           />
-          <Route path="/home" element={<JobList />} />
+          {/* <Route path="/home" element={<JobList />} /> */}
+          <Route path="/home" element={<JobSeekerList />} />
           <Route
             path="/chatList"
             element={
