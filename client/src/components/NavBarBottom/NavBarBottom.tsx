@@ -10,7 +10,7 @@ import { IconWithLabel } from '../IconWithLabel/IconWithLabel';
 import { useUserContext } from '../../contexts/UserContext';
 import './NavBarBottom.css';
 
-const getItems = (type: string | undefined) => { 
+const getItems = (type: string | undefined) => {
   return [
     {
       path: '/',
@@ -23,7 +23,7 @@ const getItems = (type: string | undefined) => {
       icon: <Pentagon />,
     },
     type === 'employer' ? {
-      path: '/job-position/edit',
+      path: '/job-position/list',
       label: 'Jobs',
       icon: <Star />,
     } : {
