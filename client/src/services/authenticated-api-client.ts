@@ -1,3 +1,5 @@
+import { IJobSeeker } from "./../Interfaces/JobSeeker";
+import { User } from "./../Interfaces/User";
 import { useUserContext } from "../contexts/UserContext";
 import { JobOffer } from "../Interfaces/JobOffer";
 import { JobSeekerProfile } from "../Interfaces/JobSeekerProfile";
@@ -48,7 +50,7 @@ export const useAuthenticatedApiClient = () => {
     });
   };
 
-  const getAllJobSeekers = () => {
+  const getAllJobSeekers = (): Promise<IJobSeeker[]> => {
     return performRequest({
       method: "GET",
       path: "/jobseekers",
@@ -56,7 +58,7 @@ export const useAuthenticatedApiClient = () => {
     });
   };
 
-  const likeJobSeeker = (id: string): Promise<JobSeekerProfile> => {
+  const likeJobSeeker = (id: string): Promise<User> => {
     return performRequest({
       method: "POST",
       path: `/jobseekers/${id}/like`,
@@ -64,7 +66,7 @@ export const useAuthenticatedApiClient = () => {
     });
   };
 
-  const dislikeJobSeeker = (id: string): Promise<JobSeekerProfile> => {
+  const dislikeJobSeeker = (id: string): Promise<User> => {
     return performRequest({
       method: "POST",
       path: `/jobseekers/${id}/dislike`,

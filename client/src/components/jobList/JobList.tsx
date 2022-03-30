@@ -6,7 +6,6 @@ import { AppLayout } from "../AppLayout/AppLayout";
 import { JobOffer } from "../../Interfaces/JobOffer";
 import "./JobList.css";
 import { useAuthenticatedApiClient } from "../../services/authenticated-api-client";
-import JobSeekerList from "../JobSeekerList/JobSeekerList";
 
 type Direction = "left" | "right" | "up" | "down";
 
@@ -30,7 +29,6 @@ const JobList: React.FC = () => {
   return (
     <AppLayout title="Find your dream job">
       <div className="JobList">
-        <JobSeekerList />
         {jobOffers.map((jobOffer) => {
           return (
             <TinderCard
