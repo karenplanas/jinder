@@ -27,9 +27,10 @@ const CreateJobOffer: React.FC = () => {
     },
   });
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, reset } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
+    reset();
     await postJobOffer(data);
   });
 
@@ -82,7 +83,7 @@ const CreateJobOffer: React.FC = () => {
               label="Description"
             />
 
-            <div>
+            <div className='CreateJobOffer-button'>
               <Button text="Submit" type="submit" />
             </div>
           </div>

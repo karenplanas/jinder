@@ -1,19 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
 import { PlusInCircle } from '../icons/PlusInCircle'
 import { InputTextField } from '../InputTextField/InputTextField'
-import { CreateJobSeekerProfileLayout } from './CreateJobSeekerProfileLayout'
+import { JobSeekerProfileLayout } from './JobSeekerProfileLayout'
 import { JobSeekerProfileButtons } from './JobSeekerProfileButtons'
 import { Experience } from '../../Interfaces/JobSeekerProfile'
-import './CreateJobSeekerProfile.css'
 import { useAuthenticatedApiClient } from '../../services/authenticated-api-client'
+import './JobSeekerProfile.css'
 
 const JobSeekerProfileExperience: React.FC = () => {
   const apiClient = useAuthenticatedApiClient()
-
   const methods = useForm<{ experiences: Experience[] }>({
     defaultValues: { experiences: [{}] }
   });
+
+  const fetchJobseekerProfile = async () => {
+    const jobSeekerProfile = await apiClient.getJobSeekerProfile();
+    methods.reset(jobSeekerProfile)
+  }
+
+  useEffect(() => {
+    fetchJobseekerProfile()
+  }, [])
 
   const { handleSubmit, control } = methods;
   const { fields, append } = useFieldArray({ control, name: 'experiences'})
@@ -21,7 +29,7 @@ const JobSeekerProfileExperience: React.FC = () => {
   const onSubmit = handleSubmit(apiClient.updateJobSeekerProfile);
 
   return (
-    <CreateJobSeekerProfileLayout>
+    <JobSeekerProfileLayout>
       <FormProvider {...methods} >
         <form onSubmit={onSubmit}>
           <div className='CreateJobSeekerProfile-Experience profile-sections'>
@@ -51,7 +59,7 @@ const JobSeekerProfileExperience: React.FC = () => {
           </div>
         </form>
       </FormProvider>  
-    </CreateJobSeekerProfileLayout>
+    </JobSeekerProfileLayout>
   )
 }
 

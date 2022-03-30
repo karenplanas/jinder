@@ -57,12 +57,18 @@ const postJobOffer = (jobOffer: JobOffer) => {
 const getJobs = (setState: any) => {
   return fetch("http://localhost:4000/job-postings")
     .then((res) => res.json())
-
     .then((data) => {
-      console.log(data);
       return setState(data.data);
     });
 };
+
+// const getAllJobSeekers = async () => {
+//   const response = await fetch("http://localhost:4000/jobseekers", {
+//     method: "GET",
+//     headers: { "Content-type": "application/json" },
+//   });
+//   return response.json();
+// };
 
 export {
   postJobOffer,

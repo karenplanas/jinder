@@ -1,23 +1,37 @@
 .chat_room_container {
   padding: 20px;
-  height: 100vh;
-  overflow-y: auto;
-  border: 1px solid black;
+  height: 100%;
+  max-height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat_room_nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  /* width: 100%; */
   border-bottom: 1px solid black;
-  height: 4rem;
+  height: 3.5rem;
 }
 
 .chat_company_container {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.ChatMessage {
+  padding: 16px;
+  background-color: var(--Salmon-color-light);
+  border-radius: 4px;
+  width: 70%;
+}
+
+.ChatMessage.current-user {
+  align-self: flex-end;
+  background-color: var(--GrassyPasture-lightest);
 }
 
 .video_icon,
@@ -42,7 +56,13 @@
 }
 
 .chatLog {
-  height: 70vh;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: scroll;
+  gap: 16px;
 }
 
 .input_area {
@@ -55,4 +75,14 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+}
+
+.ChatRoom-Input-Send {
+  padding-top: 24px;
+  display: flex;
+  gap: 16px;
+}
+
+.ChatRoom-Input {
+  flex: 1;
 }

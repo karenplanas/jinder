@@ -7,24 +7,22 @@ import {
   useLocation,
 } from "react-router-dom";
 import { CreateJobOffer } from "./components/CreateJobOffer/CreateJobOffer";
-import { JobList } from "./components/JobList/JobList";
-import { JobSeekerProfileSkills } from "./components/CreateJobSeekerProfile/JobSeekerProfileSkills";
-import { JobSeekerProfileLookingFor } from "./components/CreateJobSeekerProfile/JobSeekerProfileLookingFor";
-import { JobSeekerProfileExperience } from "./components/CreateJobSeekerProfile/JobSeekerProfileExperience";
+import { JobSeekerProfileSkills } from "./components/JobSeekerProfile/JobSeekerProfileSkills";
+import { JobSeekerProfileLookingFor } from "./components/JobSeekerProfile/JobSeekerProfileLookingFor";
+import { JobSeekerProfileExperience } from "./components/JobSeekerProfile/JobSeekerProfileExperience";
 import { Login } from "./components/Login/Login";
 import { SignUp } from "./components/SignUp/SignUp";
-
 import { FavouritesList } from "./components/FavouritesList/FavouritesList";
-
 import { UserContextProvider, useUserContext } from "./contexts/UserContext";
-
 import { ChatList } from "./components/ChatList/ChatList";
-import "./App.css";
 import ChatRoom from "./components/ChatRoom/ChatRoom";
 import EmployerProfile from "./components/EmployerProfile/EmployerProfile";
+import { UserAccountSettings } from "./components/UserAccountSettings/UserAccountSettings";
+import { Home } from "./components/Home/Home";
 import { VideoChat } from "./components/VideoChat/VideoChat";
 import { RoomProvider } from "./contexts/roomContext";
 import { VideoRoom } from "./components/VideoRoom/VideoRoom";
+import "./App.css";
 
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
 const RequireAuth: React.FC = ({ children }) => {
@@ -54,7 +52,7 @@ const App: React.FC = () => {
                 </RequireAuth>
               }
             />
-            <Route path="/home" element={<JobList />} />
+            <Route path="/" element={<Home />} />
             <Route
               path="/chatList"
               element={
@@ -112,7 +110,14 @@ const App: React.FC = () => {
                 </RequireAuth>
               }
             />
-
+            <Route
+              path="/settings"
+              element={
+                <RequireAuth>
+                  <UserAccountSettings />
+                </RequireAuth>
+              }
+            />
             <Route path="/videoChat" element={<VideoChat />} />
             <Route path="/videoRoom/:id" element={<VideoRoom />} />
           </Routes>

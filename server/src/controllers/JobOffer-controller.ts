@@ -37,7 +37,6 @@ export const deleteJobOffer = async (
   res: express.Response
 ) => {
   try {
-    console.log(req.params.id);
     const deleteJob = await JobOffer.findByIdAndDelete(req.params.id);
     res.send(deleteJob).status(200);
   } catch (e) {

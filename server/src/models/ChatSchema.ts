@@ -1,4 +1,3 @@
-import { timeStamp } from 'console';
 import mongoose from 'mongoose';
 import { Schema, model } from 'mongoose';
 
@@ -19,14 +18,15 @@ const MessageSchema = new Schema<Message>(
     senderId: { type: mongoose.SchemaTypes.ObjectId, required: true },
     content: { type: String, required: true },
   },
-  { 
+  {
     timestamps: {
       createdAt: 'sentAt',
-    }
+    },
   }
 );
 
-const ChatSchema = new Schema<Chat>({
+const ChatSchema = new Schema<Chat>(
+  {
     jobSeekerUserId: { type: mongoose.SchemaTypes.ObjectId, required: true },
     employerUserId: { type: mongoose.SchemaTypes.ObjectId, required: true },
     messages: { type: [MessageSchema] },
@@ -41,90 +41,85 @@ ChatSchema.index({ jobSeekerUserId: 1, employerUserId: 1 }, { unique: true });
 const Chat = model('chat', ChatSchema);
 const Message = model('message', MessageSchema);
 
-// const lookUpUser = (key: string) => [{
-//   $lookup: {
-//     from: 'users',
-//     localField: `${key}Id`,
-//     foreignField: '_id',
-//     as: key
-//   }
-// },
-// {
-//   $unwind: {
-//     path: `$${key}`,
-//     preserveNullAndEmptyArrays: true
-//   }
-// }]
-
-const getChats = (userId: string) => {
+const aggregateChat = (match: object) => {
   return Chat.aggregate([
     {
-      $match: { 
-        $or: [{ 
-          jobSeekerUserId: new mongoose.Types.ObjectId(userId) 
-        }, { 
-          employerUserId: new mongoose.Types.ObjectId(userId) 
-        }] 
-      }
+      $match: match
     },
-    // ...lookUpUser('jobSeekerUser'),
-    // ...lookUpUser('employerUser'),
     {
       $lookup: {
         from: 'users',
         localField: 'jobSeekerUserId',
         foreignField: '_id',
-        as: 'jobSeekerUser'
-      }
+        as: 'jobSeekerUser',
+      },
     },
     {
       $unwind: {
         path: '$jobSeekerUser',
-        preserveNullAndEmptyArrays: true
-      }
+        preserveNullAndEmptyArrays: true,
+      },
     },
     {
       $lookup: {
         from: 'users',
         localField: 'employerUserId',
         foreignField: '_id',
-        as: 'employerUser'
-      }
+        as: 'employerUser',
+      },
     },
     {
       $unwind: {
         path: '$employerUser',
-        preserveNullAndEmptyArrays: true
-      }
+        preserveNullAndEmptyArrays: true,
+      },
     },
     {
       $lookup: {
         from: 'employerprofiles',
         localField: 'employerUserId',
         foreignField: 'userId',
-        as: 'employerProfile'
-      }
+        as: 'employerProfile',
+      },
     },
     {
       $unwind: {
         path: '$employerProfile',
-        preserveNullAndEmptyArrays: true
-      }
+        preserveNullAndEmptyArrays: true,
+      },
     },
     {
       $addFields: {
-        _id: '$employerUser.employerProfile',
         'employerUser.employerProfile': '$employerProfile',
-      }
-    }, 
+      },
+    },
     {
-      $unset: 'employerProfile'
-    }
+      $unset: 'employerProfile',
+    },
   ]);
+}
+
+const getChats = (userId: string) => {
+  return aggregateChat({
+      $or: [
+        { jobSeekerUserId: new mongoose.Types.ObjectId(userId) },
+        { employerUserId: new mongoose.Types.ObjectId(userId) },
+      ]
+    },
+  );
 };
 
+const getChat = (userId: string, id: string) => {
+  return aggregateChat({
+    _id: new mongoose.Types.ObjectId(id),
+    $or: [
+      { jobSeekerUserId: new mongoose.Types.ObjectId(userId) },
+      { employerUserId: new mongoose.Types.ObjectId(userId) },
+    ]
+  }).then((res) => res[0])
+}
+
 const createChat = (payload: Chat) => {
-  console.log(payload)
   return Chat.findOneAndUpdate(
     {
       jobSeekerUserId: payload.jobSeekerUserId,
@@ -135,7 +130,11 @@ const createChat = (payload: Chat) => {
   );
 };
 
-const addMessage = (chatId: string, senderId: string, payload: Partial<Message> ) => {
+const addMessage = (
+  chatId: string,
+  senderId: string,
+  payload: Partial<Message>
+) => {
   return Chat.findOneAndUpdate(
     { _id: new mongoose.Types.ObjectId(chatId) },
     { $push: { messages: { ...payload, senderId } } },
@@ -143,4 +142,4 @@ const addMessage = (chatId: string, senderId: string, payload: Partial<Message> 
   );
 };
 
-export { Chat, Message, getChats, createChat, addMessage };
+export { Chat, Message, getChats, getChat, createChat, addMessage };

@@ -1,68 +1,98 @@
-import React, { useEffect, useState } from "react";
-import { Favourite } from "../../Interfaces/favourite";
-import "./ChatRoom.css";
-import { useLocation } from "react-router-dom";
-import { BackButton } from "../icons/BackButton";
-import { VideoIcon } from "../icons/VideoIcon";
-import { Building } from "../icons/Building";
-import { Link } from "react-router-dom";
-import {
-  UserContextProvider,
-  useUserContext,
-} from "../../contexts/UserContext";
+import React, { useEffect, useState } from 'react';
+import clsx from 'clsx';
+import { BackButton } from '../icons/BackButton';
+import { VideoIcon } from '../icons/VideoIcon';
+import { Building } from '../icons/Building';
+import { Link, useParams } from 'react-router-dom';
+import { Chat } from '../../Interfaces/Chat';
+import { useAuthenticatedApiClient } from '../../services/authenticated-api-client';
+import { useUserContext } from '../../contexts/UserContext';
+import { FormProvider, useForm } from 'react-hook-form';
+import { Message } from '../../Interfaces/Message';
+import { InputTextField } from '../InputTextField/InputTextField';
+import { Button } from '../Button/Button';
+import { ImageHolder } from '../ImageHolder/ImageHolder';
+import './ChatRoom.css';
 
 const ChatRoom: React.FC = () => {
-  const [formValue, setFormValue] = useState("");
-  const [messages, setMessages] = useState([]);
-  const propsy: any = useLocation();
-  const chat: any = propsy.state.chat;
+  const [chat, setChat] = useState<Chat>();
+  const { id } = useParams();
   const { user } = useUserContext();
+  const apiClient = useAuthenticatedApiClient();
+  const getChat = () => apiClient.getChat(id!).then(setChat);
 
   useEffect(() => {
-    setMessages(chat.messages);
+    getChat();
   }, []);
 
-  const handleSubmit = () => {};
+  const methods = useForm<Message>({
+    defaultValues: {
+      senderId: '',
+      content: '',
+      sentAt: '',
+    },
+  });
+
+  const { handleSubmit, reset } = methods;
+
+  const onSubmit = handleSubmit((data: any) => {
+    apiClient.postMessage(id!, data).then((res) => {
+      setChat((prevState) => {
+        if (!prevState) return undefined;
+        reset();
+        return { ...prevState, messages: res.messages };
+      });
+    });
+  });
 
   return (
     <div className="chat_room_container">
       <div className="chat_room_nav">
         <div className="back_button">
-          <Link to={"/chatList"}>
-            {" "}
-            <BackButton />
+          <Link to={'/chatlist'}>
+            <ImageHolder>
+              <BackButton />
+            </ImageHolder>
           </Link>
         </div>
 
         <div className="chat_company_container">
-          <div className="company_logo_favourites">
-            {" "}
+            <h3>{chat?.employerUser.employerProfile.name}</h3>
             <Building />
-          </div>
-
-          {chat.companyname}
         </div>
         <div className="video_icon">
           <VideoIcon />
         </div>
       </div>
       <div className="chatLog">
-        {messages.map((message) => {
-          <p>{message}</p>;
+        {chat?.messages.map((message) => {
+          const isCurrentUser = message.senderId === user!._id;
+          return (
+            <div
+              key={message._id}
+              className={clsx('ChatMessage', { 'current-user': isCurrentUser })}
+            >
+              {message.content}
+            </div>
+          );
         })}
       </div>
       <div className="input_area">
-        <form className="message_form" onSubmit={handleSubmit}>
-          <input
-            value={formValue}
-            onChange={(e) => setFormValue(e.target.value)}
-            placeholder="enter message here..."
-          />
-          <input type="submit" className="submit_button" />
-        </form>
+        <FormProvider {...methods}>
+          <form onSubmit={onSubmit}>
+            <div className='ChatRoom-Input-Send'>
+              <div className='ChatRoom-Input'>
+                <InputTextField name="content"></InputTextField>
+              </div>
+              <div>
+                <Button text="Send" type="submit" variant='outlined'></Button>
+              </div>
+            </div>
+          </form>
+        </FormProvider>
       </div>
     </div>
   );
 };
 
-export default ChatRoom;
+export { ChatRoom };

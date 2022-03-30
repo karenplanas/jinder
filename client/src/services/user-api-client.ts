@@ -55,7 +55,7 @@ const creatJobSeekerAccount = async (payload: ICredentials & { firstName: string
   const response = await createUserWithEmailAndPassword(auth, payload.email, payload.password )
 
   return postUser({
-    type: 'job-seeker',
+    type: 'jobseeker',
     externalId: response.user.uid,
     email: response.user.email as string,
     firstName: payload.firstName,

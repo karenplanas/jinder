@@ -1,0 +1,155 @@
+.FavouriteItem-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.FavouriteItem-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.FavouriteItem-expanded {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+.FavouriteItem-text-Apply-Chat {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.FavouriteItem-Bin {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.FavouriteItem-Bin-Absolute {
+  position: absolute;
+}
+
+
+.FavouriteItem-card-top {
+  display: flex;
+  align-items: center;
+  /*width: 200px; */
+  gap: 16px;
+  cursor: pointer;
+}
+
+.showCard_div:hover {
+  background: #f3c522;
+  border-radius: 10px;
+}
+
+.showCard_div {
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px
+}
+
+.FavouriteItem-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+
+
+.showCard {
+  position: fixed;
+  margin-left: 40px;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+  z-index: -1;
+  position: absolute;
+  top: -9999px;
+}
+
+.job_card_container {
+  z-index: 10;
+  position: fixed;
+}
+
+.chatIcon {
+  display: flex;
+  padding: 5px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 80px;
+  justify-content: center;
+  align-items: center;
+  /* position: relative;
+  z-index: 1; */
+  cursor: pointer;
+}
+
+.chatIcon:hover {
+  background: #f3c522;
+}
+
+/* .favourite_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  height: 70px;
+  border-bottom: 1px solid black;
+  gap: 5rem;
+} */
+
+
+/* .company_logo_favourites {
+  background: #f3c522;
+  display: flex;
+  padding: 5px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 80px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+} */
+
+/* .button_holder {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* .rubbishBin {
+  display: flex;
+  padding: 5px;
+  min-width: 30px;
+  min-height: 30px;
+  border-radius: 80px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+  z-index: 1;
+} */
+
+
+
+/* .rubbishBin:hover {
+  background: rgb(235, 173, 173);
+} */
+
+

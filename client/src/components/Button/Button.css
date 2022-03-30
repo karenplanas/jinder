@@ -1,6 +1,6 @@
 button {
   border-radius: 16px;
-  padding: 16px 32px;
+  padding: 12px 24px;
   font-size: 1.3rem;
   font-weight: 600;
   border-style: none;
@@ -13,6 +13,13 @@ button:active {
   margin-top: 4px;
   box-shadow: none;
   margin-bottom: 0px;
+}
+
+.mini {
+  font-size: 1rem;
+  line-height: 1.1rem;
+  padding: 6px 10px;
+  color: var(--Black);
 }
 
 .small {

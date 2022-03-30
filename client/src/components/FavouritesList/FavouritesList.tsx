@@ -1,43 +1,42 @@
-import React, { useEffect, useState } from "react";
-import "./FavouritesList.css";
-import { Favourite } from "../../Interfaces/favourite";
-import { NavBarTop } from "../NavBarTop/NavBarTop";
-import { NavTabs } from "../NavTabs/NavTabs";
+import React, { useEffect, useState } from 'react';
+import { NavTabs } from '../NavTabs/NavTabs';
+import { FavouriteItem } from '../FavouriteItem/FavouriteItem';
+import { useAuthenticatedApiClient } from '../../services/authenticated-api-client';
+import { UserJobOffer } from '../../Interfaces/UserJobOffer';
+import { AppLayout } from '../AppLayout/AppLayout';
+import './FavouritesList.css';
 
-import { FavouriteContainer } from "../favouriteContainer/favouriteContainer";
-import { useAuthenticatedApiClient } from "../../services/authenticated-api-client";
-import { UserJobOffer } from "../../Interfaces/UserJobOffer";
+const tabs = [
+  { name: 'Favourites', endpoint: '/favourites' },
+  { name: 'Chat', endpoint: '/chatlist' },
+]
 
 const FavouritesList: React.FC = () => {
-  const apiClient = useAuthenticatedApiClient()
+  const apiClient = useAuthenticatedApiClient();
   const [favourites, setFavourites] = useState<UserJobOffer[]>([]);
 
-  const getLikedJobOffers = () => apiClient.getLikedJobOffers().then(({ data }) => setFavourites(data))
+  const getLikedJobOffers = () =>
+    apiClient.getLikedJobOffers().then(({ data }) => setFavourites(data));
 
   useEffect(() => {
-    getLikedJobOffers()
+    getLikedJobOffers();
   }, []);
-  
 
   return (
-    <div>
-      <NavBarTop />
-      <NavTabs
-        tabs={[
-          { name: "Favourites", endpoint: "/favourites" },
-          { name: "Chat", endpoint: "/chatlist" },
-        ]}
-      />{" "}
-      {favourites.map((favourite) => {
-        return (
-          <FavouriteContainer
-            data={favourite.jobOffer}
-            key={favourite._id}
-            refresh={getLikedJobOffers}
-          />
-        );
-      })}
-    </div>
+    <AppLayout title='Jobs'>
+      <NavTabs tabs={tabs} />
+      <div className='FavouritesList-container'>
+        {favourites.map((favourite) => {
+          return (
+            <FavouriteItem
+              data={favourite.jobOffer}
+              key={favourite._id}
+              refresh={getLikedJobOffers}
+            />
+          );
+        })}
+      </div>
+    </AppLayout>
   );
 };
 

@@ -1,7 +1,8 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 interface favourite {
+  employerUserId: string;
   companyname: string;
   companysize: string;
   position: string;
@@ -20,6 +21,10 @@ interface favourite {
 }
 
 const FavouriteSchema = new Schema<favourite>({
+  employerUserId: {
+    type: String,
+    required: true,
+  },
   companyname: {
     type: String,
     required: true,
@@ -81,6 +86,6 @@ const FavouriteSchema = new Schema<favourite>({
   },
 });
 
-const Favourite = mongoose.model<favourite>("Favourite", FavouriteSchema);
+const Favourite = mongoose.model<favourite>('Favourite', FavouriteSchema);
 
 export { Favourite };
