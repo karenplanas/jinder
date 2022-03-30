@@ -1,7 +1,7 @@
 import React from 'react'
 import { useUserContext } from '../../contexts/UserContext'
 import { JobList } from '../JobList/JobList';
-import { JobSeekersList } from '../JobSeekersList/JobSeekersList';
+import { JobSeekerList } from '../JobSeekerList/JobSeekerList';
 
 const Home: React.FC = () => {
   const { user } = useUserContext();
@@ -10,7 +10,7 @@ const Home: React.FC = () => {
       {
         user?.type === 'jobseeker' ?
         <JobList /> :
-        <JobSeekersList />
+        <JobSeekerList />
       }
     </>
   )
