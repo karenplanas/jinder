@@ -1,3 +1,4 @@
+// @ts-nocheck
 import clsx from "clsx";
 import { useState } from "react";
 import { JobSeekerProfile } from "../../Interfaces/JobSeekerProfile";
@@ -16,22 +17,61 @@ const JobSeeker: React.FC<Props> = ({ jobSeeker }) => {
     setShowDetail((previousState) => !previousState);
   };
 
-  console.log(jobSeeker);
+  const { email, firstName, lastName } = jobSeeker;
+  console.log(email, firstName, lastName);
+
+  const { experiences, lookingFor, skills } = jobSeeker.jobseekerUser;
+  console.log(
+    jobSeeker.jobseekerUser.experiences.map((experience) =>
+      console.log("experience", experience)
+    )
+  );
+  console.log({ experiences, lookingFor, skills });
+  console.log("jobseekerUser", jobSeeker.jobseekerUser);
+
+  const capitalizeName = (firstName, lastName) =>
+    firstName[0].toUpperCase() +
+    firstName.substring(1) +
+    " " +
+    lastName[0].toUpperCase() +
+    lastName.substring(1);
+
   return (
     <Card
       className={clsx("JobSeeker", { fullSize: showDetail })}
       onClick={toggleDetails}
     >
-      {/* experiences */}
-      <h2>Experience</h2>
-      <p>{jobSeeker.experiences[0].title}</p>
-      <p>{jobSeeker.experiences[0].companyName}</p>
-      <p>
-        {jobSeeker.experiences[0].startDate}-{jobSeeker.experiences[0].endDate}
-      </p>
-      {/* skills */}
-      <h2>Skills</h2>
-      <p>{jobSeeker.skills.map((skill) => skill)}</p>
+      <div>
+        {/* name */}
+        <h3>Name: {capitalizeName(firstName, lastName)}</h3>
+        {/* email */}
+        <h3>Email: {email}</h3>
+        {/* experience */}
+        <h3>Experience </h3>
+        {experiences.map((experience, indx) => (
+          <ul key={indx}>
+            <li>{experience.title}</li>
+            <li>
+              {experience.companyName}({experience.location})
+            </li>
+            <li>
+              {experience.startDate}-{experience.endDate}
+            </li>
+          </ul>
+        ))}
+        {/* Looking for */}
+        <h3>Looking For</h3>
+        <p>{lookingFor.location}</p>
+        <p>{lookingFor.position}</p>
+        <p>{lookingFor.role}</p>
+        {/* skills */}
+        <h3>Skills</h3>
+        {skills.map((skill, indx) => (
+          <ul key={indx}>
+            <li>{skill}</li>
+          </ul>
+        ))}
+      </div>
     </Card>
   );
 };
