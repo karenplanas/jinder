@@ -28,7 +28,7 @@ const FavouritesList: React.FC = () => {
         {favourites.map((favourite) => {
           return (
             <FavouriteItem
-              data={favourite.jobOffer}
+              data={favourite}
               key={favourite._id}
               refresh={getLikedJobOffers}
             />

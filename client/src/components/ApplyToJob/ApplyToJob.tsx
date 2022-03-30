@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { JobApplication } from "../../Interfaces/JobApplication";
 import { Button } from "../Button/Button";
@@ -8,6 +8,7 @@ import { Favourite } from "../../Interfaces/favourite";
 import { addApplied } from "../../services/api-client";
 import { useUserContext } from "../../contexts/UserContext";
 import "./ApplyToJob.css";
+import { useAuthenticatedApiClient } from "../../services/authenticated-api-client";
 
 interface Props {
   setState: (state: boolean) => void;
@@ -24,11 +25,13 @@ const ApplyToJob: React.FC<Props> = ({ setState, setApply, data }) => {
     },
   });
   const { user } = useUserContext();
+  const apiClient = useAuthenticatedApiClient();
 
   const { handleSubmit } = methods;
   const form: any = useRef();
 
-  const onSubmit = handleSubmit(async () => {
+  const onSubmit = handleSubmit(async (formData) => {
+    apiClient.postJobApplication(data._id, formData)
     await emailjs
       .sendForm(
         "service_6dpyub7",
