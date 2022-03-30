@@ -51,8 +51,13 @@ const JobOffersList: React.FC = () => {
                 </div>
               </div>
 
-              <div className="Description">
-                <h4>{jobOffer.bio}</h4>
+              <div className="JobOffersList-Description">
+                <p>{
+                    jobOffer.bio.length > 100 ? 
+                    `${jobOffer.bio.substring(0, 100)}...` :
+                    jobOffer.bio
+                  }
+                </p>
               </div>
             </Card>
           );

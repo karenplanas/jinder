@@ -36,7 +36,7 @@ const Job: React.FC<Props> = ({ jobOffer }) => {
       {showDetail && (
         <>
           <p>{jobOffer.description}</p>
-          <p>{jobOffer.skills}</p>
+          <p><span className="bold">Skills required:</span> {jobOffer.skills.join(', ')}</p>
         </>
       )}
     </Card>

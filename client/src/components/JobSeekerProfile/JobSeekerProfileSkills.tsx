@@ -45,7 +45,7 @@ const JobSeekerProfileSkills: React.FC = () => {
               </div>
 
               <div className='checks-line'>
-                <Checkbox name='skills.skill' value='Mongodb' label='MongoDB'/>
+                <Checkbox name='skills.skill' value='MongoDB' label='MongoDB'/>
                 <Checkbox name='skills.skill' value='Mongoose' label='Mongoose'/>
                 <Checkbox name='skills.skill' value='Postgres' label='Postgres'/>
               </div>
