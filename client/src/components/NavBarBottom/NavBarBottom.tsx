@@ -49,7 +49,7 @@ const NavBarBottom: React.FC = () => {
         {getItems(user?.type).map((item) => (
           <Link
             to={item.path}
-            className={clsx({ selected: pathname.startsWith(item.path) })}
+            className={clsx({ selected: pathname === (item.path) })}
             key={item.path}
           >
             <IconWithLabel icon={item.icon} label={item.label} />

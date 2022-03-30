@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Checkbox } from '../Checkbox/Checkbox'
-import { PlusInCircle } from '../icons/PlusInCircle'
 import { InputTextField } from '../InputTextField/InputTextField'
 import { JobSeekerProfileLayout } from './JobSeekerProfileLayout'
 import { JobSeekerProfileButtons } from './JobSeekerProfileButtons'

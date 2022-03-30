@@ -21,7 +21,7 @@ const EmployerForm: React.FC = () => {
   const { handleSubmit } = methods;
 
   useEffect(()=>{
-    user && navigate('/home')
+    user && navigate('/')
   }, [user, navigate])
 
   const onSubmit = handleSubmit(createEmployer);
