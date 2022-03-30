@@ -48,5 +48,9 @@
 }
 
 .menu-trigger {
-  cursor: pointer;  
+  cursor: pointer;
+}
+
+.menu li:hover {
+  background-color: var(--CitrusWasp-color);
 }

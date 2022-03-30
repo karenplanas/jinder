@@ -1,0 +1,6 @@
+.video_chat_container {
+  display: flex;
+  gap: 4rem;
+  flex-direction: row;
+  margin-top: 180px;
+}

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Peer from "peerjs";
 import { v4 as uuidV4 } from "uuid";
 import { peersReducer } from "./peerReducer";
-import { addPeerAction } from "./peerActions";
+import { addPeerAction, removePeerAction } from "./peerActions";
 
 const WS = "http://localhost:4000";
 
@@ -25,6 +25,9 @@ export const RoomProvider: React.FC = ({ children }) => {
   const getUsers = ({ participants }: { participants: string[] }) => {
     console.log({ participants });
   };
+  const removePeer = (peerId: string) => {
+    dispatch(removePeerAction(peerId));
+  };
   useEffect(() => {
     const meId = uuidV4();
     const peer = new Peer(meId);
@@ -41,6 +44,14 @@ export const RoomProvider: React.FC = ({ children }) => {
 
     ws.on("room-created", enterRoom);
     ws.on("get-users", getUsers);
+    ws.on("user-disconnected", removePeer);
+
+    return () => {
+      ws.off("room-created");
+      ws.off("get-users");
+      ws.off("user-disconnected");
+      ws.off("user-joined");
+    };
   }, []);
 
   useEffect(() => {
@@ -64,7 +75,7 @@ export const RoomProvider: React.FC = ({ children }) => {
   console.log(peers);
 
   return (
-    <RoomContext.Provider value={{ ws, me, stream }}>
+    <RoomContext.Provider value={{ ws, me, stream, peers }}>
       {children}
     </RoomContext.Provider>
   );
