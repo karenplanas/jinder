@@ -6,7 +6,7 @@ export const addPeerAction = (peerId: string, stream: MediaStream) => ({
   payload: { peerId, stream },
 });
 
-export const removePeerAction = (peerId: string, stream: MediaStream) => ({
+export const removePeerAction = (peerId: string) => ({
   type: REMOVE_PEER,
   payload: { peerId },
 });

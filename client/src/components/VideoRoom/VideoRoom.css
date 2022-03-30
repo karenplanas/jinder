@@ -1,0 +1,14 @@
+.video_player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--Gray-dark);
+  color: var(--White);
+}
+
+.meeting_controls {
+  display: flex;
+  gap: 1rem;
+}
