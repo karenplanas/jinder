@@ -98,7 +98,7 @@ const create = async (payload: Partial<User> & { companyName?: string }) => {
   if (user.type === "employer") {
     const employerProfile = await EmployerProfile.create({
       userId: user.id,
-      name: payload.companyName,
+      companyName: payload.companyName,
     });
 
     return generateJwt({
