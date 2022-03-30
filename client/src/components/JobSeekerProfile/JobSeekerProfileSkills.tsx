@@ -31,7 +31,6 @@ const JobSeekerProfileSkills: React.FC = () => {
           <div className='CreateJobSeekerProfile-Skills profile-sections'>
             <div className='title-and-plus'>
               <h3>Skills</h3>
-              <PlusInCircle />
             </div>
             <div className='checks'>
               <div className='checks-line'>

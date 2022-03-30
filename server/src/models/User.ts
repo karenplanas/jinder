@@ -11,13 +11,10 @@ interface User {
   email: string;
   type: 'employer' | 'jobseeker'
 }
-
 interface Employer extends User {
   type: 'employer'
   employerProfile: EmployerProfile
 }
-
-
 interface JobSeeker extends User {
   type: 'jobseeker'
   jobSeekerProfile: JobSeekerProfile
@@ -54,7 +51,7 @@ const findOne = (externalId: string) => {
     },
     {
       $lookup: {
-        from: 'jobSeekerprofiles',
+        from: 'jobseekerprofiles',
         localField: '_id',
         foreignField: 'userId',
         as: 'jobSeekerProfile'
@@ -68,6 +65,31 @@ const findOne = (externalId: string) => {
     }
   ]).then((result) => result[0])
 }
+
+const findAllJobSeekers = () => {
+  return User.aggregate([
+    {
+      $match: {
+        type: 'jobseeker'
+      }
+    },
+    {
+      $lookup: {
+        from: 'jobseekerprofiles',
+        localField: '_id',
+        foreignField: 'userId',
+        as: 'jobSeekerProfile'
+      }
+    },
+    {
+      $unwind: {
+        path: '$jobSeekerProfile',
+        preserveNullAndEmptyArrays: true
+      }
+    }
+  ])
+}
+
 
 const create = async (payload: Partial<User> & { companyName?: string }) => {
   const user = await User.create(payload)
@@ -101,11 +123,12 @@ const findOrCreateByExternalId = async (externalId: string, payload: object = {}
 }
 
 export { 
+  JobSeeker, 
+  User,
+  Employer,  
   create,
-  Employer, 
   findOne,
   findOrCreateByExternalId,
-  JobSeeker, 
-  User
+  findAllJobSeekers
 }
 

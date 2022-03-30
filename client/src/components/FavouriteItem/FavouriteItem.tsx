@@ -3,7 +3,7 @@ import { Building } from '../icons/Building';
 import { Button } from '../Button/Button';
 import { ApplyToJob } from '../ApplyToJob/ApplyToJob';
 import { Favourite } from '../../Interfaces/favourite';
-import { Job } from '../Job/Job';
+// import { Job } from '../Job/Job';
 import { useAuthenticatedApiClient } from '../../services/authenticated-api-client';
 import { ChatIcon } from '../icons/ChatIcon';
 import { useUserContext } from '../../contexts/UserContext';

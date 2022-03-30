@@ -12,3 +12,9 @@ export const login = async (req: express.Request, res: express.Response) => {
   res.status(200)
   res.json(user)
 }
+
+export const getJobSeekers = async (req: express.Request, res: express.Response) => {
+  const jobSeekers = await User.findAllJobSeekers()
+  res.status(200)
+  res.json({data: jobSeekers})
+}

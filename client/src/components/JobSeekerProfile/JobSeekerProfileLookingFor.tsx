@@ -33,7 +33,6 @@ const JobSeekerProfileLookingFor: React.FC = () => {
           <div className='CreateJobSeekerProfile-LookingFor profile-sections'>
             <div className='title-and-plus'>
               <h3>Looking For</h3>
-              <PlusInCircle />
             </div>
             <div className='checks'>
 

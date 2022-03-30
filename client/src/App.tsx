@@ -13,16 +13,14 @@ import { JobSeekerProfileLookingFor } from './components/JobSeekerProfile/JobSee
 import { JobSeekerProfileExperience } from './components/JobSeekerProfile/JobSeekerProfileExperience';
 import { Login } from './components/Login/Login';
 import { SignUp } from './components/SignUp/SignUp';
-
 import { FavouritesList } from './components/FavouritesList/FavouritesList';
-
 import { UserContextProvider, useUserContext } from './contexts/UserContext';
-
 import { ChatList } from './components/ChatList/ChatList';
-import './App.css';
-import ChatRoom from './components/ChatRoom/ChatRoom';
-import EmployerProfile from './components/EmployerProfile/EmployerProfile';
+import { ChatRoom } from './components/ChatRoom/ChatRoom';
+import { EmployerProfile } from './components/EmployerProfile/EmployerProfile';
 import { UserAccountSettings } from './components/UserAccountSettings/UserAccountSettings';
+import './App.css';
+import { Home } from './components/Home/Home';
 
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
 const RequireAuth: React.FC = ({ children }) => {
@@ -51,7 +49,7 @@ const App: React.FC = () => {
               </RequireAuth>
             }
           />
-          <Route path="/home" element={<JobList />} />
+          <Route path="/" element={<Home />} />
           <Route
             path="/chatList"
             element={

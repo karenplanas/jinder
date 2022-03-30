@@ -2,9 +2,10 @@ import express from 'express';
 import * as favouritesController from './controllers/favourite-controller';
 import * as jobOfferController from './controllers/JobOffer-controller';
 import * as userController from './controllers/user-controller';
-import * as jobSeekerProfileController from './controllers/JobSeekerProfile-controller';
+import * as jobSeekerProfileController from './controllers/jobSeekerProfile-controller';
 import * as userJobOfferController from './controllers/UserJobOffer-controller';
 import * as chatController from './controllers/chat-controller';
+import * as employerProfileController from './controllers/employerProfile-controller';
 import { authMiddleware } from './middlewares/auth-middlware';
 
 const router = express.Router();
@@ -13,6 +14,10 @@ router.post('/users', userController.postUser);
 router.post('/users/login', userController.login);
 router.post('/job-seeker-profile', authMiddleware, jobSeekerProfileController.postJobSeekerProfile);
 router.get('/job-seeker-profile', authMiddleware, jobSeekerProfileController.getJobSeekerProfile);
+router.post('/employer-profile', authMiddleware, employerProfileController.postEmployerProfile);
+router.get('/employer-profile', authMiddleware, employerProfileController.getEmployerProfile);
+
+router.get('/job-seekers', userController.getJobSeekers)
 
 router.post('/job-postings', jobOfferController.postJobOffer);
 router.get('/job-postings', authMiddleware, jobOfferController.getJobOffers);

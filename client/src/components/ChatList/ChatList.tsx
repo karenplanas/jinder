@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useAuthenticatedApiClient } from '../../services/authenticated-api-client';
 import { Chat } from '../../Interfaces/Chat';
 import { AppLayout } from '../AppLayout/AppLayout';
+import { useUserContext } from '../../contexts/UserContext';
 
 const tabs = [
   { name: 'Favourites', endpoint: '/favourites' },
@@ -17,6 +18,7 @@ const ChatList: React.FC = () => {
   const [chats, setChats] = useState<Chat[]>();
   const apiClient = useAuthenticatedApiClient();
   const getChats = () => apiClient.getChats().then(setChats);
+  const { user } = useUserContext();
 
   useEffect(() => {
     getChats();
@@ -24,7 +26,7 @@ const ChatList: React.FC = () => {
 
   return (
     <AppLayout title='Messages'>
-      <NavTabs tabs={tabs} />
+      { user?.type === 'jobseeker' && <NavTabs tabs={tabs} />  }
       {chats?.map((chat) => {
         return (
           <Link to={`/chatRoom/${chat._id}`} className="chatLinks">

@@ -1,8 +1,10 @@
 import { useUserContext } from '../contexts/UserContext';
 import { Chat } from '../Interfaces/Chat';
+import { EmployerProfile } from '../Interfaces/EmployerProfile';
 import { JobOffer } from '../Interfaces/JobOffer';
 import { JobSeekerProfile } from '../Interfaces/JobSeekerProfile';
 import { Message } from '../Interfaces/Message';
+import { JobSeeker } from '../Interfaces/User';
 import { UserJobOffer } from '../Interfaces/UserJobOffer';
 import { performRequest } from './helpers';
 
@@ -95,6 +97,31 @@ export const useAuthenticatedApiClient = () => {
     }).then((value) => value.data)
   };
 
+  const getEmployerProfile = (): Promise<EmployerProfile> => {
+    return performRequest<{ data: EmployerProfile}>({
+      method: 'GET',
+      path: '/employer-profile',
+      token: user?.accessToken,
+    }).then((value) => value.data)
+  };
+
+  const postEmployerProfile = (payload: Partial<JobSeekerProfile>): Promise<EmployerProfile> => {
+    return performRequest<{ data: EmployerProfile}>({
+      method: 'POST',
+      path: '/employer-profile',
+      body: payload,
+      token: user?.accessToken,
+    }).then((value) => value.data)
+  };
+
+  const getJobSeekers = (): Promise<JobSeeker[]> => {
+    return performRequest<{ data: JobSeeker[]}>({
+      method: 'GET',
+      path: '/job-seekers',
+      token: user?.accessToken,
+    }).then((value) => value.data)
+  };
+
   return {
     dislikeJobOffer,
     getChat,
@@ -105,6 +132,9 @@ export const useAuthenticatedApiClient = () => {
     postMessage,
     likeJobOffer,
     updateJobSeekerProfile,
-    getJobSeekerProfile
+    getJobSeekerProfile,
+    getEmployerProfile,
+    postEmployerProfile,
+    getJobSeekers
   };
 };

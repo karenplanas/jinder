@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './ChatRoom.css';
+import clsx from 'clsx';
 import { BackButton } from '../icons/BackButton';
 import { VideoIcon } from '../icons/VideoIcon';
 import { Building } from '../icons/Building';
@@ -7,12 +7,12 @@ import { Link, useParams } from 'react-router-dom';
 import { Chat } from '../../Interfaces/Chat';
 import { useAuthenticatedApiClient } from '../../services/authenticated-api-client';
 import { useUserContext } from '../../contexts/UserContext';
-import clsx from 'clsx';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Message } from '../../Interfaces/Message';
 import { InputTextField } from '../InputTextField/InputTextField';
 import { Button } from '../Button/Button';
 import { ImageHolder } from '../ImageHolder/ImageHolder';
+import './ChatRoom.css';
 
 const ChatRoom: React.FC = () => {
   const [chat, setChat] = useState<Chat>();
@@ -23,11 +23,6 @@ const ChatRoom: React.FC = () => {
 
   useEffect(() => {
     getChat();
-
-    // https://stackoverflow.com/questions/53090432/react-hooks-right-way-to-clear-timeouts-and-intervals
-    // const timer = setInterval(getChat, 5000);
-    // return () => clearTimeout(timer);
-
   }, []);
 
   const methods = useForm<Message>({
@@ -100,4 +95,4 @@ const ChatRoom: React.FC = () => {
   );
 };
 
-export default ChatRoom;
+export { ChatRoom };

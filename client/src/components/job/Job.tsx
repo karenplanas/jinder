@@ -4,7 +4,6 @@ import { JobOffer } from "../../Interfaces/JobOffer";
 import { Card } from "../Card/Card";
 import { JobHeader } from "./JobHeader";
 import "./Job.css";
-//import { Button } from "../Button/Button";
 
 interface Props {
   jobOffer: JobOffer;

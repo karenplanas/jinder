@@ -13,7 +13,7 @@ import { useUserContext } from '../../contexts/UserContext';
 const getItems = (type: string | undefined) => { 
   return [
     {
-      path: '/home',
+      path: '/',
       label: 'Home',
       icon: <Square />,
     },
@@ -25,7 +25,7 @@ const getItems = (type: string | undefined) => {
     type === 'employer' ? {
       path: '/job-position/edit',
       label: 'Jobs',
-      icon: <Pentagon />,
+      icon: <Star />,
     } : {
       path: '/favourites',
       label: 'Favourites',

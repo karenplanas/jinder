@@ -28,7 +28,7 @@ const NavBarTop: React.FC<Props> = ({
       })}
     >
       <div className="NavBarTop-content">
-        <Link to="/home">
+        <Link to="/">
           <Logo width={55} height={55} />
         </Link>
         <div className="NavBarTop-Salut-title">
