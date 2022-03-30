@@ -4,8 +4,7 @@ import {
   Navigate,
   Route,
   Routes,
-  useLocation,
-} from "react-router-dom";
+  useLocation,} from "react-router-dom";
 import { CreateJobOffer } from "./components/CreateJobOffer/CreateJobOffer";
 import { JobSeekerProfileSkills } from "./components/JobSeekerProfile/JobSeekerProfileSkills";
 import { JobSeekerProfileLookingFor } from "./components/JobSeekerProfile/JobSeekerProfileLookingFor";
@@ -15,14 +14,16 @@ import { SignUp } from "./components/SignUp/SignUp";
 import { FavouritesList } from "./components/FavouritesList/FavouritesList";
 import { UserContextProvider, useUserContext } from "./contexts/UserContext";
 import { ChatList } from "./components/ChatList/ChatList";
-import ChatRoom from "./components/ChatRoom/ChatRoom";
-import EmployerProfile from "./components/EmployerProfile/EmployerProfile";
+import {ChatRoom} from "./components/ChatRoom/ChatRoom";
+import {EmployerProfile} from "./components/EmployerProfile/EmployerProfile";
 import { UserAccountSettings } from "./components/UserAccountSettings/UserAccountSettings";
 import { Home } from "./components/Home/Home";
 import { VideoChat } from "./components/VideoChat/VideoChat";
 import { RoomProvider } from "./contexts/roomContext";
 import { VideoRoom } from "./components/VideoRoom/VideoRoom";
+import { JobOffersList } from "./components/JobOffersList/JobOffersList";
 import "./App.css";
+
 
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
 const RequireAuth: React.FC = ({ children }) => {
@@ -69,6 +70,14 @@ const App: React.FC = () => {
                 </RequireAuth>
               }
             />
+            <Route
+            path="/job-position/list"
+            element={
+              <RequireAuth>
+                <JobOffersList />
+              </RequireAuth>
+            }
+          />
             <Route path="/chatRoom/:id" element={<ChatRoom />} />
             <Route
               path="/job-seeker-profile/edit"
@@ -122,6 +131,7 @@ const App: React.FC = () => {
             <Route path="/videoRoom/:id" element={<VideoRoom />} />
           </Routes>
         </RoomProvider>
+
       </BrowserRouter>
     </UserContextProvider>
   );

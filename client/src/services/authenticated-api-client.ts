@@ -30,6 +30,14 @@ export const useAuthenticatedApiClient = () => {
     });
   };
 
+	const getJobOffersById = (id: string): Promise<{ data: JobOffer[] }> => {
+    return performRequest({
+      method: "GET",
+      path: `/job-postings/${id}`,
+      token: user?.accessToken,
+    });
+  };
+
   const likeJobOffer = (id: string): Promise<JobOffer> => {
     return performRequest({
       method: "POST",
@@ -77,7 +85,7 @@ export const useAuthenticatedApiClient = () => {
       token: user?.accessToken,
     });
   };
-  
+
   const getChats = (): Promise<Chat[]> => {
     return performRequest<{ data: Chat[] }>({
       method: "GET",
@@ -165,5 +173,6 @@ export const useAuthenticatedApiClient = () => {
     getAllJobSeekers,
     likeJobSeeker,
     dislikeJobSeeker,
+		getJobOffersById
   };
 };
