@@ -6,12 +6,10 @@ import { AppLayout } from '../AppLayout/AppLayout';
 import { Card } from '../Card/Card';
 import { Bin } from '../icons/Bin';
 import { NavTabs } from '../NavTabs/NavTabs';
-import { removeJobOffer } from '../../services/api-client';
-import { useNavigate } from 'react-router-dom';
+import { removeJobOffer } from '../../services/api-client'
 import './JobOffersList.css';
 
 const JobOffersList: React.FC = () => {
-  const navigate = useNavigate();
   const { user } = useUserContext();
   const apiClient = useAuthenticatedApiClient();
   const [jobOffers, setJobOffers] = useState<JobOffer[]>([]);
@@ -40,10 +38,11 @@ const JobOffersList: React.FC = () => {
       <div className="JobOffersList-container">
         {jobOffers.map((jobOffer) => {
           return (
-            <Card className="jobOfferCard">
-              <div className="Title">
+            <Card className="JobOffersList-Card">            
+              <div className="JobOffersList-Title">
                 <h3>{jobOffer.position}</h3>
-                <div className='binDelete'
+                <div 
+                  className='binDelete'
                   onClick={() => {
                     deleteJobOffer(jobOffer._id);
                   }}

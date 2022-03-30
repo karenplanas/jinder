@@ -1,5 +1,31 @@
+
+.JobOffersList-container {
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.JobOffersList-Card {
+  gap: 8px;
+}
+
 .binDelete {
 	display: flex;
   justify-content: flex-end;
   cursor: pointer;
 }
+
+.JobOffersList-Title {
+  padding-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.JobOffersList-Title h3{
+  font-size: 1.3rem;
+}
+
+
+

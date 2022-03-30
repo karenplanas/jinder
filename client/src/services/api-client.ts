@@ -1,6 +1,5 @@
 import { JobOffer } from '../Interfaces/JobOffer';
 import { Favourite } from '../Interfaces/favourite';
-import { User } from '../Interfaces/User';
 
 const postFavourite = (favourite: Favourite, user: any) => {
   return fetch(`http://localhost:4000/users/${user._id}/favourites`, {
@@ -61,21 +60,12 @@ const getJobs = (setState: any) => {
     });
 };
 
-
-// const getAllJobSeekers = async () => {
-//   const response = await fetch("http://localhost:4000/jobseekers", {
-//     method: "GET",
-//     headers: { "Content-type": "application/json" },
-//   });
-//   return response.json();
-// };
-
 export {
   postJobOffer,
   getJobs,
   getFavourites,
   postFavourite,
   addApplied,
-   removeJobOffer,
+  removeJobOffer,
   deleteFavourite,
 };
