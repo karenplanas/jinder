@@ -1,0 +1,36 @@
+.formDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.popUpForm-close-icon {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.popUpForm-close-icon p {
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.formTitle {
+  margin-bottom: 1rem;
+}
+
+.ApplyToJob-button {
+  margin-top: 16px;
+}
+
+.popUpForm {
+  background: transparent;
+  flex-direction: column;
+  width: max-content;
+  display: flex;
+  gap: 8px;
+  padding: 36px 36px;
+  padding-top: 24px;
+  border-radius: 3rem;
+  backdrop-filter: blur(50px);
+  margin: auto;
+}

@@ -25,7 +25,7 @@ const Login: React.FC = () => {
   const { state } = useLocation();
 
   useEffect(()=> {
-    user && navigate((state as any)?.from || '/home')
+    user && navigate((state as any)?.from || '/')
   }, [user, navigate, state])
 
   const onSubmit = handleSubmit(async (data) => {

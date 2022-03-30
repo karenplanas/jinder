@@ -21,6 +21,5 @@ export const getJobSeeker = async (
       },
     },
   ]).exec();
-  console.log(jobSeekers);
   res.status(200).json(jobSeekers);
 };

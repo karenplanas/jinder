@@ -2,23 +2,24 @@ import { model, Schema, Types } from "mongoose";
 
 interface EmployerProfile {
   userId: Types.ObjectId;
-  name: string;
+  companyName: string;
   domain: string;
   address: {
     city: string;
     state: string;
     country: string;
   };
-  size: {
+  companySize: {
     min: number;
     max: number;
   };
   imageUrl: string;
+  description: string;
 }
 
 const EmployerProfileSchema = new Schema<EmployerProfile>({
   userId: { type: Schema.Types.ObjectId, required: true },
-  name: { type: String, required: true },
+  companyName: { type: String, required: true },
   domain: { type: String },
   address: {
     type: {
@@ -27,13 +28,26 @@ const EmployerProfileSchema = new Schema<EmployerProfile>({
       country: { type: String },
     },
   },
-  size: {
+  companySize: {
     min: { type: Number },
     max: { type: Number },
   },
   imageUrl: { type: String },
+  description: String
 });
 
 const EmployerProfile = model("employerProfile", EmployerProfileSchema);
 
-export { EmployerProfile };
+const createOrUpdate = (userId: string, payload: Partial<EmployerProfile>) => {
+  return EmployerProfile.findOneAndUpdate(
+    { userId }, 
+    { $set: payload }, 
+    { upsert: true, new: true }
+  ) 
+}
+
+const findOne = (userId: string) => {
+  return EmployerProfile.findOne({ userId });
+}
+
+export { EmployerProfile, createOrUpdate, findOne };

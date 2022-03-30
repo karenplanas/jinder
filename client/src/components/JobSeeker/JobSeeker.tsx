@@ -4,11 +4,12 @@ import { useState } from "react";
 import { JobSeekerProfile } from "../../Interfaces/JobSeekerProfile";
 import { Card } from "../Card/Card";
 import { Email } from "../icons/Email";
+import { ImagePlaceHolder } from "../icons/ImagePlaceHolder";
+import { Lupe } from "../icons/Lupe";
 import { Skill } from "../icons/Skill";
 import { Work } from "../icons/Work";
+import { ImageHolder } from "../ImageHolder/ImageHolder";
 import "./JobSeeker.css";
-
-// import "./Job.css";
 
 interface Props {
   jobSeeker: JobSeekerProfile;
@@ -36,45 +37,61 @@ const JobSeeker: React.FC<Props> = ({ jobSeeker }) => {
       className={clsx("JobSeeker", { fullSize: showDetail })}
       onClick={toggleDetails}
     >
-      <div>
-        <h3 className="name">{capitalizeName(firstName, lastName)}</h3>
-        <div>
-          <h3>
-            <Work />
-            Experience{" "}
-          </h3>
+      <div className="JobSeeker-avatar-name">
+        <ImageHolder>
+          <ImagePlaceHolder />
+        </ImageHolder>
+        <h2 className="name">{capitalizeName(firstName, lastName)}</h2>
+      </div>
+
+      <div className="JobSeeker-section">
+        <div className="JobSeeker-icon-with-label">
+          <Work />
+          <h3>Experience</h3>
+        </div>
+
+        <div className="JobSeeker-experiences">
           {experiences.map((experience, indx) => (
             <ul key={indx}>
-              <li>{experience.title}</li>
-              <li>
-                {experience.companyName}({experience.location})
-              </li>
-              <li>
-                {experience.startDate}-{experience.endDate}
-              </li>
+              <li><span className="bold">{experience.title}</span> at {experience.companyName} </li>
+              <li>({experience.location})</li>
+              <li>From {experience.startDate} To {experience.endDate}</li>
             </ul>
           ))}
         </div>
       </div>
-      <h3>
-        {" "}
-        <Skill />
-        Skills
-      </h3>
-      {skills.join(", ")}
 
-      {lookingFor && (
-        <div>
-          <h3>Looking For</h3>
-          <span>{lookingFor.location} </span>
-          <span>{lookingFor.position} </span>
-          <span>{lookingFor.role}</span>
-        </div>
-      )}
-      <p>
-        <Email />
-        {email}
-      </p>
+      <div className="JobSeeker-section">
+        <div className="JobSeeker-icon-with-label">
+          <Skill />
+          <h3>Skills</h3>
+        </div>        
+        {skills.join(", ")}
+      </div>      
+
+      <div className="JobSeeker-section">
+        {lookingFor && (
+          <>
+            <div className="JobSeeker-icon-with-label">
+              <Lupe />
+              <h3>Looking For</h3>
+            </div>
+            <div className="JobSeeker-looking">
+              <span>{lookingFor.location}</span>
+              <span>{lookingFor.position}</span>
+              <span>{lookingFor.role}</span>
+            </div>
+          </>
+        )}
+      </div>
+
+      <div className="JobSeeker-section">
+        <div className=" JobSeeker-icon-with-label">
+          <Email />
+          <h4>{email}</h4>
+        </div> 
+      </div>
+
     </Card>
   );
 };

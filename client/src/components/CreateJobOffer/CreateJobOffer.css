@@ -27,3 +27,8 @@
   display: flex;
   gap: 16px;
 }
+
+.CreateJobOffer-button {
+  display: flex;
+  justify-content: center;
+}

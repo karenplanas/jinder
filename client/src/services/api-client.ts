@@ -57,9 +57,7 @@ const postJobOffer = (jobOffer: JobOffer) => {
 const getJobs = (setState: any) => {
   return fetch("http://localhost:4000/job-postings")
     .then((res) => res.json())
-
     .then((data) => {
-      console.log(data);
       return setState(data.data);
     });
 };

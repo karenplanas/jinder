@@ -10,7 +10,6 @@ export const addMessages = async (
       messages: req.body.messages,
     });
     res.send(modifyMessages).status(200);
-    console.log(req.body);
   } catch (e) {
     res.status(500);
     res.json({ error: "Internal server error" });

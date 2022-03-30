@@ -1,11 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
+import { useState, useEffect } from "react";
 import { Job } from "../Job/Job";
 import { AppLayout } from "../AppLayout/AppLayout";
 import { JobOffer } from "../../Interfaces/JobOffer";
-import "./JobList.css";
 import { useAuthenticatedApiClient } from "../../services/authenticated-api-client";
+import "./JobList.css";
 
 type Direction = "left" | "right" | "up" | "down";
 

@@ -1,12 +1,14 @@
-import { Chat } from "./../Interfaces/Chat";
+import { useUserContext } from '../contexts/UserContext';
+import { Chat } from '../Interfaces/Chat';
+import { EmployerProfile } from '../Interfaces/EmployerProfile';
+import { JobOffer } from '../Interfaces/JobOffer';
+import { JobSeekerProfile } from '../Interfaces/JobSeekerProfile';
+import { Message } from '../Interfaces/Message';
+import { JobSeeker } from '../Interfaces/User';
+import { UserJobOffer } from '../Interfaces/UserJobOffer';
+import { performRequest } from './helpers';
 import { IJobSeeker } from "./../Interfaces/JobSeeker";
 import { User } from "./../Interfaces/User";
-import { useUserContext } from "../contexts/UserContext";
-import { JobOffer } from "../Interfaces/JobOffer";
-import { JobSeekerProfile } from "../Interfaces/JobSeekerProfile";
-import { UserJobOffer } from "../Interfaces/UserJobOffer";
-import { performRequest } from "./helpers";
-import { Message } from "../Interfaces/Message";
 
 export const useAuthenticatedApiClient = () => {
   const { user } = useUserContext();
@@ -75,6 +77,7 @@ export const useAuthenticatedApiClient = () => {
       token: user?.accessToken,
     });
   };
+  
   const getChats = (): Promise<Chat[]> => {
     return performRequest<{ data: Chat[] }>({
       method: "GET",
@@ -112,6 +115,39 @@ export const useAuthenticatedApiClient = () => {
     }).then((value) => value.data);
   };
 
+  const getJobSeekerProfile = (): Promise<JobSeekerProfile> => {
+    return performRequest<{ data: JobSeekerProfile}>({
+      method: 'GET',
+      path: '/job-seeker-profile',
+      token: user?.accessToken,
+    }).then((value) => value.data)
+  };
+
+  const getEmployerProfile = (): Promise<EmployerProfile> => {
+    return performRequest<{ data: EmployerProfile}>({
+      method: 'GET',
+      path: '/employer-profile',
+      token: user?.accessToken,
+    }).then((value) => value.data)
+  };
+
+  const postEmployerProfile = (payload: Partial<JobSeekerProfile>): Promise<EmployerProfile> => {
+    return performRequest<{ data: EmployerProfile}>({
+      method: 'POST',
+      path: '/employer-profile',
+      body: payload,
+      token: user?.accessToken,
+    }).then((value) => value.data)
+  };
+
+  const getJobSeekers = (): Promise<JobSeeker[]> => {
+    return performRequest<{ data: JobSeeker[]}>({
+      method: 'GET',
+      path: '/job-seekers',
+      token: user?.accessToken,
+    }).then((value) => value.data)
+  };
+
   return {
     dislikeJobOffer,
     getChat,
@@ -122,6 +158,10 @@ export const useAuthenticatedApiClient = () => {
     postMessage,
     likeJobOffer,
     updateJobSeekerProfile,
+    getJobSeekerProfile,
+    getEmployerProfile,
+    postEmployerProfile,
+    getJobSeekers,
     getAllJobSeekers,
     likeJobSeeker,
     dislikeJobSeeker,

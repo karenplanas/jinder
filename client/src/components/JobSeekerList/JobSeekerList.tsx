@@ -15,7 +15,6 @@ const JobSeekerList: React.FC = () => {
     apiClient.getAllJobSeekers().then((data) => {
       console.log("data", data);
       setJobSeekers(data);
-      // console.log("jobseekers==>", jobSeekers);
     });
   }, []);
 
@@ -32,7 +31,6 @@ const JobSeekerList: React.FC = () => {
     <AppLayout title="Job Applicants">
       <div className="JobSeekers">
         {jobSeekers.map((jobSeeker) => {
-          // console.log("jobSeeker", jobSeeker);
           return (
             <TinderCard
               className="card"
@@ -48,4 +46,4 @@ const JobSeekerList: React.FC = () => {
   );
 };
 
-export default JobSeekerList;
+export { JobSeekerList } 

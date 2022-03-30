@@ -1,3 +1,6 @@
+import { EmployerProfile } from "./EmployerProfile";
+import { JobSeekerProfile } from "./JobSeekerProfile";
+
 export interface User {
   _id: string;
   firstName: string;
@@ -6,4 +9,12 @@ export interface User {
   password: string;
   accessToken: string;
   type: 'employer' | 'jobseeker'
+}
+export interface JobSeeker extends User {
+  type: 'jobseeker'
+  jobSeekerProfile: JobSeekerProfile
+}
+export interface Employer extends User {
+  type: 'employer'
+  employerProfile: EmployerProfile
 }

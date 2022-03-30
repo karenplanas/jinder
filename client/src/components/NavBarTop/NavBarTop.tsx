@@ -21,7 +21,6 @@ const NavBarTop: React.FC<Props> = ({
   userName,
 }) => {
   const { user } = useUserContext();
-  console.log('user type', user?.type)
   return (
     <div
       className={clsx('NavBarTop', className, {
@@ -29,8 +28,8 @@ const NavBarTop: React.FC<Props> = ({
       })}
     >
       <div className="NavBarTop-content">
-        <Link to="/home">
-          <Logo width={60} height={60} />
+        <Link to="/">
+          <Logo width={55} height={55} />
         </Link>
         <div className="NavBarTop-Salut-title">
           {userName && <h2>Hello {userName}!</h2>}

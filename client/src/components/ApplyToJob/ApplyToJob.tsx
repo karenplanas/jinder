@@ -4,10 +4,10 @@ import { JobApplication } from "../../Interfaces/JobApplication";
 import { Button } from "../Button/Button";
 import { InputTextField } from "../InputTextField/InputTextField";
 import emailjs from "@emailjs/browser";
-import "./TempSendEmail.css";
 import { Favourite } from "../../Interfaces/favourite";
 import { addApplied } from "../../services/api-client";
 import { useUserContext } from "../../contexts/UserContext";
+import "./ApplyToJob.css";
 
 interface Props {
   setState: (state: boolean) => void;
@@ -15,7 +15,7 @@ interface Props {
   data: Favourite;
 }
 
-const TempSendEmail: React.FC<Props> = ({ setState, setApply, data }) => {
+const ApplyToJob: React.FC<Props> = ({ setState, setApply, data }) => {
   const methods = useForm<JobApplication>({
     defaultValues: {
       fullName: "",
@@ -25,7 +25,7 @@ const TempSendEmail: React.FC<Props> = ({ setState, setApply, data }) => {
   });
   const { user } = useUserContext();
 
-  const { handleSubmit, register } = methods;
+  const { handleSubmit } = methods;
   const form: any = useRef();
 
   const onSubmit = handleSubmit(async () => {
@@ -41,26 +41,25 @@ const TempSendEmail: React.FC<Props> = ({ setState, setApply, data }) => {
           setState(false);
           setApply(true);
           addApplied(data, user);
-
-          console.log(result.text);
         },
         (error) => {
-          console.log(error.text);
+          console.error(error.text);
         }
       );
   });
 
   return (
-    <div className="popupForm">
+    <div className="popUpForm">
       <FormProvider {...methods}>
+        <div className="popUpForm-close-icon"><p onClick={() => setState(false)}>X</p></div>
         <h2 className="formTitle">Fill your application</h2>
         <form ref={form} onSubmit={onSubmit} className="formDiv">
           <InputTextField
-            label="Enter your full name"
+            label="Full Name"
             name="fullName"
           ></InputTextField>
           <InputTextField
-            label="Enter your email here"
+            label="Email"
             name="email"
           ></InputTextField>
 
@@ -69,11 +68,11 @@ const TempSendEmail: React.FC<Props> = ({ setState, setApply, data }) => {
             label="Tell us a bit more about yourself"
             type="textarea"
           ></InputTextField>
-          <Button type="submit" className="outlined" text="Submit" />
+          <Button type="submit" className="contained ApplyToJob-button" text="Submit" />
         </form>
       </FormProvider>
     </div>
   );
 };
 
-export { TempSendEmail };
+export { ApplyToJob };

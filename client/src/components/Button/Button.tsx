@@ -6,7 +6,7 @@ interface Props {
   text: string;
   className?: string;
   variant?: "outlined" | "contained";
-  size?: "small" | "medium";
+  size?: "mini" | "small" | "medium";
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   icon?: React.ReactNode;

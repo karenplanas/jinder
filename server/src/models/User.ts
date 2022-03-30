@@ -11,7 +11,6 @@ interface User {
   email: string;
   type: "employer" | "jobseeker";
 }
-
 interface Employer extends User {
   type: "employer";
   employerProfile: EmployerProfile;
@@ -53,11 +52,11 @@ const findOne = (externalId: string) => {
     },
     {
       $lookup: {
-        from: "jobSeekerprofiles",
-        localField: "_id",
-        foreignField: "userId",
-        as: "jobSeekerProfile",
-      },
+        from: 'jobseekerprofiles',
+        localField: '_id',
+        foreignField: 'userId',
+        as: 'jobSeekerProfile'
+      }
     },
     {
       $unwind: {
@@ -67,6 +66,31 @@ const findOne = (externalId: string) => {
     },
   ]).then((result) => result[0]);
 };
+
+const findAllJobSeekers = () => {
+  return User.aggregate([
+    {
+      $match: {
+        type: 'jobseeker'
+      }
+    },
+    {
+      $lookup: {
+        from: 'jobseekerprofiles',
+        localField: '_id',
+        foreignField: 'userId',
+        as: 'jobSeekerProfile'
+      }
+    },
+    {
+      $unwind: {
+        path: '$jobSeekerProfile',
+        preserveNullAndEmptyArrays: true
+      }
+    }
+  ])
+}
+
 
 const create = async (payload: Partial<User> & { companyName?: string }) => {
   const user = await User.create(payload);
@@ -99,7 +123,17 @@ const findOrCreateByExternalId = async (
     });
   }
 
-  return generateJwt(await findOne(externalId));
-};
+  return generateJwt(await findOne(externalId))
+}
 
-export { create, Employer, findOne, findOrCreateByExternalId, JobSeeker, User };
+export { 
+  JobSeeker, 
+  User,
+  Employer,  
+  create,
+  findOne,
+  findOrCreateByExternalId,
+  findAllJobSeekers
+}
+
+
