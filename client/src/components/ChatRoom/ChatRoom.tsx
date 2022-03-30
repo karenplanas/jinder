@@ -57,7 +57,7 @@ const ChatRoom: React.FC = () => {
         </div>
 
         <div className="chat_company_container">
-          <h3>{chat?.employerUser.employerProfile.name}</h3>
+          <h3>{chat?.employerUser.employerProfile?.name}</h3>
           <Building />
         </div>
         <div className="video_icon">

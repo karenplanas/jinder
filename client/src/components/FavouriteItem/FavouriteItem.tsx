@@ -11,7 +11,6 @@ import { Bin } from '../icons/Bin';
 import { ImageHolder } from '../ImageHolder/ImageHolder';
 import { Card } from '../Card/Card';
 import './FavouriteItem.css';
-
 interface Props {
   data: Favourite;
   refresh: () => Promise<void>;
@@ -24,11 +23,11 @@ const FavouriteItem: React.FC<Props> = ({ data, refresh }) => {
   const [applied, setApplied] = useState(false);
   const { user } = useUserContext();
   const apiClient = useAuthenticatedApiClient();
+  const employerUserId = data.employerUserId;
+  const jobSeekerUserId = user?._id;
   
   const createChat = async () => {
     if(!data) return
-    const employerUserId = data.employerUserId;
-    const jobSeekerUserId = user?._id;
     const chat = await apiClient.postChat({ jobSeekerUserId, employerUserId });
     navigate(`/chatRoom/${chat._id}`);
   };
@@ -94,7 +93,7 @@ const FavouriteItem: React.FC<Props> = ({ data, refresh }) => {
             <Button
               disabled={applied}
               className="mini"
-              text="Apply"
+              text={applied? "Applied" : "Apply"}
               onClick={toggleFunction}
             ></Button>
           </div>
