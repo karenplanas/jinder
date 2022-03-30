@@ -3,10 +3,10 @@ import * as favouritesController from "./controllers/favourite-controller";
 import * as jobOfferController from "./controllers/JobOffer-controller";
 import * as userController from "./controllers/user-controller";
 import * as jobSeekerProfileController from "./controllers/JobSeekerProfile-controller";
-import * as messageController from "./controllers/message-controller";
 import * as userJobOfferController from "./controllers/UserJobOffer-controller";
-import * as jobSeekerController from "./controllers/JobSeeker-controller";
+import * as chatController from "./controllers/chat-controller";
 import { authMiddleware } from "./middlewares/auth-middlware";
+import * as jobSeekerController from "./controllers/JobSeeker-controller";
 
 const router = express.Router();
 
@@ -55,7 +55,10 @@ router.delete(
   favouritesController.deleteFavourite
 );
 
-router.put("/messages", messageController.addMessages);
+router.get("/chats", authMiddleware, chatController.getChats);
+router.get("/chats/:id", authMiddleware, chatController.getChat);
+router.post("/chats", authMiddleware, chatController.postChat);
+router.post("/chats/:id/messages", authMiddleware, chatController.postMessage);
 
 router.get("/jobseekers", authMiddleware, jobSeekerController.getJobSeeker);
 

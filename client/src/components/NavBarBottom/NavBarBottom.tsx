@@ -1,34 +1,34 @@
-import React from "react";
-import clsx from "clsx";
-import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
-import { Square } from "../icons/Square";
-import { Chat } from "../icons/Chat";
-import { Pentagon } from "../icons/Pentagon";
-import { Star } from "../icons/Star";
-import "./NavBarBottom.css";
-import { IconWithLabel } from "../IconWithLabel/IconWithLabel";
+import React from 'react';
+import clsx from 'clsx';
+import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
+import { Square } from '../icons/Square';
+import { ChatIcon } from '../icons/ChatIcon';
+import { Pentagon } from '../icons/Pentagon';
+import { Star } from '../icons/Star';
+import './NavBarBottom.css';
+import { IconWithLabel } from '../IconWithLabel/IconWithLabel';
 
 const items = [
   {
-    path: "/home",
-    label: "Home",
+    path: '/home',
+    label: 'Home',
     icon: <Square />,
   },
   {
-    path: "/job-position/edit",
-    label: "Jobs",
+    path: '/job-position/edit',
+    label: 'Jobs',
     icon: <Pentagon />,
   },
   {
-    path: "/favourites",
-    label: "Favourites",
+    path: '/favourites',
+    label: 'Favourites',
     icon: <Star />,
   },
   {
-    path: "/chatList",
-    label: "Chat",
-    icon: <Chat />,
+    path: '/chatList',
+    label: 'Chat',
+    icon: <ChatIcon />,
   },
 ];
 

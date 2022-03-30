@@ -1,5 +1,6 @@
 export interface JobOffer {
   _id: string;
+  employerUserId: string;
   companyname: string;
   companysize: string;
   position: string;

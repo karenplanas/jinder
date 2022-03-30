@@ -19,10 +19,7 @@ interface EmployerProfile {
 const EmployerProfileSchema = new Schema<EmployerProfile>({
   userId: { type: Schema.Types.ObjectId, required: true },
   name: { type: String, required: true },
-  domain: {
-    type: String,
-    // required: true
-  },
+  domain: { type: String },
   address: {
     type: {
       city: { type: String },

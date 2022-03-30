@@ -20,6 +20,17 @@
   gap: 1rem;
 }
 
+.ChatMessage {
+  padding: 16px;
+  background-color: var(--Gray-clair);
+  border-radius: 4px;
+  width: 70%;
+}
+
+.ChatMessage.current-user {
+  align-self: flex-end;
+}
+
 .video_icon,
 .back_button {
   display: flex;
@@ -42,7 +53,10 @@
 }
 
 .chatLog {
+  display: flex;
+  flex-direction: column;
   height: 70vh;
+  gap: 16px;
 }
 
 .input_area {

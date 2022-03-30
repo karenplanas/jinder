@@ -7,7 +7,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { CreateJobOffer } from "./components/CreateJobOffer/CreateJobOffer";
-import { JobList } from "./components/JobList/JobList";
+// import { JobList } from "./components/JobList/JobList";
 import { JobSeekerProfileSkills } from "./components/CreateJobSeekerProfile/JobSeekerProfileSkills";
 import { JobSeekerProfileLookingFor } from "./components/CreateJobSeekerProfile/JobSeekerProfileLookingFor";
 import { JobSeekerProfileExperience } from "./components/CreateJobSeekerProfile/JobSeekerProfileExperience";
@@ -23,6 +23,7 @@ import "./App.css";
 import ChatRoom from "./components/ChatRoom/ChatRoom";
 import EmployerProfile from "./components/EmployerProfile/EmployerProfile";
 import JobSeekerList from "./components/JobSeekerList/JobSeekerList";
+import { UserAccountSettings } from "./components/UserAccountSettings/UserAccountSettings";
 
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
 const RequireAuth: React.FC = ({ children }) => {
@@ -107,6 +108,14 @@ const App: React.FC = () => {
             element={
               <RequireAuth>
                 <EmployerProfile />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <RequireAuth>
+                <UserAccountSettings />
               </RequireAuth>
             }
           />

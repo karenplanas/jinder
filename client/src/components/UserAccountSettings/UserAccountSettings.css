@@ -1,0 +1,21 @@
+.UserAccountSettings-container {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px var(--Gray-dark);
+  border-radius: 8px;
+  gap: 16px;
+  padding: 32px 24px;
+}
+
+.UserAccountSettings-password-reset {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.UserAccountSettings-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 16px;
+}

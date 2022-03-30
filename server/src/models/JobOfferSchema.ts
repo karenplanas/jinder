@@ -1,9 +1,10 @@
-import mongoose from "mongoose";
-import { getJobOffers } from "../controllers/JobOffer-controller";
-import { getUserJobOffers } from "./UserJobOfferSchema";
+import mongoose from 'mongoose';
+import { getJobOffers } from '../controllers/JobOffer-controller';
+import { getUserJobOffers } from './UserJobOfferSchema';
 const Schema = mongoose.Schema;
 
 interface newJobOffer {
+  employerUserId: string;
   companyname: string;
   companysize: string;
   position: string;
@@ -22,6 +23,10 @@ interface newJobOffer {
 }
 
 const JobOfferSchema = new Schema<newJobOffer>({
+  employerUserId: {
+    type: String,
+    required: true,
+  },
   companyname: {
     type: String,
     required: true,
@@ -85,11 +90,10 @@ const JobOfferSchema = new Schema<newJobOffer>({
 const JobOffer = mongoose.model<newJobOffer>('JobOffer', JobOfferSchema);
 
 const getNewJobOffers = async (userId: string) => {
-  const userJobOffers = await getUserJobOffers(userId)
-  return JobOffer.find(
-    {_id: {$nin: userJobOffers.map(userJobOffer => userJobOffer.jobOfferId)}}
-  )
-}
-
+  const userJobOffers = await getUserJobOffers(userId);
+  return JobOffer.find({
+    _id: { $nin: userJobOffers.map((userJobOffer) => userJobOffer.jobOfferId) },
+  });
+};
 
 export { JobOffer, getNewJobOffers };

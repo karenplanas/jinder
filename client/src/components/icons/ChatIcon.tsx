@@ -1,6 +1,6 @@
 import React from "react";
 
-const Chat: React.FC = () => {
+const ChatIcon: React.FC = () => {
   return (
     <svg
       width="24"
@@ -21,4 +21,4 @@ const Chat: React.FC = () => {
   );
 };
 
-export {Chat};
+export {ChatIcon};

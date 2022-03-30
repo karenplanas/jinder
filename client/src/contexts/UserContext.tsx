@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import {
   EmployerCreationPayload,
   ICredentials,
@@ -48,7 +49,7 @@ const UserContextProvider: React.FC = ({ children }) => {
 
   const logout = () => {
     setUser(undefined);
-    window.localStorage.removeItem(STORAGE_KEY);
+    window.localStorage.removeItem(STORAGE_KEY)
   };
 
   const loginWithGoogle = async () => {
