@@ -33,21 +33,21 @@ const JobSeekerProfileSkills: React.FC = () => {
             </div>
             <div className='checks'>
               <div className='checks-line'>
-                <Checkbox name='skills.skill' value='c++' label='C++'/>
-                <Checkbox name='skills.skill' value='js' label='JS'/>
-                <Checkbox name='skills.skill' value='ts' label='TS'/>
+                <Checkbox name='skills.skill' value='C++' label='C++'/>
+                <Checkbox name='skills.skill' value='JS' label='JS'/>
+                <Checkbox name='skills.skill' value='TS' label='TS'/>
               </div>
 
               <div className='checks-line'>
-                <Checkbox name='skills.skill' value='react' label='React'/>
-                <Checkbox name='skills.skill' value='redux' label='Redux'/>
-                <Checkbox name='skills.skill' value='angular' label='Angular'/>
+                <Checkbox name='skills.skill' value='React' label='React'/>
+                <Checkbox name='skills.skill' value='Redux' label='Redux'/>
+                <Checkbox name='skills.skill' value='Angular' label='Angular'/>
               </div>
 
               <div className='checks-line'>
-                <Checkbox name='skills.skill' value='mongodb' label='MongoDB'/>
-                <Checkbox name='skills.skill' value='mongoose' label='Mongoose'/>
-                <Checkbox name='skills.skill' value='postgres' label='Postgres'/>
+                <Checkbox name='skills.skill' value='Mongodb' label='MongoDB'/>
+                <Checkbox name='skills.skill' value='Mongoose' label='Mongoose'/>
+                <Checkbox name='skills.skill' value='Postgres' label='Postgres'/>
               </div>
             </div>
             <InputTextField name='skills.others' placeholder='Type something here...' label='Others' />

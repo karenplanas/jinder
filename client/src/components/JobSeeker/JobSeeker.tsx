@@ -24,6 +24,7 @@ const JobSeeker: React.FC<Props> = ({ jobSeeker }) => {
 
   const { email, firstName, lastName } = jobSeeker;
   const { experiences, lookingFor, skills } = jobSeeker.jobseekerUser;
+  const { skill } = skills;
 
   const capitalizeName = (firstName, lastName) =>
     firstName[0].toUpperCase() +
@@ -66,7 +67,7 @@ const JobSeeker: React.FC<Props> = ({ jobSeeker }) => {
           <Skill />
           <h3>Skills</h3>
         </div>        
-        {skills.join(", ")}
+        {skill?.join(", ")}
       </div>      
 
       <div className="JobSeeker-section">

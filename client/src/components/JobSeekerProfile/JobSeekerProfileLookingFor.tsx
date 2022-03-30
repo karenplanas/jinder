@@ -36,21 +36,21 @@ const JobSeekerProfileLookingFor: React.FC = () => {
             <div className='checks'>
 
               <div className='checks-line'>
-                <Checkbox name='lookingFor.position' value='frontEnd' label='Front-end'/>
-                <Checkbox name='lookingFor.position' value='backEnd' label='Back-end'/>
+                <Checkbox name='lookingFor.position' value='FrontEnd' label='Front-end'/>
+                <Checkbox name='lookingFor.position' value='BackEnd' label='Back-end'/>
                 <Checkbox name='lookingFor.position' value='fullStack' label='Full-stack'/>
               </div>
 
               <div className='checks-line'>
-                <Checkbox name='lookingFor.seniority' value='junior' label='Junior'/>
-                <Checkbox name='lookingFor.seniority' value='intermediate' label='Intermediate'/>
-                <Checkbox name='lookingFor.seniority' value='senior' label='Senior'/>
+                <Checkbox name='lookingFor.seniority' value='Junior' label='Junior'/>
+                <Checkbox name='lookingFor.seniority' value='Intermediate' label='Intermediate'/>
+                <Checkbox name='lookingFor.seniority' value='Senior' label='Senior'/>
               </div>
 
               <div className='checks-line'>
-                <Checkbox name='lookingFor.location' value='remote' label='Remote'/>
-                <Checkbox name='lookingFor.role' value='fullTime' label='Full time'/>
-                <Checkbox name='lookingFor.role' value='partTime' label='Part time'/>
+                <Checkbox name='lookingFor.location' value='Remote' label='Remote'/>
+                <Checkbox name='lookingFor.role' value='FullTime' label='Full time'/>
+                <Checkbox name='lookingFor.role' value='PartTime' label='Part time'/>
               </div>
 
             </div>
