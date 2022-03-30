@@ -1,28 +1,28 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
+import { useState, useEffect } from "react";
 import { Job } from "../Job/Job";
 import { AppLayout } from "../AppLayout/AppLayout";
 import { JobOffer } from "../../Interfaces/JobOffer";
-import "./JobList.css";
 import { useAuthenticatedApiClient } from "../../services/authenticated-api-client";
+import "./JobList.css";
 
 type Direction = "left" | "right" | "up" | "down";
 
 const JobList: React.FC = () => {
-  const apiClient = useAuthenticatedApiClient()
+  const apiClient = useAuthenticatedApiClient();
   const [jobOffers, setJobOffers] = useState<JobOffer[]>([]);
 
   useEffect(() => {
-    apiClient.getJobOffers().then(({ data }) => setJobOffers(data))
+    apiClient.getJobOffers().then(({ data }) => setJobOffers(data));
   }, []);
 
   const swiped = async (direction: Direction, jobOffer: JobOffer) => {
     if (direction === "right") {
-      await apiClient.likeJobOffer(jobOffer._id)
+      await apiClient.likeJobOffer(jobOffer._id);
     }
     if (direction === "left") {
-      await apiClient.dislikeJobOffer(jobOffer._id)
+      await apiClient.dislikeJobOffer(jobOffer._id);
     }
   };
 

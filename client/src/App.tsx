@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   BrowserRouter,
   Navigate,
@@ -18,8 +18,8 @@ import { ChatList } from './components/ChatList/ChatList';
 import { ChatRoom } from './components/ChatRoom/ChatRoom';
 import { EmployerProfile } from './components/EmployerProfile/EmployerProfile';
 import { UserAccountSettings } from './components/UserAccountSettings/UserAccountSettings';
-import './App.css';
 import { Home } from './components/Home/Home';
+import './App.css';
 
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
 const RequireAuth: React.FC = ({ children }) => {

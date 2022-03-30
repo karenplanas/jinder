@@ -6,9 +6,9 @@ import { Square } from '../icons/Square';
 import { ChatIcon } from '../icons/ChatIcon';
 import { Pentagon } from '../icons/Pentagon';
 import { Star } from '../icons/Star';
-import './NavBarBottom.css';
 import { IconWithLabel } from '../IconWithLabel/IconWithLabel';
 import { useUserContext } from '../../contexts/UserContext';
+import './NavBarBottom.css';
 
 const getItems = (type: string | undefined) => { 
   return [

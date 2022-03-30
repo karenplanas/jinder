@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import './ChatList.css';
 import { ChatItem } from '../ChatItem/ChatItem';
-import { NavBarTop } from '../NavBarTop/NavBarTop';
 import { NavTabs } from '../NavTabs/NavTabs';
 import { Link } from 'react-router-dom';
 import { useAuthenticatedApiClient } from '../../services/authenticated-api-client';
 import { Chat } from '../../Interfaces/Chat';
 import { AppLayout } from '../AppLayout/AppLayout';
 import { useUserContext } from '../../contexts/UserContext';
+import './ChatList.css';
 
 const tabs = [
   { name: 'Favourites', endpoint: '/favourites' },

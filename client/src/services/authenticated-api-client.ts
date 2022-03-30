@@ -7,14 +7,16 @@ import { Message } from '../Interfaces/Message';
 import { JobSeeker } from '../Interfaces/User';
 import { UserJobOffer } from '../Interfaces/UserJobOffer';
 import { performRequest } from './helpers';
+import { IJobSeeker } from "./../Interfaces/JobSeeker";
+import { User } from "./../Interfaces/User";
 
 export const useAuthenticatedApiClient = () => {
   const { user } = useUserContext();
 
   const updateJobSeekerProfile = (payload: Partial<JobSeekerProfile>) => {
     return performRequest({
-      method: 'POST',
-      path: '/job-seeker-profile',
+      method: "POST",
+      path: "/job-seeker-profile",
       body: payload,
       token: user?.accessToken,
     });
@@ -22,15 +24,15 @@ export const useAuthenticatedApiClient = () => {
 
   const getJobOffers = (): Promise<{ data: JobOffer[] }> => {
     return performRequest({
-      method: 'GET',
-      path: '/job-postings',
+      method: "GET",
+      path: "/job-postings",
       token: user?.accessToken,
     });
   };
 
   const likeJobOffer = (id: string): Promise<JobOffer> => {
     return performRequest({
-      method: 'POST',
+      method: "POST",
       path: `/job-postings/${id}/like`,
       token: user?.accessToken,
     });
@@ -38,7 +40,7 @@ export const useAuthenticatedApiClient = () => {
 
   const getLikedJobOffers = (): Promise<{ data: UserJobOffer[] }> => {
     return performRequest({
-      method: 'GET',
+      method: "GET",
       path: `/job-postings/liked`,
       token: user?.accessToken,
     });
@@ -46,47 +48,71 @@ export const useAuthenticatedApiClient = () => {
 
   const dislikeJobOffer = (id: string): Promise<JobOffer> => {
     return performRequest({
-      method: 'POST',
+      method: "POST",
       path: `/job-postings/${id}/dislike`,
       token: user?.accessToken,
     });
   };
 
-  const getChats = (): Promise<Chat[]> => {
-    return performRequest<{ data: Chat[]}>({
-      method: 'GET',
-      path: '/chats',
+  const getAllJobSeekers = (): Promise<IJobSeeker[]> => {
+    return performRequest({
+      method: "GET",
+      path: "/jobseekers",
       token: user?.accessToken,
-    }).then((value) => value.data)
+    });
+  };
+
+  const likeJobSeeker = (id: string): Promise<User> => {
+    return performRequest({
+      method: "POST",
+      path: `/jobseekers/${id}/like`,
+      token: user?.accessToken,
+    });
+  };
+
+  const dislikeJobSeeker = (id: string): Promise<User> => {
+    return performRequest({
+      method: "POST",
+      path: `/jobseekers/${id}/dislike`,
+      token: user?.accessToken,
+    });
+  };
+  
+  const getChats = (): Promise<Chat[]> => {
+    return performRequest<{ data: Chat[] }>({
+      method: "GET",
+      path: "/chats",
+      token: user?.accessToken,
+    }).then((value) => value.data);
   };
 
   const getChat = (id: string): Promise<Chat> => {
-    return performRequest<{ data: Chat}>({
-      method: 'GET',
+    return performRequest<{ data: Chat }>({
+      method: "GET",
       path: `/chats/${id}`,
       token: user?.accessToken,
-    }).then((value) => value.data)
+    }).then((value) => value.data);
   };
 
   const postChat = (payload: Partial<Chat>): Promise<Chat> => {
-    return performRequest<{ data: Chat}>({
-      method: 'POST',
-      path: '/chats',
+    return performRequest<{ data: Chat }>({
+      method: "POST",
+      path: "/chats",
       token: user?.accessToken,
       body: payload,
-    }).then((value) => value.data)
+    }).then((value) => value.data);
   };
 
   const postMessage = (
     chatId: string,
     payload: Partial<Message>
   ): Promise<Chat> => {
-    return performRequest<{ data: Chat}>({
-      method: 'POST',
+    return performRequest<{ data: Chat }>({
+      method: "POST",
       path: `/chats/${chatId}/messages`,
       token: user?.accessToken,
       body: payload,
-    }).then((value) => value.data)
+    }).then((value) => value.data);
   };
 
   const getJobSeekerProfile = (): Promise<JobSeekerProfile> => {
@@ -135,6 +161,9 @@ export const useAuthenticatedApiClient = () => {
     getJobSeekerProfile,
     getEmployerProfile,
     postEmployerProfile,
-    getJobSeekers
+    getJobSeekers,
+    getAllJobSeekers,
+    likeJobSeeker,
+    dislikeJobSeeker,
   };
 };
