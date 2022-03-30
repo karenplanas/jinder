@@ -3,7 +3,6 @@ import { Building } from '../icons/Building';
 import { Button } from '../Button/Button';
 import { ApplyToJob } from '../ApplyToJob/ApplyToJob';
 import { Favourite } from '../../Interfaces/favourite';
-// import { Job } from '../Job/Job';
 import { useAuthenticatedApiClient } from '../../services/authenticated-api-client';
 import { ChatIcon } from '../icons/ChatIcon';
 import { useUserContext } from '../../contexts/UserContext';
@@ -25,15 +24,16 @@ const FavouriteItem: React.FC<Props> = ({ data, refresh }) => {
   const [applied, setApplied] = useState(false);
   const { user } = useUserContext();
   const apiClient = useAuthenticatedApiClient();
-  const employerUserId = data.employerUserId;
-  const jobSeekerUserId = user?._id;
   
   const createChat = async () => {
+    if(!data) return
+    const employerUserId = data.employerUserId;
+    const jobSeekerUserId = user?._id;
     const chat = await apiClient.postChat({ jobSeekerUserId, employerUserId });
     navigate(`/chatRoom/${chat._id}`);
   };
 
-  if (data.applied === true && applied === false) setApplied(true);
+  if (data?.applied === true && applied === false) setApplied(true);
 
   const toggleFunction = () => {
     if (popupActive === true) {
@@ -54,7 +54,7 @@ const FavouriteItem: React.FC<Props> = ({ data, refresh }) => {
   };
   
   if (!data) {
-    return <p>Loading</p>;
+    return <p>Loading...</p>;
   }
 
   return (

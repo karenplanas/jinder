@@ -49,7 +49,7 @@ export const useAuthenticatedApiClient = () => {
   const getLikedJobOffers = (): Promise<{ data: UserJobOffer[] }> => {
     return performRequest({
       method: "GET",
-      path: `/job-postings/liked`,
+      path: `/user-job-postings/liked`,
       token: user?.accessToken,
     });
   };
