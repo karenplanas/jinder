@@ -9,10 +9,16 @@ button {
   margin-bottom: 4px;
 }
 
-button:active {
+button:active, button:disabled {
   margin-top: 4px;
   box-shadow: none;
   margin-bottom: 0px;
+}
+
+button:disabled {
+  background-color: #EBEBE4;
+  color: #545454;
+  cursor: default;
 }
 
 .mini {
@@ -33,13 +39,24 @@ button:active {
   color: var(--White);
 }
 
-.contained:hover {
+.contained:hover:enabled {
   background-color: var(--Gray-dark);
 }
 
 .outlined {
   background-color: var(--White);
   border: solid 2px;
+}
+
+.outlined:hover:enabled {
+  background-color: var(--Gray-clair);
+}
+
+.with-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
 }
 
 .list {
@@ -59,13 +76,3 @@ button:active {
   background-color: var(--Gray-dark);
 }
 
-.outlined:hover {
-  background-color: var(--Gray-clair);
-}
-
-.with-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-}

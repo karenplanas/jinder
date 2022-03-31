@@ -2,7 +2,10 @@ import { model, Schema, Types } from "mongoose"
 
 interface JobSeekerProfile {
   userId: Types.ObjectId
-  skills: string[]
+  skills: {
+    skill: string[]
+    others: string
+  }
   experiences: Experience[]
   lookingFor: {
     position: string[]
@@ -33,7 +36,12 @@ const ExperienceSchema = new Schema<Experience>({
 
 const JobSeekerProfileSchema = new Schema<JobSeekerProfile>({
   userId: { type: Schema.Types.ObjectId, required: true },
-  skills: { type: [String] },
+  skills: { 
+    type: {
+      skill: [String],
+      others: String
+    } 
+  },
   experiences: { type: [ExperienceSchema] },
   lookingFor: { 
     type: {

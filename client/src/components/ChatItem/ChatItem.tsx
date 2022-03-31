@@ -18,10 +18,13 @@ const ChatItem: React.FC<Props> = ({ chat }) => {
       </ImageHolder>
       {
         user?.type === 'jobseeker' ?
-        <h6>{chat.employerUser.employerProfile.name}</h6> :
+        <h6>{chat.employerUser.employerProfile?.name ? 
+          chat.employerUser.employerProfile?.name :
+          'Good Tech Co'
+        }
+        </h6> :
         <h6>{chat.jobSeekerUser?.firstName} {chat.jobSeekerUser?.lastName}</h6>
       }
-
     </div>
   );
 };

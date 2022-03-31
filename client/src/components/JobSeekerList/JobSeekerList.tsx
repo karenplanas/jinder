@@ -13,7 +13,6 @@ const JobSeekerList: React.FC = () => {
 
   useEffect(() => {
     apiClient.getAllJobSeekers().then((data) => {
-      console.log("data", data);
       setJobSeekers(data);
     });
   }, []);

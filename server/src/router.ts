@@ -20,10 +20,10 @@ router.get('/employer-profile', authMiddleware, employerProfileController.getEmp
 
 router.get('/job-seekers', userController.getJobSeekers)
 
+router.get('/user-job-postings/liked', authMiddleware, userJobOfferController.getLikedJobOffer);
 router.post('/job-postings', jobOfferController.postJobOffer);
 router.get('/job-postings', authMiddleware, jobOfferController.getJobOffers);
 router.get('/job-postings/:id', authMiddleware, jobOfferController.getJobOffersById);
-router.get('/job-postings/liked', authMiddleware, userJobOfferController.getLikedJobOffer);
 router.post('/job-postings/:id/like', authMiddleware, userJobOfferController.postUserJobOfferLike);
 router.post('/job-postings/:id/dislike', authMiddleware, userJobOfferController.postUserJobOfferDislike);
 router.post('/job-postings/:id/application', authMiddleware, userJobOfferController.postUserJobOfferApplication);

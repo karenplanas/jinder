@@ -9,6 +9,7 @@ import { InputTextField } from '../InputTextField/InputTextField';
 import './CreateJobOffer.css';
 import { NavTabs } from '../NavTabs/NavTabs';
 import { useUserContext } from '../../contexts/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const CreateJobOffer: React.FC = () => {
 	const {user} = useUserContext()
@@ -32,10 +33,12 @@ const CreateJobOffer: React.FC = () => {
   });
 
   const { handleSubmit, reset } = methods;
+  const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data) => {
     reset();
     await postJobOffer(data);
+    navigate('/job-position/list');
   });
 
 	const tabs = [

@@ -15,8 +15,7 @@ const FavouritesList: React.FC = () => {
   const apiClient = useAuthenticatedApiClient();
   const [favourites, setFavourites] = useState<UserJobOffer[]>([]);
 
-  const getLikedJobOffers = () =>
-    apiClient.getLikedJobOffers().then(({ data }) => setFavourites(data));
+  const getLikedJobOffers = () => apiClient.getLikedJobOffers().then(({ data }) => setFavourites(data));
 
   useEffect(() => {
     getLikedJobOffers();
@@ -29,7 +28,7 @@ const FavouritesList: React.FC = () => {
         {favourites.map((favourite) => {
           return (
             <FavouriteItem
-              data={favourite.jobOffer}
+              data={favourite}
               key={favourite._id}
               refresh={getLikedJobOffers}
             />

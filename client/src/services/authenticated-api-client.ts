@@ -9,6 +9,7 @@ import { UserJobOffer } from '../Interfaces/UserJobOffer';
 import { performRequest } from './helpers';
 import { IJobSeeker } from "./../Interfaces/JobSeeker";
 import { User } from "./../Interfaces/User";
+import { JobApplication } from '../Interfaces/JobApplication';
 
 export const useAuthenticatedApiClient = () => {
   const { user } = useUserContext();
@@ -46,10 +47,19 @@ export const useAuthenticatedApiClient = () => {
     });
   };
 
+  const postJobApplication = (jobId: string, application: JobApplication): Promise<JobOffer> => {
+    return performRequest({
+      method: "POST",
+      path: `/job-postings/${jobId}/application`,
+      body: application,
+      token: user?.accessToken,
+    });
+  };
+
   const getLikedJobOffers = (): Promise<{ data: UserJobOffer[] }> => {
     return performRequest({
       method: "GET",
-      path: `/job-postings/liked`,
+      path: `/user-job-postings/liked`,
       token: user?.accessToken,
     });
   };
@@ -173,6 +183,7 @@ export const useAuthenticatedApiClient = () => {
     getAllJobSeekers,
     likeJobSeeker,
     dislikeJobSeeker,
-		getJobOffersById
+		getJobOffersById,
+    postJobApplication
   };
 };
