@@ -1,7 +1,8 @@
 # Jinder (Tinder for jobs)
 
-Users should be able to view jobs positions available, swipe them left (not interested) or right (interested);
-Interested ones will be added to user favourites list. Apply to open positions/ communicate (chat) with the employers.
+Jinder is a full stack application that makes the process of job searching more fun and dynamic.
 
-Employers should be able to view users profiles, swipe them left (not interested) or right (interested);
-Interested ones will be added to employer favourites list. Post jobs positions they have open.
+Users are able to swipe right if they are interested in a job offer or left if they are not. There is also a chat implemented to connect job seekers and companies and a videochat for interviews. Finally, job seekers can apply to a job by sending an email to the company, with a short presentation, all of this is done through the app.
+Companies get a list of job seekers and are also able to swipe right or left. They can create as many job offers as they want and can see them listed on the app.
+
+Tech-stack: React, Typescript, CSS, Express, MongoDB, Mongoose,Firebase,Figma.
