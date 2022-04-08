@@ -69,4 +69,5 @@ npm start
 # Contributors
 * Alisha Jungah - [GitHub](https://github.com/alisha0815) - [Linkedin](https://www.linkedin.com/in/alisha-jungah-greve-b2abba211/)
 * Sergi Hernandez - [GitHub](https://github.com/Sergihf10) - [Linkedin](https://www.linkedin.com/in/sergihf10/)
-* Martin West - [GitHub](https://github.com/martinwest1993) - [Linkedin](https://www.linkedin.com/in/martinwest1993/)
+* Martin West - [GitHub](https://github.com/martinwest1993) - [Linkedin](https://www.linkedin.com/in/martinwest1993/)  
+* Karen Planas - [Github](https://github.com/karenplanas) - [Linkedin](https://www.linkedin.com/in/karen-planas)
